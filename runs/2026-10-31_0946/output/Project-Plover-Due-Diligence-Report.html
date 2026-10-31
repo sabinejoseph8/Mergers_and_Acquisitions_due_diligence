@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Plover: Comprehensive Due Diligence Report</title>
+<style>
+/* Print-friendly style for the due diligence report. Used when converting the report to HTML and PDF. */
+@page { size: Letter; margin: 0.65in 0.7in 0.7in 0.7in; }
+:root { --navy: #0B1F5C; --teal: #00B3C8; --orange: #E07B4F; --ember: #B5491F; --ink: #1F2430; --muted: #5B6170; --line: #D9DDE5; --soft: #F3F5F8; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif; color: var(--ink); font-size: 10.5pt; line-height: 1.45; max-width: 7.2in; margin: 0 auto; background: #FFFFFF; }
+h1, h2, h3, h4 { color: var(--navy); line-height: 1.2; break-after: avoid; }
+h1 { font-size: 20pt; margin: 0 0 6pt; }
+h2 { font-size: 14.5pt; margin: 20pt 0 6pt; padding-bottom: 4pt; border-bottom: 2px solid var(--navy); }
+h3 { font-size: 11.5pt; margin: 14pt 0 4pt; }
+h4 { font-size: 10.5pt; margin: 10pt 0 3pt; }
+p { margin: 4pt 0 7pt; }
+ul, ol { margin: 3pt 0 8pt; padding-left: 18pt; }
+li { margin: 2pt 0; }
+a { color: var(--navy); }
+code { font-family: Menlo, Consolas, monospace; font-size: 9pt; background: var(--soft); padding: 0 3px; border-radius: 3px; }
+table { border-collapse: collapse; width: 100%; margin: 6pt 0 10pt; font-size: 8.8pt; break-inside: auto; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th { background: var(--navy); color: #FFFFFF; text-align: left; font-weight: 600; padding: 4pt 5pt; }
+td { border-bottom: 1px solid var(--line); padding: 3.5pt 5pt; vertical-align: top; }
+tbody tr:nth-child(even) td { background: var(--soft); }
+blockquote { margin: 8pt 0; padding: 7pt 10pt; background: #FFF8E6; border-left: 4px solid #E5B53C; }
+blockquote p { margin: 2pt 0; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 14pt 0; }
+.cover { min-height: 8.6in; display: flex; flex-direction: column; justify-content: center; break-after: page; border-left: 10px solid var(--navy); padding-left: 24pt; }
+.cover h1 { font-size: 28pt; margin-bottom: 4pt; border: 0; }
+.cover .sub, .cover .sub p { font-size: 14pt; color: var(--ember); font-weight: 600; margin-bottom: 18pt; }
+.cover p { color: var(--muted); margin: 2pt 0; }
+.cover .flag, .cover .flag p { margin-top: 24pt; color: var(--navy); font-weight: 600; }
+.callout { background: var(--soft); border-left: 4px solid var(--teal); padding: 7pt 10pt; margin: 8pt 0; }
+.bottom-line { background: var(--navy); color: #FFFFFF; padding: 9pt 12pt; border-radius: 4px; margin: 8pt 0 10pt; }
+.bottom-line p, .bottom-line strong { color: #FFFFFF; }
+.page-break { break-before: page; }
+.id { white-space: nowrap; }
+table.keep { break-inside: avoid; }
+.small { font-size: 8.5pt; color: var(--muted); }
+.sev-critical { color: #B42318; font-weight: 700; }
+.sev-high { color: #B5491F; font-weight: 700; }
+.sev-medium { color: #8A5A00; font-weight: 600; }
+.sev-low { color: #5B6170; font-weight: 600; }
+.claim { font-size: 8pt; font-weight: 700; letter-spacing: 0.3px; color: var(--navy); background: #FFF8E6; border: 1px solid #E5B53C; border-radius: 3px; padding: 0 3px; }
+@media screen and (max-width: 700px) { body { font-size: 11pt; padding: 0 16px; } table { display: block; overflow-x: auto; } .cover { min-height: auto; padding: 24px 0 24px 16px; } }
+
+</style>
+</head>
+<body>
+<div class="cover">
+<h1 id="project-plover-comprehensive-due-diligence-report">Project Plover: Comprehensive Due Diligence Report</h1>
+<div class="sub">
+<p>Draft for Investment Committee discussion</p>
+</div>
+<p>Target: Quillmark Trail Co. (Nasdaq: QTRL)</p>
+<p>Proposed transaction: competing all-cash tender offer by Westbrook Lane Capital Partners IV, L.P. at US$25.50 per share</p>
+<p>October 31, 2026</p>
+<div class="flag">
+<p>Fictional case study. All companies, people and figures are invented.</p>
+<p>Prepared by an AI multi-agent diligence system with human review</p>
+</div>
+</div>
+<h2 id="executive-summary">Executive summary</h2>
+<div class="bottom-line">
+<p><strong>Proposed recommendation: Do not proceed at the current price (US$25.50 per share).</strong> This is a proposal for the Investment Committee; humans make the decision. The bid is built on an earnings base that includes a one-off reserve release. On the deal team's own multiple, adjusted earnings support about US$22.22 a share, below Ridgeline's US$24.00. Three exposures that could each move value by more than 10% (an FTC refund claim, a key-person right over the Alder &amp; Pine licence, and the founder's control of the vote) cannot be resolved before the go-shop ends on November 13, 2026.</p>
+</div>
+<p>All amounts are US$ millions unless stated. The bid multiple is 11.07x (EV of 1,561.0 divided by the company's LTM Q2 2026 Adjusted EBITDA of 141.0). 10% of EV is 156.1 and 10% of equity value is 132.6.</p>
+<h3 id="top-five-red-flags">Top five red flags</h3>
+<ol>
+<li><strong>The LTM earnings base is overstated by a one-off reserve release (X-001, Critical).</strong>
+<ul>
+<li>In Q2 2026 Quillmark changed how it estimates its excess and obsolete inventory reserve. The change cut cost of revenue by 15.4, and the gain stays in Adjusted EBITDA.</li>
+<li>Without it, LTM Adjusted EBITDA is 125.6, the bid is 12.4x, and H1 2026 gross margin is 48.3%. That is below the 49.5% of H1 2025, not the "highest in history" 53.0%.</li>
+<li>Test met: more than 10% of value (15.4 x 11.07 = 170.5, or 10.9% of EV).</li>
+</ul>
+</li>
+<li><strong>New Borealis terms from January 1, 2027 cut run-rate EBITDA by about 23.3 (X-004, Critical).</strong>
+<ul>
+<li>Prices to Borealis fall 6.0%, and the co-op fee rises from 6.0% to 10.5% of purchases. The deal brief still assumes about 12% Borealis growth a year.</li>
+<li>Test met: more than 10% of value (23.3 x 11.07 = 257.9, or 16.5% of EV; a projection at FY2025 volume, before any volume offset).</li>
+</ul>
+</li>
+<li><strong>Fennimore can end the Alder &amp; Pine licence when the founder stops being CEO and Chief Creative Officer (X-010, Critical).</strong>
+<ul>
+<li>Our plan to make her non-executive Chair triggers the right unless Fennimore approves her successor in writing. Fennimore is in arbitration with the company and has reserved the right "in connection with any transaction".</li>
+<li>Test met: more than 10% of value. Alder &amp; Pine contributed 46.5, or 36.3% of FY2025 Adjusted EBITDA (514.8, or 33.0% of EV, as an upper bound).</li>
+</ul>
+</li>
+<li><strong>The FTC seeks refunds equal to all EverTrail net revenue for 2023 to 2025 (X-008, Critical).</strong>
+<ul>
+<li>Company data put that at 212.5. The motion to dismiss will be heard on December 3, 2026. No accrual is recorded.</li>
+<li>Test met: more than 10% of value, using the remedy formally sought (16.0% of equity value, 13.6% of EV; an upper bound, not discounted).</li>
+</ul>
+</li>
+<li><strong>The founder controls the outcome, and Ridgeline's package pays her more than our price would (X-012, Critical).</strong>
+<ul>
+<li>Ms. Achterberg holds 71.8% of the votes. Ridgeline pays her a 32.0 consulting fee. On 11.0m shares she gets 296.0 under Ridgeline against 280.5 at US$25.50, a gap of 15.5 (inference). Her break-even is US$26.91 a share.</li>
+<li>Any side arrangement to close the gap faces the theory in a pending stockholder suit (X-013).</li>
+<li>Test met: could stop the deal. The other holders have 28.2% of the votes.</li>
+</ul>
+</li>
+</ol>
+<h3 id="main-positive-and-mitigating-points">Main positive and mitigating points</h3>
+<p>I checked each item on the fixed list of mitigants against the findings register and the analyst reports.</p>
+<table>
+<thead><tr><th>Mitigant</th><th>What the sources show</th><th>IDs</th></tr></thead>
+<tbody>
+<tr><td>Debt maturities</td><td>No maturities before September 2029 (revolver) and September 2030 (term loan). Net leverage of about 1.7x against a 3.75x covenant. The debt is to be repaid at closing.</td><td>SEC-027, SEC-026</td></tr>
+<tr><td>Customer retention</td><td>The Borealis agreement now runs to December 31, 2029, which removes the 2026 expiry risk (its economics are worse; see X-004). The DTC repeat purchase rate rose from 44% to 48%.</td><td>SEC-006, FIN-037</td></tr>
+<tr><td>Segments still growing</td><td>Footwear grew 13.9% in FY2025 and 14.6% in H1 2026. Alder &amp; Pine is still growing, though slower (4.7%).</td><td>SEC-010, SEC-009</td></tr>
+<tr><td>Items correctly excluded from adjusted metrics</td><td>Strategic review costs of 3.1 (H1 2026) and the FY2023 loss of 11.8 on the Quillmark Kids sale are reasonable exclusions.</td><td>SEC-013, FIN-025</td></tr>
+<tr><td>Dismissed, settled or closed litigation</td><td>The 95.0 Quilmarque trademark claim was dismissed with prejudice, with no appeal. The 38.0 Sunvale claim is against the former Kids subsidiary and is defended by the buyer under an indemnity backed by a 15.0 escrow and a parent guarantee. The down supplier certificate was reinstated.</td><td>LIT-006, SEC-036, SEC-034</td></tr>
+<tr><td>Supply or price protection</td><td>A supply agreement fixes prices for about 70% of expected nylon volume through December 31, 2027.</td><td>SEC-038</td></tr>
+<tr><td>Other</td><td>The Alder &amp; Pine licence can be assigned on a merger without consent, though the licensee stays bound by the key-person clause.</td><td>SEC-023</td></tr>
+</tbody>
+</table>
+<h3 id="valuation-implications">Valuation implications</h3>
+<table>
+<thead><tr><th>Basis</th><th>EBITDA</th><th>EV</th><th>Multiple</th><th>Value per share at 11.07x</th></tr></thead>
+<tbody>
+<tr><td>Deal brief (company Adjusted EBITDA)</td><td>141.0</td><td>1,561.0</td><td>11.07x</td><td>US$25.50</td></tr>
+<tr><td>Excluding the 15.4 reserve release (X-001)</td><td>125.6</td><td>1,561.0</td><td>12.43x</td><td>US$22.22</td></tr>
+<tr><td>Fully diluted EV plus break fee (X-017), on 125.6</td><td>125.6</td><td>1,620.5</td><td>12.90x</td><td>n/a</td></tr>
+<tr><td>Illustrative: 125.6 less 2027 Borealis terms at FY2025 volume (X-004; projection)</td><td>102.3</td><td>1,561.0</td><td>15.26x</td><td>US$17.26</td></tr>
+<tr><td>Ridgeline at US$24.00, on 125.6</td><td>125.6</td><td>1,483.0</td><td>11.81x</td><td>n/a</td></tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Value per share at the deal team's multiple.</strong> At 11.07x on 125.6, EV is 1,390.5, equity is 1,155.5, and the value is US$22.22 a share. The illustrative 2027 line stacks a full-year run-rate cost on LTM earnings and ignores any volume offset (projection).</li>
+<li><strong>Costs the deal brief leaves out.</strong> The RSU cash-out (40.8) and the go-shop break fee (18.7) together come to 59.5, which is 76% of the 78.0 topping premium (X-017).</li>
+<li><strong>Quantified contingencies outside net debt,</strong> at the top of their ranges:
+<ul>
+<li>FTC refunds: up to 212.5 (upper bound).</li>
+<li>Dealer claim: 33.5.</li>
+<li>Unclaimed property: 9.0 to 31.0.</li>
+<li>Fennimore royalties: 11.6 plus interest.</li>
+<li>The FCPA matter has no amount or range.</li>
+</ul>
+</li>
+<li><strong>The founder's price.</strong> The founder's break-even price of US$26.91 (inference) is well above the US$22.22 a share that adjusted earnings support at the deal team's multiple.</li>
+</ul>
+<h2 id="answers-to-the-six-investment-committee-questions">Answers to the six Investment Committee questions</h2>
+<h3 id="1-earnings-quality-is-ltm-adjusted-ebitda-of-us-141-0m-a-reliable-basis">1. Earnings quality: is LTM Adjusted EBITDA of US$141.0m a reliable basis?</h3>
+<p><strong>No.</strong></p>
+<ul>
+<li><strong>Remove the release.</strong> Remove the 15.4 Q2 2026 reserve release, which is a one-off change in estimate kept inside Adjusted EBITDA. That gives a starting point of 125.6 (X-001).</li>
+<li><strong>Further adjustments a buyer may make:</strong>
+<ul>
+<li>Share-based compensation of 11.4 is added back every year, and it is a recurring cost (FIN-013).</li>
+<li>Investigation costs of 4.2 may continue while the FCPA matter is open (SEC-012).</li>
+<li>H1 2026 revenue includes an estimated 26.2 to 30.4 of channel fill at Borealis. The gross profit on it is 12.7 to 14.7 (X-005).</li>
+</ul>
+</li>
+<li><strong>Earnings at risk from contracts and claims:</strong>
+<ul>
+<li>About 23.3 a year from the 2027 Borealis terms (X-004, projection).</li>
+<li>About 4.6 a year of gift card breakage if Delaware's audit goes against the company (X-018, inference).</li>
+<li>About 2.3 a year of royalties if the disputed deductions continue (X-011, inference).</li>
+</ul>
+</li>
+<li><strong>Cash conversion has fallen.</strong> Operating cash flow was 19.1% of LTM Adjusted EBITDA, and LTM free cash flow was -8.0 (X-019).</li>
+<li><strong>The outlook carries the same issue.</strong> The FY2026 outlook of about 152.0 appears to include the release (SEC-015, inference).</li>
+</ul>
+<h3 id="2-durability-of-revenue-channels-and-alder-pine-after-a-management-change">2. Durability of revenue: channels and Alder &amp; Pine after a management change</h3>
+<p><strong>Weaker than the thesis assumes.</strong></p>
+<ul>
+<li><strong>Borealis concentration and terms:</strong>
+<ul>
+<li>Borealis was 39.3% of H1 2026 revenue and 42.5% of Q2 2026 revenue (SEC-002).</li>
+<li>From 2027 its prices fall, its co-op fee rises (X-004), its purchase minimum goes, and its return right rises to 30% (SEC-005).</li>
+<li>It holds 15.6 weeks of Quillmark stock against a reported plan to cap brands at 8 weeks by the end of 2026 (X-005).</li>
+</ul>
+</li>
+<li><strong>Revenue outside Borealis is about flat.</strong> It grew 0.5% in FY2024 and 2.8% in FY2025 (X-007). Wholesale is shrinking, and e-commerce growth has slowed while acquisition cost rose 86.8% (X-007).</li>
+<li><strong>PFAS.</strong> Borealis and Summitline, together 43.5% of FY2025 revenue, will apply PFAS bans nationwide from January 1, 2027 (X-003).</li>
+<li><strong>Alder &amp; Pine faces three separate risks:</strong>
+<ul>
+<li>The key-person right is triggered by our management plan (X-010).</li>
+<li>The licence ends on December 31, 2029, and renewal needs Fennimore's agreement (SEC-022).</li>
+<li>An adverse royalty arbitration is pending (X-011).</li>
+</ul>
+</li>
+<li><strong>The founder's role.</strong> She says she "won't be designing collections" (NEWS-013). Her employment agreement ends on March 31, 2027 (SEC-047). She has no post-employment non-compete if Ridgeline does not close (SEC-046).</li>
+<li><strong>Positives:</strong> Footwear growth (SEC-010), the Borealis renewal to 2029 (SEC-006), and a rising DTC repeat rate (FIN-037).</li>
+</ul>
+<h3 id="3-legal-regulatory-and-compliance-exposure">3. Legal, regulatory and compliance exposure</h3>
+<table>
+<thead><tr><th>Matter</th><th>Size</th><th>IDs</th></tr></thead>
+<tbody>
+<tr><td>FTC EverTrail suit</td><td>Refunds up to 212.5 (upper bound), plus a 20-year compliance order. The filings understate it: the 10-K relied on carbon credits invalidated 17 days before filing, and the 10-Q calls the loss not estimable</td><td>X-008, X-009</td></tr>
+<tr><td>FCPA voluntary disclosure</td><td>2.9 of inadequately documented payments to the customs broker in a news bribery probe. No amount or range</td><td>X-016</td></tr>
+<tr><td>Dealer termination suit</td><td>33.5 claimed, plus reinstatement and fees. The motion to dismiss was denied. 103 non-party dealers could add about 5.7 (projection)</td><td>LIT-003</td></tr>
+<tr><td>Delaware gift card audit</td><td>9.0 to 31.0 reasonably possible, plus breakage income at risk</td><td>X-018</td></tr>
+<tr><td>Fennimore arbitration</td><td>11.6 plus 9% interest, and a material-breach declaration</td><td>X-011</td></tr>
+<tr><td>Delaware stockholder suit</td><td>Seeks to enjoin the Ridgeline offer; hearing November 6, 2026</td><td>X-013</td></tr>
+<tr><td>Cedar Hollow permit</td><td>Possible limit of 12 hours and 180 trucks a day at the site that ships 72% of units</td><td>X-015</td></tr>
+<tr><td>PFAS bans</td><td>Up to 71.0 of inventory at cost at risk (upper bound)</td><td>X-003</td></tr>
+</tbody>
+</table>
+<p>Closed or neutralized matters: Quilmarque (LIT-006), Sunvale (SEC-036) and the down certificate (SEC-034).</p>
+<h3 id="4-balance-sheet-fair-statement-and-liabilities-outside-net-debt">4. Balance sheet: fair statement and liabilities outside net debt</h3>
+<p><strong>Inventory is not fairly stated on the evidence.</strong></p>
+<ul>
+<li>The reserve covers 7.2% of the 109.0 of stock aged over 12 months, against 27.9% a year earlier. The estimated shortfall is 17.4 to 22.5, with an upper bound of 67.3 (X-002).</li>
+<li>Days on hand rose from 204 to 307 (X-019).</li>
+<li>71.0 of stock has a PFAS finish facing bans from January 1, 2027 (X-003).</li>
+<li>The Borealis returns reserve of 3.1 is small against a 25.6 contractual return right (X-006).</li>
+<li>Store impairment testing at December 31, 2025 recorded no loss beyond two closed stores, while 11 of 46 stores had negative four-wall contribution (X-020).</li>
+<li>Accrued liabilities, which include returns, fell as a share of revenue (FIN-012).</li>
+</ul>
+<p><strong>Net debt of 235.0 ties to the balance sheet.</strong> About 295.0 of debt is repaid at closing (SEC-025).</p>
+<p><strong>Items outside net debt:</strong></p>
+<ul>
+<li>RSU cash-out of 40.8 and break fee of 18.7 (X-017).</li>
+<li>Operating lease liabilities of 150.0 (SEC-018).</li>
+<li>Double-trigger severance of 11.4 (SEC-045).</li>
+<li>The contingencies in question 3.</li>
+</ul>
+<h3 id="5-deal-execution-what-could-block-or-delay-a-topping-bid-and-how-our-management-plan-interacts-with-contracts">5. Deal execution: what could block or delay a topping bid, and how our management plan interacts with contracts</h3>
+<ul>
+<li><strong>Founder control.</strong> A competing offer cannot meet the majority-of-voting-power condition without her shares. Her economics favor Ridgeline unless our price reaches about US$26.91 (X-012).</li>
+<li><strong>Litigation risk for side arrangements.</strong> Giving her a paid Chair role or another side arrangement could face the same claim as the pending suit (X-013).</li>
+<li><strong>Our plan triggers Fennimore's key-person right.</strong> A Fennimore approval condition would make our bid less certain than Ridgeline's. Ridgeline's offer has no financing or third-party consent condition (X-010, SEC-042).</li>
+<li><strong>Timing.</strong> Ridgeline's offer is scheduled to expire one minute after the go-shop ends on November 13, unless extended. The Cedar Hollow hearing, the FTC hearing, the PFAS bans and the new Borealis terms all fall after that date (X-014).</li>
+<li><strong>Financing.</strong> A change of control defaults the credit agreement, so committed financing must cover about 295.0 of repayment (SEC-025).</li>
+<li><strong>Not in the sources.</strong> HSR status and matching rights.</li>
+</ul>
+<h3 id="6-price-and-protections-should-we-bid-at-what-price-and-with-what-conditions">6. Price and protections: should we bid, at what price and with what conditions?</h3>
+<p><strong>We propose not bidding at US$25.50.</strong> The adjusted earnings base supports about US$22.22 a share at the deal team's own multiple, below Ridgeline's US$24.00 (X-001). To win the founder on economics alone, a bid would need about US$26.91 (X-012). That implies 13.0x adjusted LTM EBITDA (EV of 1,634.3 on 125.6), and 16.0x on the illustrative basis that includes the 2027 Borealis terms (projection).</p>
+<p>If the IC sees strategic value that justifies a higher multiple, the conditions and protections in "Recommended deal protections and price considerations" below are the minimum.</p>
+<h2 id="risk-matrix">Risk matrix</h2>
+<p>One row per distinct issue. The ID is the parent finding, with supporting IDs that state the same fact in brackets. All rows are Verified or Partially verified.</p>
+<table>
+<thead><tr><th>ID</th><th>Finding</th><th>Workstream</th><th>Severity</th><th>Confidence</th><th>Deal impact</th><th>Recommended action</th></tr></thead>
+<tbody>
+<tr><td>X-001 [SEC-011, FIN-001, FIN-008]</td><td>A 15.4 Q2 2026 reserve release inflates LTM Adjusted EBITDA (125.6 without it) and the 53.0% margin. <strong>Test: more than 10% of value; 170.5 = 10.9% of EV.</strong></td><td>Cross-source</td><td><span class="sev-critical">Critical</span></td><td>High</td><td>Valuation base overstated; US$22.22 a share at 11.07x</td><td>Price: value on about 125.6; obtain the reserve roll-forward and Q3 2026 results</td></tr>
+<tr><td>X-004 [SEC-004, NEWS-001]</td><td>Borealis 2027 terms cut run-rate EBITDA by about 23.3 at FY2025 volume. <strong>Test: more than 10% of value; 257.9 = 16.5% of EV (projection).</strong></td><td>Cross-source</td><td><span class="sev-critical">Critical</span></td><td>High</td><td>Forward earnings and the 12% Borealis growth thesis</td><td>Price: model the 2027 terms; obtain management's volume plan</td></tr>
+<tr><td>X-008 [LIT-001, SEC-028, NEWS-003, NEWS-004]</td><td>The FTC seeks refunds equal to EverTrail net revenue 2023 to 2025: 212.5. <strong>Test: more than 10% of value; 16.0% of equity value (remedy sought, upper bound).</strong></td><td>Cross-source</td><td><span class="sev-critical">Critical</span></td><td>High</td><td>Contingent liability outside net debt; 20-year order</td><td>Price for the upper bound; outside counsel review before any bid; seek management's computed range</td></tr>
+<tr><td>X-010 [SEC-020, LIT-009, NEWS-014]</td><td>Fennimore may end the Alder &amp; Pine licence when the founder leaves as CEO and CCO. Our plan triggers it. <strong>Test: more than 10% of value; 514.8 = 33.0% of EV at risk (upper bound).</strong></td><td>Cross-source</td><td><span class="sev-critical">Critical</span></td><td>High</td><td>Loss of 36.3% of Adjusted EBITDA</td><td>Condition: Fennimore's written approval of the successor before signing, or a revised management plan</td></tr>
+<tr><td>X-012 [SEC-039, NEWS-018]</td><td>The founder holds 71.8% of votes; Ridgeline's package pays her 15.5 more than US$25.50 (inference). <strong>Test: could stop the deal.</strong></td><td>Cross-source</td><td><span class="sev-critical">Critical</span></td><td>Medium</td><td>A bid at US$25.50 may not win her support</td><td>Structure: her support agreement is a precondition; counsel to design equal treatment</td></tr>
+<tr><td>X-002 [SEC-016, FIN-002, NEWS-009]</td><td>The June 30, 2026 reserve estimate is put in doubt; shortfall 17.4 to 22.5, upper bound 67.3</td><td>Cross-source</td><td><span class="sev-high">High</span></td><td>Medium</td><td>Inventory write-down</td><td>Price; inventory aging and net realizable value review</td></tr>
+<tr><td>X-003 [SEC-017, NEWS-005, NEWS-006, FIN-010]</td><td>PFAS bans from January 1, 2027, applied nationwide by customers with 43.5% of revenue; 71.0 of PFAS inventory</td><td>Cross-source</td><td><span class="sev-high">High</span></td><td>Medium</td><td>Inventory loss (up to 71.0); revenue disruption</td><td>Further diligence on PFAS stock and the certification plan; price</td></tr>
+<tr><td>X-005 [FIN-005, NEWS-010, FIN-007]</td><td>Borealis holds 15.6 weeks of stock against an 8-week cap; estimated 26.2 to 30.4 of H1 channel fill</td><td>Cross-source</td><td><span class="sev-high">High</span></td><td>Medium</td><td>H2 2026 sell-in and outlook risk</td><td>Obtain Borealis sell-through and Q3 data; price</td></tr>
+<tr><td>X-007 [SEC-003, SEC-009, FIN-015, FIN-016, FIN-017, FIN-018, FIN-036, FIN-040]</td><td>Underlying revenue is weaker than reported; revenue outside Borealis is about flat</td><td>Cross-source</td><td><span class="sev-high">High</span></td><td>Medium</td><td>Growth assumptions</td><td>Rebase the model on underlying growth</td></tr>
+<tr><td>SEC-002 [FIN-006, NEWS-002]</td><td>Borealis is 39.3% of H1 2026 revenue (42.5% in Q2)</td><td>SEC filings</td><td><span class="sev-high">High</span></td><td>High</td><td>Single-counterparty risk</td><td>Customer diligence; price</td></tr>
+<tr><td>SEC-005</td><td>From 2027 the 150.0 Borealis minimum is removed and the return right rises to 30%</td><td>SEC filings</td><td><span class="sev-high">High</span></td><td>High</td><td>Volume and return risk shift to Quillmark</td><td>Model in the 2027 plan</td></tr>
+<tr><td>X-011 [SEC-021, LIT-002]</td><td>Fennimore's 11.6 royalty claim matches the company's own licence summary and may still be accruing</td><td>Cross-source</td><td><span class="sev-high">High</span></td><td>Medium</td><td>Liability plus leverage over the licence</td><td>Price or specific protection; ask whether the deductions continue</td></tr>
+<tr><td>SEC-022</td><td>Alder &amp; Pine licence ends December 31, 2029; renewal needs mutual agreement</td><td>SEC filings</td><td><span class="sev-high">High</span></td><td>High</td><td>Terminal and exit value</td><td>Price; seek an extension alongside the successor approval</td></tr>
+<tr><td>X-013 [LIT-004, NEWS-017, NEWS-019]</td><td>A pending stockholder suit (allegations; hearing November 6) creates litigation risk for any side arrangement with the founder</td><td>Cross-source</td><td><span class="sev-high">High</span></td><td>Medium</td><td>Bid structure and timing</td><td>Structure: counsel on equal treatment and disclosure</td></tr>
+<tr><td>X-014 [SEC-040]</td><td>Most value-relevant decisions land after the November 13 deadline</td><td>Cross-source</td><td><span class="sev-high">High</span></td><td>High</td><td>Bid must be priced before key facts are known</td><td>Structure: conditions or price cushions; seek an extension</td></tr>
+<tr><td>X-015 [NEWS-011, LIT-007, SEC-033, FIN-022]</td><td>Cedar Hollow (72% of units) faces 12-hour, 180-truck limits; hearing November 18</td><td>Cross-source</td><td><span class="sev-high">High</span></td><td>Medium</td><td>Peak capacity from 2027; possible second site (about 45.0)</td><td>Further diligence on the capacity plan; price or condition</td></tr>
+<tr><td>X-016 [SEC-030, NEWS-007]</td><td>FCPA self-report on 2.9 of payments to the broker in a news bribery probe</td><td>Cross-source</td><td><span class="sev-high">High</span></td><td>High</td><td>Successor liability; no amount or range</td><td>Further diligence on investigation scope; price</td></tr>
+<tr><td>X-017 [SEC-044, SEC-041, FIN-021]</td><td>The deal brief's EV leaves out 59.5 of bid costs (RSUs 40.8, break fee 18.7)</td><td>Cross-source</td><td><span class="sev-high">High</span></td><td>High</td><td>Real cost of the bid</td><td>Price: use the fully diluted EV</td></tr>
+<tr><td>X-018 [SEC-032]</td><td>Delaware gift card audit: 9.0 to 31.0 reasonably possible; 4.6 a year of breakage at risk (inference)</td><td>Cross-source</td><td><span class="sev-high">High</span></td><td>Medium</td><td>Liability and earnings</td><td>Price; ask for the audit status</td></tr>
+<tr><td>X-019 [FIN-003, FIN-004, SEC-019, FIN-020]</td><td>Inventory and cash conversion are deteriorating: 307 days of inventory, LTM free cash flow -8.0</td><td>Cross-source</td><td><span class="sev-high">High</span></td><td>High</td><td>Working capital</td><td>Set the working capital assumption on normalized levels, not June 2026</td></tr>
+<tr><td>LIT-003 [SEC-029]</td><td>38 dealers claim 33.5 and reinstatement; motion to dismiss denied</td><td>Litigation</td><td><span class="sev-high">High</span></td><td>High</td><td>Contingent liability; channel strategy</td><td>Price; ask about accruals and insurance</td></tr>
+<tr><td>SEC-025</td><td>A change of control defaults the credit agreement; about 295.0 repaid at closing</td><td>SEC filings</td><td><span class="sev-high">High</span></td><td>High</td><td>Financing certainty</td><td>Committed financing and payoff letters</td></tr>
+<tr><td>SEC-046</td><td>The founder has no post-employment non-compete if Ridgeline does not close</td><td>SEC filings</td><td><span class="sev-high">High</span></td><td>High</td><td>Brand and design risk</td><td>Restrictive covenant agreement, designed with counsel given X-013</td></tr>
+<tr><td>X-006 [SEC-007]</td><td>Borealis returns reserve of 3.1 against a 25.6 return right is put in doubt</td><td>Cross-source</td><td><span class="sev-medium">Medium</span></td><td>Medium</td><td>Returns in H2 2026</td><td>Ask for the H2 returns estimate</td></tr>
+<tr><td>X-009 [LIT-008]</td><td>Filings understate the EverTrail exposure</td><td>Cross-source</td><td><span class="sev-medium">Medium</span></td><td>Medium</td><td>Disclosure quality</td><td>Management questions</td></tr>
+<tr><td>X-020 [FIN-019]</td><td>The store impairment judgment is put in doubt: 11 of 46 stores had negative four-wall contribution</td><td>Cross-source</td><td><span class="sev-medium">Medium</span></td><td>Medium</td><td>Closure and lease exit costs</td><td>Store-level P&amp;L and lease review</td></tr>
+<tr><td>SEC-008 [FIN-011]</td><td>Co-op fees to Borealis booked in SG&amp;A, not against revenue</td><td>SEC filings</td><td><span class="sev-medium">Medium</span></td><td>Medium</td><td>Gross margin optics (48.9% if netted)</td><td>Accounting review</td></tr>
+<tr><td>SEC-012 [FIN-014]</td><td>4.2 of investigation costs added back; may continue</td><td>SEC filings</td><td><span class="sev-medium">Medium</span></td><td>High</td><td>Earnings quality</td><td>Treat as recurring until the matter closes</td></tr>
+<tr><td>SEC-015 [FIN-009]</td><td>The FY2026 outlook needs a strong H2 and may include the release</td><td>SEC filings</td><td><span class="sev-medium">Medium</span></td><td>Medium</td><td>Forward multiple</td><td>Ask for the outlook bridge</td></tr>
+<tr><td>SEC-018</td><td>Operating lease liabilities of 150.0 sit outside net debt</td><td>SEC filings</td><td><span class="sev-medium">Medium</span></td><td>High</td><td>Store closure costs</td><td>Lease schedule review</td></tr>
+<tr><td>SEC-031 [FIN-041]</td><td>The broker for 41% of footwear imports was replaced before peak season</td><td>SEC filings</td><td><span class="sev-medium">Medium</span></td><td>High</td><td>Footwear supply</td><td>Check Q3 and Q4 shipments</td></tr>
+<tr><td>SEC-042</td><td>Ridgeline's offer has no financing or third-party consent condition</td><td>SEC filings</td><td><span class="sev-medium">Medium</span></td><td>High</td><td>Our conditions look less certain</td><td>Keep conditions to the minimum needed</td></tr>
+<tr><td>SEC-045</td><td>Double-trigger severance of 11.4 for four executives</td><td>SEC filings</td><td><span class="sev-medium">Medium</span></td><td>High</td><td>Retention cost</td><td>Integration plan</td></tr>
+<tr><td>SEC-047</td><td>The founder's employment agreement ends March 31, 2027; no succession plan</td><td>SEC filings</td><td><span class="sev-medium">Medium</span></td><td>High</td><td>Key-person risk even without a deal</td><td>Fold into the Fennimore approach</td></tr>
+<tr><td>SEC-048</td><td>2025 bonuses weight Adjusted EBITDA at 40%</td><td>SEC filings</td><td><span class="sev-medium">Medium</span></td><td>Medium</td><td>Incentive alignment</td><td>Ask for the 2026 plan</td></tr>
+<tr><td>SEC-051</td><td>Internal control concluded effective for FY2025 despite payments with inadequate support</td><td>SEC filings</td><td><span class="sev-medium">Medium</span></td><td>Medium</td><td>Remediation</td><td>Ask about the reassessment</td></tr>
+<tr><td>NEWS-013</td><td>The founder says she will step back and will not design collections</td><td>News and media</td><td><span class="sev-medium">Medium</span></td><td>High</td><td>Creative succession</td><td>Creative leadership plan</td></tr>
+<tr><td>LIT-010</td><td>The 10-Q omits Fennimore's termination statement and key-person reservation</td><td>Litigation</td><td><span class="sev-medium">Medium</span></td><td>Medium</td><td>Disclosure</td><td>Specific representation on the licence</td></tr>
+<tr><td>FIN-012</td><td>Accrued liabilities, including returns, are falling as a share of revenue</td><td>Financial</td><td><span class="sev-medium">Medium</span></td><td>Low</td><td>Possible reserve release</td><td>Ask for the accrued liabilities detail</td></tr>
+<tr><td>FIN-013</td><td>The share-based compensation add-back (11.4 LTM) is a recurring cost</td><td>Financial</td><td><span class="sev-medium">Medium</span></td><td>High</td><td>Earnings quality</td><td>Treat as a cost; plan a replacement incentive</td></tr>
+</tbody>
+</table>
+<p>The following verified items are not risk rows:</p>
+<ul>
+<li><strong>Mitigants:</strong> SEC-006, SEC-010, SEC-023, SEC-026, SEC-027, SEC-034, SEC-038, LIT-006 and FIN-037.</li>
+<li><strong>Neutralized items:</strong> SEC-013, FIN-025 and SEC-036.</li>
+</ul>
+<p>They are listed under "Main positive and mitigating points". X-021 is a reference table of named parties (see "Cross-source insights").</p>
+<h2 id="workstream-detail">Workstream detail</h2>
+<h3 id="sec-filings">SEC filings</h3>
+<p>The SEC analyst reviewed the FY2025 10-K, the Q2 2026 10-Q, two 8-Ks and the 2026 proxy.</p>
+<p><strong>Earnings and accounting</strong></p>
+<ul>
+<li>The 15.4 reserve change in estimate is disclosed in the 10-Q. It explains most of the H1 margin gain (SEC-011, inside X-001).</li>
+<li>The aged-stock reserve fell to 7.2% (SEC-016).</li>
+<li>Co-op fees are booked as selling expense (SEC-008).</li>
+<li>New add-backs appeared in H1 2026: investigation costs of 4.2 (SEC-012) and strategic review costs of 3.1 (SEC-013, a reasonable exclusion).</li>
+</ul>
+<p><strong>Borealis</strong></p>
+<ul>
+<li>Its share of revenue is rising (SEC-002).</li>
+<li>The July 22, 2026 amendment cuts prices, raises co-op fees, removes the minimum and raises the return right from 2027 (SEC-004, SEC-005).</li>
+<li>The amendment also extends the agreement to 2029 (SEC-006).</li>
+<li>The returns reserve is 3.1 (SEC-007).</li>
+</ul>
+<p><strong>Alder &amp; Pine</strong></p>
+<ul>
+<li>The key-person clause (SEC-020) and the 2029 expiry (SEC-022).</li>
+<li>The royalty arbitration (SEC-021).</li>
+<li>Assignment without consent on a merger (SEC-023).</li>
+</ul>
+<p><strong>Legal and regulatory, as disclosed</strong></p>
+<ul>
+<li>FTC (SEC-028), dealers (SEC-029), FCPA (SEC-030), the Meridian replacement (SEC-031), unclaimed property (SEC-032), Cedar Hollow (SEC-033), PFAS (SEC-017).</li>
+<li>Disclosed mitigants: SEC-034, SEC-036 and SEC-038.</li>
+</ul>
+<p><strong>Deal terms</strong></p>
+<ul>
+<li>Ridgeline's offer expires one minute after the go-shop ends (SEC-040).</li>
+<li>Break fees (SEC-041). No financing or consent condition (SEC-042).</li>
+<li>The founder's 71.8% vote and her 32.0 fee (SEC-039).</li>
+<li>Single-trigger RSUs (SEC-044) and double-trigger severance (SEC-045).</li>
+</ul>
+<p><strong>Governance</strong></p>
+<ul>
+<li>No post-employment non-compete for the founder (SEC-046). Her employment agreement ends March 31, 2027 (SEC-047).</li>
+<li>Bonus metrics (SEC-048) and internal control (SEC-051).</li>
+</ul>
+<p><strong>Debt</strong></p>
+<ul>
+<li>A change of control is a default, cured by repayment at closing (SEC-025).</li>
+<li>Headroom and maturities are comfortable (SEC-026, SEC-027).</li>
+</ul>
+<p><strong>What changed between filings:</strong></p>
+<ul>
+<li>The FTC matter moved from a civil investigative demand to a lawsuit.</li>
+<li>The dealer suit survived dismissal, and the 10-Q no longer calls it "without merit".</li>
+<li>The Fennimore arbitration, the FCPA self-report and the Delaware audit are all new since the 10-K.</li>
+<li>The PFAS language moved from "addresses them" to "evaluating".</li>
+</ul>
+<h3 id="news-and-media">News and media</h3>
+<p>The news analyst reviewed 13 items and rated each one for reliability.</p>
+<p><strong>Reliable and corroborated by primary sources:</strong></p>
+<ul>
+<li>The Borealis vendor reset (NEWS-001) and Quillmark's Borealis share (NEWS-002, now superseded on expiry).</li>
+<li>The Rio Verde credit invalidation (NEWS-003).</li>
+<li>The PFAS laws (NEWS-005) and Borealis's nationwide PFAS letter (NEWS-006).</li>
+<li>The Cedar Hollow staff recommendation (NEWS-011).</li>
+<li>Fennimore's statement (NEWS-014) and the founder's interview (NEWS-013).</li>
+<li>The stockholder suit (NEWS-017, NEWS-018, NEWS-019).</li>
+</ul>
+<p><strong>Allegations and rumors, labeled as such:</strong></p>
+<ul>
+<li>The nonprofit's recycled-content tests (NEWS-004).</li>
+<li>The Bargain Ridge surplus sale at about 28% of cost (NEWS-009), which the company's own 31% recovery rate is consistent with.</li>
+<li>The Borealis inventory memo, seen by the outlet but not confirmed on record (NEWS-010).</li>
+</ul>
+<p><strong>Partly corroborated.</strong> The Meridian detention (NEWS-007) does not name Quillmark, but the company's own filings link it to Meridian (X-016).</p>
+<p><strong>Low-relevance items (not verified):</strong></p>
+<ul>
+<li>The US$27 rival bid rumor was denied on record.</li>
+<li>The Quillmark Pens administration story is about a different company.</li>
+<li>The Hengli down certificate story.</li>
+</ul>
+<p>They are listed in the appendix. No item tried to instruct the agents.</p>
+<h3 id="litigation">Litigation</h3>
+<p>The litigation analyst reviewed seven docket matters.</p>
+<table>
+<thead><tr><th>Matter</th><th>Posture</th><th>Next date</th><th>Exposure</th><th>IDs</th></tr></thead>
+<tbody>
+<tr><td>FTC v. Quillmark (D. Or.)</td><td>Motion to dismiss fully briefed</td><td>Hearing Dec 3, 2026</td><td>Refunds up to 212.5 (upper bound); 20-year order</td><td>LIT-001, X-008</td></tr>
+<tr><td>Fennimore arbitration (AAA)</td><td>Arbitrator appointed</td><td>Document exchange Nov 20, 2026; hearing Mar 8, 2027</td><td>11.6 plus interest; key-person reservation</td><td>LIT-002, LIT-009</td></tr>
+<tr><td>Summit &amp; Spoke et al. (W.D. Wis.)</td><td>Motion to dismiss denied Apr 2, 2026</td><td>Discovery closes Jan 29, 2027; trial Sep 13, 2027</td><td>33.5 claimed</td><td>LIT-003</td></tr>
+<tr><td>In re Quillmark Stockholder Litigation (Del. Ch.)</td><td>Preliminary injunction motion; expedited discovery</td><td>Hearing Nov 6, 2026</td><td>Injunction, or damages equal to the alleged 32.0 premium</td><td>LIT-004</td></tr>
+<tr><td>Sunvale v. Quillmark Kids LLC</td><td>Defended by the buyer under indemnity</td><td>Case management conference Dec 10, 2026</td><td>38.0 against the former subsidiary; escrow 15.0</td><td>SEC-036</td></tr>
+<tr><td>Quilmarque SAS (S.D.N.Y.)</td><td>Closed; dismissed with prejudice</td><td>None</td><td>None remaining</td><td>LIT-006</td></tr>
+<tr><td>Cedar Hollow permit (Linwood County)</td><td>Staff report recommends a 7 a.m. to 7 p.m. limit</td><td>Hearing Nov 18, 2026</td><td>Operating capacity</td><td>LIT-007, X-015</td></tr>
+</tbody>
+</table>
+<p>Disclosure gaps: LIT-008 (FTC remedy described as not estimable) and LIT-010 (Fennimore omissions). The docket search does not cover the FCPA matter or the Delaware audit.</p>
+<h3 id="financial-analysis">Financial analysis</h3>
+<p>The financial analyst rebuilt LTM revenue and Adjusted EBITDA from the data pack. Both tie to the company's figures.</p>
+<p><strong>Earnings</strong></p>
+<ul>
+<li>The reserve release drives the H1 margin gain (FIN-001, inside X-001).</li>
+<li>The bid is 12.4x on the adjusted base (FIN-008).</li>
+<li>Share-based compensation is a recurring cost (FIN-013).</li>
+</ul>
+<p><strong>Inventory and cash</strong></p>
+<ul>
+<li>The reserve is inadequate against aged stock (FIN-002).</li>
+<li>Inventory days have risen (FIN-003) and cash conversion has fallen (FIN-004).</li>
+<li>The revolver funded the H1 shortfall (FIN-020).</li>
+<li>PFAS-finish inventory is growing (FIN-010).</li>
+<li>Accrued liabilities are falling as a share of revenue (FIN-012).</li>
+</ul>
+<p><strong>Channels</strong></p>
+<ul>
+<li>Borealis channel fill (FIN-005) and dependence on Borealis (FIN-006).</li>
+<li>The 12% Borealis growth assumption is unsupported (FIN-007).</li>
+<li>Q1 2026 broke the growth trend (FIN-015). Alder &amp; Pine is slowing (FIN-016), wholesale is shrinking (FIN-017), and e-commerce is slowing (FIN-018).</li>
+<li>13 stores have negative four-wall contribution (FIN-019).</li>
+</ul>
+<p><strong>Positives</strong></p>
+<ul>
+<li>The Quillmark Kids loss is correctly excluded (FIN-025).</li>
+<li>The DTC repeat rate is improving (FIN-037).</li>
+</ul>
+<p><strong>Key metrics</strong> (US$ millions)</p>
+<table>
+<thead><tr><th>Metric</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>H1 2026 / Jun 30, 2026</th><th>LTM Q2 2026</th></tr></thead>
+<tbody>
+<tr><td>Revenue</td><td>578.0</td><td>626.0</td><td>678.0</td><td>326.0</td><td>698.0</td></tr>
+<tr><td>Revenue growth</td><td>9.1%</td><td>8.3%</td><td>8.3%</td><td>6.5%</td><td>7.6%</td></tr>
+<tr><td>Gross margin, reported</td><td>48.0%</td><td>49.0%</td><td>50.0%</td><td>53.0%</td><td>51.6%</td></tr>
+<tr><td>Gross margin, excluding release</td><td>48.0%</td><td>49.0%</td><td>50.0%</td><td>48.3%</td><td>n/a</td></tr>
+<tr><td>Adjusted EBITDA, company</td><td>101.0</td><td>112.0</td><td>128.0</td><td>67.0</td><td>141.0</td></tr>
+<tr><td>Adjusted EBITDA, excluding release</td><td>101.0</td><td>112.0</td><td>128.0</td><td>51.6</td><td>125.6</td></tr>
+<tr><td>Borealis revenue (share)</td><td>150.0 (26.0%)</td><td>196.0 (31.3%)</td><td>236.0 (34.8%)</td><td>128.0 (39.3%)</td><td>n/a</td></tr>
+<tr><td>Revenue excluding Borealis</td><td>428.0</td><td>430.0</td><td>442.0</td><td>198.0</td><td>n/a</td></tr>
+<tr><td>Borealis weeks of supply</td><td>6.8</td><td>7.4</td><td>8.9</td><td>15.6</td><td>n/a</td></tr>
+<tr><td>Inventories, net</td><td>168.0</td><td>196.0</td><td>238.0</td><td>284.0</td><td>n/a</td></tr>
+<tr><td>Inventory aged over 12 months</td><td>38.0</td><td>52.0</td><td>81.0</td><td>109.0</td><td>n/a</td></tr>
+<tr><td>E&amp;O reserve (% of aged stock)</td><td>14.2 (37.4%)</td><td>16.8 (32.3%)</td><td>22.6 (27.9%)</td><td>7.9 (7.2%)</td><td>n/a</td></tr>
+<tr><td>Clearance recovery (% of cost)</td><td>52%</td><td>44%</td><td>36%</td><td>31%</td><td>n/a</td></tr>
+<tr><td>PFAS-finish inventory at cost</td><td>44.0</td><td>52.0</td><td>63.0</td><td>71.0</td><td>n/a</td></tr>
+<tr><td>Operating cash flow</td><td>70.1</td><td>45.0</td><td>49.0</td><td>-2.5</td><td>27.0</td></tr>
+<tr><td>Free cash flow</td><td>40.1</td><td>13.0</td><td>15.0</td><td>-18.5</td><td>-8.0</td></tr>
+<tr><td>Net debt</td><td>242.0</td><td>230.0</td><td>216.0</td><td>235.0</td><td>n/a</td></tr>
+<tr><td>EverTrail net revenue</td><td>52.4</td><td>71.8</td><td>88.3</td><td>39.0</td><td>n/a</td></tr>
+</tbody>
+</table>
+<h2 id="cross-source-insights">Cross-source insights</h2>
+<p>These are points that combining sources revealed and that no single source showed.</p>
+<ol>
+<li><strong>The record margin is an accounting change.</strong> The deal brief calls the 53.0% H1 margin a record. The 10-Q shows that it rests on a 15.4 change in estimate. The data pack shows the reserve falling while aged stock and clearance losses rose (X-001, X-002).</li>
+<li><strong>The FTC claim can be sized.</strong> The complaint gives no dollar figure, and the 10-Q says the loss cannot be estimated. But the remedy is defined as EverTrail net revenue, and the data pack gives it: 212.5 (X-008, X-009).</li>
+<li><strong>Our management plan triggers a licensor's right.</strong> The 10-K's key-person clause, the deal brief's Chair plan, the arbitration demand's reservation, Fennimore's public statement and the founder's own words ("won't be designing collections") together show the right is triggered and the licensor is adverse (X-010, X-011).</li>
+<li><strong>The new reserve method leans on a channel that is overstocked.</strong> The method uses Borealis sell-through data. Company KPIs show Borealis at 15.6 weeks of stock, and Borealis's later memo plans to cut to 8 weeks and use return rights where necessary (X-002, X-005, X-006).</li>
+<li><strong>The PFAS exposure is mostly through customers, not states.</strong> The 10-Q frames PFAS as a state-law question. The news shows the two largest customers (43.5% of revenue) applying the bans nationwide, and the data pack shows 71.0 of PFAS stock (X-003).</li>
+<li><strong>Quillmark is the unnamed client in a news bribery probe.</strong> The news does not name Quillmark. The 10-Q and the data pack tie it to Meridian through 41% of footwear imports and 2.9 of payments (X-016).</li>
+<li><strong>The deal brief is out of date in several places.</strong> It is dated October 16, 2026, yet it still assumes 12% Borealis growth after the July 2026 amendment (X-004). It counts 52.0m shares, which leaves out 1.6m RSUs paid at the offer price (X-017). It also treats the founder's 10.4m Class B shares as her whole stake, while she holds 11.0m shares in total (X-012).</li>
+<li><strong>Trends that read as one story.</strong>
+<ul>
+<li>Revenue outside Borealis is about flat, and most channels are slowing (X-007).</li>
+<li>Inventory, aging and cash conversion are worsening together (X-019).</li>
+</ul>
+</li>
+<li><strong>Named parties.</strong> X-021 gives the revenue rank and amount of each named party:
+<ul>
+<li>Borealis is rank 1 (236.0) and Summitline rank 2 (58.6).</li>
+<li>The lead dealer plaintiff, Summit &amp; Spoke, is rank 7 (0.9, down from 6.2).</li>
+<li>Bargain Ridge, Fennimore and Meridian are not listed customers.</li>
+</ul>
+</li>
+</ol>
+<h2 id="recommended-deal-protections-and-price-considerations">Recommended deal protections and price considerations</h2>
+<p>Post-closing indemnities are generally not available when buying a public company (general market practice, not from the sources). Most protection must therefore come through price, conditions and structure.</p>
+<p><strong>Price</strong></p>
+<ul>
+<li>Value on adjusted LTM EBITDA of about 125.6, not 141.0 (X-001).</li>
+<li>Model the 2027 Borealis terms (X-004, SEC-005) and a normal Borealis stock level (X-005).</li>
+<li>Use the fully diluted EV, including the RSUs and the break fee (X-017).</li>
+<li>Reflect the contingent exposures: the FTC upper bound (X-008), FCPA (X-016), the dealer claim (LIT-003), unclaimed property (X-018) and Fennimore royalties (X-011).</li>
+<li>Set working capital on normalized levels, not June 2026 (X-019).</li>
+</ul>
+<p><strong>Conditions and pre-signing deliverables</strong></p>
+<ul>
+<li>Fennimore's written approval of the successor CEO and CCO, ideally with a licence extension beyond 2029 (X-010, SEC-022).</li>
+<li>A support agreement from the founder (X-012).</li>
+<li>Each condition makes our bid less certain than Ridgeline's unconditioned offer (SEC-042), so keep them few.</li>
+</ul>
+<p><strong>Structure</strong></p>
+<ul>
+<li>Ask counsel how to treat any founder arrangement equally and disclose it fully, given the pending suit (X-013).</li>
+<li>Consider a majority-of-unaffiliated condition, as counsel advises.</li>
+<li>Obtain a restrictive covenant from the founder (SEC-046).</li>
+</ul>
+<p><strong>Further diligence before any bid</strong></p>
+<ul>
+<li>The reserve roll-forward and Q3 2026 results.</li>
+<li>Borealis sell-through and the 2027 volume plan.</li>
+<li>PFAS stock and the certification plan.</li>
+<li>Outside counsel's view of the FTC case.</li>
+<li>The scope of the FCPA investigation.</li>
+<li>The Cedar Hollow capacity plan.</li>
+<li>HSR status, matching rights and the full merger agreement.</li>
+</ul>
+<p><strong>Financing</strong></p>
+<ul>
+<li>Committed financing for about 295.0 of debt repayment at closing (SEC-025).</li>
+</ul>
+<p><strong>Timing</strong></p>
+<ul>
+<li>The go-shop ends November 13, 2026, 13 days from this report (X-014).</li>
+<li>Seek an extension, or price in a cushion for events that resolve later.</li>
+</ul>
+<h2 id="open-questions-and-management-request-list">Open questions and management request list</h2>
+<ol>
+<li><strong>Inventory reserve:</strong>
+<ul>
+<li>Why was the method changed in Q2 2026, and who approved it?</li>
+<li>What would the old method give at June 30, 2026?</li>
+<li>Did the auditor review the change?</li>
+<li>What is the reserve at September 30, 2026? (X-001, X-002)</li>
+</ul>
+</li>
+<li><strong>Borealis:</strong>
+<ul>
+<li>What are the current weeks of supply, and what returns or lower reorders do you expect in H2 2026?</li>
+<li>What is the 2027 volume plan under the new terms? (X-004, X-005, X-006)</li>
+</ul>
+</li>
+<li><strong>PFAS:</strong>
+<ul>
+<li>How much inventory and open orders carry a PFAS finish?</li>
+<li>What is the certification plan for Borealis and Summitline by January 1, 2027?</li>
+<li>What reserve is held? (X-003)</li>
+</ul>
+</li>
+<li><strong>EverTrail:</strong>
+<ul>
+<li>Is the "100% Recycled Nylon" claim still in use?</li>
+<li>When did you learn of the Rio Verde invalidation?</li>
+<li>Has a remedy range been computed? (X-008, X-009)</li>
+</ul>
+</li>
+<li><strong>Fennimore:</strong>
+<ul>
+<li>Has Fennimore been asked to approve a successor? Would it approve a Westbrook candidate?</li>
+<li>Are the disputed deductions continuing in 2026? (X-010, X-011)</li>
+</ul>
+</li>
+<li><strong>Founder:</strong>
+<ul>
+<li>Would Ms. Achterberg support a Westbrook bid without a consulting arrangement?</li>
+<li>What role would she accept? Would she sign a non-compete? (X-012, SEC-046)</li>
+</ul>
+</li>
+<li><strong>FCPA:</strong>
+<ul>
+<li>What is the investigation's scope?</li>
+<li>What contact has there been with the DOJ and SEC?</li>
+<li>Has internal control been reassessed? (X-016, SEC-051)</li>
+</ul>
+</li>
+<li><strong>Cedar Hollow:</strong>
+<ul>
+<li>What is peak capacity under 12-hour operation?</li>
+<li>What backup capacity exists, and what is the appeal route after November 18? (X-015)</li>
+</ul>
+</li>
+<li><strong>Gift cards:</strong>
+<ul>
+<li>What is the status of the Delaware audit, and could other states follow?</li>
+<li>What is the future breakage policy? (X-018)</li>
+</ul>
+</li>
+<li><strong>Stores:</strong>
+<ul>
+<li>What are store-level P&amp;L and lease terms for the 13 stores with negative four-wall contribution? (X-020)</li>
+</ul>
+</li>
+<li><strong>Dealers:</strong>
+<ul>
+<li>Is there an accrual or insurance?</li>
+<li>How many non-party dealers are still within the limitations period? (LIT-003)</li>
+</ul>
+</li>
+<li><strong>Outlook:</strong>
+<ul>
+<li>Does the FY2026 outlook include the 15.4 release?</li>
+<li>Was it updated after the July 30 Borealis memo? (SEC-015)</li>
+</ul>
+</li>
+<li><strong>Not in the sources; for the full data room:</strong>
+<ul>
+<li>HSR status, matching rights and the superior-proposal definition.</li>
+<li>The amended Borealis agreement text.</li>
+<li>The outcomes of the October 30 depositions and the November 6 hearing.</li>
+</ul>
+</li>
+</ol>
+<h2 id="appendix">Appendix</h2>
+<h3 id="methodology">Methodology</h3>
+<ul>
+<li><strong>Architecture.</strong> A lead agent coordinated four specialist subagents, all built from Claude Code features:
+<ul>
+<li>SEC filings, news and media, litigation, and financial analysis.</li>
+<li>A citation verifier, which checked findings independently.</li>
+<li>The specialists were read-only. Only the lead wrote to working memory and the report. The sources were limited to the target's data room. No web access was used.</li>
+</ul>
+</li>
+<li><strong>Iterations.</strong> One Act/Observe iteration was used out of a budget of three. After iteration 1, no Critical or High question could be pushed further from the data room. The lead settled two open points (EverTrail revenue and the RSU share count) by checking the sources directly.</li>
+</ul>
+<p><strong>Checkpoint log</strong></p>
+<table>
+<thead><tr><th>Checkpoint</th><th>Time</th><th>Shown in chat</th><th>Decision</th></tr></thead>
+<tbody>
+<tr><td>1. Approve the plan</td><td>2026-10-31 03:04</td><td>Six questions with analysts, four hypotheses, assignments</td><td>Approved</td></tr>
+<tr><td>2. Review the red flags</td><td>2026-10-31 04:24</td><td>5 Critical and 18 High parents, conflicts, open items</td><td>Proceed to verification</td></tr>
+<tr><td>3. Sign off</td><td>2026-10-31 04:46</td><td>Verification results and draft recommendation</td><td>Approve report</td></tr>
+</tbody>
+</table>
+<p><strong>Verification statistics</strong></p>
+<table>
+<thead><tr><th>Run</th><th>Scope</th><th>Checked</th><th>Verified</th><th>Partially verified</th><th>Not supported</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>SEC filings</td><td>34</td><td>25</td><td>9</td><td>0</td></tr>
+<tr><td>2</td><td>News, litigation and SEC mitigants</td><td>33</td><td>27</td><td>6</td><td>0</td></tr>
+<tr><td>3</td><td>Financial</td><td>24</td><td>14</td><td>10</td><td>0</td></tr>
+<tr><td>4</td><td>Cross-source</td><td>21</td><td>12</td><td>9</td><td>0</td></tr>
+<tr><td>Total</td><td></td><td>112</td><td>78</td><td>34</td><td>0</td></tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Register.</strong> It holds 149 findings: 128 from the analysts and 21 cross-source. 37 Low findings were not sent to the verifier.</li>
+<li><strong>Wording.</strong> Every Partially verified finding was rewritten with the verifier's corrected wording.</li>
+<li><strong>Severity change.</strong> NEWS-002 was lowered from High to Medium, because its expiry point is out of date.</li>
+</ul>
+<h3 id="index-of-verified-findings">Index of verified findings</h3>
+<p><strong>Verified (78):</strong></p>
+<ul>
+<li><strong>SEC (33):</strong> SEC-002, SEC-003, SEC-004, SEC-005, SEC-006, SEC-007, SEC-008, SEC-009, SEC-010, SEC-011, SEC-012, SEC-013, SEC-015, SEC-017, SEC-019, SEC-020, SEC-022, SEC-026, SEC-027, SEC-028, SEC-029, SEC-030, SEC-031, SEC-032, SEC-033, SEC-034, SEC-036, SEC-038, SEC-039, SEC-042, SEC-047, SEC-048, SEC-051.</li>
+<li><strong>News:</strong> NEWS-003, NEWS-004, NEWS-005, NEWS-007, NEWS-009, NEWS-011, NEWS-013, NEWS-014, NEWS-017, NEWS-019.</li>
+<li><strong>Litigation:</strong> LIT-001, LIT-002, LIT-003, LIT-004, LIT-006, LIT-007, LIT-008, LIT-009, LIT-010.</li>
+<li><strong>Financial:</strong> FIN-004, FIN-005, FIN-006, FIN-007, FIN-010, FIN-012, FIN-013, FIN-016, FIN-018, FIN-019, FIN-021, FIN-022, FIN-025, FIN-037.</li>
+<li><strong>Cross-source:</strong> X-001, X-005, X-007, X-008, X-009, X-010, X-011, X-015, X-017, X-018, X-019, X-021.</li>
+</ul>
+<p><strong>Partially verified (34), with corrected wording in the register:</strong></p>
+<ul>
+<li><strong>SEC:</strong> SEC-016, SEC-018, SEC-021, SEC-023, SEC-025, SEC-040, SEC-041, SEC-044, SEC-045, SEC-046.</li>
+<li><strong>News:</strong> NEWS-001, NEWS-002, NEWS-006, NEWS-010, NEWS-018.</li>
+<li><strong>Financial:</strong> FIN-001, FIN-002, FIN-003, FIN-008, FIN-009, FIN-011, FIN-014, FIN-015, FIN-017, FIN-020.</li>
+<li><strong>Cross-source:</strong> X-002, X-003, X-004, X-006, X-012, X-013, X-014, X-016, X-020.</li>
+</ul>
+<p><strong>Rejected:</strong> none.</p>
+<h3 id="findings-not-verified">Findings not verified</h3>
+<p>These are Low findings that were not sent to the verifier. Each is "not verified".</p>
+<ul>
+<li>SEC-001: wholesale and Borealis revenue recognized on delivery (not verified)</li>
+<li>SEC-014: FY2025 store closure add-back of 2.4 for two stores (not verified)</li>
+<li>SEC-024: royalty of 8.0% of Net Sales with a 10.0 minimum (not verified)</li>
+<li>SEC-035: Quilmarque claim dismissed, as reported in the 10-K (not verified; the docket record is verified as LIT-006)</li>
+<li>SEC-037: Quillmark Kids sold in 2023 for 18.0 at an 11.8 loss (not verified)</li>
+<li>SEC-043: seven of nine directors independent (not verified)</li>
+<li>SEC-049: dual-class structure, 71.8% of votes on a 21.2% stake (not verified)</li>
+<li>SEC-050: no pledged shares (not verified)</li>
+<li>SEC-052: long-standing auditor with a clean opinion (not verified)</li>
+<li>SEC-053: proxy mentions an undated "internal review", a timing point only (not verified)</li>
+<li>NEWS-008: down supplier certificate reinstated (not verified)</li>
+<li>NEWS-012: Ridgeline's 23.7% premium to US$19.40 (not verified)</li>
+<li>NEWS-015: rumored US$27 rival bid, denied on record (not verified)</li>
+<li>NEWS-016: Quillmark Pens Ltd is a different company (not verified)</li>
+<li>LIT-005: Sunvale claim against the former subsidiary, defended under indemnity (not verified; the filing description is verified as SEC-036)</li>
+<li>LIT-011: docket search omits the FCPA matter and the Delaware audit (not verified)</li>
+<li>FIN-023: LTM rebuild ties (not verified)</li>
+<li>FIN-024: strategic review costs correctly excluded (not verified)</li>
+<li>FIN-026: store closure costs may recur (not verified)</li>
+<li>FIN-027: "non-recurring" items in three of four periods (not verified)</li>
+<li>FIN-028: net debt of 235.0 ties to the deal brief (not verified)</li>
+<li>FIN-029: leverage and interest cover comfortable (not verified)</li>
+<li>FIN-030: lease liabilities of 152.0, consistent with EBITDA after rent (not verified)</li>
+<li>FIN-031: gift card liability and breakage small (not verified)</li>
+<li>FIN-032: deferred taxes and other liabilities not broken down (not verified)</li>
+<li>FIN-033: DSO stable (not verified)</li>
+<li>FIN-034: goodwill and intangibles of 205.0; test date not given (not verified)</li>
+<li>FIN-035: Footwear growth accelerating (not verified)</li>
+<li>FIN-036: Apparel growth slowing (not verified)</li>
+<li>FIN-038: named customer ranks and amounts (not verified)</li>
+<li>FIN-039: Summit &amp; Spoke revenue fell after termination (not verified)</li>
+<li>FIN-040: EverTrail growth stalled (not verified)</li>
+<li>FIN-041: Meridian clears 41% of footwear imports (not verified)</li>
+<li>FIN-042: term loan carried net (not verified)</li>
+<li>FIN-043: SG&amp;A rising faster than revenue (not verified)</li>
+<li>FIN-044: data pack internally consistent (not verified)</li>
+<li>FIN-045: Alder &amp; Pine royalties correctly in cost of revenue (not verified)</li>
+</ul>
+<h3 id="source-index">Source index</h3>
+<p>All sources are in <code>targets/plover/data/</code>.</p>
+<table>
+<thead><tr><th>Folder</th><th>Files</th></tr></thead>
+<tbody>
+<tr><td><code>deal-brief.md</code>, <code>README.md</code></td><td>Deal brief (October 16, 2026) and data room guide</td></tr>
+<tr><td><code>sec-filings/</code></td><td>10-K FY2025 excerpts (filed February 26, 2026); 10-Q Q2 2026 excerpts (filed August 6, 2026); 8-K of July 22, 2026 (Borealis amendment); 8-K of September 14, 2026 (merger agreement); DEF 14A 2026 excerpts (filed April 24, 2026)</td></tr>
+<tr><td><code>news/</code></td><td>13 items, November 12, 2025 to October 7, 2026 (Retail Ledger, The Climate Desk, Gear Review Weekly, Statehouse Wire, Asia Trade Monitor, Outdoor Industry News, Off-Price Insider, Linwood County Courier, Business Daily, Deal Whispers, London Business Post)</td></tr>
+<tr><td><code>litigation/</code></td><td><code>docket_index.csv</code> (7 matters) and detail files for the FTC, Fennimore, dealer and stockholder matters</td></tr>
+<tr><td><code>financials/</code></td><td>Income statement, balance sheet, cash flow, Adjusted EBITDA reconciliation, quarterly revenue, revenue by customer, KPIs, README</td></tr>
+</tbody>
+</table>
+<p>Working memory, including the full findings register, the analyst and verifier reports, and the run log, is in <code>memory/</code>.</p>
+<h3 id="limitations">Limitations</h3>
+<ul>
+<li><strong>Excerpts only.</strong> The filings are excerpts. Sections not provided may change some conclusions; for example, the full merger agreement may contain matching rights or other termination triggers.</li>
+<li><strong>Untested claims.</strong> News items include allegations and rumors, labeled as such. Court and arbitration claims are untested.</li>
+<li><strong>Estimates.</strong> Several figures are inferences or projections, labeled in the text: channel fill, the run-rate effects of the 2027 Borealis terms, royalties and breakage, and the founder's economics.</li>
+<li><strong>Upper bounds.</strong> The FTC and Fennimore figures are upper bounds, not expected outcomes.</li>
+<li><strong>Missing inputs.</strong> No management interviews, Q3 2026 results or Borealis sell-through data were available.</li>
+<li><strong>Not advice.</strong> This report is a draft for human decision-makers. It is not investment, legal or accounting advice.</li>
+</ul>
+</body>
+</html>
