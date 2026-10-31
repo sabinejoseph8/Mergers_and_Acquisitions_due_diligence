@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.14 (October 31, 2026: Plover's three rule changes, known deal costs as price items, trend findings cite separate issues by ID, controls and auditor on the positives checklist; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.15 (October 31, 2026: the README's demo video added to R26, and v1 declared complete with Phase 7 kept as an optional roadmap; earlier the same day, Plover's three rule changes; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -57,6 +57,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 
 **Portfolio**
 - As a portfolio reviewer, I can understand the problem, the architecture and the results from the README in two minutes.
+- As a portfolio reviewer, I can watch a 90-second video of a real run at the top of the README, with captions so it works muted.
 - As the builder, I keep first-person interview notes that tell the story of the project.
 
 ## Functional requirements
@@ -94,7 +95,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 - **R29.** The agents cannot open anything in `evaluation/` (the answer key and the latest scorecard) or an earlier run (`examples/`, `runs/`) unless the operator approves, so a new run stays blind.
 
 **Portfolio**
-- **R26.** The project includes a README with the problem, the architecture diagram, how a run works, sample results and how to run it.
+- **R26.** The project includes a README with the problem, a 90-second demo video, the architecture diagram, how a run works, sample results and how to run it. The video is recreated from a saved blind run's output, says so on screen, and shows aggregate scores only, never the answer key.
 - **R27.** The project includes a complete sample run: working memory, report PDF and scorecard.
 - **R28.** The project keeps `interview-notes.md` in first person, updated after significant features, major bug fixes and meaningful design changes.
 
@@ -164,6 +165,8 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 | 2026-10-19 | Grading rule chosen by the owner (option A): an issue counts as found when its main point is in the verified findings, correctly cited, with a severity within one level of a severity the answer key accepts. Exact severity matches are reported separately, so a near-miss on severity is not counted twice. This matches how runs 1 to 6 and Kestrel were graded; under it, Heron's held-out run is 100% recall with 77.8% exact severity matches. To be written into `/evaluate` by a session that has not seen a scorecard (R18). |
 | 2026-10-19 | Option A written into `/evaluate` by a session that had not opened an answer key or scorecard (R18): exact Found, Partially found and Missed definitions, recall unaffected by a one-level severity difference, and severity reported as within one level and exact match. Three recurring process gaps fixed at the same time: the planted-positives row is graded as its own scorecard row (Present, Partly present or Absent) and kept out of recall; a register status is always exactly one of the four values, so an unverified Low finding stays Open (R6); and Checkpoint 1 prints the plan summary in chat before the question, in the same message (R3). Not yet measured; the next blind run will check them. |
 | 2026-10-31 | Three rule changes from Plover's scorecard, written by a session that had not opened any answer key or scorecard (R9, R15): known deal costs (equity-award cash-outs, break fees, change-in-control severance) are rated Medium and put in the price, unless all of them together pass 5% of value; a trend finding states only its own headline numbers and cites a separate issue by ID, so that issue keeps its own severity; and the positives checklist adds the internal controls conclusion and auditor tenure and opinion, with a positive that another finding puts in doubt listed as qualified. Not yet measured; the next blind graded run will check them. |
+| 2026-10-31 | The demo video is recreated from the blind Plover run's saved output instead of screen-recorded live, because a full run takes over an hour (R26). The owner records the voice-over; the video plays in the README from a GitHub attachment, and its sources and build script stay private, outside the repository. |
+| 2026-10-31 | v1 is complete at the end of Phase 6. Phase 7 becomes an optional roadmap (a real data source, an Excel data pack, more specialists), kept out of the progress count; each item gets its own plan, targets and checks when it starts. |
 
 ## Open questions (with recommended defaults)
 

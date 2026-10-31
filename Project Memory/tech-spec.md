@@ -1,6 +1,6 @@
 # Tech Spec: Project Falcon
 
-**Status:** Agreed, version 1.15 (October 31, 2026: Plover's three rule changes in `CLAUDE.md` and the subagents).
+**Status:** Agreed, version 1.16 (October 31, 2026: how the demo video is built and hosted, and the repository is now public; earlier the same day, Plover's three rule changes in `CLAUDE.md` and the subagents).
 
 This file holds the technical decisions and system patterns. It describes the system as built so far, and flags the risks that matter most.
 
@@ -20,7 +20,7 @@ Project Falcon runs inside Claude Code on the operator's computer. There is no s
 | **Evaluation** | Answer key of planted issues per target and a grading command | `targets/<target>/evaluation/`, `/evaluate` |
 | **Automated checks** | Tests for each build phase, plus a run checker | `tests/`, `/run-tests` |
 | **Archive** | Past runs and their scorecards, moved aside by `/reset-memory` | `runs/` |
-| **Portfolio** | README, diagram, run guide, sample run, case study, planning files | `README.md`, `docs/`, `examples/`, `Project Memory/` |
+| **Portfolio** | README (with the demo video), diagram, run guide, sample run, case study, planning files | `README.md`, `docs/`, `examples/`, `Project Memory/` |
 
 ```
 Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in parallel (read-only)
@@ -44,6 +44,7 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
 | Pandoc and a headless browser for the PDF (optional) | Best-looking output when available; the web page plus "Print, then Save as PDF" works everywhere. On the builder's Mac, headless Google Chrome (`--headless=new --print-to-pdf`) made the PDF with nothing installed |
 | SVG for the architecture diagram, exported to PNG and PDF | Sharp at any size and easy to edit |
 | Git and GitHub | Version history and the public portfolio |
+| Headless Chrome and ffmpeg for the demo video | Each scene is an HTML page that Chrome captures and ffmpeg joins with the voice-over, so the video can be rebuilt from a saved run. The build script and sources stay private, outside the repository. GitHub hosts the video as an attachment, which must be under 10 MB on a free plan |
 
 ## Data model
 
@@ -105,7 +106,7 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
 
 - **Runs locally.** Clone or download the project, open the folder in Claude Code, type `/diligence` (or `/diligence <target>`).
 - **Configuration:** `.claude/settings.json` is shared and committed. Personal overrides go in `.claude/settings.local.json`, which is not committed.
-- **Publishing:** the GitHub repository `sabinejoseph8/Mergers_and_Acquisitions_due_diligence` holds the README, diagram, sample run and planning files, and stays private until the owner makes it public. A `.gitignore` keeps `interview-notes.md` and Python caches out. The Project Memory website is a private claude.ai page until it is shared.
+- **Publishing:** the GitHub repository `sabinejoseph8/Mergers_and_Acquisitions_due_diligence` holds the README, diagram, sample run and planning files, and is public. A `.gitignore` keeps `interview-notes.md` and Python caches out. The README plays the demo video from a GitHub attachment link; the video's sources and build script stay in a private folder outside the repository. The Project Memory website is a claude.ai page, shared by link.
 - **Optional tools:** Python 3 for the checks and for `tools/md2html.py`, the report converter (standard library only); Google Chrome in headless mode (`--headless=new --print-to-pdf`) for the PDF. No pandoc or other installs needed, by the owner's choice.
 
 ## Testing approach
