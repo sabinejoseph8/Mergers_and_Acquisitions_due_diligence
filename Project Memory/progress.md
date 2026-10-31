@@ -318,6 +318,7 @@ Two process fixes from this review, not from the scorecard: keep the status set 
 - [x] Project Memory website with live plan ticks
 - [x] Make the repository public and share the Project Memory website
 - [x] README, case study and interview notes aimed at AI product manager roles
+- [x] 90-second demo video at the top of the README (October 31, 2026): scenes recreated from the blind Plover run's saved output (aggregate scores only, never the answer key), with my own voice-over; the source files and the build script stay private, outside the repository
 
 **Automated tests** (`python3 tests/run_all.py --phase style`):
 1. No em dashes in any project file.

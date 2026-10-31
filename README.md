@@ -6,6 +6,12 @@
 >
 > All companies, people, court cases, articles and numbers are **fictional**.
 
+## Watch the demo (90 seconds)
+
+https://github.com/user-attachments/assets/450abcdb-cfa0-407d-87a8-71409df9f3e5
+
+A blind run on Plover, a company the system had never seen: the plan, four analysts, the red flags, the verifier and the report, then the graded results. The scenes are recreated from that run's saved output in [`runs/2026-10-31_0946/`](runs/2026-10-31_0946/), with my own voice-over.
+
 ![Architecture](docs/architecture.png)
 
 ## At a glance
