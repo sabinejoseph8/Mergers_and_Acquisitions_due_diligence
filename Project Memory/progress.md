@@ -1,10 +1,10 @@
 # Progress: Project Falcon
 
-**Status:** Agreed, version 2.7 (October 31, 2026: the blind Plover run graded and archived, and its three suggested rule changes made, not yet measured).
+**Status:** Agreed, version 2.8 (October 31, 2026: Phase 7 relabelled as the optional roadmap after v1; earlier the same day, the blind Plover run graded and archived, its three suggested rule changes made but not yet measured, and the demo video added).
 
 ## Summary
 
-- **Current phase:** Phase 7, Future (generalization tested: Kestrel as a near-transfer test, and Heron and Plover as held-out tests, all graded).
+- **Current phase:** v1 complete: Phases 0 to 6 are done, and generalization is tested (Kestrel as a near-transfer test, Heron and Plover as held-out tests, all graded). Phase 7 is the optional roadmap after v1.
 - **Overall status:** Phases 0 to 3 are done. The first test run is saved in `examples/sample-run/` and scored 97% recall (13 of 13 Critical and High issues), 0 unsupported findings and 0 distractors rated too high. The sample run passed all 34 checks that existed when it was made. Of today's 43 checks, it and runs 2 to 5 fail only the later "checkpoint content shown in chat" check, which postdates them. Three fully blind graded runs, each in a fresh session with the setup frozen, averaged 97.4% recall on the 13 Critical and High issues (range 96.2% to 100%) and 93.5% overall (91.7% to 94.4%), with 100% severity accuracy, 0 unsupported findings and 0 distractors rated too high in every run. A fourth blind run, the first with the fixes from the graded runs, found all 18 planted issues (100% recall overall and on Critical and High), with 100% severity accuracy, 0 unsupported findings and 0 distractors too high. A fifth blind run, with the quality fixes, held 100% Critical and High recall (97.2% overall) and met every quality target: 3 Critical issues instead of 11 Critical labels, 5 of 14 cross-source findings corrected instead of 9 of 19, a 14-row risk matrix instead of 90, and a 17-page report instead of 38. A sixth blind run, with run 5's two remaining suggestions, found all 18 planted issues again (100% overall and on Critical and High), with a 13-page report. All six graded runs are archived in `runs/`, each with its scorecard. The sample run and graded runs 1 to 4 passed all 34 checks that existed then, with none skipped; there were 40 checks after the run 5 fixes, and run 5 passes 39 of them (the new checkpoint-shown check fails on it by design). There are now 43 checks; run 6 passes 42 (six Low findings carry a non-standard status). Two checks for run 5's last two suggestions and one from the docs review bring the total to 43. The ID checks now read every finding ID format the runs use (`SEC-01`, `SEC-001`, `LIT-F01`). The project is on GitHub (`sabinejoseph8/Mergers_and_Acquisitions_due_diligence`), with `interview-notes.md` kept private. The README and case study are aimed at AI product manager roles. Plover, the fourth target built blind, was graded on October 31, 2026: all 18 planted issues found (100% overall and on Critical and High), 88.9% exact severity (Heron: 77.8%), 0 unsupported findings, 0 of 4 distractors too high, and all 49 checks passed (see Phase 7).
 - **Next action:** Plover's three instruction fixes are in the rules (known deal costs as price items; trend findings cite separate issues instead of restating them; controls and auditor on the fixed list of positives) but unmeasured. When wanted, a blind graded run on a new target measures them; then one real data source in place of a simulated one.
 
@@ -332,10 +332,10 @@ Two process fixes from this review, not from the scorecard: keep the status set 
 
 ---
 
-## Phase 7: Future (after v1)
+## Phase 7: Roadmap (optional, after v1)
 
-**Goal:** move from a demo toward real use.
-**Status:** In progress
+**Goal:** move from a demo toward real use. These are optional next steps after v1, which is complete; each one gets its own plan, success targets and checks when it starts.
+**Status:** Roadmap (optional, after v1)
 
 - [ ] Swap one simulated source for a real one (for example SEC EDGAR filings for a real public company)
 - [x] A second fictional target that the instructions were never tuned on, to test generalization (Kestrel, a near-transfer test, and Heron, the held-out test, both graded; see below)
