@@ -15,7 +15,7 @@
 - **The controls:** three mandatory human checkpoints, read-only specialists, an independent citation verifier, an iteration cap and blocked web access.
 - **The proof:** the fictional data contains 18 planted red flags. A built-in answer key and an `/evaluate` command grade how many the system finds.
 - **Built like a product:** a product spec, design spec, tech spec and phased plan, each agreed before building, with automated checks for every phase.
-- **Results:** across three fully blind graded runs, each in a fresh session that never saw the answer key, the system averaged 97.4% recall on the 13 Critical and High planted issues (range 96.2% to 100%) and 93.5% on all 18, with no unsupported finding in any report and no distractor rated too high. A fourth blind run, after fixing the gaps those three exposed, found all 18 (100%). A fifth, after quality fixes, kept 100% on Critical and High issues while cutting the report from 38 pages to 17 and the risk matrix from 90 rows to 14. A sixth found all 18 again, in a 13-page report. An earlier, partly blind test run is kept as a [sample](examples/sample-run/evaluation/scorecard.md). On two new fictional targets it still found every planted issue's facts and put nothing unsupported in a report; on the one built blind it found all 18, and exact severity judgment (77.8%) was the gap (see [Does it generalize?](#does-it-generalize-two-new-targets)).
+- **Results:** across three fully blind graded runs, each in a fresh session that never saw the answer key, the system averaged 97.4% recall on the 13 Critical and High planted issues (range 96.2% to 100%) and 93.5% on all 18, with no unsupported finding in any report and no distractor rated too high. A fourth blind run, after fixing the gaps those three exposed, found all 18 (100%). A fifth, after quality fixes, kept 100% on Critical and High issues while cutting the report from 38 pages to 17 and the risk matrix from 90 rows to 14. A sixth found all 18 again, in a 13-page report. An earlier, partly blind test run is kept as a [sample](examples/sample-run/evaluation/scorecard.md). On three new fictional targets it still found every planted issue's facts and put nothing unsupported in a report. On Heron, built blind, it found all 18, and exact severity judgment (77.8%) was the gap. On Plover, a fourth target built blind to test the calibration rules added after that, it found all 18 again, matched 16 of 18 severities exactly (88.9%) and rated no distractor too high (see [Does it generalize?](#does-it-generalize-three-new-targets)).
 
 ## The problem
 
@@ -171,28 +171,31 @@ Scorecard: [run 6](runs/2026-10-19_0903/evaluation/scorecard.md).
 
 Inside the run: the [findings register](examples/sample-run/memory/findings.md), the [run log](examples/sample-run/memory/run-log.md) with all three checkpoints, every analyst's [unedited report](examples/sample-run/memory/analyst-reports/), the [verifier reports](examples/sample-run/memory/verification/) and the [scorecard](examples/sample-run/evaluation/scorecard.md).
 
-## Does it generalize? Two new targets
+## Does it generalize? Three new targets
 
-Six runs on one dataset can overstate how good a system is, because its instructions were tuned on that data. So I tested it on two new fictional targets, each in its own folder under `targets/`, graded the same way.
+Six runs on one dataset can overstate how good a system is, because its instructions were tuned on that data. So I tested it on three new fictional targets, each in its own folder under `targets/`, graded the same way.
 
 - **Kestrel** (a clinical-lab company in a private equity take-private) was built by a session that never saw Falcon's answers. But it could read the system's instructions, and most of its planted issues turned out to be the same types as Falcon's, so it is a near-transfer test.
 - **Heron** (a smart-home company) was built by a session that never saw the instructions or the other targets, from issue types neither of the others uses: product safety, a pension cash call on change of control, a privacy order, disputed patent ownership, sanctions, transfer pricing and more. It is the held-out test, and the setup was frozen until it was graded.
+- **Plover** (an outdoor apparel brand, the target of a private equity topping bid) was also built blind, by a session that never saw the instructions or the other targets and was told to avoid every issue type they use. It tests the rules added after Kestrel and Heron on data they were not written from, and the setup was frozen again until it was graded.
 
-| Metric | Falcon run 6 (tuned) | Kestrel run 1 (near transfer) | Heron (held out) |
-|---|---|---|---|
-| Planted issues whose facts were found | 18 of 18 | 18 of 18 (one only as a note) | 18 of 18 |
-| Recall, the 13 Critical and High issues | 100% | 100% | 100% |
-| Recall, all 18 issues | 100% | 97.2% | 100% |
-| Severity within one level of the answer key | 100% | 100% | 100% |
-| Severity, exact match | not measured | not measured | 77.8% (14 of 18) |
-| Unsupported findings in the report | 0 | 0 | 0 |
-| Distractors rated Medium or above | 0 of 4 | 2 of 4 | 1 of 4 |
+| Metric | Falcon run 6 (tuned) | Kestrel run 1 (near transfer) | Heron (held out) | Plover (held out, new rules) |
+|---|---|---|---|---|
+| Planted issues whose facts were found | 18 of 18 | 18 of 18 (one only as a note) | 18 of 18 | 18 of 18 |
+| Recall, the 13 Critical and High issues | 100% | 100% | 100% | 100% |
+| Recall, all 18 issues | 100% | 97.2% | 100% | 100% |
+| Severity within one level of the answer key | 100% | 100% | 100% | 100% |
+| Severity, exact match | not measured | not measured | 77.8% (14 of 18) | 88.9% (16 of 18) |
+| Unsupported findings in the report | 0 | 0 | 0 | 0 |
+| Distractors rated Medium or above | 0 of 4 | 2 of 4 | 1 of 4 | 0 of 4 |
 
 **How to read Heron's score.** The system found the facts of every planted issue on a target it had never seen, and put nothing unsupported in the report. Scores use the grading rule the owner chose: an issue counts as found when its main point is verified with a severity within one level of what the answer key accepts, and exact severity matches are reported separately. On that rule Heron is 100% recall, with 14 of 18 severities (77.8%) an exact match; four were one level off (for example a product-safety issue rated High instead of Critical). Heron's original grader used a stricter reading that counted those four as partly found (88.5% on Critical and High issues); the rule was made exact afterwards so every run is graded the same way. What did not carry over cleanly is judgment: exact severity on unfamiliar issue types, and one distractor (pre-planned share sales by the CFO) rated as a red flag.
 
-**What happened after each grade.** After Kestrel run 1 and after Heron, new rules were added from their scorecards (commits `af02fce` and `78827d5`). A Kestrel rerun with those rules scored 100% with 0 distractors too high, but that is an in-sample result, measured on the target the rules came from, so it does not count as generalization. The honest test of the new rules is a fourth target built blind.
+**What happened after each grade.** After Kestrel run 1 and after Heron, new rules were added from their scorecards (commits `af02fce` and `78827d5`). A Kestrel rerun with those rules scored 100% with 0 distractors too high, but that is an in-sample result, measured on the target the rules came from, so it does not count as generalization. The honest test of the new rules is a fourth target built blind: Plover.
 
-Scorecards: [Kestrel run 1](runs/2026-10-19_1449/evaluation/scorecard.md), [Kestrel rerun, in-sample](runs/2026-10-19_1614/evaluation/scorecard.md), [Heron](runs/2026-10-19_1711/evaluation/scorecard.md).
+**How to read Plover's score.** Plover was built to give the new rules an out-of-sample test. It included an issue sized by a remedy a regulator formally seeks and two distractors already neutralized by a contract or an accounting treatment. The system rated the regulator's refund claim Critical at its computed upper bound (US$212.5 million, from the company's own revenue data), listed both neutralized distractors as mitigants, and rated no distractor too high. Exact severity rose to 88.9% (16 of 18), from Heron's 77.8%. Both misses were one level too high: deal costs from equity that vests at closing, and a customer-cost metric that a broader trend finding repeated. One of the eight planted strengths (effective controls and a long-serving auditor) was not credited, and the run passed all 49 automated checks. Caveats: it is one run on one target; three of Plover's 18 issues are close cousins of earlier types (a one-time reserve release, a sales spike into a customer already holding heavy stock, and deal costs from equity vesting), so they are not fully out-of-sample; the grade was made by the session that ran the diligence, which opened the answer key only after the report was written; and on a stricter reading of one issue, exact severity would be 83.3%.
+
+Scorecards: [Kestrel run 1](runs/2026-10-19_1449/evaluation/scorecard.md), [Kestrel rerun, in-sample](runs/2026-10-19_1614/evaluation/scorecard.md), [Heron](runs/2026-10-19_1711/evaluation/scorecard.md), [Plover](runs/2026-10-31_0946/evaluation/scorecard.md) (and its [report](runs/2026-10-31_0946/output/Project-Plover-Due-Diligence-Report.pdf)).
 
 ## Repository structure
 

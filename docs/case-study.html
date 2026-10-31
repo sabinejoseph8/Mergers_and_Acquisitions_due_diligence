@@ -53,9 +53,9 @@
   </header>
 
   <div class="kpis">
-    <div class="kpi"><b>9</b><span>blind graded runs on 3 fictional targets</span></div>
+    <div class="kpi"><b>10</b><span>blind graded runs on 4 fictional targets</span></div>
     <div class="kpi"><b>97.4%</b><span>Critical and High recall, runs 1 to 3 average</span></div>
-    <div class="kpi"><b>18 of 18</b><span>issues found on a held-out target built blind</span></div>
+    <div class="kpi"><b>18 of 18</b><span>issues found on each of two held-out targets</span></div>
     <div class="kpi"><b>38 &rarr; 13</b><span>report pages, runs 4 to 6</span></div>
     <div class="kpi"><b>0</b><span>unsupported findings in any report</span></div>
   </div>
@@ -107,13 +107,13 @@
         <ul class="learn">
           <li>The verifier earned its place: 17 of 61 findings needed corrected wording before the report (one claimed 18 months of negative free cash flow; it was 12).</li>
           <li>Three runs, not one: the same misses repeated, so they were design gaps, not luck. I fixed them, and run 4 found all 18.</li>
-          <li>Then quality and generalization: reports went from 38 pages to 13. On a held-out target built by someone who never saw my instructions, it found all 18 issues and invented nothing; exact severity was the gap (77.8%).</li>
+          <li>Then quality and generalization: reports went from 38 pages to 13. On two held-out targets built by sessions that never saw my instructions, it found all 18 issues and invented nothing; exact severity rose from 77.8% to 88.9%.</li>
         </ul>
       </section>
     </div>
   </div>
 
-  <div class="note"><strong>How blind was the test?</strong> Each graded run started in a fresh session that never saw the answer key or an earlier run. The held-out target's builder never saw the instructions either. Next: an exact severity rule for grading, and a fourth blind target.</div>
+  <div class="note"><strong>How blind was the test?</strong> Each graded run started in a fresh session that never saw the answer key or an earlier run. The held-out targets' builders never saw the instructions either. Next: Plover's three severity fixes, then a real data source.</div>
 
   <footer class="foot">
     <div><strong>In the repository:</strong> README, <code>runs/</code> (graded runs with scorecards), <code>examples/sample-run/</code> and <code>Project Memory/</code> (specs and plan).</div>
