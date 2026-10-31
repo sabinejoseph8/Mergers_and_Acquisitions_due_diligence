@@ -77,6 +77,8 @@ Use this card for each finding:
 
 **Calibration:** a debt or covenant problem that is cured by refinancing at closing is High, unless it causes a default or a liquidity problem before signing or closing, which makes it Critical.
 
+**Known deal costs:** equity-award cash-outs, break fees and change-in-control severance are fixed, contractual amounts the buyer pays. When the sources state the amount or let you compute it, rate it Medium as a price item, not High as a risk that needs a specific protection. If the known deal costs you find total more than 5% of value, rate them High; if more than 10%, apply the Critical test. A dispute about the amount or a gap in how it is disclosed is a separate finding with its own severity.
+
 ## Confidence rubric
 
 - **High:** directly calculated from the data, with the calculation shown.

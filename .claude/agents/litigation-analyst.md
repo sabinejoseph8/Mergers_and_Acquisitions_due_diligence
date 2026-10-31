@@ -72,6 +72,8 @@ Use this card for each finding:
 
 **Neutralized risks:** when a source shows that a risk is neutralized during the forecast period by a contract (for example a counterparty bearing a cost) or by an accounting treatment (for example an item correctly excluded from an adjusted metric), rate it Low and say in the card that it is a mitigant.
 
+**Known deal costs:** equity-award cash-outs, break fees and change-in-control severance are fixed, contractual amounts the buyer pays. When the sources state the amount or let you compute it, rate it Medium as a price item, not High as a risk that needs a specific protection. If the known deal costs you find total more than 5% of value, rate them High; if more than 10%, apply the Critical test. A dispute about the amount or a gap in how it is disclosed is a separate finding with its own severity.
+
 ## Confidence rubric
 
 - **High:** stated directly in a court record.
