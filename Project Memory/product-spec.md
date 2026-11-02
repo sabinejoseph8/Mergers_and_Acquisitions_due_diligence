@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.17 (November 2, 2026: Phase 8's open questions 1 to 3 decided, the recommended defaults; earlier the same day, Phase 8 planned with R30 to R33 and its success targets; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.18 (November 2, 2026: all four of Phase 8's open questions decided, the recommended defaults; earlier the same day, Phase 8 planned with R30 to R33 and its success targets; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -184,10 +184,11 @@ Time and tokens are recorded with no target, because this is the first run on fu
 | 2026-10-31 | v1 is complete at the end of Phase 6. Phase 7 becomes an optional roadmap (a real data source, an Excel data pack, more specialists), kept out of the progress count; each item gets its own plan, targets and checks when it starts. |
 | 2026-11-02 | Plan for the first real source (Phase 8, R30 to R33): a real public company's SEC filings and EDGAR's structured financial data, downloaded before the run so the agents stay offline and read-only ("connect at the folder, not the agent"). It is measured by a backtest: warning signs visible in the filings before a later public problem. News and litigation stay empty for a real company rather than simulated. A live web search API for news (for example Tavily) was considered and left for a current company, because in a backtest it would leak hindsight. |
 | 2026-11-02 | The owner accepted the recommended defaults for Phase 8's open questions 1 to 3: the five success targets; a separate case session that tells the owner only the company and the cutoff; and only the method, scores and answer-key categories published, with the full report kept private. Open question 4 (news and litigation for a real company) is still open. |
+| 2026-11-02 | Later the same day, the owner accepted the recommended default for open question 4: news and litigation stay empty for the backtest and are listed as gaps. Real court records are a candidate next roadmap item; a news search API waits for a current company. All four Phase 8 questions are now decided. |
 
 ## Open questions (with recommended defaults)
 
 1. **Are the Phase 8 success targets right?** Decided (November 2, 2026): yes, the five targets under Success criteria. Recall is set lower than the fictional runs' 80%, because real warning signs are subtler and nobody planted them.
 2. **Who picks the backtest case?** Decided (November 2, 2026): a separate case session picks it by the tech spec's criteria and tells the owner only the company and the cutoff. The owner still knows the company, so they approve each checkpoint without steering, and the write-up says so.
 3. **What gets published?** Decided (November 2, 2026): the method, the scores and the answer key's categories go public; the full report stays private, because it is an AI's red-flag list about a real, named company, and AI output can still be wrong.
-4. **What about news and litigation for a real company?** Recommended default: leave both empty for the backtest and list them as gaps. Real court records (for example CourtListener) can be the next roadmap item. A web search API for news fits a current company, saved as a dated snapshot before the run, but not a backtest, because today's web already knows how the story ended.
+4. **What about news and litigation for a real company?** Decided (November 2, 2026): leave both empty for the backtest and list them as gaps. Real court records (for example CourtListener) can be the next roadmap item. A web search API for news fits a current company, saved as a dated snapshot before the run, but not a backtest, because today's web already knows how the story ended.
