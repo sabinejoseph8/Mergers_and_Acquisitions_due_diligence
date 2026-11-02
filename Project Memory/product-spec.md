@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.16 (November 2, 2026: Phase 8 planned, a real company's SEC filings tested by a backtest, with R30 to R33, its success targets set before any result, and four open questions; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.17 (November 2, 2026: Phase 8's open questions 1 to 3 decided, the recommended defaults; earlier the same day, Phase 8 planned with R30 to R33 and its success targets; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -141,7 +141,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 5. No source file changes during a run.
 6. A reviewer can explain the project after two minutes with the README.
 
-**Phase 8 targets for the real-company backtest (set November 2, 2026, before any result; defaults until the owner confirms them in open question 1):**
+**Phase 8 targets for the real-company backtest (set November 2, 2026, before any result, and confirmed by the owner the same day):**
 1. At least 2 in 3 of the answer key's warning signs are found (main point verified and correctly cited, by the same rule `/evaluate` uses).
 2. The warning sign most directly tied to the later event is among the top five red flags.
 3. Zero unsupported findings in the report.
@@ -183,10 +183,11 @@ Time and tokens are recorded with no target, because this is the first run on fu
 | 2026-10-31 | The demo video is recreated from the blind Plover run's saved output instead of screen-recorded live, because a full run takes over an hour (R26). The owner records the voice-over; the video plays in the README from a GitHub attachment, and its sources and build script stay private, outside the repository. |
 | 2026-10-31 | v1 is complete at the end of Phase 6. Phase 7 becomes an optional roadmap (a real data source, an Excel data pack, more specialists), kept out of the progress count; each item gets its own plan, targets and checks when it starts. |
 | 2026-11-02 | Plan for the first real source (Phase 8, R30 to R33): a real public company's SEC filings and EDGAR's structured financial data, downloaded before the run so the agents stay offline and read-only ("connect at the folder, not the agent"). It is measured by a backtest: warning signs visible in the filings before a later public problem. News and litigation stay empty for a real company rather than simulated. A live web search API for news (for example Tavily) was considered and left for a current company, because in a backtest it would leak hindsight. |
+| 2026-11-02 | The owner accepted the recommended defaults for Phase 8's open questions 1 to 3: the five success targets; a separate case session that tells the owner only the company and the cutoff; and only the method, scores and answer-key categories published, with the full report kept private. Open question 4 (news and litigation for a real company) is still open. |
 
 ## Open questions (with recommended defaults)
 
-1. **Are the Phase 8 success targets right?** Recommended default: the five targets under Success criteria. Recall is set lower than the fictional runs' 80%, because real warning signs are subtler and nobody planted them.
-2. **Who picks the backtest case?** Recommended default: a separate case session picks it by the tech spec's criteria and tells the owner only the company and the cutoff. The owner still knows the company, so they approve each checkpoint without steering, and the write-up says so.
-3. **What gets published?** Recommended default: the method, the scores and the answer key's categories go public; the full report stays private, because it is an AI's red-flag list about a real, named company, and AI output can still be wrong.
+1. **Are the Phase 8 success targets right?** Decided (November 2, 2026): yes, the five targets under Success criteria. Recall is set lower than the fictional runs' 80%, because real warning signs are subtler and nobody planted them.
+2. **Who picks the backtest case?** Decided (November 2, 2026): a separate case session picks it by the tech spec's criteria and tells the owner only the company and the cutoff. The owner still knows the company, so they approve each checkpoint without steering, and the write-up says so.
+3. **What gets published?** Decided (November 2, 2026): the method, the scores and the answer key's categories go public; the full report stays private, because it is an AI's red-flag list about a real, named company, and AI output can still be wrong.
 4. **What about news and litigation for a real company?** Recommended default: leave both empty for the backtest and list them as gaps. Real court records (for example CourtListener) can be the next roadmap item. A web search API for news fits a current company, saved as a dated snapshot before the run, but not a backtest, because today's web already knows how the story ended.

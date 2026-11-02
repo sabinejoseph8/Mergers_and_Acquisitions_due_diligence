@@ -1,6 +1,6 @@
 # Tech Spec: Project Falcon
 
-**Status:** Agreed, version 1.17 (November 2, 2026: Phase 8 planned: the EDGAR download tool, the backtest evaluation and its case criteria, and four new risks).
+**Status:** Agreed, version 1.18 (November 2, 2026: the full backtest report stays private, by the owner's decision; earlier the same day, Phase 8 planned: the EDGAR download tool, the backtest evaluation and its case criteria, and four new risks).
 
 This file holds the technical decisions and system patterns. It describes the system as built so far, and flags the risks that matter most.
 
@@ -144,7 +144,7 @@ Riskiest first. The first four are addressed in the earliest phases.
 | 11 | **Real client data** if the project is adapted for a live deal. | Confidentiality and data retention obligations. | Out of scope for v1. Enterprise plan, zero data retention request, read-only connectors and compliance sign-off required first. |
 | 12 | **Saved runs leak answers.** The sample run and its scorecard sit inside the project, and each new grading writes a scorecard to `evaluation/`. | A new run that read them could score well without finding anything itself, and the next grading would overwrite the last scorecard. | Claude Code asks before any agent opens `evaluation/`, `examples/` or `runs/`; `/reset-memory` moves each scorecard into its archived run; the lead agent's guardrails forbid reading them; and Phase 1 checks confirm both rules. |
 | 13 | **Hindsight leaks** in a backtest (planned, Phase 8). The model may know the company's later story from training, or a later document may slip in. | The score would measure memory, not diligence. | A lesser-known case and a contamination check before the run; the download tool filters by filing date and by the date each financial value was filed; a rule to cite only the data folder; `/evaluate` counts hindsight leaks. |
-| 14 | **Statements about a real company** (planned, Phase 8). | An AI red-flag list about a named company could be wrong and could cause harm. | A settled matter of public record; the report says historical backtest and hypothetical deal; the full report stays private by default (product spec open question 3). |
+| 14 | **Statements about a real company** (planned, Phase 8). | An AI red-flag list about a named company could be wrong and could cause harm. | A settled matter of public record; the report says historical backtest and hypothetical deal; the full report stays private (the owner's decision, November 2, 2026; product spec open question 3). |
 | 15 | **Full-length filings** (planned, Phase 8). A real 10-K often runs past 100 pages. | Analysts could miss sections or run out of context, and runs cost more. | Filings split into one file per Item with an index; analysts search before reading; time and tokens recorded on the first run. |
 | 16 | **Filing formats vary** between companies and years (planned, Phase 8). | The section split could fail without anyone noticing. | Checks on saved sample filings; the index flags any filing the split could not handle, and the analyst reads that filing whole. |
 
