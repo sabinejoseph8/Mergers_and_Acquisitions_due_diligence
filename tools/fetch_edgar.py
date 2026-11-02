@@ -329,8 +329,20 @@ def slug(text):
     return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
 
 
-def list_filings(cik, fetcher, since):
-    """Company name and every filing (accession, form, filed, period, primary document), newest pages only as needed."""
+def name_at(sub, cutoff, cik):
+    """The company's name on the cutoff date, from SEC's list of former names, so a later rename cannot leak in."""
+    former = sorted(sub.get("formerNames") or [], key=lambda f: (f.get("to") or "")[:10])
+    for f in former:
+        if (f.get("from") or "")[:10] <= cutoff < (f.get("to") or "9999")[:10]:
+            return f["name"]
+    later = [f for f in former if (f.get("to") or "")[:10] >= cutoff]
+    if later:
+        return later[0]["name"]
+    return sub.get("name", f"CIK {cik}")
+
+
+def list_filings(cik, fetcher, since, cutoff):
+    """Company name on the cutoff date and every filing (accession, form, filed, period, primary document), newest pages only as needed."""
     sub = json.loads(fetcher.get(f"{DATA}/submissions/CIK{cik:010d}.json"))
     pages = [sub["filings"]["recent"]]
     for extra in sub["filings"].get("files", []):
@@ -342,7 +354,7 @@ def list_filings(cik, fetcher, since):
             rows.append({"accession": accession, "form": page["form"][i], "filed": page["filingDate"][i],
                          "period": (page.get("reportDate") or [""] * len(page["form"]))[i] or "",
                          "primary": page["primaryDocument"][i]})
-    return sub.get("name", f"CIK {cik}"), rows
+    return name_at(sub, cutoff, cik), rows
 
 
 def save_filing(filing, cik, fetcher, folder):
@@ -543,7 +555,7 @@ def fetch(company, cutoff, target, fetcher, forms=DEFAULT_FORMS, since=None, roo
             sys.exit(f"Ticker {company} is not in SEC's current ticker list. Pass the company's CIK instead.")
         cik = int(match["cik_str"])
 
-    name, rows = list_filings(cik, fetcher, since)
+    name, rows = list_filings(cik, fetcher, since, cutoff)
     wanted = {f.upper() for f in forms}
     keep = sorted((r for r in rows if r["form"].upper().split("/")[0] in wanted and since <= r["filed"] < cutoff),
                   key=lambda r: (r["filed"], r["accession"]))
