@@ -11,6 +11,9 @@ from _common import EM_DASH, ROOT, TARGETS, read, run_dir, run_target, table_row
 ID_BODY = r"(?:SEC|NEWS|LIT|FIN|X)-[A-Z]?\d{2,3}"
 ID = re.compile(rf"^{ID_BODY}$")
 WORKSTREAMS = ["SEC", "NEWS", "LIT", "FIN"]
+# Each workstream's source folder in data/. A folder holding only NO-SOURCES.md has no evidence.
+SOURCE_FOLDERS = {"SEC": "sec-filings", "NEWS": "news", "LIT": "litigation", "FIN": "financials"}
+NO_SOURCES = "NO-SOURCES.md"
 SEVERITIES = {"Critical", "High", "Medium", "Low", "Positive", "n/a"}
 STATUSES = {"Open", "Verified", "Partially verified", "Rejected"}
 REPORT_SECTIONS = ["executive summary", ("investment committee", "ic questions"), "risk matrix", "workstream", "cross-source", "protections", "open questions", "appendix"]
@@ -48,6 +51,12 @@ def register():
     return found
 
 
+def has_sources(prefix):
+    """True if the run's target has evidence for this workstream: any file besides NO-SOURCES.md."""
+    folder = TARGET / "data" / SOURCE_FOLDERS[prefix]
+    return folder.is_dir() and any(p.is_file() and p.name != NO_SOURCES for p in folder.rglob("*"))
+
+
 @unittest.skipUnless(HAS_RUN, f"no diligence run found in {RUN}")
 class TestWorkingMemory(unittest.TestCase):
     def test_run_names_a_known_target(self):
@@ -56,9 +65,14 @@ class TestWorkingMemory(unittest.TestCase):
     def test_every_finding_is_complete(self):
         findings = register()
         self.assertGreater(len(findings), 0, "the register is empty")
-        # Guard against IDs in a format this check cannot read: every workstream must be found.
+        # Guard against IDs in a format this check cannot read: every workstream with sources must be found.
+        # A workstream whose folder holds only NO-SOURCES.md must have no findings (real-target-rules.md, rule 3).
         for prefix in WORKSTREAMS:
-            self.assertTrue(any(fid.startswith(prefix + "-") for fid in findings), f"no {prefix} findings read from the register (unrecognized ID format?)")
+            found = any(fid.startswith(prefix + "-") for fid in findings)
+            if has_sources(prefix):
+                self.assertTrue(found, f"no {prefix} findings read from the register (unrecognized ID format?)")
+            else:
+                self.assertFalse(found, f"{prefix} findings in the register, but data/{SOURCE_FOLDERS[prefix]}/ has no sources")
         for fid, (severity, status, cells) in findings.items():
             self.assertIsNotNone(severity, f"{fid}: no valid severity")
             self.assertIn(status, STATUSES, f"{fid}: invalid status '{status}'")
