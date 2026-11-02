@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.15 (October 31, 2026: the README's demo video added to R26, and v1 declared complete with Phase 7 kept as an optional roadmap; earlier the same day, Plover's three rule changes; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.16 (November 2, 2026: Phase 8 planned, a real company's SEC filings tested by a backtest, with R30 to R33, its success targets set before any result, and four open questions; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -99,6 +99,12 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 - **R27.** The project includes a complete sample run: working memory, report PDF and scorecard.
 - **R28.** The project keeps `interview-notes.md` in first person, updated after significant features, major bug fixes and meaningful design changes.
 
+**Real data (Phase 8, planned, not built)**
+- **R30.** The system can run on a real public company's SEC filings and financial data as of a cutoff date. A download tool, run by the owner before the run, saves them into a target folder; the agents stay offline and read-only.
+- **R31.** For a real target, the agents use nothing dated after the cutoff and nothing from outside the data folder, including what the model may know about the company from training. The report says it is a historical backtest of a hypothetical deal.
+- **R32.** An empty source folder is reported as a gap and listed in the report's limitations, never filled from memory.
+- **R33.** Grading a real target uses the same rule as the fictional targets, and also counts hindsight leaks: findings that rely on anything dated after the cutoff.
+
 ## Layout and responsiveness
 
 - **Desktop:** runs happen in Claude Code in a terminal. Checkpoint messages fit in a normal terminal window, with tables of no more than 5 columns.
@@ -120,7 +126,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 
 | Future feature | What v1 does now |
 |---|---|
-| Real sources through connectors | Each source sits behind one specialist and one folder, so a source can be swapped without changing the others. |
+| Real sources through connectors | Each source sits behind one specialist and one folder, so a source can be swapped without changing the others. Phase 8 plans the first one: SEC filings, downloaded before the run. |
 | More specialists (tax, people, IP, ESG) | Every specialist uses the same finding format and rubrics. |
 | Several deals at once | The deal brief is a single file, and each run is archived separately. |
 | Excel data pack for the committee | Key numbers are already collected in one working dataset. |
@@ -134,6 +140,15 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 4. Grading the sample run shows: at least 80% recall on Critical and High issues, zero unsupported findings in the report, and zero distractors rated Medium or above. (Default targets.)
 5. No source file changes during a run.
 6. A reviewer can explain the project after two minutes with the README.
+
+**Phase 8 targets for the real-company backtest (set November 2, 2026, before any result; defaults until the owner confirms them in open question 1):**
+1. At least 2 in 3 of the answer key's warning signs are found (main point verified and correctly cited, by the same rule `/evaluate` uses).
+2. The warning sign most directly tied to the later event is among the top five red flags.
+3. Zero unsupported findings in the report.
+4. Zero hindsight leaks: no finding relies on anything dated after the cutoff.
+5. All three checkpoints held and shown in chat, all nine report parts, and the empty sources listed as gaps.
+
+Time and tokens are recorded with no target, because this is the first run on full-length filings.
 
 ## Decisions
 
@@ -167,7 +182,11 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 | 2026-10-31 | Three rule changes from Plover's scorecard, written by a session that had not opened any answer key or scorecard (R9, R15): known deal costs (equity-award cash-outs, break fees, change-in-control severance) are rated Medium and put in the price, unless all of them together pass 5% of value; a trend finding states only its own headline numbers and cites a separate issue by ID, so that issue keeps its own severity; and the positives checklist adds the internal controls conclusion and auditor tenure and opinion, with a positive that another finding puts in doubt listed as qualified. Not yet measured; the next blind graded run will check them. |
 | 2026-10-31 | The demo video is recreated from the blind Plover run's saved output instead of screen-recorded live, because a full run takes over an hour (R26). The owner records the voice-over; the video plays in the README from a GitHub attachment, and its sources and build script stay private, outside the repository. |
 | 2026-10-31 | v1 is complete at the end of Phase 6. Phase 7 becomes an optional roadmap (a real data source, an Excel data pack, more specialists), kept out of the progress count; each item gets its own plan, targets and checks when it starts. |
+| 2026-11-02 | Plan for the first real source (Phase 8, R30 to R33): a real public company's SEC filings and EDGAR's structured financial data, downloaded before the run so the agents stay offline and read-only ("connect at the folder, not the agent"). It is measured by a backtest: warning signs visible in the filings before a later public problem. News and litigation stay empty for a real company rather than simulated. A live web search API for news (for example Tavily) was considered and left for a current company, because in a backtest it would leak hindsight. |
 
 ## Open questions (with recommended defaults)
 
-None right now.
+1. **Are the Phase 8 success targets right?** Recommended default: the five targets under Success criteria. Recall is set lower than the fictional runs' 80%, because real warning signs are subtler and nobody planted them.
+2. **Who picks the backtest case?** Recommended default: a separate case session picks it by the tech spec's criteria and tells the owner only the company and the cutoff. The owner still knows the company, so they approve each checkpoint without steering, and the write-up says so.
+3. **What gets published?** Recommended default: the method, the scores and the answer key's categories go public; the full report stays private, because it is an AI's red-flag list about a real, named company, and AI output can still be wrong.
+4. **What about news and litigation for a real company?** Recommended default: leave both empty for the backtest and list them as gaps. Real court records (for example CourtListener) can be the next roadmap item. A web search API for news fits a current company, saved as a dated snapshot before the run, but not a backtest, because today's web already knows how the story ended.

@@ -1,6 +1,6 @@
 # Design: Project Falcon
 
-**Status:** Agreed, version 1.7 (October 31, 2026: the demo video added to the portfolio materials, and the website's Roadmap chip for optional phases).
+**Status:** Agreed, version 1.8 (November 2, 2026: the report cover for a real company, planned in Phase 8).
 
 Project Falcon has no custom app screen. People experience it in three places: **the Claude Code conversation** (commands, progress messages and checkpoints), **the documents it produces** (report, findings register, scorecard), and **the portfolio materials** (README, demo video, architecture diagram, case study, Project Memory website). This file sets one design language for all three.
 
@@ -84,7 +84,7 @@ Project Falcon has no custom app screen. People experience it in three places: *
 | **Finding card** | Analyst reports | Open, Verified, Partially verified, Rejected | Fixed field order: Finding, Evidence, Source, Severity, Confidence, Deal impact, Cross-check. Never deleted. |
 | **Findings register** | `memory/findings.md` | Empty, growing, final | One row per finding with status. Cross-source findings have their own section. |
 | **Labels** | Everywhere | n/a | Severity: Critical, High, Medium, Low (colored word). Confidence: High, Medium, Low (plain word). Claim type: Fact, Allegation, Rumor. |
-| **Cover page** | Report | n/a | Title, "Draft for Investment Committee discussion", date, "Fictional case study", preparer line. Navy bar on the left. |
+| **Cover page** | Report | Fictional target, real target (planned, Phase 8) | Title, "Draft for Investment Committee discussion", date, "Fictional case study", preparer line. Navy bar on the left. For a real target, "Fictional case study" becomes "Historical backtest using public filings as of <cutoff>" and "Hypothetical deal". |
 | **Bottom-line box** | Report, executive summary | n/a | Navy box with white text. One recommendation and one sentence of reasoning. |
 | **Risk matrix** | Report | n/a | ID, finding, severity, confidence, verification verdict and recommended action, Critical first. With many findings, it shows the consolidated cross-source findings and the appendix index lists every verified finding. Repeats its header on every page. |
 | **Callout** | Report | Note, allegation | Teal border for notes. Cream background with gold border for allegations and rumors. |

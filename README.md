@@ -63,7 +63,7 @@ During M&A due diligence, teams must research target companies across multiple d
 
 ## How it was planned and tested
 
-- **Project Memory:** the [product spec](Project%20Memory/product-spec.md) (29 requirements), [design spec](Project%20Memory/design.md), [tech spec](Project%20Memory/tech-spec.md) (architecture, data model and 11 critical risks) and the phased [plan](Project%20Memory/progress.md), each agreed before building. They are also published as a [website](https://claude.ai/artifact/CmFqn6PUnPvRse4GxpLrDW) with live plan ticks.
+- **Project Memory:** the [product spec](Project%20Memory/product-spec.md) (29 requirements, plus 4 planned for real filings), [design spec](Project%20Memory/design.md), [tech spec](Project%20Memory/tech-spec.md) (architecture, data model and 11 critical risks) and the phased [plan](Project%20Memory/progress.md), each agreed before building. They are also published as a [website](https://claude.ai/artifact/CmFqn6PUnPvRse4GxpLrDW) with live plan ticks.
 - **Automated checks:** 49 checks using only Python's standard library, for every phase: read-only agents and guardrails, data that ties out and has not changed (for every target), complete runs and reports, graded scorecards and house style. Type `/run-tests`, or run `python3 tests/run_all.py`. Add `--run examples/sample-run` to check the saved run.
 - **One-page case study:** [docs/case-study.pdf](docs/case-study.pdf).
 
