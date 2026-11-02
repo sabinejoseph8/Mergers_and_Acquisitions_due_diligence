@@ -13,21 +13,23 @@ You are grading this system's latest diligence run. This is the only command all
    - **Partially found:** only part of the main point was found, a needed cross-source link or citation is missing or weak, or the severity is more than one level away from every accepted severity.
    - **Missed:** not found.
    A severity that is one level away from an accepted severity does not make an issue Partially found. It shows only in the exact-match severity line. Use the fixed grading rules below for every number.
-3. Grade the answer key's planted-positives row (the row that lists strengths and mitigating points rather than an issue) as its own row, under the ID the answer key gives it:
+3. If the answer key has a planted-positives row (the row that lists strengths and mitigating points rather than an issue), grade it as its own row, under the ID the answer key gives it:
    - **Present:** every planted positive in the row appears in the report;
    - **Partly present:** some of them appear;
    - **Absent:** none of them appear.
    Name any positive that is missing. This row is not a planted issue, so it stays out of recall and severity accuracy.
 4. For each distractor in the answer key, check whether the run wrongly rated it Medium or above.
 5. Check for false findings: any finding in the report that the sources do not support (use the verifier results in memory).
-6. Write `targets/<target>/evaluation/scorecard.md` with:
+6. **A real target** (its `data/README.md` says "Real public company, hypothetical deal"): count **hindsight leaks**, findings in the report that rely on anything dated on or after the cutoff in `targets/<target>/checks.json`, or on facts that are not in `targets/<target>/data/`. List their IDs. Its answer key lists warning signs as `P` rows and has no distractors: grade the `P` rows exactly as for any target, and write "Distractors: none in this answer key".
+7. Write `targets/<target>/evaluation/scorecard.md` with:
    - recall overall, for the Critical and High group, and for each severity group, with the IDs in each group listed;
    - severity accuracy, in two lines: within one level, and exact match;
    - unsupported findings that reached the report (target: zero);
    - distractors rated too high;
+   - for a real target, hindsight leaks (target: zero);
    - a table of every planted issue with its result and the matching finding IDs, one row per issue that starts with its answer key ID (`| Pnn |`), plus the planted-positives row in the same format, with its result (Present, Partly present or Absent) and any missing positives;
    - the three most useful improvements to the agent instructions.
-7. Show the user a short summary.
+8. Show the user a short summary.
 
 Do not change the answer key or the data.
 

@@ -2,7 +2,7 @@
 
 You are the lead agent ("Agent Core") of a multi-agent M&A due diligence system. It is built only with Claude Code features: subagents, slash commands, a working memory folder and permission rules. There is no application code.
 
-**The target:** each run works on one fictional target, named when the run starts (for example `/diligence falcon`) and recorded in `memory/target.txt`. In this file, `<target>` means that name. The target's sources are in `targets/<target>/data/`. Read `targets/<target>/data/deal-brief.md` first: it describes the deal. All companies, people and data in this project are fictional.
+**The target:** each run works on one target, named when the run starts (for example `/diligence falcon`) and recorded in `memory/target.txt`. In this file, `<target>` means that name. The target's sources are in `targets/<target>/data/`. Read `targets/<target>/data/deal-brief.md` first: it describes the deal. Most targets are fictional, with invented companies, people and data. If `targets/<target>/data/README.md` says "Real public company, hypothetical deal", the target is a real company: also read and follow `templates/real-target-rules.md`.
 
 ## Your job
 
@@ -131,7 +131,7 @@ Write the report to `output/` using the template below. `<Codename>` is the proj
 
 ## Report template
 
-1. **Cover:** "Project <Codename>: Comprehensive Due Diligence Report", "Draft for Investment Committee discussion", the date, "Fictional case study", and "Prepared by an AI multi-agent diligence system with human review".
+1. **Cover:** "Project <Codename>: Comprehensive Due Diligence Report", "Draft for Investment Committee discussion", the date, "Fictional case study" (for a real target, the two lines in `templates/real-target-rules.md`), and "Prepared by an AI multi-agent diligence system with human review".
 2. **Executive summary:** the bottom line (a proposed recommendation: Proceed, Proceed with conditions, Pause, or Do not proceed at the current price; humans make the decision), the top five red flags, the main positive and mitigating points (with finding IDs), and the valuation implications. Before writing the positives, re-read `memory/findings.md` and the analyst reports and check this fixed list of mitigants: debt maturities, customer retention or churn, segments or products still growing, items correctly excluded from adjusted metrics, dismissed, settled or closed litigation, supply or price protections, and the internal controls conclusion and auditor tenure and opinion. Report each one you find, with its finding IDs; skip only those no source supports. When another finding puts a positive in doubt, still list it, as a qualified positive that cites both finding IDs and says what is in doubt.
 3. **Answers to the six IC questions:** one short section each, citing finding IDs.
 4. **Risk matrix:** one row per distinct issue, covering every verified finding: ID (the parent finding, with its supporting IDs in brackets), finding, workstream, severity, confidence, deal impact, recommended action (price, structure, condition, indemnity or further diligence). Do not give the same fact its own row twice. List as supporting IDs only findings that state the same fact as the parent. A finding that is a distinct issue (its own accounting judgment, liability or exposure) keeps its own row at its own severity, even when an `X-` trend or summary finding also draws on it. For a Critical row, the finding states the test it meets.

@@ -63,8 +63,8 @@ During M&A due diligence, teams must research target companies across multiple d
 
 ## How it was planned and tested
 
-- **Project Memory:** the [product spec](Project%20Memory/product-spec.md) (29 requirements, plus 4 planned for real filings), [design spec](Project%20Memory/design.md), [tech spec](Project%20Memory/tech-spec.md) (architecture, data model and 11 critical risks) and the phased [plan](Project%20Memory/progress.md), each agreed before building. They are also published as a [website](https://claude.ai/artifact/CmFqn6PUnPvRse4GxpLrDW) with live plan ticks.
-- **Automated checks:** 49 checks using only Python's standard library, for every phase: read-only agents and guardrails, data that ties out and has not changed (for every target), complete runs and reports, graded scorecards and house style. Type `/run-tests`, or run `python3 tests/run_all.py`. Add `--run examples/sample-run` to check the saved run.
+- **Project Memory:** the [product spec](Project%20Memory/product-spec.md) (33 requirements), [design spec](Project%20Memory/design.md), [tech spec](Project%20Memory/tech-spec.md) (architecture, data model and 11 critical risks) and the phased [plan](Project%20Memory/progress.md), each agreed before building. They are also published as a [website](https://claude.ai/artifact/CmFqn6PUnPvRse4GxpLrDW) with live plan ticks.
+- **Automated checks:** 56 checks using only Python's standard library, for every phase: read-only agents and guardrails, data that ties out and has not changed (for every target), complete runs and reports, graded scorecards, the real-filings download tool and house style. Type `/run-tests`, or run `python3 tests/run_all.py`. Add `--run examples/sample-run` to check the saved run.
 - **One-page case study:** [docs/case-study.pdf](docs/case-study.pdf).
 
 ## Sample run
@@ -217,11 +217,12 @@ targets/                   One folder per fictional diligence target, for exampl
   falcon/data_manifest.json  Checksums that prove the sources and answer key are unchanged
   falcon/checks.json       Optional target-specific expectations for the checks
 memory/                    Working memory (blank, ready for your run)
-templates/                 Blank memory files and the report stylesheet
+templates/                 Blank memory files, the report stylesheet and the rules for a real company
 tools/md2html.py           Report converter: Markdown to self-contained HTML (Python standard library)
+tools/fetch_edgar.py       Downloads a real company's SEC filings as of a cutoff date, for the real-filings backtest (Phase 8)
 output/                    Where the report is written
 examples/sample-run/       A complete test run: memory, report (PDF) and scorecard
-tests/                     49 automated checks (Python standard library), run with /run-tests
+tests/                     56 automated checks (Python standard library), run with /run-tests
 Project Memory/            Product spec, design spec, tech spec and phased plan
 docs/                      Architecture diagram, run guide, one-page case study
 ```

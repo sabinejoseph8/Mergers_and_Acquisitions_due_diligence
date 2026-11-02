@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.18 (November 2, 2026: all four of Phase 8's open questions decided, the recommended defaults; earlier the same day, Phase 8 planned with R30 to R33 and its success targets; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.19 (November 2, 2026: R30 to R33 built in Phase 8's Step 1, not yet run on a real company; earlier the same day, Phase 8 planned and its four open questions decided; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -99,7 +99,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 - **R27.** The project includes a complete sample run: working memory, report PDF and scorecard.
 - **R28.** The project keeps `interview-notes.md` in first person, updated after significant features, major bug fixes and meaningful design changes.
 
-**Real data (Phase 8, planned, not built)**
+**Real data (Phase 8, built November 2, 2026; not yet run on a real company)**
 - **R30.** The system can run on a real public company's SEC filings and financial data as of a cutoff date. A download tool, run by the owner before the run, saves them into a target folder; the agents stay offline and read-only.
 - **R31.** For a real target, the agents use nothing dated after the cutoff and nothing from outside the data folder, including what the model may know about the company from training. The report says it is a historical backtest of a hypothetical deal.
 - **R32.** An empty source folder is reported as a gap and listed in the report's limitations, never filled from memory.

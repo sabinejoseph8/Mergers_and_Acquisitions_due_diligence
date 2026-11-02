@@ -35,6 +35,11 @@ def target_checks(target):
     return json.loads(read(path)) if path.exists() else {}
 
 
+def is_real(target):
+    """A real public company's target (written by tools/fetch_edgar.py), not a fictional one."""
+    return target_checks(target).get("real") is True
+
+
 def read(path):
     return pathlib.Path(path).read_text(encoding="utf-8")
 

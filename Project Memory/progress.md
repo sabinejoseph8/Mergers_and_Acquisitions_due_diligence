@@ -1,16 +1,16 @@
 # Progress: Project Falcon
 
-**Status:** Agreed, version 2.11 (November 2, 2026: all four of Phase 8's open questions decided, the recommended defaults, and its first task ticked; earlier the same day, Phase 8 planned, a real company's SEC filings tested by a backtest; not started).
+**Status:** Agreed, version 2.12 (November 2, 2026: Phase 8 started; Step 1 built and tested: the EDGAR download tool, the generic rules for a real target, the real-company report cover and seven new checks; earlier the same day, Phase 8 planned and its four open questions decided).
 
 ## Summary
 
-- **Current phase:** v1 complete: Phases 0 to 6 are done, and generalization is tested (Kestrel as a near-transfer test, Heron and Plover as held-out tests, all graded). Phase 7 is the optional roadmap after v1. Its first item, real SEC filings tested by a backtest, is planned as Phase 8 and starts when the owner says go.
+- **Current phase:** v1 complete: Phases 0 to 6 are done, and generalization is tested (Kestrel as a near-transfer test, Heron and Plover as held-out tests, all graded). Phase 7 is the optional roadmap after v1. Its first item, real SEC filings tested by a backtest, is Phase 8, in progress since November 2, 2026: the setup (Step 1) is built and tested.
 - **Overall status:** Phases 0 to 3 are done. The first test run is saved in `examples/sample-run/` and scored 97% recall (13 of 13 Critical and High issues), 0 unsupported findings and 0 distractors rated too high. The sample run passed all 34 checks that existed when it was made. Of today's 43 checks, it and runs 2 to 5 fail only the later "checkpoint content shown in chat" check, which postdates them. Three fully blind graded runs, each in a fresh session with the setup frozen, averaged 97.4% recall on the 13 Critical and High issues (range 96.2% to 100%) and 93.5% overall (91.7% to 94.4%), with 100% severity accuracy, 0 unsupported findings and 0 distractors rated too high in every run. A fourth blind run, the first with the fixes from the graded runs, found all 18 planted issues (100% recall overall and on Critical and High), with 100% severity accuracy, 0 unsupported findings and 0 distractors too high. A fifth blind run, with the quality fixes, held 100% Critical and High recall (97.2% overall) and met every quality target: 3 Critical issues instead of 11 Critical labels, 5 of 14 cross-source findings corrected instead of 9 of 19, a 14-row risk matrix instead of 90, and a 17-page report instead of 38. A sixth blind run, with run 5's two remaining suggestions, found all 18 planted issues again (100% overall and on Critical and High), with a 13-page report. All six graded runs are archived in `runs/`, each with its scorecard. The sample run and graded runs 1 to 4 passed all 34 checks that existed then, with none skipped; there were 40 checks after the run 5 fixes, and run 5 passes 39 of them (the new checkpoint-shown check fails on it by design). There are now 43 checks; run 6 passes 42 (six Low findings carry a non-standard status). Two checks for run 5's last two suggestions and one from the docs review bring the total to 43. The ID checks now read every finding ID format the runs use (`SEC-01`, `SEC-001`, `LIT-F01`). The project is on GitHub (`sabinejoseph8/Mergers_and_Acquisitions_due_diligence`), with `interview-notes.md` kept private. The README and case study are aimed at AI product manager roles. Plover, the fourth target built blind, was graded on October 31, 2026: all 18 planted issues found (100% overall and on Critical and High), 88.9% exact severity (Heron: 77.8%), 0 unsupported findings, 0 of 4 distractors too high, and all 49 checks passed (see Phase 7).
-- **Next action:** the reader test (owner, from the private portfolio kit). Then, when wanted, start Phase 8; its four open questions are decided. Plover's three instruction fixes are in the rules (known deal costs as price items; trend findings cite separate issues instead of restating them; controls and auditor on the fixed list of positives) but unmeasured. Phase 8 does not measure them; that still needs a blind graded run on a new fictional target.
+- **Next action:** the reader test (owner, from the private portfolio kit). Phase 8's next step is a case session that picks the company and cutoff (Step 2), and a first live download, which needs the owner's SEC contact. Plover's three instruction fixes are in the rules (known deal costs as price items; trend findings cite separate issues instead of restating them; controls and auditor on the fixed list of positives) but unmeasured. Phase 8 does not measure them; that still needs a blind graded run on a new fictional target.
 
 **Run 5 fixes (October 18, 2026):** run 5 showed three gaps that are not about diligence quality. (1) The lead agent asked the Checkpoint 1 question without printing the plan summary in chat, because in the desktop app a question box ends the turn. `CLAUDE.md` now says to print the full checkpoint content first and ask the question last, and to log that the content was shown. (2) One verifier run's headline said 10 partially verified while its table listed 6. The verifier now writes the table first and counts the summary from it. (3) This Mac has no pandoc, so run 5 wrote a throwaway converter. The owner chose to stay dependency-free: `tools/md2html.py` (Python standard library) converts the report, and headless Chrome prints the PDF. Six new checks cover these (40 in all). Run 5 fails one of them, the checkpoint-shown check, which is the defect it was written to catch.
 
-**How to run the automated checks:** type `/run-tests` in Claude Code, or run `python3 tests/run_all.py` in a terminal in the project folder. Add `--phase 1` (or 2, 3, 4, style) to run one phase, and `--run examples/sample-run` to check a saved run.
+**How to run the automated checks:** type `/run-tests` in Claude Code, or run `python3 tests/run_all.py` in a terminal in the project folder. Add `--phase 1` (or 2, 3, 4, 8, style) to run one phase, and `--run examples/sample-run` to check a saved run.
 
 ---
 
@@ -398,7 +398,7 @@ Automated tests and manual verification will be added when a phase starts.
 ## Phase 8: Real SEC filings, tested by a backtest
 
 **Goal:** show the system works on a real public company's SEC filings, and measure it without planted issues: did it spot warning signs that were already in the filings before a problem became public? This is the first item on the Phase 7 roadmap.
-**Status:** Roadmap (planned November 2, 2026, and its four open questions decided the same day; starts when the owner says go)
+**Status:** In progress (started November 2, 2026: Step 1 built and tested; Step 2 waits for a case session)
 
 **The design.** Connect at the folder, not the agent. Before a run, the owner runs a download tool that saves a real company's filings, as of a cutoff date, into a new target folder. The agents stay offline and read-only, the verifier checks exactly the files the analysts read, and the run can be repeated. Only the SEC filings and the financial data (from EDGAR's structured data) are real. The news and litigation folders stay empty for this target, because made-up news or court records about a real company are not acceptable; the report lists them as gaps. The deal is hypothetical. The answer key lists warning signs that were visible in the filings before the cutoff and that the later public record (for example a restatement or an SEC enforcement action) shows mattered.
 
@@ -407,16 +407,18 @@ Automated tests and manual verification will be added when a phase starts.
 **Step 1: before anyone picks the case**
 
 - [x] The owner answers the four open questions in the product spec: success targets, who picks the case, what gets published, and the empty news and litigation folders (all four decided November 2, 2026: the recommended defaults)
-- [ ] Download tool `tools/fetch_edgar.py` (Python standard library): takes a company (ticker or CIK), the forms (10-K, 10-Q, 8-K, DEF 14A), a cutoff date and a target name; keeps only filings filed before the cutoff; converts each filing to plain text and splits each 10-K and 10-Q into one file per Item, with an index (form, filing date, accession number, section files, SEC address); reads the contact SEC requires in each request from an environment variable, never from a committed file; stays under SEC's rate limit
-- [ ] Financial data from EDGAR's structured company facts, written as the CSV files the financial analyst already reads, using only values filed before the cutoff, so later restated numbers cannot leak in
-- [ ] Generic rule changes in `CLAUDE.md`, the subagents and `/evaluate`, naming no company: a target's README can mark it "Real public company, hypothetical deal, as of <cutoff>"; nothing dated after the cutoff is used; nothing from outside the data folder is used, including what the model may know from training; an empty source folder is reported as a gap and listed in the report's limitations, never filled from memory; the SEC analyst starts from the filing index and section files; `/evaluate` also counts hindsight leaks
-- [ ] Report template: for a real target, the cover says "Historical backtest using public filings as of <cutoff>" and "Hypothetical deal" instead of "Fictional case study"
-- [ ] Check updates (the owner lifts the deny rule on `tests/` for this one builder session, then restores it): a target's `checks.json` can mark it real, which swaps the "labeled fictional" check for the real-target label; the financial tie-out check becomes optional for real targets; new Phase 8 checks test the download tool on saved sample responses, with no network
+- [x] Download tool `tools/fetch_edgar.py` (Python standard library; built November 2, 2026): takes a company (ticker or CIK), the forms (10-K, 10-Q, 8-K, DEF 14A), a cutoff date and a target name; keeps only filings filed before the cutoff; converts each filing to plain text and splits each 10-K and 10-Q into one file per Item, with an index (form, filing date, accession number, section files, SEC address); reads the contact SEC requires in each request from an environment variable, never from a committed file; stays under SEC's rate limit
+- [x] Financial data from EDGAR's structured company facts, written as the CSV files the financial analyst already reads, using only values filed before the cutoff, so later restated numbers cannot leak in
+- [x] Generic rule changes in `CLAUDE.md`, the subagents and `/evaluate`, naming no company (the lead agent's rules for a real target are in `templates/real-target-rules.md`, so `CLAUDE.md` stays under 200 lines): a target's README can mark it "Real public company, hypothetical deal, as of <cutoff>"; nothing dated after the cutoff is used; nothing from outside the data folder is used, including what the model may know from training; an empty source folder is reported as a gap and listed in the report's limitations, never filled from memory; the SEC analyst starts from the filing index and section files; `/evaluate` also counts hindsight leaks
+- [x] Report template: for a real target, the cover says "Historical backtest using public filings as of <cutoff>" and "Hypothetical deal" instead of "Fictional case study"
+- [x] Check updates, applied by the owner as one patch on November 2, 2026, because edits to `tests/` stay denied to Claude: a target's `checks.json` can mark it real, which swaps the "labeled fictional" check for the real-target label; the financial tie-out checks skip real targets; new Phase 8 checks test the download tool on built-in sample responses, with no network
+
+**Step 1 result (November 2, 2026).** Built and tested on a copy of the project, since `tests/` is locked; the owner then applied the checks as one patch. All 56 checks pass in the project (49 before), and nothing changed for the four fictional targets. Four planted bugs (keeping a filing filed on the cutoff day, keeping a financial value filed after it, letting hidden XBRL text through, and dropping the rule that skips the table of contents) were each caught once one more sample filing was added: the first try missed the fourth, because the sample 10-Ks were too tidy to need the rule. A simulated real target, with a deal brief and answer key added by hand, passed every data check, and a filing dated after its cutoff made the cutoff check fail. Not yet tested: a live download from SEC, which needs the owner's contact (manual check 1).
 
 **Step 2: pick the case (a separate session)**
 
-- [ ] A case session picks a company and cutoff by the criteria in the tech spec, runs the contamination check, and writes the answer key to `targets/<name>/evaluation/`. It tells the owner only the company name and the cutoff, not the later event
-- [ ] The owner runs the download tool, then `python3 tests/run_all.py --write-manifest --target <name>`
+- [ ] A case session picks a company and cutoff by the criteria in the tech spec, runs the contamination check, and tells the owner only the company name and the cutoff, not the later event. After the download, it writes the deal brief and the answer key to `targets/<name>/`
+- [ ] The owner runs the download tool between the case session's two steps, then `python3 tests/run_all.py --write-manifest --target <name>` once the answer key exists
 
 **Step 3: run and grade**
 
@@ -424,13 +426,15 @@ Automated tests and manual verification will be added when a phase starts.
 - [ ] `/evaluate <name>` grades the run, and `/reset-memory` archives it
 - [ ] Record the result with its limits first in the README, case study, Project Memory and interview notes, and publish only what the owner chose in open question 3
 
-**Automated tests** (`python3 tests/run_all.py`):
-1. The download tool keeps no filing filed on or after the cutoff.
-2. Each 10-K splits into its Items (at least 1, 1A, 7, 8 and 9A), with an index that lists every section file.
+**Automated tests** (`python3 tests/run_all.py --phase 8`, and Phase 2 for a real target):
+1. The download tool keeps no filing filed on or after the cutoff, and never downloads one.
+2. Each 10-K and 10-Q splits into its Items (at least 1, 1A, 7, 8 and 9A for a 10-K), even when the contents list more Items than the body labels; the index lists every file; hidden XBRL header text is dropped.
 3. The tool stops with a clear message if the SEC contact is not set.
-4. The financial CSV files use only values filed before the cutoff.
-5. A real target carries the real-target label, and its checksum manifest holds.
-6. All 49 earlier checks still pass.
+4. The financial CSV files use only values filed before the cutoff; a restatement filed later is ignored.
+5. A real target carries the real-target label, its news and litigation folders say they have no sources, and the tool never writes the deal brief or the answer key.
+6. The tool will not overwrite a download without `--force`.
+7. Phase 2: a real target's filings and financial values predate its cutoff, and its checksum manifest holds.
+8. All 49 earlier checks still pass (56 in all).
 
 **Manual verification:**
 1. Run the download tool on the chosen company. **Expected:** only filings from before the cutoff, an index, and section files you can open and read.

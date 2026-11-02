@@ -1,13 +1,15 @@
-"""Phase 2: each target's simulated sources are complete, consistent and unchanged.
-Runs for every folder in targets/ that has a data_manifest.json."""
+"""Phase 2: each target's sources are complete, consistent and unchanged.
+Runs for every folder in targets/ that has a data_manifest.json. A real target (Phase 8) has real filings
+instead of simulated statements, so the tie-out checks skip it and its own cutoff check runs instead."""
 import csv
 import json
 import re
 import unittest
 
-from _common import MANIFEST_NAME, checksums, read, target_checks, targets
+from _common import MANIFEST_NAME, checksums, is_real, read, target_checks, targets
 
 TARGETS = targets()
+REAL = [t for t in TARGETS if is_real(t)]
 
 
 def load(fin, name):
@@ -35,7 +37,7 @@ class TestFinancialsTieOut(unittest.TestCase):
     def each(self):
         for target in TARGETS:
             fin = target / "data" / "financials"
-            if fin.is_dir():
+            if fin.is_dir() and not is_real(target):
                 with self.subTest(target=target.name):
                     yield target.name, fin
 
@@ -96,10 +98,12 @@ class TestFinancialsTieOut(unittest.TestCase):
 
 
 class TestSourcesComplete(unittest.TestCase):
-    def test_every_document_is_labeled_fictional(self):
+    def test_every_document_is_labeled_fictional_or_real(self):
         for target in TARGETS:
+            labels = ("REAL PUBLIC COMPANY", "HYPOTHETICAL DEAL") if is_real(target) else ("FICTIONAL",)
             for path in (target / "data").rglob("*.md"):
-                self.assertIn("FICTIONAL", read(path).upper(), f"{target.name}: {path.name} is not labeled fictional")
+                for label in labels:
+                    self.assertIn(label, read(path).upper(), f"{target.name}: {path.name} is not labeled {label.lower()}")
 
     def test_deal_brief_and_readme_exist(self):
         for target in TARGETS:
@@ -125,12 +129,31 @@ class TestSourcesComplete(unittest.TestCase):
             distractors = sorted({i for i in ids if i.startswith("D")})
             self.assertEqual(planted, [f"P{n:02d}" for n in range(1, len(planted) + 1)], f"{target.name}: planted IDs must run P01, P02, ... with no gaps")
             self.assertEqual(distractors, [f"D{n}" for n in range(1, len(distractors) + 1)], f"{target.name}: distractor IDs must run D1, D2, ... with no gaps")
-            self.assertTrue(planted and distractors, f"{target.name}: the answer key needs planted issues and distractors")
+            # A real target's answer key lists warning signs only: nothing was planted, so it has no distractors.
+            self.assertTrue(planted and (distractors or is_real(target)), f"{target.name}: the answer key needs planted issues and distractors")
             expected = target_checks(target).get("answer_key", {})
             if "planted_issues" in expected:
                 self.assertEqual(len([i for i in ids if i.startswith("P")]), expected["planted_issues"], target.name)
             if "distractors" in expected:
                 self.assertEqual(len([i for i in ids if i.startswith("D")]), expected["distractors"], target.name)
+
+
+class TestRealTargets(unittest.TestCase):
+    @unittest.skipUnless(REAL, "no real target yet")
+    def test_real_target_data_predates_its_cutoff(self):
+        for target in REAL:
+            cutoff = target_checks(target).get("cutoff", "")
+            self.assertRegex(cutoff, r"^\d{4}-\d{2}-\d{2}$", f"{target.name}: checks.json needs a cutoff date")
+            filings = target / "data" / "sec-filings"
+            index = read(filings / "index.md")
+            dates = re.findall(r"^\| [^|]+ \| (\d{4}-\d{2}-\d{2}) \|", index, re.M)
+            folders = [p.name.split("_")[1] for p in filings.iterdir() if p.is_dir()]
+            self.assertTrue(dates and folders, f"{target.name}: no filings listed")
+            late = sorted(d for d in dates + folders if d >= cutoff)
+            self.assertFalse(late, f"{target.name}: filings dated on or after the cutoff {cutoff}: {late}")
+            with open(target / "data" / "financials" / "xbrl_facts.csv", encoding="utf-8") as fh:
+                filed = [row["filed"] for row in csv.DictReader(fh)]
+            self.assertFalse([d for d in filed if d >= cutoff], f"{target.name}: financial values filed on or after {cutoff}")
 
 
 class TestSourcesUnchanged(unittest.TestCase):
