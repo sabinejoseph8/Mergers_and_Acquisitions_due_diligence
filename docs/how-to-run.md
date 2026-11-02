@@ -42,7 +42,7 @@ Type `/evaluate` (or `/evaluate <target>`) and approve the request to open the a
 
 ## Run it again
 
-Type `/reset-memory`. Your previous run, its target name and its scorecard are archived together in a dated folder in `runs/`, and working memory is cleared. To check an archived run later, type `python3 tests/run_all.py --run runs/<folder>`.
+Type `/reset-memory`. Your previous run, its target name and its scorecard are archived together in a dated folder in `runs/`, and working memory is cleared. To check an archived run later, type `python3 tests/run_all.py --run runs/<folder>`. A real target's run is private, so it is archived instead in `targets/<target>/evaluation/runs/<folder>`, which Git must ignore; the command stops if it does not.
 
 ## If you have no PDF tool
 
