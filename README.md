@@ -233,6 +233,22 @@ Open the folder in Claude Code and type `/diligence` (or `/diligence <target>` f
 
 For a truly blind test, start a fresh Claude Code session in the folder, run `/diligence`, then `/evaluate` and compare your scorecard with the sample run. Claude Code asks before any agent can open the answer key, a scorecard or an earlier run.
 
+## A real company: the first backtest
+
+The fictional targets test the system on issues someone planted. The backtest tests it on real SEC filings, where nobody planted anything. A download tool (`tools/fetch_edgar.py`) saved one real public company's filings and EDGAR's structured financial data as of a cutoff date (December 1, 2018) into a target folder. The agents stayed offline and read-only. The deal is hypothetical. News and litigation stayed empty, because made-up news or court records about a real company are not acceptable, and the report lists them as gaps. The answer key lists warning signs that were visible in the filings before the cutoff and that the later public record shows mattered.
+
+**Limits first.** It is one company, picked by a separate session that knew the later record. I knew the company name, so I approved each checkpoint without steering. The answer key has 10 warning signs and no distractors, so it cannot show false alarms. The company, the full report and the scorecard stay private: they are an AI's red-flag list about a real, named company, and AI output can still be wrong.
+
+| Target, set before the run | Result |
+|---|---|
+| At least 2 in 3 of the warning signs found | 10 of 10 |
+| The sign most tied to the later event is in the top five red flags | Yes, third |
+| Unsupported findings in the report | 0 |
+| Hindsight leaks (anything dated after the cutoff) | 0 |
+| Three checkpoints held, nine report parts, empty sources listed as gaps | Yes |
+
+Severity matched the answer key exactly on all 10. The warning signs were about one large related-party loan to insiders: no allowance, repeated modifications, no cash collected, a bonus used to pay it down, collateral in the company's own shares, a partial asset sale, management's "no risk of loss" judgment, unpaid interest booked as income, a material weakness in controls, and board control by the borrowers. The grader still found three weak spots. The run did not test a write-off against equity and restatement risk. It counted share collateral valued at the buyer's own offer price as a positive. And it kept the control weakness apart from the transactions it could affect. Those become rules, measured on a second backtest.
+
 ## From demo to a real deal
 
 - Replace the simulated folders with real sources: filings downloaded from SEC EDGAR, a news feed or news connector, court records (for example docket exports), and the virtual data room.

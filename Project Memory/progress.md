@@ -1,12 +1,12 @@
 # Progress: Project Falcon
 
-**Status:** Agreed, version 2.13 (November 2, 2026: the download tool's section split fixed and measured on 81 random real filings; earlier, Phase 8 started; Step 1 built and tested: the EDGAR download tool, the generic rules for a real target, the real-company report cover and seven new checks; earlier the same day, Phase 8 planned and its four open questions decided).
+**Status:** Agreed, version 2.14 (November 2, 2026: backtest-1 run blind, graded and archived privately, with 10 of 10 warning signs found, 0 unsupported findings and 0 hindsight leaks; earlier, the download tool's section split fixed and measured on 81 random real filings; earlier, Phase 8 started; Step 1 built and tested: the EDGAR download tool, the generic rules for a real target, the real-company report cover and seven new checks; earlier the same day, Phase 8 planned and its four open questions decided).
 
 ## Summary
 
-- **Current phase:** v1 complete: Phases 0 to 6 are done, and generalization is tested (Kestrel as a near-transfer test, Heron and Plover as held-out tests, all graded). Phase 7 is the optional roadmap after v1. Its first item, real SEC filings tested by a backtest, is Phase 8, in progress since November 2, 2026: the setup (Step 1) is built and tested.
+- **Current phase:** v1 complete: Phases 0 to 6 are done, and generalization is tested (Kestrel as a near-transfer test, Heron and Plover as held-out tests, all graded). Phase 7 is the optional roadmap after v1. Its first item, real SEC filings tested by a backtest, is Phase 8, in progress since November 2, 2026: the setup (Step 1) is built and tested, and backtest-1 met all five targets the same day.
 - **Overall status:** Phases 0 to 3 are done. The first test run is saved in `examples/sample-run/` and scored 97% recall (13 of 13 Critical and High issues), 0 unsupported findings and 0 distractors rated too high. The sample run passed all 34 checks that existed when it was made. Of today's 43 checks, it and runs 2 to 5 fail only the later "checkpoint content shown in chat" check, which postdates them. Three fully blind graded runs, each in a fresh session with the setup frozen, averaged 97.4% recall on the 13 Critical and High issues (range 96.2% to 100%) and 93.5% overall (91.7% to 94.4%), with 100% severity accuracy, 0 unsupported findings and 0 distractors rated too high in every run. A fourth blind run, the first with the fixes from the graded runs, found all 18 planted issues (100% recall overall and on Critical and High), with 100% severity accuracy, 0 unsupported findings and 0 distractors too high. A fifth blind run, with the quality fixes, held 100% Critical and High recall (97.2% overall) and met every quality target: 3 Critical issues instead of 11 Critical labels, 5 of 14 cross-source findings corrected instead of 9 of 19, a 14-row risk matrix instead of 90, and a 17-page report instead of 38. A sixth blind run, with run 5's two remaining suggestions, found all 18 planted issues again (100% overall and on Critical and High), with a 13-page report. All six graded runs are archived in `runs/`, each with its scorecard. The sample run and graded runs 1 to 4 passed all 34 checks that existed then, with none skipped; there were 40 checks after the run 5 fixes, and run 5 passes 39 of them (the new checkpoint-shown check fails on it by design). There are now 43 checks; run 6 passes 42 (six Low findings carry a non-standard status). Two checks for run 5's last two suggestions and one from the docs review bring the total to 43. The ID checks now read every finding ID format the runs use (`SEC-01`, `SEC-001`, `LIT-F01`). The project is on GitHub (`sabinejoseph8/Mergers_and_Acquisitions_due_diligence`), with `interview-notes.md` kept private. The README and case study are aimed at AI product manager roles. Plover, the fourth target built blind, was graded on October 31, 2026: all 18 planted issues found (100% overall and on Critical and High), 88.9% exact severity (Heron: 77.8%), 0 unsupported findings, 0 of 4 distractors too high, and all 49 checks passed (see Phase 7).
-- **Next action:** the reader test (owner, from the private portfolio kit). Phase 8's next step is a case session that picks the company and cutoff (Step 2), and a first live download, which needs the owner's SEC contact. Plover's three instruction fixes are in the rules (known deal costs as price items; trend findings cite separate issues instead of restating them; controls and auditor on the fixed list of positives) but unmeasured. Phase 8 does not measure them; that still needs a blind graded run on a new fictional target.
+- **Next action:** the reader test (owner, from the private portfolio kit). Phase 8's next step is the three rule changes from backtest-1's scorecard, then backtest-2 (Step 4). Plover's three instruction fixes are in the rules (known deal costs as price items; trend findings cite separate issues instead of restating them; controls and auditor on the fixed list of positives) but unmeasured. Phase 8 does not measure them; that still needs a blind graded run on a new fictional target.
 
 **Run 5 fixes (October 18, 2026):** run 5 showed three gaps that are not about diligence quality. (1) The lead agent asked the Checkpoint 1 question without printing the plan summary in chat, because in the desktop app a question box ends the turn. `CLAUDE.md` now says to print the full checkpoint content first and ask the question last, and to log that the content was shown. (2) One verifier run's headline said 10 partially verified while its table listed 6. The verifier now writes the table first and counts the summary from it. (3) This Mac has no pandoc, so run 5 wrote a throwaway converter. The owner chose to stay dependency-free: `tools/md2html.py` (Python standard library) converts the report, and headless Chrome prints the PDF. Six new checks cover these (40 in all). Run 5 fails one of them, the checkpoint-shown check, which is the defect it was written to catch.
 
@@ -398,7 +398,7 @@ Automated tests and manual verification will be added when a phase starts.
 ## Phase 8: Real SEC filings, tested by a backtest
 
 **Goal:** show the system works on a real public company's SEC filings, and measure it without planted issues: did it spot warning signs that were already in the filings before a problem became public? This is the first item on the Phase 7 roadmap.
-**Status:** In progress (started November 2, 2026: Step 1 built and tested; Step 2 waits for a case session)
+**Status:** In progress (started November 2, 2026: Step 1 built and tested; backtest-1 picked, run blind, graded and archived privately the same day, meeting all five targets; next, the scorecard's three rule changes, then backtest-2)
 
 **The design.** Connect at the folder, not the agent. Before a run, the owner runs a download tool that saves a real company's filings, as of a cutoff date, into a new target folder. The agents stay offline and read-only, the verifier checks exactly the files the analysts read, and the run can be repeated. Only the SEC filings and the financial data (from EDGAR's structured data) are real. The news and litigation folders stay empty for this target, because made-up news or court records about a real company are not acceptable; the report lists them as gaps. The deal is hypothetical. The answer key lists warning signs that were visible in the filings before the cutoff and that the later public record (for example a restatement or an SEC enforcement action) shows mattered.
 
@@ -421,14 +421,37 @@ Automated tests and manual verification will be added when a phase starts.
 
 **Step 2: pick the case (a separate session)**
 
-- [ ] A case session picks a company and cutoff by the criteria in the tech spec, runs the contamination check, and tells the owner only the company name and the cutoff, not the later event. After the download, it writes the deal brief and the answer key to `targets/<name>/`
-- [ ] The owner runs the download tool between the case session's two steps, then `python3 tests/run_all.py --write-manifest --target <name>` once the answer key exists
+- [x] A case session picks a company and cutoff by the criteria in the tech spec, runs the contamination check, and tells the owner only the company name and the cutoff, not the later event. After the download, it writes the deal brief and the answer key to `targets/<name>/`
+- [x] The owner runs the download tool between the case session's two steps, then `python3 tests/run_all.py --write-manifest --target <name>` once the answer key exists
 
 **Step 3: run and grade**
 
-- [ ] A fresh session runs `/diligence <name>`. The owner approves each checkpoint without steering
-- [ ] `/evaluate <name>` grades the run, and `/reset-memory` archives it
-- [ ] Record the result with its limits first in the README, case study, Project Memory and interview notes, and publish only what the owner chose in open question 3
+- [x] A fresh session runs `/diligence <name>`. The owner approves each checkpoint without steering
+- [x] `/evaluate <name>` grades the run, and `/reset-memory` archives it
+- [x] Record the result with its limits first in the README, case study, Project Memory and interview notes, and publish only what the owner chose in open question 3
+
+**Backtest-1 result (November 2, 2026).** One real public company, a hypothetical deal and a cutoff of December 1, 2018. Only SEC filings and EDGAR's structured financial data were used; news and litigation were empty and listed as gaps. A case session picked the company and wrote the answer key; a fresh session ran `/diligence` without seeing the key, and the owner approved all three checkpoints without steering.
+
+Limits first: this is one company, picked by a session that knew the later record; the owner knew the company name; the answer key has 10 warning signs and no distractors, so it cannot show false alarms; the run-log times after about 15:20 were estimates, so time is not measured; and the full report and scorecard stay private (open question 3).
+
+Against the five targets, all met:
+1. Warning signs found: 10 of 10 (target: at least 2 in 3). Severity within one level 10 of 10, and exact 10 of 10.
+2. The warning sign most tied to the later event was third in the top five red flags.
+3. Unsupported findings in the report: 0. The verifier checked 115 findings: 62 verified, 53 partially verified with wording corrected, 0 rejected; 31 Low left unverified and labeled so.
+4. Hindsight leaks: 0. The latest source used was filed before the cutoff, and the report links only to SEC.
+5. All three checkpoints shown in chat, all nine report parts, both empty sources listed as gaps, and the cover labeled historical backtest and hypothetical deal.
+
+The answer key's categories: a large related-party loan to insiders with no allowance, repeated loan modifications, no cash collected on it, a bonus used to pay it down, collateral in the company's own shares, a partial asset sale against it, management's "no risk of loss" judgment, accrued but unpaid interest as a share of income, a material weakness in controls, and board control by the borrowers.
+
+What the grader still marked weak, to fix before backtest-2: the run rated the loan High rather than testing a write-off against equity and restatement risk; it counted share collateral valued at the buyer's offer price as a positive; and it kept the control weakness apart from the complex transactions it could affect, and traced the loan only from 2015.
+
+Two process fixes came out of the run: the run check now accepts an empty source folder (owner's patch, 7d25ad7), and `/reset-memory` archives a real target's run where Git ignores it (f0eab66).
+
+**Step 4: second backtest**
+
+- [ ] Add the scorecard's three improvements to `CLAUDE.md`, the SEC analyst and the citation verifier, worded with no company's names or figures, by a session that has not seen backtest-1's answer key: test an overstated related-party asset against equity and for restatement risk; do not count collateral in the target's own shares at the offer price, or guaranties from controlling insiders, as mitigants without an enforceability test; tie a control weakness to the complex transactions it could affect, and trace related-party arrangements from their first disclosure
+- [ ] A new case session prepares backtest-2, and its folder is added to `.git/info/exclude`
+- [ ] A fresh session that has seen no answer key runs it blind; grade, archive and record it as for backtest-1
 
 **Automated tests** (`python3 tests/run_all.py --phase 8`, and Phase 2 for a real target):
 1. The download tool keeps no filing filed on or after the cutoff, and never downloads one.

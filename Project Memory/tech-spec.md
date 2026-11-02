@@ -1,6 +1,6 @@
 # Tech Spec: Project Falcon
 
-**Status:** Agreed, version 1.20 (November 2, 2026: the download tool's section split fixed and measured on 81 random real filings, 58 checks; earlier, Phase 8's Step 1 built: `tools/fetch_edgar.py`, `templates/real-target-rules.md` and the Phase 8 checks, 56 in all; earlier the same day, Phase 8 planned and the full backtest report kept private by the owner's decision).
+**Status:** Agreed, version 1.21 (November 2, 2026: the first real-company backtest run, graded and archived privately, with `/reset-memory` keeping a real target's run out of Git; earlier, the download tool's section split fixed and measured on 81 random real filings, 58 checks; earlier, Phase 8's Step 1 built: `tools/fetch_edgar.py`, `templates/real-target-rules.md` and the Phase 8 checks, 56 in all; earlier the same day, Phase 8 planned and the full backtest report kept private by the owner's decision).
 
 This file holds the technical decisions and system patterns. It describes the system as built so far, and flags the risks that matter most.
 
@@ -19,7 +19,7 @@ Project Falcon runs inside Claude Code on the operator's computer. There is no s
 | **Report pipeline** | Markdown report, converted to a styled web page and a PDF | `output/`, `templates/report-style.css` |
 | **Evaluation** | Answer key of planted issues per target and a grading command | `targets/<target>/evaluation/`, `/evaluate` |
 | **Automated checks** | Tests for each build phase, plus a run checker | `tests/`, `/run-tests` |
-| **Archive** | Past runs and their scorecards, moved aside by `/reset-memory` | `runs/` |
+| **Archive** | Past runs and their scorecards, moved aside by `/reset-memory` | `runs/` for a fictional target; `targets/<target>/evaluation/runs/` for a real one, ignored by Git |
 | **Portfolio** | README (with the demo video), diagram, run guide, sample run, case study, planning files | `README.md`, `docs/`, `examples/`, `Project Memory/` |
 
 ```
@@ -76,7 +76,7 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
 | Lead agent | Verifier | The target's source folder and a list of findings: ID, claim, cited sources, severity |
 | Verifier | Lead agent | One report per batch: a verdict for each finding, what was checked and any correction. The lead rewrites each Partially verified row with that wording before Checkpoint 3 |
 | `/evaluate` | Answer key | Read only after the operator approves the permission prompt |
-| `/reset-memory` | Archive | Moves `memory/` (including `target.txt`), `output/` and the target's `evaluation/scorecard.md` into a dated `runs/` folder, then restores the blank templates |
+| `/reset-memory` | Archive | Moves `memory/` (including `target.txt`), `output/` and the target's `evaluation/scorecard.md` into a dated `runs/` folder (for a real target, into `targets/<target>/evaluation/runs/`, and only after checking that Git ignores the target folder), then restores the blank templates |
 | Report pipeline | Files | Markdown, then HTML with the stylesheet embedded, then PDF |
 
 ## System patterns (secure and extensible)
@@ -189,6 +189,7 @@ Riskiest first. The first four are addressed in the earliest phases.
 | 2026-10-19 | The GitHub repository is renamed `sabinejoseph8/Mergers_and_Acquisitions_due_diligence`, with the description "Mergers and Acquisitions due diligence" and the same README heading. GitHub redirects the old address, so earlier links and the saved run reports still work. |
 | 2026-10-31 | Three rule changes from Plover's scorecard, made by a fresh session that had not opened any answer key, scorecard or earlier run, and worded with no target's names, figures or issue IDs. (1) A "Known deal costs" rule next to the debt calibration rule in `CLAUDE.md` and in all four analysts' rubrics: equity-award cash-outs, break fees and change-in-control severance with a stated or computable amount are Medium price items, High only if they total more than 5% of value, with the Critical test above 10%; the verifier's severity check says the same. (2) The Step 3 self-check: a trend `X-` finding states only the trend's own headline numbers and cites a separate issue by ID instead of restating it. (3) The executive summary's fixed list of mitigants adds the internal controls conclusion and auditor tenure and opinion, and a positive another finding puts in doubt is listed as qualified, with both IDs; the SEC analyst now reports a clean controls and auditor result as a positive. `.claude/commands/diligence.md` restates none of these, so it is unchanged. Unmeasured until the next blind graded run. |
 | 2026-11-02 | Phase 8 planned: a download tool (`tools/fetch_edgar.py`, standard library) saves a real company's EDGAR filings and structured financial data, as of a cutoff, into a target folder before the run. The agents stay offline and read-only. Evaluation is a backtest with a contamination check and a hindsight-leak count. Test changes need the owner to lift the deny rule on `tests/` for one builder session. |
+| 2026-11-02 | First backtest (backtest-1) run blind and graded. Two changes from it: (1) the run check accepts a workstream whose source folder holds only `NO-SOURCES.md` and then requires it to have no findings, applied by the owner as one patch because `tests/` is locked; (2) `/reset-memory` archives a real target's run and scorecard into `targets/<target>/evaluation/runs/<date>/` instead of the tracked `runs/`, and stops if Git does not ignore the target folder, because a real company's report stays private. Design note: the SEC tool ran as three parallel instances with separate ID blocks, and verification as four parallel runs. |
 
 ## Open questions (with recommended defaults)
 
