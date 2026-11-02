@@ -30,23 +30,34 @@ FILINGS = [
 LATER = {"0001234567-23-000020", "0001234567-23-000030", "0001234567-22-000040"}
 
 
-def ten_k(year, untitled=None):
-    """A small 10-K with a table of contents. `untitled` drops one Item's "Item n." label from the body,
-    so the contents list more Items than the body shows, as messy real filings sometimes do."""
+def ten_k(year, messy=False):
+    """A small 10-K with a table of contents. A messy one is like real filings that broke the first version:
+    the body drops one Item's "Item n." label (so the contents list more Items than the body shows), the source
+    HTML breaks lines inside each heading, and the financial statements come after the signatures."""
     items = [("1", "Business"), ("1A", "Risk Factors"), ("2", "Properties"), ("3", "Legal Proceedings"),
              ("7", "Management's Discussion and Analysis"), ("8", "Financial Statements"), ("9A", "Controls and Procedures")]
     contents = "".join(f"<tr><td>Item {k}.</td><td>{t}</td><td>{n + 3}</td></tr>" for n, (k, t) in enumerate(items))
-    body = "".join(f"<p><b>{'' if k == untitled else f'Item {k}. '}{t}</b></p><p>{t} text for {year}. {FILLER}</p>" for k, t in items)
+    label = (lambda k: "" if k == "2" else f"Item\n      {k}. ") if messy else (lambda k: f"Item {k}. ")
+    body = "".join(f"<p><b>{label(k)}{t}</b></p><p>{t} text for {year}. {FILLER}</p>" for k, t in items)
+    if messy:
+        body += ("<p>SIGNATURES</p><p>Signed on behalf of the registrant.</p><p>CONSOLIDATED BALANCE SHEETS</p>"
+                 f"<p>{FILLER * 6}</p><p>NOTES TO CONSOLIDATED FINANCIAL STATEMENTS</p><p>Note text for {year}. {FILLER * 40}</p>")
     return (f"<html><head><title>10-K</title></head><body><ix:header><ix:hidden>hidden-xbrl-text</ix:hidden></ix:header>"
             f"<p>ANNUAL REPORT FOR {year}</p><p>Table of Contents</p><table>{contents}</table>{body}</body></html>").encode()
 
 
 def ten_q():
-    sections = [("PART I. FINANCIAL INFORMATION", None), ("Item 1. Financial Statements", "statements"),
-                ("Item 2. Management's Discussion and Analysis", "discussion"), ("Item 4. Controls and Procedures", "controls"),
+    """A 10-Q whose body never repeats "PART I" after the contents page, so only the Item titles say which part
+    each Item belongs to. One heading has its title on the next line."""
+    contents = "".join(f"<tr><td>{h}</td><td>{p}</td></tr>" for h, p in [
+        ("PART I. FINANCIAL INFORMATION", ""), ("Item 1. Financial Statements", 3), ("Item 2. Management's Discussion and Analysis", 12),
+        ("Item 4. Controls and Procedures", 20), ("PART II. OTHER INFORMATION", ""), ("Item 1. Legal Proceedings", 21),
+        ("Item 1A. Risk Factors", 21)])
+    sections = [("Item 1. Financial Statements", None), ("CONDENSED CONSOLIDATED BALANCE SHEETS", f"statements section. {FILLER * 14}"),
+                ("Item 2.", None), ("Management's Discussion and Analysis", "discussion"), ("Item 4. Controls and Procedures", "controls"),
                 ("PART II. OTHER INFORMATION", None), ("Item 1. Legal Proceedings", "legal"), ("Item 1A. Risk Factors", "quarterly risk")]
     body = "".join(f"<p>{h}</p>" + (f"<p>The {t} section. {FILLER}</p>" if t else "") for h, t in sections)
-    return f"<html><body><p>QUARTERLY REPORT</p>{body}</body></html>".encode()
+    return f"<html><body><p>QUARTERLY REPORT</p><table>{contents}</table>{body}</body></html>".encode()
 
 
 EIGHT_K = (
@@ -90,7 +101,7 @@ def responses():
         f"https://data.sec.gov/api/xbrl/companyfacts/CIK{CIK:010d}.json": FACTS,
     }
     out = {url: json.dumps(body).encode() for url, body in pages.items()}
-    out[f"{BASE}/000123456722000010/tst-20211231.htm"] = ten_k(2021, untitled="2")
+    out[f"{BASE}/000123456722000010/tst-20211231.htm"] = ten_k(2021, messy=True)
     out[f"{BASE}/000123456723000010/tst-20221231.htm"] = ten_k(2022)
     out[f"{BASE}/000123456722000020/tst-20220331.htm"] = ten_q()
     out[f"{BASE}/000123456722000030/0001234567-22-000030.txt"] = EIGHT_K
@@ -170,12 +181,32 @@ class TestFetchEdgar(unittest.TestCase):
         for path in self.filings.rglob("*.txt"):
             self.assertIn(f"`{path.parent.name}/{path.name}`", self.index, f"index.md does not list {path.name}")
 
+    def test_puts_statements_after_the_signatures_in_their_own_file(self):
+        folder = self.filing("10-K_2022-02-25")
+        after = list(folder.glob("*_after-signatures.txt"))
+        self.assertEqual(len(after), 1, sorted(p.name for p in folder.iterdir()))
+        self.assertIn("NOTES TO CONSOLIDATED FINANCIAL STATEMENTS", after[0].read_text(encoding="utf-8"))
+        last_item = next(folder.glob("*_item-9a.txt")).read_text(encoding="utf-8")
+        self.assertNotIn("NOTES TO CONSOLIDATED", last_item, "the statements padded the last Item")
+        line = next(l for l in self.index.splitlines() if after[0].name in l)
+        self.assertIn("includes financial statements", line)
+
+    def test_labels_quarterly_items_by_title_when_the_part_heading_is_missing(self):
+        folder = self.filing("10-Q_")
+        statements = next(folder.glob("*_part-i_item-1.txt")).read_text(encoding="utf-8")
+        self.assertIn("The statements section", statements)
+        self.assertTrue(list(folder.glob("*_part-i_item-2.txt")), sorted(p.name for p in folder.iterdir()))
+        line = next(l for l in self.index.splitlines() if "_part-i_item-1.txt" in l and folder.name in l)
+        self.assertIn("includes financial statements", line)
+        risk = next(l for l in self.index.splitlines() if "_part-ii_item-1a.txt" in l and folder.name in l)
+        self.assertNotIn("includes financial statements", risk)
+
     def test_stops_without_the_sec_contact(self):
-        for env in ({}, {"SEC_USER_AGENT": "nobody"}):
+        for env in ({}, {"SEC_USER_AGENT": "nobody"}, {"SEC_USER_AGENT": "Your Name your.address@example.com"}):
             with self.assertRaises(SystemExit) as raised:
                 self.tool.make_fetcher(env=env)
             self.assertIn("SEC_USER_AGENT", str(raised.exception.code))
-        self.assertIsNotNone(self.tool.make_fetcher(env={"SEC_USER_AGENT": "Test Owner owner@example.com"}))
+        self.assertIsNotNone(self.tool.make_fetcher(env={"SEC_USER_AGENT": "Test Owner owner@sample-firm.test"}))
 
     def test_financial_values_were_filed_before_the_cutoff(self):
         with open(self.data / "financials" / "xbrl_facts.csv", encoding="utf-8") as fh:

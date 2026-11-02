@@ -1,6 +1,6 @@
 # Progress: Project Falcon
 
-**Status:** Agreed, version 2.12 (November 2, 2026: Phase 8 started; Step 1 built and tested: the EDGAR download tool, the generic rules for a real target, the real-company report cover and seven new checks; earlier the same day, Phase 8 planned and its four open questions decided).
+**Status:** Agreed, version 2.13 (November 2, 2026: the download tool's section split fixed and measured on 81 random real filings; earlier, Phase 8 started; Step 1 built and tested: the EDGAR download tool, the generic rules for a real target, the real-company report cover and seven new checks; earlier the same day, Phase 8 planned and its four open questions decided).
 
 ## Summary
 
@@ -415,6 +415,10 @@ Automated tests and manual verification will be added when a phase starts.
 
 **Step 1 result (November 2, 2026).** Built and tested on a copy of the project, since `tests/` is locked; the owner then applied the checks as one patch. All 56 checks pass in the project (49 before), and nothing changed for the four fictional targets. Four planted bugs (keeping a filing filed on the cutoff day, keeping a financial value filed after it, letting hidden XBRL text through, and dropping the rule that skips the table of contents) were each caught once one more sample filing was added: the first try missed the fourth, because the sample 10-Ks were too tidy to need the rule. A simulated real target, with a deal brief and answer key added by hand, passed every data check, and a filing dated after its cutoff made the cutoff check fail. Not yet tested: a live download from SEC, which needs the owner's contact (manual check 1).
 
+- [x] Fix the section split that the first live download exposed (November 2, 2026, by a session that has not seen the case): 7 of 13 periodic filings were saved whole, and in one 10-Q the notes landed in the exhibits Item
+
+**Split fix result (November 2, 2026).** Measured on random real 10-K and 10-Q filings from SEC's daily filing lists (2019 to 2024), never on the case's own filings: 45 to find and fix the problems, then 36 fresh ones to confirm. Three causes: line breaks inside a heading in the HTML source were read as new lines ("Item" and "1." on separate lines); many filers put the financial statements after the signatures, which padded the last Item; and some 10-Qs never repeat "PART I" after the contents page, so Part I Items were labeled Part II. Fixed: source line breaks count as spaces, the text after the signatures gets its own file, a 10-Q Item's part comes from its standard title, and the index marks each section that includes financial statements. Across all 81 filings, 81 now split into Items (75 before), and the statements are flagged in 73 of the 73 filings that include them (65 before); the other 8 are trusts whose 10-K omits financial statements. The fresh 36 alone: 36 of 36 split (34 before), 32 of 32 statements flagged (30 before). The third cause was found in the half kept back for testing, which is why a fresh sample was downloaded for the final check. Also: the tool now asks for the SEC contact in a terminal and refuses the example contact, after the example was copied unchanged twice. Two new checks (58 in all). Backtest-1's data was downloaded before this fix and was not downloaded again; it was already graded.
+
 **Step 2: pick the case (a separate session)**
 
 - [ ] A case session picks a company and cutoff by the criteria in the tech spec, runs the contamination check, and tells the owner only the company name and the cutoff, not the later event. After the download, it writes the deal brief and the answer key to `targets/<name>/`
@@ -433,8 +437,9 @@ Automated tests and manual verification will be added when a phase starts.
 4. The financial CSV files use only values filed before the cutoff; a restatement filed later is ignored.
 5. A real target carries the real-target label, its news and litigation folders say they have no sources, and the tool never writes the deal brief or the answer key.
 6. The tool will not overwrite a download without `--force`.
-7. Phase 2: a real target's filings and financial values predate its cutoff, and its checksum manifest holds.
-8. All 49 earlier checks still pass (56 in all).
+7. The split fix: headings broken across source lines still split; financial statements after the signatures get their own file, flagged in the index; a 10-Q with no "PART I" heading in its body still puts the statements in Part I Item 1; the example contact is refused.
+8. Phase 2: a real target's filings and financial values predate its cutoff, and its checksum manifest holds.
+9. All 49 earlier checks still pass (58 in all).
 
 **Manual verification:**
 1. Run the download tool on the chosen company. **Expected:** only filings from before the cutoff, an index, and section files you can open and read.

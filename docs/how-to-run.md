@@ -61,11 +61,11 @@ Open the HTML report in `output/` (for the Falcon target, `output/Project-Falcon
 A real target uses a real public company's SEC filings as of a cutoff date, with a hypothetical deal. The agents still work offline: you download the filings before the run.
 
 1. A separate case session picks the company and the cutoff and runs the contamination check (see the tech spec). It tells you only the company and the cutoff, not what happened later.
-2. In a terminal in the project folder, give SEC a contact (SEC asks every request to name one; never commit it), then download:
+2. In a terminal in the project folder, download the filings:
    ```bash
-   export SEC_USER_AGENT="Your Name your.address@example.com"
    python3 tools/fetch_edgar.py --company <ticker or CIK> --cutoff <YYYY-MM-DD> --target <name>
    ```
+   SEC asks every request to name a contact, so the tool asks for your name and email address. It does not save them, and the example contact is refused.
    This writes `targets/<name>/checks.json` and `targets/<name>/data/`: the filings as plain text, split into one file per Item with an index (`sec-filings/index.md`), financial data filed before the cutoff, and empty news and litigation folders marked `NO-SOURCES.md`.
 3. The case session writes `targets/<name>/data/deal-brief.md`, labeled "Real public company, hypothetical deal, as of <cutoff>", and `targets/<name>/evaluation/answer-key.md`, with warning signs `P01`, `P02`, ... and no distractors.
 4. Record the baseline: `python3 tests/run_all.py --write-manifest --target <name>`.

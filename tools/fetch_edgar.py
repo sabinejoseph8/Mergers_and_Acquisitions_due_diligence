@@ -4,8 +4,10 @@
 The owner runs this before a diligence run. The agents never do: they stay offline and read only what it saved.
 Standard library only.
 
-  export SEC_USER_AGENT="Your Name your.address@example.com"
   python3 tools/fetch_edgar.py --company <ticker or CIK> --cutoff 2023-03-01 --target <name>
+
+In a terminal it asks for your name and email address, which SEC requires as a contact, and does not save them.
+To skip the question, set them first: export SEC_USER_AGENT="<your name> <your email address>"
 
 Options:
   --forms "10-K,10-Q,8-K,DEF 14A"   forms to keep; amendments (10-K/A and so on) are kept too
@@ -52,9 +54,21 @@ LABEL = "Real public company, hypothetical deal, as of {cutoff}."
 # Item order in a 10-K, and (part, item) order in a 10-Q.
 TEN_K = ["1", "1A", "1B", "1C", "2", "3", "4", "5", "6", "7", "7A", "8", "9", "9A", "9B", "9C", "10", "11", "12", "13", "14", "15", "16"]
 TEN_Q = ["I-1", "I-2", "I-3", "I-4", "II-1", "II-1A", "II-2", "II-3", "II-4", "II-5", "II-6"]
-ITEM_LINE = re.compile(r"^items?\s*(\d{1,2}[a-c]?)\b[\s.:\-–—]*(.*)$", re.I)
+ITEM_LINE = re.compile(r"^items?\s*(\d{1,2}[a-c]?)\b[\s.:\-–—…]*(.*)$", re.I)
+# A 10-Q's Items 1 to 4 exist in both parts. Their standard titles say which part, even when the body
+# never repeats "PART I" after the contents page: (item, words in the title, part).
+TEN_Q_TITLES = [("1", ("financial statements",), "I"), ("1", ("legal",), "II"),
+                ("2", ("management",), "I"), ("2", ("unregistered", "repurchase", "equity securities", "proceeds"), "II"),
+                ("3", ("quantitative", "market risk"), "I"), ("3", ("default",), "II"),
+                ("4", ("controls",), "I"), ("4", ("mine safety", "submission of matters"), "II")]
 PART_LINE = re.compile(r"^part\s+(iv|iii|ii|i)\b", re.I)
 SUBSTANTIVE = 250  # characters of text after a heading that mark it as a real section, not a contents entry
+SIGNATURE_LINE = re.compile(r"^\W{0,3}signatures?\W{0,3}$", re.I)
+AFTER_SIGNATURES = 15000  # characters after the signatures that get a file of their own (often the financial statements)
+# Headings that start the financial statements: "Notes to (the) ... Financial Statements", or a balance sheet
+# with at least one qualifier ("Consolidated Balance Sheets"), so "Balance Sheet Location" does not count.
+STATEMENTS_LINE = re.compile(r"^\W{0,3}(notes to (the )?(\S+ ){0,5}financial statements\b"
+                             r"|((condensed|consolidated|combined|unaudited|interim)\s+){1,4}balance sheets?\b)", re.I)
 
 # Financial data: (row label, US-GAAP concepts in order of preference, unit, scale).
 FINANCIALS = {
@@ -124,13 +138,23 @@ class Fetcher:
                 time.sleep(2 ** attempt)
 
 
+def valid_contact(agent):
+    """A name and an email address, and not the example from these instructions."""
+    lowered = agent.lower()
+    return "@" in agent and " " in agent and "example.com" not in lowered and not lowered.startswith("your name")
+
+
 def make_fetcher(env=None):
-    """A Fetcher using SEC_USER_AGENT; stops with instructions if the contact is missing."""
+    """A Fetcher using SEC_USER_AGENT. In a terminal it asks for the contact when that is missing;
+    otherwise it stops with instructions."""
     agent = (os.environ if env is None else env).get("SEC_USER_AGENT", "").strip()
-    if "@" not in agent or " " not in agent:
-        sys.exit('Set SEC_USER_AGENT to your name and email address first, for example:\n'
-                 '  export SEC_USER_AGENT="Your Name your.address@example.com"\n'
-                 'SEC asks every request to name a contact. Never commit it to the repository.')
+    if env is None and not valid_contact(agent) and sys.stdin.isatty():
+        agent = input("SEC asks every request to name a contact. Type your name and email address (not saved): ").strip()
+    if not valid_contact(agent):
+        sys.exit("Set SEC_USER_AGENT to your own name and email address first, for example:\n"
+                 '  export SEC_USER_AGENT="<your name> <your email address>"\n'
+                 "The example contact is not accepted. SEC asks every request to name a contact. "
+                 "Never commit it to the repository.")
     return Fetcher(agent)
 
 
@@ -153,9 +177,11 @@ class _Text(HTMLParser):
 
     def __init__(self):
         super().__init__(convert_charrefs=True)
-        self.parts, self.skip = [], 0
+        self.parts, self.skip, self.pre = [], 0, 0
 
     def handle_starttag(self, tag, attrs):
+        if tag == "pre":
+            self.pre += 1
         if tag in self.SKIP:
             self.skip += 1
         elif tag in ("td", "th"):
@@ -168,6 +194,8 @@ class _Text(HTMLParser):
             self.parts.append("\n")
 
     def handle_endtag(self, tag):
+        if tag == "pre":
+            self.pre = max(0, self.pre - 1)
         if tag in self.SKIP:
             self.skip = max(0, self.skip - 1)
         elif tag in self.BLOCK:
@@ -175,7 +203,8 @@ class _Text(HTMLParser):
 
     def handle_data(self, data):
         if not self.skip:
-            self.parts.append(data)
+            # In HTML a line break in the source is only a space (outside <pre>); lines come from block tags.
+            self.parts.append(data if self.pre else re.sub(r"[ \t\r\n\f\v]+", " ", data))
 
 
 def to_text(raw):
@@ -212,10 +241,22 @@ def headings(lines, form):
         if not m:
             continue
         key = m.group(1).upper()
-        key = f"{part}-{key}" if order is TEN_Q else key
+        if order is TEN_Q:
+            title = (m.group(2).strip() or (lines[n + 1] if n + 1 < len(lines) else "")).lower()
+            key = f"{ten_q_part(key, title, part)}-{key}"
         if key in order:
             found.append((n, order.index(key), key, line))
     return found
+
+
+def ten_q_part(item, title, tracked):
+    """The part a 10-Q Item belongs to: from its title when that is standard, else from the last PART heading."""
+    if item in ("1A", "5", "6"):
+        return "II"
+    for number, words, part in TEN_Q_TITLES:
+        if number == item and any(word in title for word in words):
+            return part
+    return tracked
 
 
 def split_items(lines, form):
@@ -253,7 +294,21 @@ def split_items(lines, form):
         start = cands[idx][0]
         end = cands[chosen[k + 1]][0] if k + 1 < len(chosen) else len(lines)
         sections.append((cands[idx][2], cands[idx][3], lines[start:end]))
+    # Many filers put the financial statements after the signatures, which would pad the last Item: give them a file.
+    key, heading, body = sections[-1]
+    sig = next((i for i, line in enumerate(body) if SIGNATURE_LINE.match(line)), None)
+    if sig is not None and sum(len(line) for line in body[sig + 1:]) >= AFTER_SIGNATURES:
+        sections[-1] = (key, heading, body[:sig])
+        sections.append(("after-signatures", "Signatures and the pages after them (often the financial statements and notes)", body[sig:]))
     return sections
+
+
+def has_statements(lines):
+    """True when a section holds financial statements, not just a contents entry naming them."""
+    for i, line in enumerate(lines):
+        if len(line) <= 150 and STATEMENTS_LINE.match(line) and sum(len(x) for x in lines[i + 1:i + 400]) >= 5000:
+            return True
+    return False
 
 
 def documents(raw):
@@ -297,10 +352,10 @@ def save_filing(filing, cik, fetcher, folder):
     folder.mkdir(parents=True, exist_ok=True)
     files = []
 
-    def write(name, title, lines):
+    def write(name, title, lines, statements=False):
         body = "\n".join(lines) + "\n"
         (folder / name).write_text(body, encoding="utf-8")
-        files.append((name, title, max(1, round(len(body.encode("utf-8")) / 1024))))
+        files.append((name, title, max(1, round(len(body.encode("utf-8")) / 1024)), statements))
 
     form = filing["form"]
     if form.startswith("8-K"):
@@ -324,12 +379,14 @@ def save_filing(filing, cik, fetcher, folder):
     for n, (key, heading, body) in enumerate(sections):
         if key == "cover":
             name = "00_cover.txt"
+        elif key == "after-signatures":
+            name = f"{n:02d}_after-signatures.txt"
         elif "-" in key:  # 10-Q: part and item
             part, item = key.split("-")
             name = f"{n:02d}_part-{part.lower()}_item-{item.lower()}.txt"
         else:
             name = f"{n:02d}_item-{key.lower()}.txt"
-        write(name, heading, body)
+        write(name, heading, body, statements=key != "cover" and has_statements(body))
     return files
 
 
@@ -447,12 +504,13 @@ def write_index(data, label, name, cik, cutoff, since, forms, today, saved):
     for filing, folder, files in saved:
         acc = filing["accession"]
         url = f"{SEC}/Archives/edgar/data/{cik}/{acc.replace('-', '')}/{filing['primary']}"
-        split = any(fname != "full.txt" for fname, _, _ in files)
+        split = any(f[0] != "full.txt" for f in files)
         out += ["", f"## {filing['form']} filed {filing['filed']}", "",
                 f"- Accession {acc}. Period: {filing['period'] or 'n/a'}. SEC address: {url}"]
         if filing["form"].startswith(("10-K", "10-Q")) and not split:
             out.append("- Not split into sections: the Item headings could not be found. Read `full.txt`.")
-        out += [f"- `{folder}/{fname}`: {plain(title)} ({kb} KB)" for fname, title, kb in files]
+        out += [f"- `{folder}/{fname}`: {plain(title)} ({kb} KB{'; includes financial statements' if statements else ''})"
+                for fname, title, kb, statements in files]
     (data / "sec-filings" / "index.md").write_text("\n".join(out) + "\n", encoding="utf-8")
 
 
