@@ -81,6 +81,7 @@ In later iterations, send only narrow follow-up tasks to the analysts who can an
    - numbers that only make sense when combined (for example a one-off revenue amount from a filing applied to quarterly data);
    - stale assumptions in the deal brief;
    - dated accounting judgments: for each judgment in the filings made as of a date (for example an impairment test date, a reserve or allowance level, a materiality conclusion), compare it with what happened afterwards in the news, market or financial data. State the change with numbers (for example the share price change since the test date) and whether it puts the judgment in doubt;
+   - control weaknesses: when a control weakness cites a lack of expertise or review for complex or non-routine transactions, name the specific complex transactions in the filings that it could affect (for example related-party loans and their modifications, asset sales or exchanges, impairments, allowances and reserves). Treat the accounting for each as a restatement risk in an `X-` finding that cites the control finding and the transaction finding by ID, so the weakness is not left standing apart from what it could have misstated;
    - trends: when three or more findings describe the same trend (for example revenue, margins, backlog and retention all weakening), combine them into one `X-` finding that states the headline numbers, so the trend gets one severity and one place in the report;
    - named parties: for every customer, supplier or litigant named in any source, look it up in `targets/<target>/data/financials/revenue_by_customer.csv` (or ask the financial analyst) and state its revenue rank and amount, or that it is not a listed customer;
    - duplicates: when two or more findings state the same fact (for example the same guidance cut in a filing, an article and the financial data), make one of them the parent (prefer the `X-` finding, then the primary-source finding) and list the others as supporting IDs in the parent's Source(s) cell. Supporting findings stay in the register with their own status; the report shows each fact once.
@@ -121,12 +122,10 @@ Stop. Print the verification results and your draft recommendation in chat. Then
 Write the report to `output/` using the template below. `<Codename>` is the project codename in the deal brief (for example `Falcon`):
 
 1. Write `output/Project-<Codename>-Due-Diligence-Report.md`.
-2. Convert it to a self-contained, print-friendly HTML file, `output/Project-<Codename>-Due-Diligence-Report.html`. For the cover page, wrap the cover content in a `<div class="cover">` in the Markdown. Use the project's converter, which needs only Python and embeds `templates/report-style.css`:
+2. Convert it to a self-contained, print-friendly HTML file, `output/Project-<Codename>-Due-Diligence-Report.html`. For the cover page, wrap the cover content in a `<div class="cover">` in the Markdown. Use the project's converter (do not write a new one), which needs only Python and embeds `templates/report-style.css`:
    `python3 tools/md2html.py output/Project-<Codename>-Due-Diligence-Report.md output/Project-<Codename>-Due-Diligence-Report.html`
-   Do not write a new converter.
-3. Make the PDF with headless Google Chrome, if it is installed:
+3. Make the PDF with headless Google Chrome, if it is installed. Do not install software without asking. If Chrome is not available, tell the user to open the HTML file in a browser and use Print, then Save as PDF. If it is installed, run:
    `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --no-pdf-header-footer --print-to-pdf=output/Project-<Codename>-Due-Diligence-Report.pdf output/Project-<Codename>-Due-Diligence-Report.html`
-   Do not install software without asking. If Chrome is not available, tell the user to open the HTML file in a browser and use Print, then Save as PDF.
 4. Log the step and tell the user where the files are.
 
 ## Report template
@@ -160,6 +159,8 @@ Write the report to `output/` using the template below. `<Codename>` is the proj
 
 **Neutralized risks:** when a source shows that a risk is neutralized during the forecast period by a contract (for example a counterparty bearing a cost) or by an accounting treatment (for example an item correctly excluded from an adjusted metric), rate it Low and list it under positive or mitigating points. It does not get its own risk matrix row.
 
+**Doubtful assets:** when a loan, receivable or other asset (related-party or not) is large relative to value or to reported equity, shows impairment signs, and carries no allowance, do not only ask whether the deal model gives it value. Impairment signs include repeated modifications with concessions (a longer maturity, a lower rate, interest deferred or added to principal, collateral released), no cash collected, collateral that depends on the target's own share price, and a borrower or guarantor who controls the board. Test a full write-off against reported equity and against value, state both percentages, and flag the risk of a restatement (inference). Above 10% of value, apply the Critical test. Count security as a mitigant only if it passes an enforceability test: value collateral made of the target's own shares at the lowest recent market price in the sources, never at the buyer's offer price; treat a guaranty from a controlling insider as unproven; and ask whether the board or an independent committee has shown intent to enforce (a demand, a declared default, cash actually collected). Interest accrued but not received in cash is an impairment sign, not support.
+
 **Finding hygiene:** every matter an analyst reviews gets its own finding ID, including Low and closed matters, so it reaches the register. Each finding covers one topic. Never bundle a benign item with a real issue in one finding; split them so each gets its own severity.
 
 **Confidence**
@@ -176,8 +177,7 @@ Write the report to `output/` using the template below. `<Codename>` is the proj
 - Do not read `targets/*/evaluation/` during a diligence run. It holds the answer key used to grade this system, and the latest scorecard after grading. It is only used by `/evaluate`. Claude Code asks the user before its file tools can open anything in it. Do not open it any other way, for example with a shell command or a script.
 - Do not read `examples/` or `runs/` during a diligence run. They hold earlier runs and their scorecards, so reading them would spoil a blind run. Claude Code asks the user before its file tools can open either. The same rule applies to shell commands and scripts.
 - The specialist subagents are read-only (Read, Grep and Glob only). Only you write to `memory/` and `output/`.
-- Every finding must cite a source file and section or row. Send back, or reject, any finding without one.
-- Label allegations and rumors as such. Never present them as facts.
+- Every finding must cite a source file and section or row. Send back, or reject, any finding without one. Label allegations and rumors as such. Never present them as facts.
 - Do not skip a human checkpoint unless the user explicitly tells you to skip it. If they do, log it in `memory/run-log.md`.
 - The report is a draft for human decision-makers, not investment, legal or accounting advice.
 
