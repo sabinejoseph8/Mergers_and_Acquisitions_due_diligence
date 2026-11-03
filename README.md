@@ -236,7 +236,7 @@ docs/                      Architecture diagram, run guide, one-page case study
 
 Open the folder in Claude Code and type `/diligence` (or `/diligence <target>` for a target other than `falcon`). Reply at the three checkpoints. Full guide: [docs/how-to-run.md](docs/how-to-run.md).
 
-After the run, `python3 tools/make_dashboard.py` writes a read-only committee dashboard to `output/`: findings by severity and verification status, the top red flags, the key metrics and the open questions, copied from working memory so they match the report. Examples for two graded runs: [Wren](runs/2026-11-02_2237/output/Project-Wren-Dashboard.html) and [Plover](runs/2026-10-31_0946/output/Project-Plover-Dashboard.html).
+After the run, `python3 tools/make_dashboard.py` writes a read-only committee dashboard to `output/`: findings by severity and verification status, the top red flags, the key metrics and the open questions, copied from working memory so they match the report. See it for two graded runs: [Wren](https://claude.ai/artifact/Y3gKcZJcGj2RYoZ6kMwF9H) and [Plover](https://claude.ai/artifact/CDPEoYoYgjDuXnHghJyJqi) (live pages; the files are in each run's `output/` folder).
 
 For a truly blind test, start a fresh Claude Code session in the folder, run `/diligence`, then `/evaluate` and compare your scorecard with the sample run. Claude Code asks before any agent can open the answer key, a scorecard or an earlier run.
 
