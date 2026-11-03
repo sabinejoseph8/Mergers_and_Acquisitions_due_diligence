@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Project Falcon Case Study</title>
 <style>
-  @page { size: Letter; margin: 0.32in 0.5in; }
+  @page { size: Letter; margin: 0.38in 0.5in; }
   :root { --navy: #0B1F5C; --teal: #00B3C8; --ember: #B5491F; --gold: #E5B53C; --cream: #FFF8E6; --ink: #1F2430; --muted: #5B6170; --line: #D9DDE5; --mist: #F3F5F8; }
   * { box-sizing: border-box; }
   html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body { margin: 0 auto; max-width: 7.5in; background: #FFFFFF; color: var(--ink); font-family: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif; font-size: 8.4pt; line-height: 1.29; }
+  body { margin: 0 auto; max-width: 7.5in; background: #FFFFFF; color: var(--ink); font-family: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif; font-size: 8.6pt; line-height: 1.34; }
   h1, h2, h3 { color: var(--navy); margin: 0; line-height: 1.15; }
   .head { border-left: 7px solid var(--navy); padding: 1pt 0 1pt 12pt; margin-bottom: 8pt; }
   .eyebrow { font-size: 7.4pt; font-weight: 700; letter-spacing: 0.9px; text-transform: uppercase; color: var(--ember); margin-bottom: 3pt; }
@@ -22,7 +22,7 @@
   .kpi span { display: block; font-size: 7.6pt; color: var(--muted); margin-top: 2pt; line-height: 1.25; }
   .cols { display: grid; grid-template-columns: 1.08fr 1fr; gap: 14pt; }
   h2 { font-size: 10.2pt; padding-bottom: 2pt; border-bottom: 1.5px solid var(--navy); margin: 0 0 4pt; }
-  section { margin-bottom: 5pt; }
+  section { margin-bottom: 7pt; }
   p { margin: 0 0 4pt; }
   ul, ol { margin: 0; padding-left: 13pt; }
   li { margin: 0 0 2pt; }
@@ -34,6 +34,14 @@
   .verdict strong { color: #FFFFFF; }
   .learn li::marker { color: var(--teal); }
   .note { background: var(--cream); border-left: 3px solid var(--gold); padding: 5pt 8pt; font-size: 7.9pt; color: var(--ink); margin: 2pt 0 6pt; }
+  section, .note, .figure, .foot { break-inside: avoid; }
+  .cost { break-before: page; margin-top: 4pt; }
+  .cost table { width: 100%; border-collapse: collapse; margin: 4pt 0 6pt; }
+  .cost th, .cost td { text-align: left; padding: 4pt 6pt; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .cost th { background: var(--mist); color: var(--navy); font-size: 8pt; }
+  .cost td.num { font-weight: 700; color: var(--navy); }
+  .cost td:first-child { width: 14%; }
+  .cost th:nth-child(2), .cost th:nth-child(3) { width: 43%; }
   .foot { border-top: 1px solid var(--line); padding-top: 5pt; font-size: 7.6pt; color: var(--muted); display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; }
   .foot strong { color: var(--ink); }
   code { font-family: Menlo, Consolas, monospace; font-size: 7.6pt; background: var(--mist); padding: 0 2px; border-radius: 2px; }
@@ -95,7 +103,7 @@
     <div>
       <div class="figure">
         <img src="architecture.png" alt="Architecture: the Agent Core loop coordinating four specialist tools, working memory, a citation verifier and three human checkpoints, ending in the due diligence report">
-        <div class="cap">Agent Core, four specialists, working memory, verifier and human checkpoints.</div>
+        <div class="cap">Architecture: Agent Core, four specialists, working memory, verifier and human checkpoints.</div>
       </div>
       <section>
         <h2>What the system concluded</h2>
@@ -117,12 +125,24 @@
     </div>
   </div>
 
-  <div class="note"><strong>Cost: agents versus people.</strong> The agents cost about US$81 per real-company backtest (tokens measured in the session logs, at Claude Opus 5.5 API list rates). An illustrative human first pass, two analysts for two weeks at US$100 to US$300 an hour, is US$16,000 to US$48,000 (my assumptions). That is under 1%, for the first-pass reading only: people still judge at all three checkpoints.</div>
   <div class="note"><strong>How blind was the test?</strong> Each graded run started in a fresh session that never saw the answer key or an earlier run. Heron's and Wren's builders never saw the instructions; Plover's could. A different session graded Wren.</div>
+
+  <section class="cost">
+    <h2>Cost and time: agents versus two analysts</h2>
+    <p>One real-company backtest, from start to finished report, if the same agents ran on the paid API, set against two analysts doing the same first pass by hand.</p>
+    <table>
+      <tr><th></th><th>This system</th><th>Two analysts (illustrative)</th></tr>
+      <tr><td><strong>Cost</strong></td><td class="num">US$68 to US$70</td><td class="num">US$16,000 to US$48,000</td></tr>
+      <tr><td><strong>Elapsed time</strong></td><td class="num">1.1 to 1.4 hours</td><td class="num">about 2 weeks</td></tr>
+      <tr><td><strong>Working time</strong></td><td class="num">about 1 hour of agent work, plus 4 to 22 minutes of a person answering three checkpoints</td><td class="num">160 person-hours</td></tr>
+      <tr><td><strong>Basis</strong></td><td>Measured from the two backtests' session logs: 108 to 126 million tokens at Claude Opus 5.5 API list rates (96% were cache reads, which cost a twentieth of normal input), and timestamps for the time.</td><td>My assumptions, not measured: two analysts for two working weeks at US$100 to US$300 an hour.</td></tr>
+    </table>
+    <p><strong>What this means:</strong> the first pass costs under 1% as much and finishes in about an hour instead of two weeks. It covers only the first-pass reading and cross-checking. People still decide at all three checkpoints, and a reviewer reading the report is not in these figures. The project ran on a Claude subscription, so the cost is the API price of the same work, not what I paid.</p>
+  </section>
 
   <footer class="foot">
     <div><strong>In the repository:</strong> README (with a 90-second demo video and both backtests), <code>runs/</code> (graded runs with scorecards), <code>examples/sample-run/</code> and <code>Project Memory/</code> (specs and plan).</div>
-    <div><strong>Skills:</strong> AI product management (specs, phased plan, success metrics, evaluation, iteration from data), agentic workflow design and M&amp;A domain depth. Fictional targets are invented. Not investment advice.</div>
+    <div><strong>Skills:</strong> AI product management (specs, phased plan, success metrics, evaluation, iteration from data), agentic workflow design and M&amp;A domain depth. The fictional targets' companies, people and figures are invented; the backtests' real companies stay unnamed. Not investment advice.</div>
   </footer>
 </body>
 </html>

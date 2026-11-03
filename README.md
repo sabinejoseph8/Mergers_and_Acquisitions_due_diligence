@@ -66,7 +66,7 @@ During M&A due diligence, teams must research target companies across multiple d
 
 - **Project Memory:** the [product spec](Project%20Memory/product-spec.md) (34 requirements), [design spec](Project%20Memory/design.md), [tech spec](Project%20Memory/tech-spec.md) (architecture, data model and 11 critical risks) and the phased [plan](Project%20Memory/progress.md), each agreed before building. They are also published as a [website](https://claude.ai/artifact/CmFqn6PUnPvRse4GxpLrDW) with live plan ticks.
 - **Automated checks:** 69 checks using only Python's standard library, for every phase: read-only agents and guardrails, data that ties out and has not changed (for every target), complete runs and reports, graded scorecards, the committee dashboard, the real-filings download tool and house style. Type `/run-tests`, or run `python3 tests/run_all.py`. Add `--run examples/sample-run` to check the saved run.
-- **One-page case study:** [docs/case-study.pdf](docs/case-study.pdf).
+- **Two-page case study:** [docs/case-study.pdf](docs/case-study.pdf).
 
 ## Sample run
 
@@ -229,7 +229,7 @@ output/                    Where the report and the dashboard are written
 examples/sample-run/       A complete test run: memory, report (PDF) and scorecard
 tests/                     69 automated checks (Python standard library), run with /run-tests
 Project Memory/            Product spec, design spec, tech spec and phased plan
-docs/                      Architecture diagram, run guide, one-page case study
+docs/                      Architecture diagram, run guide, two-page case study
 ```
 
 ## Run it yourself
@@ -276,4 +276,4 @@ The fictional targets test the system on issues someone planted. A backtest test
 - **AI product management:** framing the problem and the users, product, design and tech specs, a phased plan with acceptance tests, success metrics set up front, and product changes driven by measured results.
 - **Evaluation:** planted ground truth (18 issues and 4 distractors), a blind answer key, recall and severity scoring, an independent verifier, and honest reporting of the test's limits.
 - **Agentic workflow design:** multi-agent orchestration, bounded autonomy, human-in-the-loop checkpoints, least-privilege guardrails and prompt-injection defense.
-- **Communication:** an Investment Committee-ready report, a one-page case study and a clear audit trail.
+- **Communication:** an Investment Committee-ready report, a two-page case study and a clear audit trail.
