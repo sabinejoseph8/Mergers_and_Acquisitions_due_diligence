@@ -341,7 +341,7 @@ Two process fixes from this review, not from the scorecard: keep the status set 
 - [x] A second fictional target that the instructions were never tuned on, to test generalization (Kestrel, a near-transfer test, and Heron, the held-out test, both graded; see below)
 - [x] A fourth target built blind (Plover) to test the rules added after Kestrel and Heron, with a blind graded run (October 31, 2026; see below)
 - [x] Plover's three suggested rule changes written into the instructions by a session that had not seen the answer key (October 31, 2026; unmeasured until the next blind graded run)
-- [ ] Excel data pack for the committee from the key metrics dataset
+- [ ] A read-only dashboard for the committee, built after a run from its memory files (severity and status chart, top red flags, key metrics, open questions), chosen on November 2, 2026 instead of an Excel data pack. It only displays a finished run, so it is not the "custom web app or dashboard" that v1 leaves out of scope. Starts after the fifth fictional target is graded, because the setup is frozen until then. A working Excel draft, whose parsing the dashboard can reuse, is kept outside the repository in `../extras/dashboard-draft/`.
 - [ ] More specialists (tax, people, IP, ESG) using the same finding format
 
 **Targets (October 19, 2026):** the project now holds several targets under `targets/`. `/diligence <target>` and `/evaluate <target>` take the target name.
