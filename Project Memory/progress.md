@@ -1,6 +1,6 @@
 # Progress: Project Falcon
 
-**Status:** Agreed, version 2.17 (November 2, 2026: Plover's description corrected, since its builder did see the instructions; the reader test moved to last; earlier, backtest-2 archived privately with `/reset-memory` and recorded, limits first, in the README and the one-page case study, which completes Phase 8; the backtests' cutoffs are now given as years only, so the public files do not point to the companies; earlier, backtest-2 run blind and graded: 5 of 8 warning signs found and 3 partly found (recall 81.3%), 0 unsupported findings, 0 hindsight leaks; its scorecard's three rule changes made, unmeasured; earlier, backtest-1 run blind, graded and archived privately, with 10 of 10 warning signs found, 0 unsupported findings and 0 hindsight leaks; earlier, the download tool's section split fixed and measured on 81 random real filings; earlier, Phase 8 started; Step 1 built and tested: the EDGAR download tool, the generic rules for a real target, the real-company report cover and seven new checks; earlier the same day, Phase 8 planned and its four open questions decided).
+**Status:** Agreed, version 2.18 (November 2, 2026: a check for the name-on-the-cutoff-date fix, 59 checks; earlier, Plover's description corrected, since its builder did see the instructions; the reader test moved to last; earlier, backtest-2 archived privately with `/reset-memory` and recorded, limits first, in the README and the one-page case study, which completes Phase 8; the backtests' cutoffs are now given as years only, so the public files do not point to the companies; earlier, backtest-2 run blind and graded: 5 of 8 warning signs found and 3 partly found (recall 81.3%), 0 unsupported findings, 0 hindsight leaks; its scorecard's three rule changes made, unmeasured; earlier, backtest-1 run blind, graded and archived privately, with 10 of 10 warning signs found, 0 unsupported findings and 0 hindsight leaks; earlier, the download tool's section split fixed and measured on 81 random real filings; earlier, Phase 8 started; Step 1 built and tested: the EDGAR download tool, the generic rules for a real target, the real-company report cover and seven new checks; earlier the same day, Phase 8 planned and its four open questions decided).
 
 ## Summary
 
@@ -483,8 +483,9 @@ What the grader marked partly found: the run tied the growth driver to the liabi
 5. A real target carries the real-target label, its news and litigation folders say they have no sources, and the tool never writes the deal brief or the answer key.
 6. The tool will not overwrite a download without `--force`.
 7. The split fix: headings broken across source lines still split; financial statements after the signatures get their own file, flagged in the index; a 10-Q with no "PART I" heading in its body still puts the statements in Part I Item 1; the example contact is refused.
-8. Phase 2: a real target's filings and financial values predate its cutoff, and its checksum manifest holds.
-9. All 49 earlier checks still pass (58 in all).
+8. The name fix: a real target is labeled with the company's name on the cutoff date, never a name it adopted later.
+9. Phase 2: a real target's filings and financial values predate its cutoff, and its checksum manifest holds.
+10. All 49 earlier checks still pass (59 in all).
 
 **Manual verification:**
 1. Run the download tool on the chosen company. **Expected:** only filings from before the cutoff, an index, and section files you can open and read.

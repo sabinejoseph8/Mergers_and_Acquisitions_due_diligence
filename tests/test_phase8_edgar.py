@@ -28,6 +28,7 @@ FILINGS = [
     ("0001234567-22-000040", "4", "2022-06-01", "", "form4.xml"),
 ]
 LATER = {"0001234567-23-000020", "0001234567-23-000030", "0001234567-22-000040"}
+LATER_NAME = "Renamed Holdings Corp."  # the name SEC shows today, adopted after the cutoff
 
 
 def ten_k(year, messy=False):
@@ -97,7 +98,10 @@ def responses():
             recent[key].append(value)
     pages = {
         "https://www.sec.gov/files/company_tickers.json": {"0": {"cik_str": CIK, "ticker": "TST", "title": "Sample Sensors Inc."}},
-        f"https://data.sec.gov/submissions/CIK{CIK:010d}.json": {"name": "Sample Sensors Inc.", "filings": {"recent": recent, "files": []}},
+        # SEC lists a company under its current name; this one was renamed after the cutoff.
+        f"https://data.sec.gov/submissions/CIK{CIK:010d}.json": {
+            "name": LATER_NAME, "formerNames": [{"name": "Sample Sensors Inc.", "from": "2005-03-01T00:00:00.000Z", "to": "2024-01-15T00:00:00.000Z"}],
+            "filings": {"recent": recent, "files": []}},
         f"https://data.sec.gov/api/xbrl/companyfacts/CIK{CIK:010d}.json": FACTS,
     }
     out = {url: json.dumps(body).encode() for url, body in pages.items()}
@@ -231,6 +235,18 @@ class TestFetchEdgar(unittest.TestCase):
             self.assertTrue((self.data / source / "NO-SOURCES.md").exists(), f"{source}/ must say it has no sources")
         self.assertFalse((self.data / "deal-brief.md").exists(), "the deal brief is the case session's job")
         self.assertFalse((self.folder / "evaluation").exists(), "the tool must never write the answer key")
+
+    def test_labels_the_target_with_its_name_on_the_cutoff_date(self):
+        written = [self.folder / "checks.json"] + list(self.data.rglob("*.md"))
+        for path in written:
+            self.assertNotIn(LATER_NAME, path.read_text(encoding="utf-8"), f"{path.name} names the company as it was after the cutoff")
+        self.assertIn("Sample Sensors Inc.", (self.data / "README.md").read_text(encoding="utf-8"))
+        self.assertEqual(json.loads((self.folder / "checks.json").read_text(encoding="utf-8"))["company"], "Sample Sensors Inc.")
+        names = [{"name": "First Co", "from": "2000-01-01T00:00:00.000Z", "to": "2012-05-01T00:00:00.000Z"},
+                 {"name": "Middle Co", "from": "2012-05-01T00:00:00.000Z", "to": "2020-02-01T00:00:00.000Z"}]
+        for cutoff, expected in (("2010-06-01", "First Co"), ("2015-06-01", "Middle Co"), ("2022-06-01", "Current Co")):
+            self.assertEqual(self.tool.name_at({"name": "Current Co", "formerNames": names}, cutoff, CIK), expected, cutoff)
+        self.assertEqual(self.tool.name_at({"name": "Current Co"}, "2015-06-01", CIK), "Current Co", "no former names")
 
     def test_will_not_overwrite_a_download_without_force(self):
         with contextlib.redirect_stdout(io.StringIO()), self.assertRaises(SystemExit):
