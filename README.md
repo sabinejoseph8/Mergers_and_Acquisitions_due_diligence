@@ -8,7 +8,7 @@
 
 ## Watch the demo (under 2 minutes)
 
-https://github.com/user-attachments/assets/e02cb453-5802-41c8-82d3-18c74f807b4b
+https://github.com/user-attachments/assets/9076a7b9-27f9-4d66-a5eb-5c1890a7f80e
 
 A blind run on Plover, a company the system had never seen: the plan, four analysts, the red flags, the verifier, the report and the committee dashboard, then the graded results for every held-out target, Wren and Avocet included. The scenes are recreated from that run's saved output in [`runs/2026-10-31_0946/`](runs/2026-10-31_0946/), with my own voice-over.
 
