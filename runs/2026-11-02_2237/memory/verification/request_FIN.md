@@ -1,0 +1,31 @@
+- FIN-02 [High] H1 2026 Adjusted EBITDA down 16.9% (US$74.7m vs US$89.9m); LTM propped up by H2 2025 (US$96.5m); 16.5x on H1 run-rate (projection) | Sources: financials/adjusted_ebitda_reconciliation.csv; income_statement.csv
+- FIN-03 [High] Amortization period change inflates EBITDA (amortization in SG&A, not added back); proxy estimate about US$7.3m in LTM | Sources: financials/kpis.csv; cash_flow.csv; balance_sheet.csv; README
+- FIN-04 [Medium] Contract cancellation fees in revenue rose 6.1, 7.4, 9.8 (FY2023-25) and 6.2 in H1 2026; churn-driven income | Sources: financials/kpis.csv cancellation fees row
+- FIN-05 [Medium] Branch consolidation and ERP costs added back every year as "non-recurring"; US$2.6m in LTM | Sources: financials/adjusted_ebitda_reconciliation.csv detail rows
+- FIN-07 [Medium] SBC add-back US$12.9m (7.5% of LTM Adjusted EBITDA) would become a cash cost under private ownership (sensitivity) | Sources: financials/adjusted_ebitda_reconciliation.csv row 7
+- FIN-08 [Medium] Q1 2026 out-of-period charge of US$4.1m means prior periods were misstated; periods not identified | Sources: financials/README.md notes; income_statement.csv
+- FIN-09 [Medium] US$5.2m loss provision on a fixed-price modernization contract in Q2 2026; not added back | Sources: financials/README.md notes; income_statement.csv
+- FIN-10 [High] Normalized LTM base US$155.1m to 159.2m on the analyst's items; implied EV at 14.4x US$2,233.4m to 2,292.5m (projection) | Sources: financials/adjusted_ebitda_reconciliation.csv; kpis.csv; README; deal brief
+- FIN-11 [High] Quarterly revenue broke trend: Q1 2026 -9.7% vs Q4 2025; both 2026 quarters below a year earlier | Sources: financials/revenue_quarterly.csv
+- FIN-12 [Medium] Segments: H1 2026 repair -6.0%, modernization -12.0%, maintenance +2.7%, LiftSense +37.8% | Sources: financials/income_statement.csv; kpis.csv
+- FIN-14 [Medium] 9,800 LiftSense units (15.8%) on LTE-M modules facing the 2027 sunset | Sources: financials/kpis.csv LTE-M row
+- FIN-15 [High] Units fell 4.7% to 168,100 in H1 2026; renewal rate 86.9%; churn up from 7.2% to 13.1% | Sources: financials/kpis.csv rows 2-6
+- FIN-16 [Medium] FY2025 growth partly bought (Pinecrest); organic unit growth only 1.1% | Sources: financials/kpis.csv; balance_sheet.csv; README
+- FIN-17 [High] Modernization backlog -17.0% to US$372.0m; implied H1 2026 bookings US$16.1m, book-to-bill 0.17 | Sources: financials/kpis.csv backlog row; income_statement.csv
+- FIN-18 [High] Gross margin 34.0% (FY2023) to 31.2% (H1 2026); maintenance margin 38.9% to 34.6% | Sources: financials/income_statement.csv; kpis.csv
+- FIN-19 [Medium] Technician attrition up to 17.1%; headcount down 90 in H1 2026; covered technicians about 3,389 | Sources: financials/kpis.csv rows 12-14
+- FIN-22 [Medium] Contract assets up to 24.6% of annualized modernization revenue while that revenue fell | Sources: financials/balance_sheet.csv; income_statement.csv
+- FIN-25 [High] Pro forma leverage 7.7x ties, but 8.3x on normalized base; pro forma interest cover about 1.9x (projection) | Sources: deal brief; financials/cash_flow.csv; README
+- FIN-26 [High] Model keeps the 2030 notes; a 101% put would need about US$404.0m vs US$72.8m cash after closing | Sources: deal brief; financials/README.md bullet 4
+- FIN-27 [Medium] Sources and uses tie at US$2,278.6m but leave out target transaction costs, severance, Brockmere cost and a notes put | Sources: deal brief sections 1-2
+- FIN-28 [Medium] EV excludes the US$52.3m award cash-out; fully diluted multiple 14.7x LTM | Sources: deal brief sections 1-2
+- FIN-29 [Medium] Award cash-out plus buyer fees total US$116.3m (4.7% of EV) | Sources: deal brief sources and uses
+- FIN-30 [Medium] NOL model inconsistent with its own limit (only US$195.6m usable in three years) and with post-LBO taxable income (projection) | Sources: deal brief thesis 5; adjusted_ebitda_reconciliation.csv
+- FIN-31 [High] Deferred tax asset falls only US$2.4m a year, suggesting NOLs already limited (about US$11.4m gross a year, inference) | Sources: financials/balance_sheet.csv DTA row; cash_flow.csv deferred taxes; income_statement.csv
+- FIN-32 [Medium] Branch conversion may trigger multiemployer withdrawal liability the model omits (about 29.5% of covered technicians) | Sources: financials/kpis.csv rows 12-14; balance_sheet.csv; deal brief thesis 3
+- FIN-34 [Medium] 22,400 comprehensive-contract units in Illinois and New Jersey (33.5% of comprehensive units) | Sources: financials/kpis.csv row 5
+- FIN-13 [Low, positive/mitigant for the report] LiftSense growth ties (38.1%, 37.8%); 61,900 connected units; supports thesis 2 | Sources: financials/income_statement.csv; kpis.csv
+- FIN-20 [Low, positive/mitigant for the report] Customer concentration low and stable: top customer 2.3%, top 10 14.8%; St. Aldric #6 (US$14.8m), Calder Mall #5 (US$15.4m, only top-10 decline) | Sources: financials/revenue_by_customer.csv
+- FIN-23 [Low, positive/mitigant for the report] Cash conversion solid: LTM OCF US$122.2m, FCF US$86.9m | Sources: financials/cash_flow.csv
+- FIN-40 [Low, positive/mitigant for the report] FY2024 debt extinguishment loss (US$41.2m) correctly excluded | Sources: financials/README.md; adjusted_ebitda_reconciliation.csv; cash_flow.csv
+- FIN-06 [Low, positive/mitigant for the report] M&A-related costs correctly excluded from Adjusted EBITDA | Sources: financials/income_statement.csv row 11; adjusted_ebitda_reconciliation.csv row 9

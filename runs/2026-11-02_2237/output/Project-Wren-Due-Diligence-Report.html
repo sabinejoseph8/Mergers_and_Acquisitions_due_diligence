@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Wren: Comprehensive Due Diligence Report</title>
+<style>
+/* Print-friendly style for the due diligence report. Used when converting the report to HTML and PDF. */
+@page { size: Letter; margin: 0.65in 0.7in 0.7in 0.7in; }
+:root { --navy: #0B1F5C; --teal: #00B3C8; --orange: #E07B4F; --ember: #B5491F; --ink: #1F2430; --muted: #5B6170; --line: #D9DDE5; --soft: #F3F5F8; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif; color: var(--ink); font-size: 10.5pt; line-height: 1.45; max-width: 7.2in; margin: 0 auto; background: #FFFFFF; }
+h1, h2, h3, h4 { color: var(--navy); line-height: 1.2; break-after: avoid; }
+h1 { font-size: 20pt; margin: 0 0 6pt; }
+h2 { font-size: 14.5pt; margin: 20pt 0 6pt; padding-bottom: 4pt; border-bottom: 2px solid var(--navy); }
+h3 { font-size: 11.5pt; margin: 14pt 0 4pt; }
+h4 { font-size: 10.5pt; margin: 10pt 0 3pt; }
+p { margin: 4pt 0 7pt; }
+ul, ol { margin: 3pt 0 8pt; padding-left: 18pt; }
+li { margin: 2pt 0; }
+a { color: var(--navy); }
+code { font-family: Menlo, Consolas, monospace; font-size: 9pt; background: var(--soft); padding: 0 3px; border-radius: 3px; }
+table { border-collapse: collapse; width: 100%; margin: 6pt 0 10pt; font-size: 8.8pt; break-inside: auto; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th { background: var(--navy); color: #FFFFFF; text-align: left; font-weight: 600; padding: 4pt 5pt; }
+td { border-bottom: 1px solid var(--line); padding: 3.5pt 5pt; vertical-align: top; }
+tbody tr:nth-child(even) td { background: var(--soft); }
+blockquote { margin: 8pt 0; padding: 7pt 10pt; background: #FFF8E6; border-left: 4px solid #E5B53C; }
+blockquote p { margin: 2pt 0; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 14pt 0; }
+.cover { min-height: 8.6in; display: flex; flex-direction: column; justify-content: center; break-after: page; border-left: 10px solid var(--navy); padding-left: 24pt; }
+.cover h1 { font-size: 28pt; margin-bottom: 4pt; border: 0; }
+.cover .sub, .cover .sub p { font-size: 14pt; color: var(--ember); font-weight: 600; margin-bottom: 18pt; }
+.cover p { color: var(--muted); margin: 2pt 0; }
+.cover .flag, .cover .flag p { margin-top: 24pt; color: var(--navy); font-weight: 600; }
+.callout { background: var(--soft); border-left: 4px solid var(--teal); padding: 7pt 10pt; margin: 8pt 0; }
+.bottom-line { background: var(--navy); color: #FFFFFF; padding: 9pt 12pt; border-radius: 4px; margin: 8pt 0 10pt; }
+.bottom-line p, .bottom-line strong { color: #FFFFFF; }
+.page-break { break-before: page; }
+.id { white-space: nowrap; }
+table.keep { break-inside: avoid; }
+.small { font-size: 8.5pt; color: var(--muted); }
+.sev-critical { color: #B42318; font-weight: 700; }
+.sev-high { color: #B5491F; font-weight: 700; }
+.sev-medium { color: #8A5A00; font-weight: 600; }
+.sev-low { color: #5B6170; font-weight: 600; }
+.claim { font-size: 8pt; font-weight: 700; letter-spacing: 0.3px; color: var(--navy); background: #FFF8E6; border: 1px solid #E5B53C; border-radius: 3px; padding: 0 3px; }
+@media screen and (max-width: 700px) { body { font-size: 11pt; padding: 0 16px; } table { display: block; overflow-x: auto; } .cover { min-height: auto; padding: 24px 0 24px 16px; } }
+
+</style>
+</head>
+<body>
+<div class="cover">
+<h1 id="project-wren-comprehensive-due-diligence-report">Project Wren: Comprehensive Due Diligence Report</h1>
+<p><strong>Draft for Investment Committee discussion</strong></p>
+<p>November 2, 2026</p>
+<p>Fictional case study</p>
+<p>Prepared by an AI multi-agent diligence system with human review</p>
+<p>Target: Meridale Lift Services, Inc. (NYSE: MDLS). Buyer: Ostrander Hale Partners Fund IV.</p>
+</div>
+<h2 id="1-executive-summary">1. Executive summary</h2>
+<h3 id="bottom-line">Bottom line</h3>
+<p><strong>Proposed recommendation: Do not proceed at the current price of US$41.50 per share.</strong> The Investment Committee makes the decision. We suggest re-approval only after a price adjustment or the specific protections in section 6.</p>
+<p>The deal is priced at 14.37x LTM Q2 2026 Adjusted EBITDA of US$171.2m (EV US$2,459.5m; equity value US$1,917.3m). Three verified issues together point to about US$370.3m to 499.9m, or US$8.02 to 10.82 per share (19.3% to 26.1% of equity value), that the price does not reflect (indicative projection; the items are ranges and not certain to add):</p>
+<ul>
+<li>the Illinois and New Jersey door retrofit after 21% tax: US$194.7m to 265.4m (X-06);</li>
+<li>the normalized earnings gap at the deal multiple: US$117.8m to 176.7m (X-05);</li>
+<li>deal costs outside the model: US$57.8m (X-11).</li>
+</ul>
+<p>On top of these sit deferred NOL value (X-12) and, if the branch conversion goes ahead, a partial pension withdrawal liability of about US$99.7m (X-10). Separately, the largest holder's stated appraisal intent gives Parent a right not to close (X-01), and the notes put leaves an unfunded need of US$404.0m within 30 days after closing (X-04).</p>
+<p>In this report, a 5% or 10% value test counts as met when it is met on equity value (the price paid for the shares). EV percentages are also shown.</p>
+<h3 id="top-five-red-flags">Top five red flags</h3>
+<table>
+<thead><tr><th>#</th><th>ID</th><th>Red flag</th><th>Severity</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>X-06</td><td>About 22,400 comprehensive units in Illinois and New Jersey, most on contract forms that do not exclude code-mandated upgrades, face door retrofits by 2028 and 2029. Nothing is accrued or estimated. At US$11,000 to 15,000 per unit the cost is US$246.4m to 336.0m (upper bound), 12.9% to 17.5% of equity value.</td><td>Critical</td></tr>
+<tr><td>2</td><td>X-01</td><td>Halsey Rock (11.4%) said it will, if the deal is approved, demand appraisal of all its shares. That exceeds the 10% dissenting-shares condition, so Parent gets a right not to close unless it waives.</td><td>Critical</td></tr>
+<tr><td>3</td><td>X-05, X-13, X-14</td><td>The US$171.2m base is overstated. Normalized for the amortization-period change, add-backs that recur, and St. Aldric damages counsel calls "likely", it is US$158.9m to 163.0m (4.8% to 7.2% less value), and about 10.0% to 12.4% less with the signed labor contract (projection). The recurring base is weakening on every main measure.</td><td>High</td></tr>
+<tr><td>4</td><td>X-04</td><td>The 101% change-of-control put on the US$400.0m 2030 notes (US$404.0m) is not funded by the debt commitment. The notes trade below 101. The model assumes they stay outstanding.</td><td>High</td></tr>
+<tr><td>5</td><td>SEC-11, X-10</td><td>The Lift Mechanics pension fund is critical and declining. Meridale's complete withdrawal liability is US$338m (unrecorded). The 14-branch conversion in the thesis would trigger a partial withdrawal of about US$99.7m that the US$18.0m saving omits.</td><td>High</td></tr>
+</tbody>
+</table>
+<h3 id="positive-and-mitigating-points">Positive and mitigating points</h3>
+<ul>
+<li><strong>Debt maturities:</strong> none before the revolver (May 2029); the term loan is due May 2031 and the revolver was undrawn at June 30, 2026 (SEC-22). Qualified: the notes put after closing is unfunded (X-04).</li>
+<li><strong>Customer concentration:</strong> low and stable; the top customer is 2.3% and the top 10 are 14.8% of FY2025 revenue (FIN-20).</li>
+<li><strong>Customer retention:</strong> no positive found. Renewal fell from 92.3% (FY2024) to 86.9% (X-13).</li>
+<li><strong>Growing segment:</strong> LiftSense connected services grew 38.1% in FY2025 and 37.8% in H1 2026, to 61,900 units (FIN-13). Qualified: 9,800 units need new hardware at Meridale's cost before the September 30, 2027 network shutdown, about US$5.2m (SEC-36).</li>
+<li><strong>Items correctly excluded from Adjusted EBITDA:</strong> the FY2024 US$41.2m debt extinguishment loss (FIN-40) and M&amp;A costs (FIN-06).</li>
+<li><strong>Litigation closed or neutralized:</strong> Vantor's US$22.0m trade secrets suit was dismissed with prejudice and not appealed (LIT-05). The Merrin wrongful death claim (US$85.0m) sits under US$150.0m of insurance above an accrued US$2.0m retention (LIT-04). The Garcia claim settled within retention (LIT-07, not verified).</li>
+<li><strong>Supply and price protections:</strong> maintenance contracts carry price escalators, but 62% by revenue cap them at the lesser of CPI and 4.0%, below the new 6.5% labor cost increase (SEC-10). Qualified positive.</li>
+<li><strong>Internal controls and auditor:</strong> clean audit and ICFR opinions for FY2025; Whitcombe &amp; Ames has audited the company since 2007 (SEC-06). Qualified: the same period missed US$4.1m of accruals (X-07, SEC-04).</li>
+<li><strong>Closing mechanics:</strong> no customer consents expected under the reverse triangular structure (SEC-37); HSR early termination on October 14, 2026, no financing condition, US$115.0m reverse fee (SEC-38).</li>
+<li><strong>Cash conversion:</strong> LTM operating cash flow US$122.2m and free cash flow US$86.9m (FIN-23). Qualified: H1 2026 free cash flow fell from US$31.6m to 23.6m.</li>
+</ul>
+<h3 id="valuation-implications">Valuation implications</h3>
+<table>
+<thead><tr><th>Item</th><th>Amount (US$m)</th><th>Effect</th><th>Finding</th></tr></thead>
+<tbody>
+<tr><td>Normalized LTM base vs US$171.2m</td><td>158.9 to 163.0</td><td>EV US$2,282.8m to 2,341.7m at 14.37x (-7.2% to -4.8%)</td><td>X-05</td></tr>
+<tr><td>Pro forma for new labor contract</td><td>150.0 to 154.1</td><td>EV US$2,154.9m to 2,213.8m (about -12.4% to -10.0%)</td><td>X-05, SEC-10</td></tr>
+<tr><td>Door retrofit (upper bound, pre-tax)</td><td>246.4 to 336.0</td><td>12.9% to 17.5% of equity value</td><td>X-06</td></tr>
+<tr><td>Deal costs outside the model</td><td>57.8</td><td>Add to uses</td><td>X-11</td></tr>
+<tr><td>NOL value deferred beyond FY2029</td><td>up to 59.7</td><td>PV loss smaller than this</td><td>X-12</td></tr>
+<tr><td>Partial withdrawal if branches convert</td><td>about 99.7</td><td>5.5 years of the saving</td><td>X-10</td></tr>
+<tr><td>Laurent put floor (cash)</td><td>53.4</td><td>43.7 above book</td><td>SEC-24</td></tr>
+<tr><td>Notes put (cash, after closing)</td><td>404.0</td><td>Financing need</td><td>X-04</td></tr>
+</tbody>
+</table>
+<h2 id="2-answers-to-the-six-ic-questions">2. Answers to the six IC questions</h2>
+<h3 id="q1-is-ltm-adjusted-ebitda-of-us-171-2m-a-sound-base">Q1. Is LTM Adjusted EBITDA of US$171.2m a sound base?</h3>
+<p>No. The arithmetic ties (SEC-01 and FIN-01, not verified; the verified X-05 recomputes it), but the base is overstated and the trend is down.</p>
+<ul>
+<li><strong>Change in accounting estimate.</strong> Effective October 1, 2025, the commission amortization period went from six to ten years. The change cut expense by US$1.7m in Q4 2025 and US$3.4m in H1 2026, so US$5.1m sits inside the LTM base (the amortization is not in the D&amp;A add-back). The renewal rate it cited (92.3%) is now 86.9%; on management's own sensitivity the supportable period is about 4.6 years (inference) (X-14).</li>
+<li><strong>Add-backs that recur.</strong> Branch consolidation and ERP costs of US$2.6m are added back as "non-recurring" every year (FIN-05).</li>
+<li><strong>Probable unrecorded cost.</strong> Outside counsel calls St. Aldric liquidated damages "likely, at least in part"; nothing is accrued. About US$4.6m relates to the LTM period (X-08).</li>
+<li><strong>Out-of-period error.</strong> US$4.1m of FY2025 costs were booked in Q1 2026; the LTM effect is nil to +US$4.1m (SEC-04).</li>
+<li><strong>Normalized base:</strong> US$158.9m to 163.0m, or EV of US$2,282.8m to 2,341.7m at the deal's 14.37x, 4.8% to 7.2% below the deal EV (projection). With the new labor contract's US$8.9m incremental year-one cost (SEC-10), the gap is about 10.0% to 12.4% (X-05).</li>
+<li><strong>Trend.</strong> H1 2026 Adjusted EBITDA fell 16.9%; units -4.7%; renewal 86.9%; backlog -17.0%; maintenance margin 37.1% to 34.6%; FY2026 guidance midpoint US$195m cut to about US$168m (X-13). The August case needs H2 2026 margins of 17.9% against 16.4% in H1 excluding charges (SEC-61).</li>
+<li><strong>Disclosure.</strong> The organic growth definition was shortened to six months; FY2025 organic growth was 3.3% on the old basis vs 5.4% reported (SEC-03).</li>
+</ul>
+<h3 id="q2-what-liabilities-sit-outside-net-debt">Q2. What liabilities sit outside net debt?</h3>
+<ul>
+<li><strong>Code compliance:</strong> US$246.4m to 336.0m upper bound for Illinois and New Jersey door retrofits, unrecorded, with restatement risk for FY2025, Q1 and Q2 2026 (inference) (X-06).</li>
+<li><strong>Pension:</strong> complete withdrawal liability US$338m at January 1, 2026, up 14.2%, unrecorded and not triggered (SEC-11); partial withdrawal of about US$99.7m if the branch conversion goes ahead (X-10).</li>
+<li><strong>Litigation:</strong> St. Aldric (US$38.0m claimed; liquidated damages capped at US$15.4m, about US$10.7m accrued in time by October 31) (X-08); New Jersey renewals (US$35.4m sought plus an injunction; state CID) (X-09); legacy asbestos with a reserve based on an October 2023 study while claims rose from 29 to 41 (LIT-06). Merrin is insured (LIT-04).</li>
+<li><strong>Canada:</strong> Groupe Laurent can put its 50% of Laurent-Meridale on a change of control at the greater of fair value and 12.0x EBITDA, a floor of US$53.4m in cash against US$9.7m book (SEC-24).</li>
+<li><strong>Other:</strong> LTE-M hardware replacement about US$5.2m in 2027 (SEC-36).</li>
+</ul>
+<h3 id="q3-can-the-deal-close-as-signed">Q3. Can the deal close as signed?</h3>
+<p>At risk. Halsey Rock's 5,267,000 shares (11.4%) exceed the 10% dissenting-shares condition (4.62m shares), and it has said it will demand appraisal if the deal is approved. The condition is for Parent only, so Parent can walk or waive (X-01). A waiver means paying a court-set fair value; the proxy's own May indication of US$44.00 to 46.00 and the DCF top of US$46.80 put the uplift at about US$13.2m to 27.9m on Halsey Rock's shares, plus interest (X-03). The vote needs a majority of the 44.77m unaffiliated shares outstanding; Halsey Rock and Bramford hold 17.8% of them, and non-votes count against (X-02). The proxy excerpts do not mention Halsey Rock's October 6 letter (SEC-46). The NJ motion to dismiss is heard December 4, five days before the vote (X-09). HSR has cleared (SEC-38).</p>
+<h3 id="q4-does-the-financing-hold-if-2030-noteholders-put">Q4. Does the financing hold if 2030 noteholders put?</h3>
+<p>Not as modeled. The indenture gives a 101% put on the merger with no ratings trigger: US$404.0m plus accrued interest, offered within 30 days after closing. The debt commitment does not fund it, and the notes trade below 101 (97.25% at June 30; 98.5 on October 6). Post-closing cash of US$72.8m plus the US$250.0m revolver (survival not addressed) leaves a gap of about US$81.2m before other closing cash needs (X-04). There is no financing condition, so the buyer carries the risk (SEC-38). Pro forma leverage is 7.7x reported and 8.2x to 8.4x normalized, with interest cover of about 1.6x to 1.9x (projection) (FIN-25).</p>
+<h3 id="q5-is-the-branch-conversion-saving-achievable-without-omitted-costs">Q5. Is the branch conversion saving achievable without omitted costs?</h3>
+<p>Not without a large omitted cost. The 10-K says ceasing contributions at some bargaining units triggers a proportional partial withdrawal liability. On 1,000 of 3,390 covered technicians that is about US$99.7m (inference), 5.5 years of the US$18.0m saving. The conversions from FY2028 fall within the four-year collective agreement from July 1, 2026, and no source says whether it allows them. Technician attrition is 17.1% (X-10). The new agreement itself adds about US$8.9m of cost in year one against escalators capped at 4.0% (SEC-10).</p>
+<h3 id="q6-what-does-the-buyer-pay-at-or-because-of-closing-beyond-the-equity-price">Q6. What does the buyer pay at or because of closing beyond the equity price?</h3>
+<p>Fixed known deal costs are US$110.1m (4.5% of EV, 5.7% of equity value): award cash-out US$52.3m (in the model), change-in-control severance US$16.8m (expected to become payable, because Parent plans to replace the executive team except Mr. Pell), the Brockmere termination fee US$9.5m if terminated before December 31, 2026, and the Pellham Rowe fee US$31.5m (US$27.0m on closing). US$57.8m is outside the model (X-11). Contingent items: the notes put (US$404.0m, with a US$4.0m premium) (X-04) and the Laurent put (at least US$53.4m) (SEC-24). The deal EV also leaves out the award cash-out: the fully diluted multiple is 14.7x LTM (FIN-28).</p>
+<h2 id="3-risk-matrix">3. Risk matrix</h2>
+<p>One row per distinct issue. Supporting IDs (same fact) are in brackets.</p>
+<table>
+<thead><tr><th>ID</th><th>Finding</th><th>Workstream</th><th>Severity</th><th>Confidence</th><th>Deal impact</th><th>Recommended action</th></tr></thead>
+<tbody>
+<tr><td>X-06 [SEC-53, SEC-13, NEWS-10, NEWS-11, FIN-34]</td><td>IL and NJ door retrofit on about 22,400 units, unrecorded; US$246.4m to 336.0m upper bound. Critical test: more than 10% of value (12.9% to 17.5% of equity value)</td><td>Cross-source</td><td>Critical</td><td>Medium</td><td>Value, restatement risk</td><td>Price reduction or special indemnity or escrow; unit-level estimate before re-approval</td></tr>
+<tr><td>X-01 [NEWS-01, SEC-33, SEC-47]</td><td>Halsey Rock's stated appraisal intent on 11.4% exceeds the 10% condition. Critical test: could stop the deal (Parent's right not to close)</td><td>Cross-source</td><td>Critical</td><td>High</td><td>Closing</td><td>Decide waiver policy now; engage Halsey Rock; size appraisal cost</td></tr>
+<tr><td>X-04 [SEC-21, SEC-63, NEWS-04, FIN-26]</td><td>Unfunded 101% notes put, US$404.0m</td><td>Cross-source</td><td>High</td><td>High</td><td>Financing</td><td>Committed backstop before re-approval; add US$4.0m premium to uses</td></tr>
+<tr><td>X-05 [FIN-10]</td><td>Normalized base US$158.9m to 163.0m; 4.8% to 7.2% less value, about 10.0% to 12.4% with labor contract</td><td>Cross-source</td><td>High</td><td>Medium</td><td>Price</td><td>Re-base the model; price adjustment</td></tr>
+<tr><td>X-13 [SEC-08, NEWS-06, FIN-15, FIN-18, FIN-11, FIN-12, FIN-17, NEWS-05, FIN-02, SEC-09]</td><td>Recurring base weakening: EBITDA, units, renewal, backlog, margin, guidance</td><td>Cross-source</td><td>High</td><td>High</td><td>Price, thesis</td><td>Price; Q3 2026 results before re-approval</td></tr>
+<tr><td>X-14 [SEC-02, SEC-60, SEC-59, FIN-03, NEWS-07]</td><td>10-year amortization period no longer supported by renewal data; US$5.1m in the base</td><td>Cross-source</td><td>High</td><td>Medium</td><td>Price, accounting</td><td>Exclude benefit from base; auditor review</td></tr>
+<tr><td>X-07 [SEC-05, SEC-50, NEWS-09]</td><td>FY2025 effective-controls conclusion vs unaccrued costs; restatement risk in modernization accounts</td><td>Cross-source</td><td>High</td><td>Medium</td><td>Accounting, value</td><td>QoE of accruals; special indemnity; bring-down</td></tr>
+<tr><td>X-08 [LIT-09, LIT-01, SEC-15, SEC-16, SEC-62]</td><td>St. Aldric: US$38.0m claim; LDs counsel calls "likely" not accrued; cap US$15.4m</td><td>Cross-source</td><td>High</td><td>Medium</td><td>Value, customer</td><td>Special indemnity or escrow</td></tr>
+<tr><td>X-09 [LIT-02, NEWS-15, LIT-03, NEWS-14, SEC-17]</td><td>NJ auto-renewal class action (US$35.4m plus injunction) and state CID</td><td>Cross-source</td><td>High</td><td>Medium</td><td>Value, renewal model</td><td>Special indemnity; monitor Dec 4 ruling</td></tr>
+<tr><td>X-10 [SEC-12, NEWS-12, FIN-32]</td><td>Branch conversion triggers about US$99.7m partial withdrawal</td><td>Cross-source</td><td>High</td><td>Medium</td><td>Thesis, value</td><td>Net the liability in the model; get actuary estimate; check CBA</td></tr>
+<tr><td>SEC-11</td><td>Complete withdrawal liability US$338m, unrecorded; fund critical and declining</td><td>SEC filings</td><td>High</td><td>High</td><td>Value outside net debt</td><td>Price as a contingent liability; no-withdrawal covenant planning</td></tr>
+<tr><td>SEC-10 [NEWS-13, SEC-56]</td><td>Labor contract +6.5% a year vs escalators capped at 4.0%</td><td>SEC filings</td><td>High</td><td>High</td><td>Margins</td><td>Model the cost; pricing plan</td></tr>
+<tr><td>X-11 [SEC-31, SEC-65, FIN-29, FIN-27]</td><td>Fixed deal costs US$110.1m (5.7% of equity value); US$57.8m outside the model</td><td>Cross-source</td><td>High</td><td>High</td><td>Price</td><td>Add to uses and price</td></tr>
+<tr><td>X-12 [SEC-35, FIN-31, FIN-30]</td><td>NOLs limited to about US$11.2m a year; up to US$59.7m deferred</td><td>Cross-source</td><td>High</td><td>High</td><td>Price</td><td>Re-base tax model at PV</td></tr>
+<tr><td>X-02 [NEWS-02, SEC-32, SEC-49]</td><td>Majority-of-unaffiliated vote at risk</td><td>Cross-source</td><td>High</td><td>Medium</td><td>Closing</td><td>Solicitation plan</td></tr>
+<tr><td>FIN-25</td><td>Pro forma leverage 8.2x to 8.4x normalized; interest cover 1.6x to 1.9x</td><td>Financial</td><td>High</td><td>Medium</td><td>Financing</td><td>Re-size debt to normalized base</td></tr>
+<tr><td>X-03 [SEC-34, NEWS-03, SEC-48]</td><td>Appraisal value evidence: May indication US$44.00 to 46.00</td><td>Cross-source</td><td>Medium</td><td>Medium</td><td>Closing cost</td><td>Size appraisal cost; counsel on interest</td></tr>
+<tr><td>SEC-04 [FIN-08, SEC-51]</td><td>US$4.1m FY2025 costs not accrued; booked Q1 2026</td><td>SEC filings</td><td>Medium</td><td>High</td><td>Accounting</td><td>Period allocation; QoE</td></tr>
+<tr><td>SEC-03 [NEWS-08, FIN-16]</td><td>Organic growth definition changed; 3.3% on old basis</td><td>SEC filings</td><td>Medium</td><td>High</td><td>Growth quality</td><td>Use like-for-like growth</td></tr>
+<tr><td>SEC-07</td><td>No 2026 reconciliation in filings; charges not added back</td><td>SEC filings</td><td>Medium</td><td>Medium</td><td>Disclosure</td><td>Further diligence</td></tr>
+<tr><td>FIN-04</td><td>Cancellation fees rising with churn and under legal challenge</td><td>Financial</td><td>Medium</td><td>Medium</td><td>Earnings quality</td><td>Normalize; confirm period</td></tr>
+<tr><td>FIN-05</td><td>Recurring "non-recurring" add-backs, US$2.6m</td><td>Financial</td><td>Medium</td><td>High</td><td>Price</td><td>Exclude from base</td></tr>
+<tr><td>FIN-07</td><td>SBC US$12.9m could become a cash cost</td><td>Financial</td><td>Medium</td><td>Medium</td><td>Sensitivity</td><td>Model post-closing incentive cost</td></tr>
+<tr><td>FIN-09</td><td>US$5.2m St. Aldric loss provision; not added back</td><td>Financial</td><td>Medium</td><td>High</td><td>Execution</td><td>Bid discipline review</td></tr>
+<tr><td>SEC-24 [SEC-58]</td><td>Laurent put floor US$53.4m cash vs US$9.7m book</td><td>SEC filings</td><td>Medium</td><td>High</td><td>Price, cash</td><td>Add to uses as contingent</td></tr>
+<tr><td>SEC-25 [NEWS-20]</td><td>Brockmere termination fee US$9.5m</td><td>SEC filings</td><td>Medium</td><td>High</td><td>Price</td><td>Add to uses; time the termination</td></tr>
+<tr><td>SEC-26</td><td>Award cash-out US$52.3m</td><td>SEC filings</td><td>Medium</td><td>High</td><td>Price</td><td>In model</td></tr>
+<tr><td>SEC-28 [SEC-64]</td><td>CIC severance US$16.8m expected to become payable</td><td>SEC filings</td><td>Medium</td><td>High</td><td>Price</td><td>Add to uses</td></tr>
+<tr><td>SEC-29</td><td>Pellham Rowe fee US$31.5m (US$27.0m on closing)</td><td>SEC filings</td><td>Medium</td><td>High</td><td>Price</td><td>Add to uses</td></tr>
+<tr><td>SEC-30</td><td>Pellham Rowe conflicts with the buyer</td><td>SEC filings</td><td>Medium</td><td>High</td><td>Litigation, vote</td><td>Disclosure review</td></tr>
+<tr><td>SEC-46</td><td>Proxy excerpts silent on Halsey Rock's letter</td><td>SEC filings</td><td>Medium</td><td>Medium</td><td>Disclosure</td><td>Proxy supplement review</td></tr>
+<tr><td>SEC-55</td><td>Fairness DCF excludes code and withdrawal costs</td><td>SEC filings</td><td>Medium</td><td>Medium</td><td>Price support</td><td>Note in IC materials</td></tr>
+<tr><td>SEC-36 [FIN-14, NEWS-19]</td><td>LTE-M replacement about US$5.2m</td><td>SEC filings</td><td>Medium</td><td>High</td><td>Capex 2027</td><td>Budget</td></tr>
+<tr><td>SEC-40</td><td>CFO to be replaced while judgments are open</td><td>SEC filings</td><td>Medium</td><td>High</td><td>Integration</td><td>Finance retention through first audit</td></tr>
+<tr><td>SEC-61</td><td>August case implies H2 margin recovery to 17.9%</td><td>SEC filings</td><td>Medium</td><td>Medium</td><td>Forecast</td><td>Test against Q3 2026</td></tr>
+<tr><td>FIN-28</td><td>EV excludes award cash-out; 14.7x fully diluted</td><td>Financial</td><td>Medium</td><td>High</td><td>Valuation</td><td>Use fully diluted EV</td></tr>
+<tr><td>FIN-19</td><td>Technician attrition 17.1%</td><td>Financial</td><td>Medium</td><td>High</td><td>Operations</td><td>Retention plan</td></tr>
+<tr><td>FIN-22</td><td>Contract assets rising as modernization falls</td><td>Financial</td><td>Medium</td><td>Medium</td><td>Working capital</td><td>Working capital peg</td></tr>
+<tr><td>LIT-06</td><td>Asbestos reserve based on October 2023 study; claims rising</td><td>Litigation</td><td>Medium</td><td>High</td><td>Liability</td><td>Refreshed actuarial study</td></tr>
+<tr><td>LIT-10</td><td>Inspector: step chain should have been flagged in April 2025</td><td>Litigation</td><td>Medium</td><td>High</td><td>Safety, reputation</td><td>Safety program review</td></tr>
+<tr><td>NEWS-16</td><td>DOJ bid-rigging rumor (rumor; company denies)</td><td>News</td><td>Medium</td><td>Low</td><td>Reputation</td><td>Specific antitrust representation</td></tr>
+</tbody>
+</table>
+<p>Low and mitigating verified findings, without their own risk row: X-15 [SEC-14], SEC-52, SEC-57, SEC-66, NEWS-23, SEC-06, SEC-22, SEC-37, SEC-38, LIT-04, LIT-05, FIN-06, FIN-13, FIN-20, FIN-23, FIN-40. NEWS-19's market data also supports FIN-13.</p>
+<h2 id="4-workstream-detail">4. Workstream detail</h2>
+<h3 id="4-1-sec-filings">4.1 SEC filings</h3>
+<ul>
+<li><strong>Accounting estimates.</strong> The amortization-period change (SEC-02) and the organic-growth definition change (SEC-03) both flatter FY2025 and the LTM. The US$4.1m out-of-period error (SEC-04) sits beside an effective-ICFR conclusion (SEC-05) and a clean opinion from a 19-year auditor (SEC-06). No filing classifies the gap or mentions the dismissals (SEC-50).</li>
+<li><strong>Contingencies.</strong> The door codes (SEC-13, SEC-53) are unaccrued and unestimated; the 10-K risk factor still called them hypothetical (X-15). St. Aldric (SEC-15, SEC-16, SEC-62) and the NJ matters (SEC-17) are disclosed in the 10-Q.</li>
+<li><strong>Pension and labor.</strong> Complete withdrawal liability US$338m (SEC-11); partial withdrawal from conversion (SEC-12); new collective agreement (SEC-10, SEC-56).</li>
+<li><strong>Debt.</strong> Notes put (SEC-21); maturities and swap (SEC-22).</li>
+<li><strong>Merger terms.</strong> Vote conditions (SEC-32), appraisal condition (SEC-47), price history (SEC-34), fees and conflicts (SEC-29, SEC-30), awards and severance (SEC-26, SEC-28), Brockmere (SEC-25), Laurent (SEC-24), Section 382 (SEC-35).</li>
+</ul>
+<h3 id="4-2-news-and-media">4.2 News and media</h3>
+<p>Fourteen sources were rated for reliability, from High (Capital Markets Wire) to Low (the pseudonymous LiftWatch Insider blog). The news supplied facts the filings lack: Halsey Rock's appraisal intent (NEWS-01), the per-unit retrofit cost (NEWS-10, NEWS-11), the benefits attorney's view on partial withdrawal (NEWS-12), and the Southwest dismissals (NEWS-09, press report; the 2024 invoice-holding claim is an unconfirmed allegation). The DOJ bid-rigging item is a rumor with a company denial (NEWS-16). The timing overlap between the "one-off" hospital contract loss and that rumor rests on timing alone (NEWS-17, Low).</p>
+<h3 id="4-3-litigation">4.3 Litigation</h3>
+<table>
+<thead><tr><th>Matter</th><th>Status</th><th>Exposure</th><th>Finding</th></tr></thead>
+<tbody>
+<tr><td>St. Aldric arbitration</td><td>Panel forming (Nov 18)</td><td>US$38.0m claimed; LD cap US$15.4m</td><td>X-08</td></tr>
+<tr><td>Reyes NJ class action</td><td>MTD hearing Dec 4, 2026</td><td>US$35.4m plus injunction</td><td>X-09</td></tr>
+<tr><td>NJ Consumer Affairs CID</td><td>Production due Nov 30</td><td>Not quantified</td><td>X-09</td></tr>
+<tr><td>Merrin wrongful death</td><td>Discovery; mediation Jan 21, 2027</td><td>US$85.0m; insured</td><td>LIT-04</td></tr>
+<tr><td>Vantor trade secrets</td><td>Dismissed with prejudice</td><td>Nil</td><td>LIT-05</td></tr>
+<tr><td>Legacy asbestos</td><td>41 claims; trial Mar 8, 2027</td><td>Reserve US$7.2m; receivable US$4.9m</td><td>LIT-06</td></tr>
+<tr><td>Garcia</td><td>Settled within retention</td><td>US$0.3m</td><td>LIT-07 (not verified)</td></tr>
+<tr><td>Hollister Towers</td><td>Meridale is plaintiff</td><td>US$0.4m receivable</td><td>LIT-08 (not verified)</td></tr>
+</tbody>
+</table>
+<h3 id="4-4-financial-analysis">4.4 Financial analysis</h3>
+<table>
+<thead><tr><th>Metric</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>H1 2026 / Jun 30, 2026</th></tr></thead>
+<tbody>
+<tr><td>Revenue</td><td>905.0</td><td>984.0</td><td>1,067.7</td><td>510.8 (LTM 1,062.5)</td></tr>
+<tr><td>Adjusted EBITDA</td><td>163.1</td><td>177.0</td><td>186.4</td><td>74.7 (LTM 171.2)</td></tr>
+<tr><td>Adjusted EBITDA margin</td><td>18.0%</td><td>18.0%</td><td>17.5%</td><td>14.6%</td></tr>
+<tr><td>Gross margin</td><td>34.0%</td><td>33.9%</td><td>33.4%</td><td>31.2%</td></tr>
+<tr><td>Free cash flow</td><td>74.2</td><td>89.7</td><td>94.9</td><td>23.6 (LTM 86.9)</td></tr>
+<tr><td>Units under contract</td><td>158,400</td><td>164,900</td><td>176,300</td><td>168,100</td></tr>
+<tr><td>Renewal rate</td><td>92.8%</td><td>92.3%</td><td>90.6%</td><td>86.9%</td></tr>
+<tr><td>Maintenance gross margin</td><td>38.9%</td><td>38.4%</td><td>37.1%</td><td>34.6%</td></tr>
+<tr><td>Modernization backlog</td><td>412.0</td><td>455.0</td><td>448.0</td><td>372.0</td></tr>
+<tr><td>LiftSense connected units</td><td>21,000</td><td>34,500</td><td>52,800</td><td>61,900</td></tr>
+<tr><td>Net debt / Adjusted EBITDA</td><td>3.22x</td><td>2.80x</td><td>3.03x</td><td>3.17x (LTM)</td></tr>
+</tbody>
+</table>
+<p>Net debt of US$542.2m and the sources and uses (US$2,278.6m) recompute (FIN-24, not verified; FIN-27). Quarterly revenue broke trend in Q1 2026 (FIN-11); implied H1 2026 bookings were US$16.1m, a book-to-bill of 0.17 (derived) (FIN-17).</p>
+<h2 id="5-cross-source-insights">5. Cross-source insights</h2>
+<ul>
+<li><strong>The retrofit cost only appears when sources are combined.</strong> The 10-Q gives the unit count and contract terms but no cost; the trade press gives the cost per elevator but not Meridale's units. Together they give US$246.4m to 336.0m (X-06), which the fairness DCF also leaves out (SEC-55).</li>
+<li><strong>The appraisal condition only bites with the news.</strong> The filings show the 10% threshold and Halsey Rock's 11.4%; only the news shows its intent. The proxy then confirms the earlier US$44.00 to 46.00 indication that Halsey Rock had cited as rumor (X-01, X-03).</li>
+<li><strong>St. Aldric's accrual judgment is contradicted by a later view.</strong> The 10-Q says liquidated damages are not probable; the company's own litigation summary records counsel's later view that they are "likely, at least in part" (X-08).</li>
+<li><strong>The NOL limit is corroborated by the deferred tax trend.</strong> The 10-K's 2023 ownership change limit (about US$11.2m a year) matches the US$2.4m yearly deferred tax drawdown (X-12).</li>
+<li><strong>The amortization benefit sits inside Adjusted EBITDA.</strong> The filings do not say so; the cash flow statement shows the amortization is netted outside the D&amp;A add-back (X-14).</li>
+<li><strong>The conversion saving collides with the pension rules.</strong> The deal thesis, the 10-K's proportional-liability language and the fund's critical and declining status combine into a US$99.7m omitted cost (X-10).</li>
+<li><strong>Named parties:</strong> St. Aldric is customer #6 (US$14.8m FY2025); Calder Mall Partners, co-defendant in Merrin, is #5 (US$15.4m, the only top-10 decline, timing only); Reyes Property Group and Hollister Towers are not listed top-10 customers (X-16, not verified).</li>
+</ul>
+<h2 id="6-recommended-deal-protections-and-price-considerations">6. Recommended deal protections and price considerations</h2>
+<ol>
+<li><strong>Price.</strong> Re-base on a normalized LTM of US$158.9m to 163.0m (X-05). Deduct the after-tax retrofit range or hold it in escrow (X-06). Add US$57.8m of deal costs outside the model (X-11), the contingent Laurent put (SEC-24) and the NOL present-value loss (X-12).</li>
+<li><strong>Special indemnities or escrow:</strong> door retrofit (X-06), St. Aldric (X-08), New Jersey renewals (X-09), and accounting matters in modernization (X-07).</li>
+<li><strong>Financing:</strong> committed backstop for the US$404.0m notes put plus interest, and confirmation that the revolver survives (X-04). Re-size leverage to the normalized base (FIN-25).</li>
+<li><strong>Closing conditions and process:</strong> a decision on waiving the appraisal condition; a vote solicitation plan; review of a proxy supplement for Halsey Rock's letter (X-01, X-02, SEC-46).</li>
+<li><strong>Representations and bring-down:</strong> financial statements and internal controls, no antitrust contact (NEWS-16), and no undisclosed code-compliance commitments.</li>
+<li><strong>Thesis changes:</strong> net the partial withdrawal liability against the conversion saving and confirm the collective agreement allows conversion (X-10); model the labor contract against capped escalators (SEC-10).</li>
+<li><strong>Integration:</strong> keep the finance team through the first audit (SEC-40); refresh the asbestos study (LIT-06); safety review after the Merrin inspector's finding (LIT-10).</li>
+</ol>
+<h2 id="7-open-questions-and-management-request-list">7. Open questions and management request list</h2>
+<ol>
+<li>Unit-level door retrofit estimate: units by state and contract form, and how many lack a code-upgrade exclusion.</li>
+<li>The fund actuary's partial withdrawal estimate for the 14 branches, and the collective agreement text on conversion and subcontracting.</li>
+<li>Funding plan for the notes put; revolver terms on change of control.</li>
+<li>Appraisal demands received; Parent's waiver intention; any proxy supplement.</li>
+<li>The quarter of the US$4.1m error, the internal audit report, the reason for the dismissals, the auditor's deficiency evaluation, and whether the practice began in 2024.</li>
+<li>The St. Aldric accrual at September 30, 2026, and the Q3 2026 10-Q.</li>
+<li>NJ cancellation fee income and renewal revenue by year since 2020; renewal notices before March 2025.</li>
+<li>The renewal-rate basis for the 10-year amortization period, and any planned reassessment.</li>
+<li>A Section 382 study: the pre-change share of the US$318.0m NOLs.</li>
+<li>The assumptions behind the August case's H2 2026 margin.</li>
+<li>An asbestos actuarial update after October 2023.</li>
+<li>The identity of the lost hospital customer cited in August.</li>
+<li>Groupe Laurent's intentions on the put.</li>
+<li>Goodwill test date and reporting-unit headroom.</li>
+</ol>
+<h2 id="8-appendix">8. Appendix</h2>
+<h3 id="methodology">Methodology</h3>
+<p>The system has one lead agent and four specialist subagents: SEC filings, news and media, litigation, and financial analysis. A separate citation verifier checks their work. The analysts read only the data room in <code>targets/wren/data/</code> and are read-only; the lead agent keeps working memory (plan, findings register, open questions, datasets, run log) and writes the report.</p>
+<ul>
+<li><strong>Iterations:</strong> 2 of a budget of 3. Iteration 1 ran all four analysts in parallel. Iteration 2 sent one narrow follow-up to the SEC analyst on questions the filings could still answer for Critical and High items. The loop stopped because the remaining questions need data not in the room.</li>
+<li><strong>Checkpoint log:</strong>
+<ul>
+<li>Checkpoint 1: plan summary shown in chat; user replied "approve".</li>
+<li>Checkpoint 2: red flags shown in chat; user replied "proceed".</li>
+<li>Checkpoint 3: verification results and draft recommendation shown in chat; user replied "approve report".</li>
+</ul>
+</li>
+<li><strong>Verification statistics:</strong> 126 findings checked in four parallel runs: 78 Verified, 48 Partially verified (rewritten with the verifier's wording), 0 Rejected. Severity changes after verification: NEWS-01 to High; NEWS-09 to Medium; NEWS-23, SEC-52, SEC-57, SEC-66 and X-15 to Low; SEC-46 and SEC-55 to Medium; FIN-29 and FIN-32 to High.</li>
+</ul>
+<h3 id="index-of-verified-findings">Index of verified findings</h3>
+<ul>
+<li><strong>Cross-source:</strong> X-01, X-02, X-03, X-04, X-05, X-06, X-07, X-08, X-09, X-10, X-11, X-12, X-13, X-14, X-15.</li>
+<li><strong>SEC filings:</strong> SEC-02, SEC-03, SEC-04, SEC-05, SEC-06, SEC-07, SEC-08, SEC-09, SEC-10, SEC-11, SEC-12, SEC-13, SEC-14, SEC-15, SEC-16, SEC-17, SEC-21, SEC-22, SEC-24, SEC-25, SEC-26, SEC-28, SEC-29, SEC-30, SEC-31, SEC-32, SEC-33, SEC-34, SEC-35, SEC-36, SEC-37, SEC-38, SEC-40, SEC-46, SEC-47, SEC-48, SEC-49, SEC-50, SEC-51, SEC-52, SEC-53, SEC-55, SEC-56, SEC-57, SEC-58, SEC-59, SEC-60, SEC-61, SEC-62, SEC-63, SEC-64, SEC-65, SEC-66.</li>
+<li><strong>News:</strong> NEWS-01, NEWS-02, NEWS-03, NEWS-04, NEWS-05, NEWS-06, NEWS-07, NEWS-08, NEWS-09, NEWS-10, NEWS-11, NEWS-12, NEWS-13, NEWS-14, NEWS-15, NEWS-16, NEWS-19, NEWS-20, NEWS-23.</li>
+<li><strong>Litigation:</strong> LIT-01, LIT-02, LIT-03, LIT-04, LIT-05, LIT-06, LIT-09, LIT-10.</li>
+<li><strong>Financial:</strong> FIN-02, FIN-03, FIN-04, FIN-05, FIN-06, FIN-07, FIN-08, FIN-09, FIN-10, FIN-11, FIN-12, FIN-13, FIN-14, FIN-15, FIN-16, FIN-17, FIN-18, FIN-19, FIN-20, FIN-22, FIN-23, FIN-25, FIN-26, FIN-27, FIN-28, FIN-29, FIN-30, FIN-31, FIN-32, FIN-34, FIN-40.</li>
+</ul>
+<p>Status (Verified or Partially verified) for each is in the register, <code>memory/findings.md</code>. 126 in all.</p>
+<h3 id="findings-not-verified-low-only">Findings not verified (Low only)</h3>
+<p>X-16 (not verified); SEC-01, SEC-18, SEC-19, SEC-20, SEC-23, SEC-27, SEC-39, SEC-41, SEC-42, SEC-43, SEC-44, SEC-45, SEC-54, SEC-67 (not verified); NEWS-17, NEWS-18, NEWS-21, NEWS-22 (not verified); LIT-07, LIT-08 (not verified); FIN-01, FIN-21, FIN-24, FIN-33, FIN-35, FIN-36, FIN-37, FIN-38, FIN-39, FIN-41 (not verified).</p>
+<h3 id="source-index">Source index</h3>
+<ul>
+<li><code>deal-brief.md</code>, <code>README.md</code></li>
+<li>SEC filings: FY2025 10-K excerpts (filed February 26, 2026); Q2 2026 10-Q excerpts (filed August 6, 2026); 8-K of February 25, 2026 (FY2025 results); 8-K of September 21, 2026 (merger agreement); DEFM14A excerpts (filed October 23, 2026).</li>
+<li>News: 14 articles dated October 9, 2025 to October 20, 2026 (Vertical Transport Journal, Capital Markets Wire, Indianapolis Business Ledger, Phoenix Business Courier, Pension and Benefits Monitor, The Labor Standard, Garden State Ledger, LiftWatch Insider).</li>
+<li>Litigation: <code>docket_index.csv</code> and case files LIT-01 to LIT-06.</li>
+<li>Financials: income statement, balance sheet, cash flow, Adjusted EBITDA reconciliation, quarterly revenue, revenue by customer, KPIs, README.</li>
+</ul>
+<h3 id="limitations">Limitations</h3>
+<ul>
+<li>The filings are excerpts; "not found" means not found in the excerpts.</li>
+<li>The retrofit cost per unit comes from one trade journal citing contractors; the upper bound assumes all 22,400 units are affected.</li>
+<li>The partial withdrawal estimate is pro rata on headcount; the statutory basis may differ.</li>
+<li>No Q1 or Q3 2026 10-Q is in the data room.</li>
+<li>Projections and inferences are labeled; they are not forecasts by the company.</li>
+<li>This is a draft for human decision-makers, not investment, legal or accounting advice. All companies, people and figures are fictional.</li>
+</ul>
+</body>
+</html>

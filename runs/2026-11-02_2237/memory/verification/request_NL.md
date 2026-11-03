@@ -1,0 +1,27 @@
+- NEWS-01 [Critical] Halsey Rock (11.4%) says it will vote against and demand appraisal of all its shares, above the reported 10% dissenting-shares walk right | Sources: news/2026-10-06 CMW paras 1, 3
+- NEWS-02 [High] Vote risk: Halsey Rock against and Bramford (5.8%) leaning against, 17.2% together; stock at US$38.60, 7.0% below the deal price | Sources: news/2026-09-21 CMW para 3; news/2026-10-06 CMW paras 2-3
+- NEWS-03 [Medium] Halsey Rock cites reports the buyer discussed US$44 to 46 a share earlier in 2026 (allegation); February high US$44.10 | Sources: news/2026-10-06 CMW para 2; news/2026-09-21 CMW para 1
+- NEWS-04 [High] 2030 notes traded at 98.5, below the 101 put price, so holders have an incentive to put; model assumes none | Sources: news/2026-10-06 CMW para 4
+- NEWS-05 [High] H1 2026 Adjusted EBITDA -16.9% to US$74.7m; FY2026 guidance cut to about US$168m; shares -21% | Sources: news/2026-08-06 CMW para 1; news/2026-02-25 CMW para 1
+- NEWS-06 [High] Units, renewals and backlog weakening together; management blames rebidding, OEM pricing and a "one-off" hospital contract loss | Sources: news/2026-08-06 CMW paras 2-3
+- NEWS-07 [Medium] Commission amortization stretched to 10 years in February, then renewal fell to 86.9% (implied life about 7.6 years, inference) | Sources: news/2026-02-25 CMW para 4; news/2026-08-06 CMW paras 2-3
+- NEWS-08 [Medium] Organic growth definition changed to count acquisitions after 6 months; CFO did not give the old-basis figure | Sources: news/2026-02-25 CMW para 3
+- NEWS-09 [High] Southwest regional controller and two Phoenix PMs dismissed after internal audit of subcontractor costs; anonymous claim invoices were held at quarter-ends from 2024 (rumor) | Sources: news/2026-04-28 Phoenix Business Courier paras 1-3
+- NEWS-10 [High] Illinois Door Integrity Act: about 41,000 elevators, deadline Dec 31, 2028, US$11,000 to 15,000 each (contractor estimate); owners expect providers to absorb it | Sources: news/2025-10-09 VTJ paras 1-3
+- NEWS-11 [High] NJ door rule adopted Apr 1, 2026, deadline Jul 1, 2029; about 68,000 elevators in both states; independents most exposed | Sources: news/2026-04-02 VTJ paras 1-3
+- NEWS-12 [High] Lift Mechanics fund critical and declining, 58% funded, insolvency 2041; benefits attorney: converting a branch to non-union is a partial withdrawal | Sources: news/2026-05-27 Pension and Benefits Monitor paras 1-3
+- NEWS-13 [High] New union contract: +6.5% a year for four years plus a 1:2 apprentice ratio; analyst estimates about US$9m added cost in year one | Sources: news/2026-06-12 Labor Standard paras 1, 3
+- NEWS-14 [Medium] NJ Division of Consumer Affairs CID (March 2026) seeks every renewal notice and cancellation fee since 2020 | Sources: news/2026-07-08 Garden State Ledger para 1
+- NEWS-15 [High] Reyes Property Group class action seeks about US$35.4m (3x US$11.8m of NJ fees) (allegation) | Sources: news/2026-07-08 Garden State Ledger paras 2-4
+- NEWS-16 [Medium] DOJ bid-rigging rumor on Midwest modernization bids from a pseudonymous blog; company denies any antitrust contact | Sources: news/2026-08-29 LiftWatch Insider paras 1-4
+- NEWS-19 [Medium] Connected monitoring market growing about 25% a year; Northline LTE-M shutdown Sep 30, 2027 affects about 30,000 US devices | Sources: news/2026-10-20 VTJ paras 1-3
+- NEWS-20 [Medium] Deal coverage: Meridale must walk away from the US$96m Brockmere deal; CEO rolls part of his stake; price below February high | Sources: news/2026-09-21 CMW paras 1-3
+- NEWS-23 [Medium] Disclosure check list of dated news events to compare with filings | Sources: news files 1, 4, 5, 7, 8, 9, 13, 14
+- LIT-01 [High] St. Aldric (sixth-largest customer) arbitration claims US$38.0m for delay; LDs capped at US$15.4m unless gross negligence is found; uninsured | Sources: litigation/LIT-01_st-aldric-arbitration.md; docket_index.csv LIT-01
+- LIT-02 [High] Reyes NJ putative class (about 4,100 accounts) seeks US$35.4m plus injunction and fees; MTD hearing Dec 4, 2026; no accrual | Sources: litigation/LIT-02_reyes-class-action.md; docket_index.csv LIT-02
+- LIT-03 [Medium] NJ Division of Consumer Affairs CID (served Mar 30, 2026) on renewals and termination fees since 2020; no remedy sought yet; production due Nov 30, 2026 | Sources: litigation/LIT-03_nj-consumer-affairs-cid.md; docket_index.csv LIT-03
+- LIT-06 [Medium] Legacy asbestos claims rising (41 pending); US$7.2m reserve from an October 2023 study; 2025 gross cost US$1.7m vs about US$0.72m a year in the reserve | Sources: litigation/LIT-06_legacy-asbestos.md; docket_index.csv LIT-06
+- LIT-09 [High] St. Aldric LDs that outside counsel calls "likely, at least in part" (September 2026) are not accrued; about US$4.55m through Jun 30 and US$10.7m through Oct 31, 2026 | Sources: litigation/LIT-01_st-aldric-arbitration.md (The contract; Meridale's position)
+- LIT-10 [Medium] Arizona inspector found the failed step chain should have been flagged at the April 2025 maintenance visit (safety and reputation) | Sources: litigation/LIT-04_merrin-wrongful-death.md (Facts)
+- LIT-04 [Low, positive/mitigant for the report] Merrin wrongful death (US$85.0m): insurance tower US$152.0m accepted without reservation; SIR accrued; monetary exposure insured | Sources: litigation/LIT-04_merrin-wrongful-death.md; docket_index.csv LIT-04
+- LIT-05 [Low, positive/mitigant for the report] Vantor trade secrets suit dismissed with prejudice; no appeal by Jun 11, 2026; closed | Sources: litigation/LIT-05_vantor-trade-secrets.md; docket_index.csv LIT-05
