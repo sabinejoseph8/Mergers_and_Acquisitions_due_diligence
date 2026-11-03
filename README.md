@@ -233,21 +233,23 @@ Open the folder in Claude Code and type `/diligence` (or `/diligence <target>` f
 
 For a truly blind test, start a fresh Claude Code session in the folder, run `/diligence`, then `/evaluate` and compare your scorecard with the sample run. Claude Code asks before any agent can open the answer key, a scorecard or an earlier run.
 
-## A real company: the first backtest
+## Real companies: two backtests
 
-The fictional targets test the system on issues someone planted. The backtest tests it on real SEC filings, where nobody planted anything. A download tool (`tools/fetch_edgar.py`) saved one real public company's filings and EDGAR's structured financial data as of a cutoff date (December 1, 2018) into a target folder. The agents stayed offline and read-only. The deal is hypothetical. News and litigation stayed empty, because made-up news or court records about a real company are not acceptable, and the report lists them as gaps. The answer key lists warning signs that were visible in the filings before the cutoff and that the later public record shows mattered.
+The fictional targets test the system on issues someone planted. A backtest tests it on real SEC filings, where nobody planted anything. For each backtest, a download tool (`tools/fetch_edgar.py`) saved one real public company's filings and EDGAR's structured financial data as of a cutoff date into a target folder. The agents stayed offline and read-only. The deal is hypothetical. News and litigation stayed empty, because made-up news or court records about a real company are not acceptable, and the report lists them as gaps. The answer key lists warning signs that were visible in the filings before the cutoff and that the later public record shows mattered.
 
-**Limits first.** It is one company, picked by a separate session that knew the later record. I knew the company name, so I approved each checkpoint without steering. The answer key has 10 warning signs and no distractors, so it cannot show false alarms. The company, the full report and the scorecard stay private: they are an AI's red-flag list about a real, named company, and AI output can still be wrong.
+**Limits first.** Each backtest is one company, picked by a separate session that knew the later record. I knew each company's name, so I approved each checkpoint without steering. The answer keys have 10 and 8 warning signs and no distractors, so they cannot show false alarms. Part of backtest-1's run log used estimated times, so run time is not measured. The companies, the full reports and the scorecards stay private: they are an AI's red-flag list about a real, named company, and AI output can still be wrong.
 
-| Target, set before the run | Result |
-|---|---|
-| At least 2 in 3 of the warning signs found | 10 of 10 |
-| The sign most tied to the later event is in the top five red flags | Yes, third |
-| Unsupported findings in the report | 0 |
-| Hindsight leaks (anything dated after the cutoff) | 0 |
-| Three checkpoints held, nine report parts, empty sources listed as gaps | Yes |
+| Target, set before the run | Backtest-1 (cutoff in 2018) | Backtest-2 (cutoff in 2014) |
+|---|---|---|
+| At least 2 in 3 of the warning signs found | 10 of 10 | 5 of 8, plus 3 partly found (81.3% scored, 62.5% on full finds alone) |
+| The sign most tied to the later event is in the top five red flags | Yes, third | Yes, second |
+| Unsupported findings in the report | 0 | 0 |
+| Hindsight leaks (anything dated after the cutoff) | 0 | 0 |
+| Three checkpoints held, nine report parts, empty sources listed as gaps | Yes | Yes |
 
-Severity matched the answer key exactly on all 10. The warning signs were about one large related-party loan to insiders: no allowance, repeated modifications, no cash collected, a bonus used to pay it down, collateral in the company's own shares, a partial asset sale, management's "no risk of loss" judgment, unpaid interest booked as income, a material weakness in controls, and board control by the borrowers. The grader still found three weak spots. The run did not test a write-off against equity and restatement risk. It counted share collateral valued at the buyer's own offer price as a positive. And it kept the control weakness apart from the transactions it could affect. Those become rules, measured on a second backtest.
+**Backtest-1.** Severity matched the answer key exactly on all 10. The warning signs were about one large related-party loan to insiders: no allowance, repeated modifications, no cash collected, a bonus used to pay it down, collateral in the company's own shares, a partial asset sale, management's "no risk of loss" judgment, unpaid interest booked as income, a material weakness in controls, and board control by the borrowers. The grader still found three weak spots. The run did not test a write-off against equity and restatement risk. It counted share collateral valued at the buyer's own offer price as a positive. And it kept the control weakness apart from the transactions it could affect. Those became three generic rules, written by a session that never saw the answer key.
+
+**Backtest-2.** It met the first target on the grader's score, where a partial find counts half, but not on full finds alone, which fall just under 2 in 3. I report both. Severity was within one level on all 8 and exact on 7 (one was rated a level high). The warning signs were an unrecorded tax liability and its growth after the examined years, a loss contingency judgment whose wording changed between filings, the quality of revenue and earnings, restatement risk for earlier periods, internal controls, and management and board turnover. The three partial finds share one gap: the run sized the liability going forward but did not follow it back. It did not tie the growth driver to the earnings the deal is priced on. It named a restatement risk only for the latest quarter, not the earlier audited years. And it set the controls conclusion against disclosure errors rather than against the practice behind the liability. Backtest-1's rules had little to act on here (no related-party loan, no share collateral, no reported control weakness), so backtest-2 measured the system on a new kind of problem more than it measured those rules. Its three weak spots are now rules too, but they were written by the session that graded the run, after it read the answer key. So both sets of rules are unmeasured, and the next backtest needs sessions that never saw them being written.
 
 ## From demo to a real deal
 

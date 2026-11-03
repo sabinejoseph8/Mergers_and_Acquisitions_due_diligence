@@ -46,7 +46,7 @@
 </head>
 <body>
   <header class="head">
-    <div class="eyebrow">AI product management case study &middot; Fictional target &middot; October 2026</div>
+    <div class="eyebrow">AI product management case study &middot; Fictional targets and real-filing backtests &middot; November 2026</div>
     <h1>Project Falcon</h1>
     <div class="sub">Multi-agent M&amp;A due diligence, built in Claude Code without application code</div>
     <p class="lede">An AI diligence team that researches an acquisition target across SEC filings, news, court records and financials, connects what no single source shows, and drafts an Investment Committee report, with people approving each stage.</p>
@@ -86,6 +86,10 @@
           <li><strong>Planned like a product:</strong> specs and a phased plan with tests for each phase, agreed before building.</li>
         </ul>
       </section>
+      <section>
+        <h2>Real filings: two backtests</h2>
+        <p>Two backtests ran on a real company's SEC filings as of a cutoff date (2018 and 2014), with a hypothetical deal and a key of warning signs the later public record showed mattered. <strong>Limits first:</strong> one company each, picked by a session that knew the outcome; no distractors, so false alarms are untested; the companies and reports stay private. Found: 10 of 10 signs, then 5 of 8 plus 3 in part (81.3% scored, 62.5% on full finds alone). Both: 0 unsupported findings, 0 hindsight leaks.</p>
+      </section>
     </div>
 
     <div>
@@ -113,11 +117,11 @@
     </div>
   </div>
 
-  <div class="note"><strong>How blind was the test?</strong> Each graded run started in a fresh session that never saw the answer key or an earlier run. The held-out targets' builders never saw the instructions either. Next: Plover's three severity fixes, then a real data source.</div>
+  <div class="note"><strong>How blind was the test?</strong> Each graded run started in a fresh session that never saw the answer key or an earlier run. The held-out targets' builders never saw the instructions either.</div>
 
   <footer class="foot">
-    <div><strong>In the repository:</strong> README (with a 90-second demo video), <code>runs/</code> (graded runs with scorecards), <code>examples/sample-run/</code> and <code>Project Memory/</code> (specs and plan).</div>
-    <div><strong>Skills:</strong> AI product management (specs, phased plan, success metrics, evaluation, iteration from data), agentic workflow design and M&amp;A domain depth. All companies, people and figures are fictional; not investment advice.</div>
+    <div><strong>In the repository:</strong> README (with a 90-second demo video and both backtests), <code>runs/</code> (graded runs with scorecards), <code>examples/sample-run/</code> and <code>Project Memory/</code> (specs and plan).</div>
+    <div><strong>Skills:</strong> AI product management (specs, phased plan, success metrics, evaluation, iteration from data), agentic workflow design and M&amp;A domain depth. The fictional targets' companies, people and figures are invented; the backtests' real companies stay unnamed. Not investment advice.</div>
   </footer>
 </body>
 </html>
