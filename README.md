@@ -183,7 +183,7 @@ Six runs on one dataset can overstate how good a system is, because its instruct
 
 - **Kestrel** (a clinical-lab company in a private equity take-private) was built by a session that never saw Falcon's answers. But it could read the system's instructions, and most of its planted issues turned out to be the same types as Falcon's, so it is a near-transfer test.
 - **Heron** (a smart-home company) was built by a session that never saw the instructions or the other targets, from issue types neither of the others uses: product safety, a pension cash call on change of control, a privacy order, disputed patent ownership, sanctions, transfer pricing and more. It is the held-out test, and the setup was frozen until it was graded.
-- **Plover** (an outdoor apparel brand, the target of a private equity topping bid) was also built blind, by a session that never saw the instructions or the other targets and was told to avoid every issue type they use. It tests the rules added after Kestrel and Heron on data they were not written from, and the setup was frozen again until it was graded.
+- **Plover** (an outdoor apparel brand, the target of a private equity topping bid) was built by a session that never saw the other targets or their answer keys and was told to avoid every issue type they use. It was less blind than Heron in one way: its builder started inside the project, so it could read the system's instructions. It tests the rules added after Kestrel and Heron on data they were not written from, and the setup was frozen again until it was graded.
 
 | Metric | Falcon run 6 (tuned) | Kestrel run 1 (near transfer) | Heron (held out) | Plover (held out, new rules) |
 |---|---|---|---|---|
