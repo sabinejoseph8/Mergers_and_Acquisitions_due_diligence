@@ -42,6 +42,7 @@ During M&A due diligence, teams must research target companies across multiple d
 | Added: quality control | Independent citation verifier | `.claude/agents/citation-verifier.md` |
 | Added: guardrails | Permission rules (no web, read-only data) | `.claude/settings.json` |
 | Added: evaluation | Answer key per target and grading command | `targets/<target>/evaluation/`, `/evaluate` |
+| Added: committee dashboard | A read-only page made after a run: findings by severity and status, top red flags, key metrics, open questions | `tools/make_dashboard.py` |
 | Added: one-word commands | Slash commands | `.claude/commands/` |
 
 ## How a run works
@@ -63,8 +64,8 @@ During M&A due diligence, teams must research target companies across multiple d
 
 ## How it was planned and tested
 
-- **Project Memory:** the [product spec](Project%20Memory/product-spec.md) (33 requirements), [design spec](Project%20Memory/design.md), [tech spec](Project%20Memory/tech-spec.md) (architecture, data model and 11 critical risks) and the phased [plan](Project%20Memory/progress.md), each agreed before building. They are also published as a [website](https://claude.ai/artifact/CmFqn6PUnPvRse4GxpLrDW) with live plan ticks.
-- **Automated checks:** 59 checks using only Python's standard library, for every phase: read-only agents and guardrails, data that ties out and has not changed (for every target), complete runs and reports, graded scorecards, the real-filings download tool and house style. Type `/run-tests`, or run `python3 tests/run_all.py`. Add `--run examples/sample-run` to check the saved run.
+- **Project Memory:** the [product spec](Project%20Memory/product-spec.md) (34 requirements), [design spec](Project%20Memory/design.md), [tech spec](Project%20Memory/tech-spec.md) (architecture, data model and 11 critical risks) and the phased [plan](Project%20Memory/progress.md), each agreed before building. They are also published as a [website](https://claude.ai/artifact/CmFqn6PUnPvRse4GxpLrDW) with live plan ticks.
+- **Automated checks:** 69 checks using only Python's standard library, for every phase: read-only agents and guardrails, data that ties out and has not changed (for every target), complete runs and reports, graded scorecards, the committee dashboard, the real-filings download tool and house style. Type `/run-tests`, or run `python3 tests/run_all.py`. Add `--run examples/sample-run` to check the saved run.
 - **One-page case study:** [docs/case-study.pdf](docs/case-study.pdf).
 
 ## Sample run
@@ -223,9 +224,10 @@ memory/                    Working memory (blank, ready for your run)
 templates/                 Blank memory files, the report stylesheet and the rules for a real company
 tools/md2html.py           Report converter: Markdown to self-contained HTML (Python standard library)
 tools/fetch_edgar.py       Downloads a real company's SEC filings as of a cutoff date, for the real-filings backtest (Phase 8)
-output/                    Where the report is written
+tools/make_dashboard.py    Committee dashboard: a finished run's memory as one read-only HTML page (Python standard library)
+output/                    Where the report and the dashboard are written
 examples/sample-run/       A complete test run: memory, report (PDF) and scorecard
-tests/                     59 automated checks (Python standard library), run with /run-tests
+tests/                     69 automated checks (Python standard library), run with /run-tests
 Project Memory/            Product spec, design spec, tech spec and phased plan
 docs/                      Architecture diagram, run guide, one-page case study
 ```
@@ -233,6 +235,8 @@ docs/                      Architecture diagram, run guide, one-page case study
 ## Run it yourself
 
 Open the folder in Claude Code and type `/diligence` (or `/diligence <target>` for a target other than `falcon`). Reply at the three checkpoints. Full guide: [docs/how-to-run.md](docs/how-to-run.md).
+
+After the run, `python3 tools/make_dashboard.py` writes a read-only committee dashboard to `output/`: findings by severity and verification status, the top red flags, the key metrics and the open questions, copied from working memory so they match the report. Examples for two graded runs: [Wren](runs/2026-11-02_2237/output/Project-Wren-Dashboard.html) and [Plover](runs/2026-10-31_0946/output/Project-Plover-Dashboard.html).
 
 For a truly blind test, start a fresh Claude Code session in the folder, run `/diligence`, then `/evaluate` and compare your scorecard with the sample run. Claude Code asks before any agent can open the answer key, a scorecard or an earlier run.
 

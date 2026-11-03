@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.20 (November 2, 2026: the out-of-scope list now separates live connections, still out of scope, from real SEC data downloaded before a run, which Phase 8 added and ran on two real companies; earlier, R30 to R33 built in Phase 8's Step 1; earlier the same day, Phase 8 planned and its four open questions decided; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.21 (November 2, 2026: R34 added, a read-only committee dashboard made from a finished run; an Excel data pack was built too, compared with it, and dropped by the owner; earlier, the out-of-scope list now separates live connections, still out of scope, from real SEC data downloaded before a run, which Phase 8 added and ran on two real companies; earlier, R30 to R33 built in Phase 8's Step 1; earlier the same day, Phase 8 planned and its four open questions decided; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -105,6 +105,9 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 - **R32.** An empty source folder is reported as a gap and listed in the report's limitations, never filled from memory.
 - **R33.** Grading a real target uses the same rule as the fictional targets, and also counts hindsight leaks: findings that rely on anything dated after the cutoff.
 
+**Committee view (Phase 7, built November 2, 2026)**
+- **R34.** After a run, one command turns its memory files into a read-only dashboard: a single HTML file with findings by severity and verification status (chart and table), the top red flags, the key metrics and the open questions. It copies every figure and does not recompute or reword anything, so it matches the report. It works offline, prints, and works on a phone.
+
 ## Layout and responsiveness
 
 - **Desktop:** runs happen in Claude Code in a terminal. Checkpoint messages fit in a normal terminal window, with tables of no more than 5 columns.
@@ -116,7 +119,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 
 - Live connections to real sources (SEC EDGAR, news services, court systems, data rooms). The agents never connect to anything. Since Phase 8, after v1, the owner can download a real company's SEC filings into a target folder before a run (R30), so the agents still read only local files.
 - Real client data. Real public company data is used only in Phase 8's backtests, after v1, as a hypothetical deal, and those reports stay private.
-- A custom web app or dashboard.
+- A custom web app or dashboard. The read-only dashboard file added after v1 (R34) only displays a finished run; nothing on it can be edited.
 - Several people working on one run at the same time.
 - A full valuation model (for example a discounted cash flow model).
 - Legal, accounting or investment advice.
@@ -129,7 +132,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 | Real sources through connectors | Each source sits behind one specialist and one folder, so a source can be swapped without changing the others. Phase 8 added the first one: SEC filings, downloaded before the run, tested on two real companies. |
 | More specialists (tax, people, IP, ESG) | Every specialist uses the same finding format and rubrics. |
 | Several deals at once | The deal brief is a single file, and each run is archived separately. |
-| Excel data pack for the committee | Key numbers are already collected in one working dataset. |
+| A committee view of a run | Done after v1 as a read-only dashboard (R34), built from the working dataset and the findings register. An Excel data pack was built from the same data and compared; the owner kept the dashboard only. |
 | Better scores over time | The grading command and answer key make improvements measurable. |
 
 ## Success criteria (checkable by using it)
@@ -185,6 +188,7 @@ Time and tokens are recorded with no target, because this is the first run on fu
 | 2026-11-02 | Plan for the first real source (Phase 8, R30 to R33): a real public company's SEC filings and EDGAR's structured financial data, downloaded before the run so the agents stay offline and read-only ("connect at the folder, not the agent"). It is measured by a backtest: warning signs visible in the filings before a later public problem. News and litigation stay empty for a real company rather than simulated. A live web search API for news (for example Tavily) was considered and left for a current company, because in a backtest it would leak hindsight. |
 | 2026-11-02 | The owner accepted the recommended defaults for Phase 8's open questions 1 to 3: the five success targets; a separate case session that tells the owner only the company and the cutoff; and only the method, scores and answer-key categories published, with the full report kept private. Open question 4 (news and litigation for a real company) is still open. |
 | 2026-11-02 | Later the same day, the owner accepted the recommended default for open question 4: news and litigation stay empty for the backtest and are listed as gaps. Real court records are a candidate next roadmap item; a news search API waits for a current company. All four Phase 8 questions are now decided. |
+| 2026-11-02 | Committee view (R34): a read-only dashboard and an Excel data pack were both built from a finished run's memory files and compared on Wren and Plover, with the same counts in each. The owner kept the dashboard only, so the committee gets one view instead of two that could drift apart. The Excel draft stays outside the repository in `../extras/dashboard-draft/`. |
 
 ## Open questions (with recommended defaults)
 

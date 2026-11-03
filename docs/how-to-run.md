@@ -36,6 +36,16 @@ The sample run in `examples/sample-run/` took 69 minutes from the approved plan 
 
 At any time, type `/diligence-status` to see where the run is, how many findings there are and what is still open.
 
+## Make the committee dashboard (1 minute)
+
+In a terminal in the project folder, run:
+
+```
+python3 tools/make_dashboard.py
+```
+
+It writes `output/Project-<Codename>-Dashboard.html`, one file that opens in any browser, offline. It shows the findings by severity and verification status (as a chart and a table), the top red flags, the key metrics and the open questions. Every figure is copied from `memory/`, so it matches the report. It is read-only: change the run's memory files, not the page. To make one for an archived run, name its memory folder, for example `python3 tools/make_dashboard.py runs/2026-11-02_2237/memory`; the page goes into that run's own `output/` folder.
+
 ## Grade the run
 
 Type `/evaluate` (or `/evaluate <target>`) and approve the request to open the answer key. Claude compares the run with `targets/<target>/evaluation/answer-key.md` (the issues planted in the fictional data) and writes `targets/<target>/evaluation/scorecard.md`. With no target named, it grades against the run's own target from `memory/target.txt`.
