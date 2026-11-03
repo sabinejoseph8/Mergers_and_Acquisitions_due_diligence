@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.21 (November 2, 2026: R34 added, a read-only committee dashboard made from a finished run; an Excel data pack was built too, compared with it, and dropped by the owner; earlier, the out-of-scope list now separates live connections, still out of scope, from real SEC data downloaded before a run, which Phase 8 added and ran on two real companies; earlier, R30 to R33 built in Phase 8's Step 1; earlier the same day, Phase 8 planned and its four open questions decided; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.22 (November 3, 2026: the demo video is remade at under 2 minutes, with the committee dashboard and every held-out target; earlier, November 2, 2026: R34 added, a read-only committee dashboard made from a finished run; an Excel data pack was built too, compared with it, and dropped by the owner; earlier, the out-of-scope list now separates live connections, still out of scope, from real SEC data downloaded before a run, which Phase 8 added and ran on two real companies; earlier, R30 to R33 built in Phase 8's Step 1; earlier the same day, Phase 8 planned and its four open questions decided; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -57,7 +57,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 
 **Portfolio**
 - As a portfolio reviewer, I can understand the problem, the architecture and the results from the README in two minutes.
-- As a portfolio reviewer, I can watch a 90-second video of a real run at the top of the README, with captions so it works muted.
+- As a portfolio reviewer, I can watch a short video (under 2 minutes) of a real run at the top of the README, with captions so it works muted.
 - As the builder, I keep first-person interview notes that tell the story of the project.
 
 ## Functional requirements
@@ -95,7 +95,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 - **R29.** The agents cannot open anything in `evaluation/` (the answer key and the latest scorecard) or an earlier run (`examples/`, `runs/`) unless the operator approves, so a new run stays blind.
 
 **Portfolio**
-- **R26.** The project includes a README with the problem, a 90-second demo video, the architecture diagram, how a run works, sample results and how to run it. The video is recreated from a saved blind run's output, says so on screen, and shows aggregate scores only, never the answer key.
+- **R26.** The project includes a README with the problem, a demo video under 2 minutes long, the architecture diagram, how a run works, sample results and how to run it. The video is recreated from a saved blind run's output, says so on screen, and shows aggregate scores only, never the answer key.
 - **R27.** The project includes a complete sample run: working memory, report PDF and scorecard.
 - **R28.** The project keeps `interview-notes.md` in first person, updated after significant features, major bug fixes and meaningful design changes.
 
@@ -189,6 +189,7 @@ Time and tokens are recorded with no target, because this is the first run on fu
 | 2026-11-02 | The owner accepted the recommended defaults for Phase 8's open questions 1 to 3: the five success targets; a separate case session that tells the owner only the company and the cutoff; and only the method, scores and answer-key categories published, with the full report kept private. Open question 4 (news and litigation for a real company) is still open. |
 | 2026-11-02 | Later the same day, the owner accepted the recommended default for open question 4: news and litigation stay empty for the backtest and are listed as gaps. Real court records are a candidate next roadmap item; a news search API waits for a current company. All four Phase 8 questions are now decided. |
 | 2026-11-02 | Committee view (R34): a read-only dashboard and an Excel data pack were both built from a finished run's memory files and compared on Wren and Plover, with the same counts in each. The owner kept the dashboard only, so the committee gets one view instead of two that could drift apart. The Excel draft stays outside the repository in `../extras/dashboard-draft/`. |
+| 2026-11-03 | The demo video is remade, still from the blind Plover run, with a committee dashboard scene and the graded results for Wren and Avocet, so it no longer ends on the best score. It grows from 89 to 105 seconds, so R26 now says under 2 minutes. The owner re-recorded all nine lines so tone and volume match. |
 
 ## Open questions (with recommended defaults)
 
