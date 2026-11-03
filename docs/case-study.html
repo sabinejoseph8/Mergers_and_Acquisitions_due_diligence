@@ -36,12 +36,36 @@
   .note { background: var(--cream); border-left: 3px solid var(--gold); padding: 5pt 8pt; font-size: 7.9pt; color: var(--ink); margin: 2pt 0 6pt; }
   section, .note, .figure, .foot { break-inside: avoid; }
   .cost { break-before: page; margin-top: 4pt; }
-  .cost table { width: 100%; border-collapse: collapse; margin: 4pt 0 6pt; }
-  .cost th, .cost td { text-align: left; padding: 4pt 6pt; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .cost th { background: var(--mist); color: var(--navy); font-size: 8pt; }
-  .cost td.num { font-weight: 700; color: var(--navy); }
-  .cost td:first-child { width: 14%; }
-  .cost th:nth-child(2), .cost th:nth-child(3) { width: 43%; }
+    .dash h2 { font-size: 11pt; }
+  .dsub { font-size: 8.4pt; color: var(--muted); margin: 0 0 6pt; }
+  .dk { display: grid; grid-template-columns: 1.35fr 1.35fr 1fr 1fr 1.1fr; gap: 5pt; margin: 0 0 8pt; }
+  .dk .kpi b { font-size: 12.5pt; }
+  .dk .kpi.sys { border-top-color: var(--teal); }
+  .dk .kpi.man { border-top-color: var(--ember); }
+  .dk .kpi:not(.sys):not(.man) { border-top-color: var(--navy); }
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 4pt 16pt; background: var(--mist); border-radius: 3px; padding: 6pt 9pt; margin-bottom: 8pt; }
+  .chart .ct { font-weight: 700; color: var(--navy); font-size: 8.2pt; margin-bottom: 3pt; }
+  .rrow { display: grid; grid-template-columns: 58pt 1fr; align-items: center; margin: 3pt 0; font-size: 7.8pt; }
+  .track { height: 11pt; background: #FFFFFF; border-radius: 2px; display: flex; }
+  .track span, .mb span { display: block; height: 100%; }
+  .s.lo { background: var(--teal); } .s.hi { background: #9BDDE6; }
+  .m.lo { background: var(--ember); } .m.hi { background: #E4B19C; }
+  .track span:last-child, .mb span:last-child { border-radius: 0 2px 2px 0; }
+  .axis { margin-left: 58pt; display: flex; justify-content: space-between; font-size: 6.8pt; color: var(--muted); border-top: 1px solid var(--line); padding-top: 1pt; }
+  .legend { grid-column: 1 / -1; font-size: 7pt; color: var(--muted); display: flex; gap: 12pt; }
+  .legend i { display: inline-block; width: 9pt; height: 7pt; margin-right: 3pt; vertical-align: -1px; border-radius: 1px; }
+  .legend i.g { background: linear-gradient(90deg, #9BDDE6 50%, #E4B19C 50%); }
+  .dcols { display: grid; grid-template-columns: 1fr 1fr; gap: 14pt; margin-bottom: 6pt; }
+  .dash h3 { font-size: 9pt; color: var(--navy); margin: 0 0 2pt; }
+  .items { width: 100%; border-collapse: collapse; font-size: 7.7pt; }
+  .items th, .items td { text-align: left; padding: 2.4pt 4pt; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .items th { background: var(--mist); color: var(--navy); font-size: 7.2pt; }
+  .items td .d { display: block; color: var(--muted); font-size: 6.9pt; line-height: 1.2; }
+  .items .r { text-align: right; white-space: nowrap; }
+  .items td:nth-child(3) { width: 30%; vertical-align: middle; }
+  .items tr.tot td { border-top: 1.5px solid var(--navy); font-weight: 700; color: var(--navy); }
+  .items.time td:nth-child(3) { width: auto; vertical-align: top; }
+  .mb { height: 7pt; background: var(--mist); border-radius: 2px; display: flex; }
   .foot { border-top: 1px solid var(--line); padding-top: 5pt; font-size: 7.6pt; color: var(--muted); display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; }
   .foot strong { color: var(--ink); }
   code { font-family: Menlo, Consolas, monospace; font-size: 7.6pt; background: var(--mist); padding: 0 2px; border-radius: 2px; }
@@ -127,17 +151,43 @@
 
   <div class="note"><strong>How blind was the test?</strong> Each graded run started in a fresh session that never saw the answer key or an earlier run. Heron's, Wren's and Avocet's builders never saw the instructions; Plover's could. A different session graded Wren and Avocet.</div>
 
-  <section class="cost">
-    <h2>Cost and time: agents versus two analysts</h2>
-    <p>One real-company backtest, from start to finished report, if the same agents ran on the paid API, set against two analysts doing the same first pass by hand.</p>
-    <table>
-      <tr><th></th><th>This system</th><th>Two analysts (illustrative)</th></tr>
-      <tr><td><strong>Cost</strong></td><td class="num">US$68 to US$70</td><td class="num">US$16,000 to US$48,000</td></tr>
-      <tr><td><strong>Elapsed time</strong></td><td class="num">1.1 to 1.4 hours</td><td class="num">about 2 weeks</td></tr>
-      <tr><td><strong>Working time</strong></td><td class="num">about 1 hour of agent work, plus 4 to 22 minutes of a person answering three checkpoints</td><td class="num">160 person-hours</td></tr>
-      <tr><td><strong>Basis</strong></td><td>Measured from the two backtests' session logs: 108 to 126 million tokens at Claude Opus 5.5 API list rates (96% were cache reads, which cost a twentieth of normal input), and timestamps for the time.</td><td>My assumptions, not measured: two analysts for two working weeks at US$100 to US$300 an hour.</td></tr>
-    </table>
-    <p><strong>What this means:</strong> the first pass costs under 1% as much and finishes in about an hour instead of two weeks. It covers only the first-pass reading and cross-checking. People still decide at all three checkpoints, and a reviewer reading the report is not in these figures. The project ran on a Claude subscription, so the cost is the API price of the same work, not what I paid.</p>
+  <section class="cost dash">
+    <h2>Cost and time per deal: this system versus a manual first pass by two analysts</h2>
+    <p class="dsub">Professional setup, for a team doing <strong>20 deals a year</strong>, with the one-time setup spread over <strong>3 years</strong>. Every figure is a range from low to high.</p>
+    <div class="dk">
+      <div class="kpi sys"><b>US$4,117 to US$14,680</b><span>this system, per deal, all in</span></div>
+      <div class="kpi man"><b>US$18,900 to US$58,180</b><span>manual first pass, per deal, all in</span></div>
+      <div class="kpi"><b>75% to 78%</b><span>lower cost per deal</span></div>
+      <div class="kpi"><b>155 to 164</b><span>person-hours saved per deal</span></div>
+      <div class="kpi"><b>1 to 2 days</b><span>to a reviewed report, instead of about 2 weeks</span></div>
+    </div>
+    <div class="charts">
+      <div class="chart"><div class="ct">Cost per deal (US$ thousands)</div>
+        <div class="rrow"><div class="rl">This system</div><div class="track"><span class="s lo" style="width:6.86%"></span><span class="s hi" style="width:17.61%"></span></div></div><div class="rrow"><div class="rl">Manual</div><div class="track"><span class="m lo" style="width:31.50%"></span><span class="m hi" style="width:65.47%"></span></div></div>
+        <div class="axis"><span>0</span><span>15</span><span>30</span><span>45</span><span>60</span></div></div>
+      <div class="chart"><div class="ct">Person-hours per deal</div>
+        <div class="rrow"><div class="rl">This system</div><div class="track"><span class="s lo" style="width:2.28%"></span><span class="s hi" style="width:2.78%"></span></div></div><div class="rrow"><div class="rl">Manual</div><div class="track"><span class="m lo" style="width:91.11%"></span><span class="m hi" style="width:2.22%"></span></div></div>
+        <div class="axis"><span>0</span><span>45</span><span>90</span><span>135</span><span>180</span></div></div>
+      <div class="legend"><span><i class="s lo"></i>this system</span><span><i class="m lo"></i>manual</span><span><i class="g"></i>lighter part: from the low to the high estimate</span></div>
+    </div>
+    <div class="dcols">
+      <div><h3>This system</h3><table class="items"><tr><th>Line item</th><th class="r">US$ per deal</th><th>Bar, on a US$0 to US$15,000 scale</th></tr><tr><td><strong>Data subscriptions</strong><span class="d">LexisNexis news, litigation research, Capital IQ or PitchBook, data room access</span></td><td class="r">2,500 to 7,750</td><td><div class="mb"><span class="s lo" style="width:16.67%"></span><span class="s hi" style="width:35.01%"></span></div></td></tr><tr><td><strong>Claude Enterprise plan</strong><span class="d">zero data retention, needed for client data</span></td><td class="r">250 to 1,000</td><td><div class="mb"><span class="s lo" style="width:1.66%"></span><span class="s hi" style="width:4.99%"></span></div></td></tr><tr><td><strong>Connector maintenance</strong><span class="d">APIs and formats change</span></td><td class="r">250 to 750</td><td><div class="mb"><span class="s lo" style="width:1.66%"></span><span class="s hi" style="width:3.33%"></span></div></td></tr><tr><td><strong>One-time setup</strong><span class="d">four connectors, security and license review, pilot; spread over 3 years</span></td><td class="r">417 to 1,250</td><td><div class="mb"><span class="s lo" style="width:2.78%"></span><span class="s hi" style="width:5.57%"></span></div></td></tr><tr><td><strong>Agent runs</strong><span class="d">2 to 3 runs per deal</span></td><td class="r">300 to 1,500</td><td><div class="mb"><span class="s lo" style="width:1.98%"></span><span class="s hi" style="width:8.00%"></span></div></td></tr><tr><td><strong>PACER court records</strong><span class="d">US$0.10 a page, US$3 cap a document</span></td><td class="r">0 to 30</td><td><div class="mb"><span class="s lo" style="width:0.00%"></span><span class="s hi" style="width:0.19%"></span></div></td></tr><tr><td><strong>Senior review</strong><span class="d">4 to 8 hours at US$100 to US$300</span></td><td class="r">400 to 2,400</td><td><div class="mb"><span class="s lo" style="width:2.66%"></span><span class="s hi" style="width:13.34%"></span></div></td></tr><tr class="tot"><td><strong>Total per deal</strong></td><td class="r">4,117 to 14,680</td><td></td></tr></table></div>
+      <div><h3>Manual first pass: two analysts, 160 hours</h3><table class="items"><tr><th>Line item</th><th class="r">US$ per deal</th><th>Bar, on a US$0 to US$15,000 scale</th></tr><tr><td><strong>Reading SEC filings</strong><span class="d">50 hours</span></td><td class="r">5,000 to 15,000</td><td><div class="mb"><span class="m lo" style="width:33.34%"></span><span class="m hi" style="width:66.66%"></span></div></td></tr><tr><td><strong>Financial analysis</strong><span class="d">40 hours</span></td><td class="r">4,000 to 12,000</td><td><div class="mb"><span class="m lo" style="width:26.66%"></span><span class="m hi" style="width:53.34%"></span></div></td></tr><tr><td><strong>News review</strong><span class="d">15 hours</span></td><td class="r">1,500 to 4,500</td><td><div class="mb"><span class="m lo" style="width:9.98%"></span><span class="m hi" style="width:20.00%"></span></div></td></tr><tr><td><strong>Litigation review</strong><span class="d">15 hours</span></td><td class="r">1,500 to 4,500</td><td><div class="mb"><span class="m lo" style="width:9.98%"></span><span class="m hi" style="width:20.00%"></span></div></td></tr><tr><td><strong>Cross-checking sources</strong><span class="d">20 hours</span></td><td class="r">2,000 to 6,000</td><td><div class="mb"><span class="m lo" style="width:13.34%"></span><span class="m hi" style="width:26.66%"></span></div></td></tr><tr><td><strong>Writing the report</strong><span class="d">20 hours</span></td><td class="r">2,000 to 6,000</td><td><div class="mb"><span class="m lo" style="width:13.34%"></span><span class="m hi" style="width:26.66%"></span></div></td></tr><tr><td><strong>Data subscriptions</strong><span class="d">the same licenses</span></td><td class="r">2,500 to 7,750</td><td><div class="mb"><span class="m lo" style="width:16.67%"></span><span class="m hi" style="width:35.01%"></span></div></td></tr><tr><td><strong>PACER court records</strong><span class="d">the same pages</span></td><td class="r">0 to 30</td><td><div class="mb"><span class="m lo" style="width:0.00%"></span><span class="m hi" style="width:0.19%"></span></div></td></tr><tr><td><strong>Senior review</strong><span class="d">the same 4 to 8 hours</span></td><td class="r">400 to 2,400</td><td><div class="mb"><span class="m lo" style="width:2.66%"></span><span class="m hi" style="width:13.34%"></span></div></td></tr><tr class="tot"><td><strong>Total per deal</strong></td><td class="r">18,900 to 58,180</td><td></td></tr></table></div>
+    </div>
+    <div class="dcols">
+      <div><h3>Time per deal</h3>
+        <table class="items time"><tr><th></th><th>This system</th><th>Manual</th></tr>
+        <tr><td><strong>Elapsed time</strong></td><td>2 to 5 hours of agent runs, then the review: 1 to 2 working days</td><td>about 2 weeks (10 working days), then the review</td></tr>
+        <tr><td><strong>Person-hours</strong></td><td>4.1 to 9.1: 0.1 to 1.1 at the checkpoints, 4 to 8 of review</td><td>164 to 168: 160 of analyst work, 4 to 8 of review</td></tr>
+        <tr class="tot"><td><strong>Saved</strong></td><td colspan="2">155 to 164 person-hours a deal, about 95% to 98% fewer</td></tr></table></div>
+      <div><h3>Per year, 20 deals</h3>
+        <table class="items time"><tr><th></th><th class="r">US$ a year</th></tr>
+        <tr><td><strong>This system</strong></td><td class="r">82,340 to 293,600</td></tr>
+        <tr><td><strong>Manual first pass</strong></td><td class="r">378,000 to 1,163,600</td></tr>
+        <tr class="tot"><td><strong>Saved</strong></td><td class="r">about 296,000 to 870,000</td></tr>
+        <tr><td><strong>Hours saved</strong></td><td class="r">3,100 to 3,280 person-hours</td></tr></table></div>
+    </div>
+    <div class="note"><strong>What is measured and what is assumed.</strong> Measured on the two real-company backtests: US$68 to US$70 and 1.1 to 1.4 hours per filings-only run, at Claude Opus 5.5 API list rates, and 4 to 22 minutes of a person at the checkpoints. Everything else is my assumption from published list prices, which need vendor quotes: runs with all four sources cost more and take longer, so a deal is set at 2 to 3 runs costing US$300 to US$1,500 in all; the 160 analyst hours and their split by task are illustrative. Both sides pay for the same data licenses, PACER pages and senior review, so the difference is the first-pass work itself. The project ran on a Claude subscription; these are the prices of the same work for a deal team.</div>
   </section>
 
   <footer class="foot">
