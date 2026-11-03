@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.19 (November 2, 2026: R30 to R33 built in Phase 8's Step 1, not yet run on a real company; earlier the same day, Phase 8 planned and its four open questions decided; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.20 (November 2, 2026: the out-of-scope list now separates live connections, still out of scope, from real SEC data downloaded before a run, which Phase 8 added and ran on two real companies; earlier, R30 to R33 built in Phase 8's Step 1; earlier the same day, Phase 8 planned and its four open questions decided; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -99,7 +99,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 - **R27.** The project includes a complete sample run: working memory, report PDF and scorecard.
 - **R28.** The project keeps `interview-notes.md` in first person, updated after significant features, major bug fixes and meaningful design changes.
 
-**Real data (Phase 8, built November 2, 2026; not yet run on a real company)**
+**Real data (Phase 8, built and run on two real companies, November 2, 2026)**
 - **R30.** The system can run on a real public company's SEC filings and financial data as of a cutoff date. A download tool, run by the owner before the run, saves them into a target folder; the agents stay offline and read-only.
 - **R31.** For a real target, the agents use nothing dated after the cutoff and nothing from outside the data folder, including what the model may know about the company from training. The report says it is a historical backtest of a hypothetical deal.
 - **R32.** An empty source folder is reported as a gap and listed in the report's limitations, never filled from memory.
@@ -114,8 +114,8 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 
 ## Out of scope for v1
 
-- Live connections to real sources (SEC EDGAR, news services, court systems, data rooms).
-- Real client or real company data.
+- Live connections to real sources (SEC EDGAR, news services, court systems, data rooms). The agents never connect to anything. Since Phase 8, after v1, the owner can download a real company's SEC filings into a target folder before a run (R30), so the agents still read only local files.
+- Real client data. Real public company data is used only in Phase 8's backtests, after v1, as a hypothetical deal, and those reports stay private.
 - A custom web app or dashboard.
 - Several people working on one run at the same time.
 - A full valuation model (for example a discounted cash flow model).
@@ -126,7 +126,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 
 | Future feature | What v1 does now |
 |---|---|
-| Real sources through connectors | Each source sits behind one specialist and one folder, so a source can be swapped without changing the others. Phase 8 plans the first one: SEC filings, downloaded before the run. |
+| Real sources through connectors | Each source sits behind one specialist and one folder, so a source can be swapped without changing the others. Phase 8 added the first one: SEC filings, downloaded before the run, tested on two real companies. |
 | More specialists (tax, people, IP, ESG) | Every specialist uses the same finding format and rubrics. |
 | Several deals at once | The deal brief is a single file, and each run is archived separately. |
 | Excel data pack for the committee | Key numbers are already collected in one working dataset. |
