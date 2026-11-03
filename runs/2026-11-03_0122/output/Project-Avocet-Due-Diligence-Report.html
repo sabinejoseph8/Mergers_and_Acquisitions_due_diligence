@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Avocet: Comprehensive Due Diligence Report</title>
+<style>
+/* Print-friendly style for the due diligence report. Used when converting the report to HTML and PDF. */
+@page { size: Letter; margin: 0.65in 0.7in 0.7in 0.7in; }
+:root { --navy: #0B1F5C; --teal: #00B3C8; --orange: #E07B4F; --ember: #B5491F; --ink: #1F2430; --muted: #5B6170; --line: #D9DDE5; --soft: #F3F5F8; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif; color: var(--ink); font-size: 10.5pt; line-height: 1.45; max-width: 7.2in; margin: 0 auto; background: #FFFFFF; }
+h1, h2, h3, h4 { color: var(--navy); line-height: 1.2; break-after: avoid; }
+h1 { font-size: 20pt; margin: 0 0 6pt; }
+h2 { font-size: 14.5pt; margin: 20pt 0 6pt; padding-bottom: 4pt; border-bottom: 2px solid var(--navy); }
+h3 { font-size: 11.5pt; margin: 14pt 0 4pt; }
+h4 { font-size: 10.5pt; margin: 10pt 0 3pt; }
+p { margin: 4pt 0 7pt; }
+ul, ol { margin: 3pt 0 8pt; padding-left: 18pt; }
+li { margin: 2pt 0; }
+a { color: var(--navy); }
+code { font-family: Menlo, Consolas, monospace; font-size: 9pt; background: var(--soft); padding: 0 3px; border-radius: 3px; }
+table { border-collapse: collapse; width: 100%; margin: 6pt 0 10pt; font-size: 8.8pt; break-inside: auto; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th { background: var(--navy); color: #FFFFFF; text-align: left; font-weight: 600; padding: 4pt 5pt; }
+td { border-bottom: 1px solid var(--line); padding: 3.5pt 5pt; vertical-align: top; }
+tbody tr:nth-child(even) td { background: var(--soft); }
+blockquote { margin: 8pt 0; padding: 7pt 10pt; background: #FFF8E6; border-left: 4px solid #E5B53C; }
+blockquote p { margin: 2pt 0; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 14pt 0; }
+.cover { min-height: 8.6in; display: flex; flex-direction: column; justify-content: center; break-after: page; border-left: 10px solid var(--navy); padding-left: 24pt; }
+.cover h1 { font-size: 28pt; margin-bottom: 4pt; border: 0; }
+.cover .sub, .cover .sub p { font-size: 14pt; color: var(--ember); font-weight: 600; margin-bottom: 18pt; }
+.cover p { color: var(--muted); margin: 2pt 0; }
+.cover .flag, .cover .flag p { margin-top: 24pt; color: var(--navy); font-weight: 600; }
+.callout { background: var(--soft); border-left: 4px solid var(--teal); padding: 7pt 10pt; margin: 8pt 0; }
+.bottom-line { background: var(--navy); color: #FFFFFF; padding: 9pt 12pt; border-radius: 4px; margin: 8pt 0 10pt; }
+.bottom-line p, .bottom-line strong { color: #FFFFFF; }
+.page-break { break-before: page; }
+.id { white-space: nowrap; }
+table.keep { break-inside: avoid; }
+.small { font-size: 8.5pt; color: var(--muted); }
+.sev-critical { color: #B42318; font-weight: 700; }
+.sev-high { color: #B5491F; font-weight: 700; }
+.sev-medium { color: #8A5A00; font-weight: 600; }
+.sev-low { color: #5B6170; font-weight: 600; }
+.claim { font-size: 8pt; font-weight: 700; letter-spacing: 0.3px; color: var(--navy); background: #FFF8E6; border: 1px solid #E5B53C; border-radius: 3px; padding: 0 3px; }
+@media screen and (max-width: 700px) { body { font-size: 11pt; padding: 0 16px; } table { display: block; overflow-x: auto; } .cover { min-height: auto; padding: 24px 0 24px 16px; } }
+
+</style>
+</head>
+<body>
+<div class="cover">
+<h1 id="project-avocet-comprehensive-due-diligence-report">Project Avocet: Comprehensive Due Diligence Report</h1>
+<p><strong>Draft for Investment Committee discussion</strong></p>
+<p>November 3, 2026</p>
+<p>Fictional case study</p>
+<p>Prepared by an AI multi-agent diligence system with human review</p>
+</div>
+<p>All amounts are US$ millions (shown as $m) unless stated. Every percentage-of-value test uses the deal's enterprise value (EV) of $2,750.0m: 5% = $137.5m, 10% = $275.0m. At the deal multiple of 11.0x, $1.0m of EBITDA equals $11.0m of value. "(inference)" and "(projection)" mark conclusions that go beyond what a source states. Finding IDs refer to the findings register; LIT-01 to LIT-08 also match the case IDs in the litigation docket. This report is a draft for human decision-makers. It is not investment, legal or accounting advice.</p>
+<h2 id="1-executive-summary">1. Executive summary</h2>
+<h3 id="bottom-line">Bottom line</h3>
+<p><strong>Proposed recommendation: Do not proceed at the current price of $34.00 per share.</strong> The Investment Committee makes the decision.</p>
+<p>The deal is priced at 11.0x LTM Adjusted EBITDA of $250.0m. The verified findings show that this base is too high. On the project's normalization rule, the base is $217.5m to $222.5m, and the operating trend is still falling (X-01, X-02). About $31.0m of the base ends with a port concession in September 2028 (X-05). Lease-end restoration obligations of $312.0m are not on the balance sheet, and Trelliswood's own integration plan triggers $118.0m of them (X-09). The overlap in Puget Sound and the Northern Central Valley could block closing within the proposed $15.0m divestiture cap (X-07).</p>
+<h3 id="top-five-red-flags">Top five red flags</h3>
+<ol>
+<li><strong>Merger antitrust review could block closing (X-07, Critical).</strong> Combined capacity shares are about 43% in Puget Sound and 39% in the Northern Central Valley. At its June 2026 investor day, Trelliswood said it consolidates acquired capacity and "hand[s] back the older leased boxes". The deal plan does exactly this in both markets. The divestiture cap covers about 6% of Brindlewick's EBITDA, against 41.8% of its capacity in the two markets.</li>
+<li><strong>The earnings base is overstated (X-01, Critical).</strong> Normalized LTM is $217.5m to $222.5m. At 11.0x, value is $302.5m to $357.5m (11.0% to 13.0% of EV) below the deal EV, or $26.55 to $27.70 per share (projection).</li>
+<li><strong>Operating trend is falling (X-02, Critical).</strong> Revenue growth went from +6.8% to -2.3%, occupancy fell to 81.4%, and FY2026 guidance was cut 11.8%. The annualized H1 2026 fall of $42.0m is $462.0m (16.8% of EV) at 11.0x. This is the Critical test number, not a proposed price cut. The gap to the deal base is $154.0m to $231.0m (projection).</li>
+<li><strong>Sandhaven earnings end September 30, 2028 (X-05, Critical).</strong> Sandhaven 1 and 2 earn $31.0m (12.4%) of LTM Adjusted EBITDA. The Harbor District's executive director says there will be no extension. That is $341.0m (12.4% of EV) at 11.0x. The deal brief does not mention it.</li>
+<li><strong>Unrecorded lease-end restoration of $312.0m (X-09, Critical).</strong> This is 11.3% of EV and 48.6% of reported equity. Surrendering the four leases in the integration plan triggers $118.0m, 2.6 times the $45.0m integration budget.</li>
+</ol>
+<p>Also Critical: the <strong>antitrust class action</strong> (X-08). Treble damages with joint and several liability give an upper bound of $1,800.0m (65.5% of EV). Brindlewick's own 8% share, trebled, is $144.0m (5.2%). Nothing is accrued.</p>
+<h3 id="main-positive-and-mitigating-points">Main positive and mitigating points</h3>
+<ul>
+<li><strong>Debt maturities:</strong> none before March 2030, and all debt can be repaid at par, so repaying it at closing costs no premium (SEC-23).</li>
+<li><strong>Customer retention and concentration:</strong> about 1,310 customers, the largest at 5.7% of revenue and the top ten at 34.3% (FIN-27, SEC-20). <em>Qualified:</em> the tenth-largest customer, FreshArc, has liquidated (X-13), active customers fell 1.1% in H1 2026 (FIN-30), and two customers moved volume after ColdTrack failures (SEC-06).</li>
+<li><strong>Segment still growing:</strong> value-added services grew 17.4% in FY2025 and 13.2% in H1 2026 (SEC-45).</li>
+<li><strong>Items correctly excluded from adjusted metrics:</strong> the $46.0m 2024 sale-leaseback gain is kept out of Adjusted EBITDA and is outside the LTM (SEC-03).</li>
+<li><strong>Dismissed, settled or closed litigation:</strong> the Greenfield Produce claim ($22.5m) was dismissed with prejudice, with no appeal (LIT-07). The Westmark claim ($33.0m) is covered by an uncapped indemnity that Arcturus accepted in writing without reservation of rights (LIT-06).</li>
+<li><strong>Supply or price protections:</strong> the $0.50 per pound warehouse-receipt cap limits the Coastline claim to about $1.24m, pending a December 11, 2026 ruling (LIT-05). <em>Qualified:</em> fixed-price power runs only to December 31, 2026, before closing (X-03).</li>
+<li><strong>Internal controls and auditor:</strong> controls were judged effective at December 31, 2025 and June 30, 2026. Audit opinions were unqualified, and Pemberton &amp; Hale has audited the company since 2009 (SEC-36). <em>Qualified:</em> three practices in the same periods are called into question (X-10).</li>
+<li><strong>Cash conversion:</strong> operating cash flow has been a steady 67% to 75% of Adjusted EBITDA (FIN-31).</li>
+</ul>
+<h3 id="valuation-implications-projection">Valuation implications (projection)</h3>
+<p>The items below overlap in part, so they should not be added together.</p>
+<table>
+<thead><tr><th>View</th><th>Earnings base</th><th>Value at 11.0x</th><th>Against EV of $2,750.0m</th><th>Per share</th></tr></thead>
+<tbody>
+<tr><td>Deal brief</td><td>250.0</td><td>2,750.0</td><td>n/a</td><td>$34.00</td></tr>
+<tr><td>Normalized LTM before property tax and FreshArc (X-01)</td><td>233.2</td><td>2,565.2</td><td>(184.8), 6.7%</td><td>$30.15</td></tr>
+<tr><td>Normalized LTM, project rule (X-01)</td><td>222.5 to 217.5</td><td>2,447.5 to 2,392.5</td><td>(302.5) to (357.5), 11.0% to 13.0%</td><td>$27.70 to $26.55</td></tr>
+<tr><td>Forward run-rate, before property tax and FreshArc (X-01 with X-02)</td><td>220.1</td><td>2,421.1</td><td>(328.9), 12.0%</td><td>$27.15</td></tr>
+<tr><td>Sandhaven earnings, if not replaced (X-05)</td><td>(31.0)</td><td>(341.0)</td><td>12.4%</td><td>n/a</td></tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Cash items outside EBITDA:</strong>
+<ul>
+<li>restoration triggered by the plan: $118.0m (X-09);</li>
+<li>priority capex in 2027 to 2029: $96.0m (X-16);</li>
+<li>uninsured I-5 exposure: $95.0m to $125.0m (X-14);</li>
+<li>a Sandhaven replacement facility, if one is built: $180m to $220m (X-05).</li>
+</ul>
+</li>
+<li><strong>Known deal costs:</strong> $62.6m if the deal closes, or the $110.0m reverse termination fee if it fails on antitrust grounds (X-11).</li>
+<li><strong>Context:</strong> the unaffected share price was $26.15, which put EV at 9.49x LTM (FIN-03).</li>
+</ul>
+<h2 id="2-answers-to-the-six-investment-committee-questions">2. Answers to the six Investment Committee questions</h2>
+<h3 id="q1-earnings-base-is-250-0m-of-ltm-adjusted-ebitda-a-sound-base-for-11-0x">Q1. Earnings base: is $250.0m of LTM Adjusted EBITDA a sound base for 11.0x?</h3>
+<p>No. The $250.0m recomputes correctly (FIN-01), but its quality does not support 11.0x.</p>
+<ul>
+<li><strong>Normalized LTM is $217.5m to $222.5m (X-01, projection).</strong> The bridge from $250.0m:
+<ul>
+<li>less $3.7m of benefit from the insurance accrual cut (X-04);</li>
+<li>plus $4.6m of ColdTrack credits, if they do not recur (SEC-06);</li>
+<li>less $17.7m a year for repricing the 2021 fixed-price power contracts from January 1, 2027 (X-03);</li>
+<li>less $4.7m a year of property tax that the change of control triggers (SEC-16);</li>
+<li>less the FreshArc preference loss, $6.0m to $11.0m, which counsel calls likely and the company has not accrued (X-13).</li>
+</ul>
+</li>
+<li><strong>The trend is still down (X-02).</strong> H1 2026 Adjusted EBITDA fell 15.1%. The CFO said the second half would not look "very different from the first". The H1 run-rate of $236.0m is $14.0m below the deal base. On run-rate, forward normalized earnings are $220.1m before property tax and FreshArc.</li>
+<li><strong>Sandhaven (X-05).</strong> $31.0m of the base ends September 30, 2028.</li>
+<li><strong>Growth link.</strong> The two facilities that drove FY2025 growth, Calder Valley and Bayfront, carry $61.5m of the unrecorded restoration (X-09). The deal multiple is applied to earnings that include them (inference).</li>
+<li><strong>Smaller items:</strong>
+<ul>
+<li>severance and transaction costs labeled non-recurring come back each year (SEC-02);</li>
+<li>the 2025 additions flatter H1 2026 against H1 2025 (FIN-11).</li>
+</ul>
+</li>
+</ul>
+<h3 id="q2-unrecorded-obligations-what-sits-outside-net-debt-or-off-the-balance-sheet">Q2. Unrecorded obligations: what sits outside net debt or off the balance sheet?</h3>
+<p>Net debt of $1,118.0m ties to the balance sheet (FIN-21). The following sit outside it:</p>
+<ul>
+<li><strong>Lease-end restoration (X-09, Critical):</strong> $312.0m, unrecorded and undiscounted. Our plan triggers $118.0m of it at Puyallup Junction, Kent Valley, Stockton North and Lodi. The integration budget does not include it (FIN-25). Restatement risk (inference): FY2025, its FY2024 comparative and June 30, 2026.</li>
+<li><strong>Antitrust class action (X-08, Critical):</strong> no accrual. The upper bound is $1,800.0m; Brindlewick's own share, trebled, is $144.0m.</li>
+<li><strong>I-5 fatal crash (X-14, High):</strong> a $150.0m demand against $55.0m of combined retention and excess cover. Only the $5.0m retention is reserved.</li>
+<li><strong>FreshArc preference loss (X-13, Medium):</strong> $6.0m to $11.0m, which counsel calls likely, is not accrued.</li>
+<li><strong>Other possible debt-like items (FIN-26):</strong>
+<ul>
+<li>accrued claims reserves of $44.1m (adequacy in doubt, X-04);</li>
+<li>other non-current liabilities of $25.5m;</li>
+<li>change-in-control severance of about $16.4m, not accrued.</li>
+</ul>
+</li>
+<li><strong>Deferred maintenance (X-16):</strong> $96.0m of priority replacements in 2027 to 2029.</li>
+<li><strong>Sale-leaseback accounting (SEC-18):</strong> sale treatment of the $214.0m Ironbridge transaction rests on a judgment. If it failed, the $214.0m would become a financing obligation (inference).</li>
+<li><strong>Not found:</strong> the 10-K reports no pension or multiemployer plan, and no employee is represented by a union (SEC-22). Operating lease liabilities of $668.0m are outside net debt, consistent with the EBITDA definition (FIN-24).</li>
+</ul>
+<h3 id="q3-antitrust-can-the-combination-clear-within-the-15-0m-divestiture-cap-and-the-outside-date">Q3. Antitrust: can the combination clear within the $15.0m divestiture cap and the outside date?</h3>
+<p>On the sources, the deal may not clear on the proposed terms (X-07, Critical, test: could block closing).</p>
+<ul>
+<li><strong>Combined shares</strong> are about 43% in Puget Sound and 39% in the Northern Central Valley. That raises HHI by 912 and 756 points (arithmetic). The shares come from different data sets, so they are approximate.</li>
+<li><strong>Trelliswood's public statements</strong> describe buying and closing acquired capacity in overlap markets. The integration plan closes four Brindlewick sites in those two markets: 234k pallets, 20.4% of Brindlewick's capacity.</li>
+<li><strong>The cap is small against the overlap:</strong>
+<ul>
+<li>$15.0m is 6.0% of LTM Adjusted EBITDA, against 41.8% of Brindlewick's capacity in the two markets;</li>
+<li>Sandhaven alone earns $31.0m, 2.1 times the cap.</li>
+<li>If a reviewer asks for more, Trelliswood has no obligation to divest more. The deal could then fail, and the $110.0m reverse termination fee would be payable.</li>
+</ul>
+</li>
+<li><strong>Class action link:</strong> the class action (X-08) alleges that operators exchanged rates "by market" through Coldmetric. Trelliswood cites Coldmetric data for its own shares. Whether Trelliswood subscribed to Coldmetric, or is one of the six unnamed defendants, is not in the sources.</li>
+<li><strong>Timing:</strong> the class certification motion is due February 26, 2027, during the expected review.</li>
+<li><strong>Possible arguments for the defense (inference):</strong>
+<ul>
+<li>about 140,000 new speculative positions in the Central Valley (NEWS-02);</li>
+<li>customers can build their own;</li>
+<li>Sandhaven's exit in 2028 would cut Brindlewick's Puget Sound capacity by 38.8%.</li>
+</ul>
+</li>
+<li><strong>Gaps:</strong> no source gives a reviewer's position or facility-level EBITDA, so antitrust counsel must assess the remedy and the timetable.</li>
+</ul>
+<h3 id="q4-cost-of-the-deal-what-will-it-cost-beyond-the-equity-price-and-how-should-it-be-presented">Q4. Cost of the deal: what will it cost beyond the equity price, and how should it be presented?</h3>
+<ul>
+<li><strong>Known deal costs (X-11, High):</strong>
+<ul>
+<li>equity award cash-out: $46.2m;</li>
+<li>change-in-control severance: $16.4m;</li>
+<li>reverse termination fee: $110.0m;</li>
+<li>together, $172.6m (6.3% of EV) under the project rule, which adds the three categories.</li>
+<li>The reverse fee is paid only if the deal fails on antitrust grounds. If the deal closes, the cost is $62.6m (2.3%).</li>
+</ul>
+</li>
+<li><strong>Fees:</strong> advisory, financing and other fees of $72.0m are a use of funds, not part of the test.</li>
+<li><strong>Presentation:</strong>
+<ul>
+<li>Fully diluted EV is $2,796.2m (11.18x LTM). The all-in cost including severance is $2,812.6m (11.25x), not 11.0x (SEC-38).</li>
+<li>The sources and uses and the integration budget both leave out the $16.4m severance (SEC-38).</li>
+<li>The severance plan was adopted September 21, 2026, the day before the strategic review was announced, and it raised the multiples (SEC-40).</li>
+<li>PSUs vest at target under the plan, so the $46.2m recomputes (SEC-39).</li>
+</ul>
+</li>
+<li><strong>Other cash costs the deal itself triggers</strong> (not in the test, but in the price discussion):
+<ul>
+<li>$118.0m of restoration (X-09);</li>
+<li>the $45.0m integration budget;</li>
+<li>$4.7m a year of property tax (SEC-16).</li>
+</ul>
+</li>
+</ul>
+<h3 id="q5-contracts-and-facilities-what-changes-after-2026-or-on-a-change-of-control">Q5. Contracts and facilities: what changes after 2026 or on a change of control?</h3>
+<ul>
+<li><strong>Power (X-03, High):</strong> the 2021 fixed-price contracts covering 70% of use at $61/MWh end December 31, 2026. At 2027 to 2029 offers of about $104/MWh, cost rises $17.7m a year, worth $195.0m (7.1% of EV) (projection). No pass-through to customers is shown.</li>
+<li><strong>Sandhaven concession (X-05, Critical):</strong> expires September 30, 2028, with no renewal option. The improvements revert to the District.</li>
+<li><strong>Harvest Peak and most-favored-customer clauses (X-12, High):</strong>
+<ul>
+<li>a seven-year contract signed July 2026 at about 9% below the rate card;</li>
+<li>two existing customers have already asked for most-favored-customer reviews;</li>
+<li>upper bound $15.2m a year on $169.0m of revenue under those clauses (projection).</li>
+<li>Two of the three Harvest Peak sites, Stockton North and Lodi, are among the four leases we plan to surrender (NEWS-09).</li>
+</ul>
+</li>
+<li><strong>Four surrendered leases:</strong> $118.0m of restoration (X-09). Remaining rent and termination rights are not in the sources (SEC-21).</li>
+<li><strong>Change of control:</strong>
+<ul>
+<li>California property tax reassessment adds $4.7m a year (SEC-16);</li>
+<li>the severance plan pays $16.4m (X-11);</li>
+<li>equity awards that are not assumed vest in full (SEC-39);</li>
+<li>all debt can be repaid at par (SEC-23).</li>
+<li>Change-of-control and assignment terms of the leases, the Ironbridge master lease, the concession, and the customer and power contracts are not disclosed (SEC-21).</li>
+</ul>
+</li>
+<li><strong>ColdTrack (X-15):</strong> halting the rollout, as the plan proposes, strands $47.0m of capitalized software (inference, non-cash).</li>
+</ul>
+<h3 id="q6-litigation-and-compliance-which-matters-need-a-price-adjustment-a-specific-protection-or-more-work">Q6. Litigation and compliance: which matters need a price adjustment, a specific protection or more work?</h3>
+<table>
+<thead><tr><th>Matter</th><th>Finding</th><th>Posture and next date</th><th>What it needs</th></tr></thead>
+<tbody>
+<tr><td>Antitrust class action (LIT-01)</td><td>X-08, Critical</td><td>Motion to dismiss denied Aug 14, 2026; class certification motion due Feb 26, 2027</td><td>Price, a litigation analysis before signing, consent rights over settlement, and treatment in the MAE definition; confirm Trelliswood's own status</td></tr>
+<tr><td>I-5 fatal crash (LIT-02)</td><td>X-14, High</td><td>Mediation Mar 10, 2027; trial Sep 13, 2027</td><td>Confirm the insurance tower and insurers' position; price adjustment for the uninsured amount; consent rights over settlement</td></tr>
+<tr><td>ICE inspections</td><td>SEC-27, High</td><td>Notices served Jul 28, 2026 at six sites; about 410 unresolved discrepancies</td><td>Work before signing on remediation and staffing; a specific covenant</td></tr>
+<tr><td>Fleet safety allegations (LIT-02)</td><td>LIT-10, FIN-14, Medium</td><td>Accidents per million miles rose from 0.66 (FY2023) to 0.84 (H1 2026)</td><td>Compliance diligence before the fleets are combined</td></tr>
+<tr><td>Calder Valley nuisance (LIT-03)</td><td>LIT-03, Medium</td><td>Preliminary injunction hearing Jan 15, 2027; settlement signal Oct 2026</td><td>Settlement authority as an interim covenant; site EBITDA</td></tr>
+<tr><td>Coastline spoilage (LIT-05)</td><td>LIT-05, Medium</td><td>Summary judgment hearing on the cap Dec 11, 2026</td><td>Get the ruling before signing; $40.0m is at risk if the cap fails</td></tr>
+<tr><td>FreshArc preference (LIT-04)</td><td>X-13, Medium</td><td>Answer due Nov 20, 2026</td><td>Accrual review; small price item</td></tr>
+<tr><td>Westmark / Polar Ridge (LIT-06)</td><td>LIT-06, Low</td><td>Indemnified; case management Jan 22, 2027</td><td>Confirm the indemnity documents (mitigant)</td></tr>
+<tr><td>Greenfield Produce (LIT-07)</td><td>LIT-07, Low</td><td>Dismissed with prejudice Mar 7, 2025</td><td>None (closed)</td></tr>
+<tr><td>Canadian trademark opposition (LIT-08)</td><td>LIT-08, Low</td><td>Evidence due Jan 8, 2027</td><td>None</td></tr>
+</tbody>
+</table>
+<p>An anonymous forum claim about Fresno temperature logs is unconfirmed, and the company denies it (NEWS-19, Low). It is listed under open questions only.</p>
+<h2 id="3-risk-matrix">3. Risk matrix</h2>
+<p>One row per distinct issue. Supporting findings that state the same fact are shown in brackets after the parent. The value effects in different rows overlap in part and are not additive.</p>
+<table>
+<thead><tr><th>ID [supporting]</th><th>Finding</th><th>Workstream</th><th>Severity</th><th>Confidence</th><th>Deal impact</th><th>Recommended action</th></tr></thead>
+<tbody>
+<tr><td>X-07 [SEC-26, NEWS-12, NEWS-13, NEWS-14, LIT-09]</td><td>Merger review. Test met: could block closing. Combined shares are about 43% and 39%, the buyer has said it consolidates acquired capacity, and the $15.0m cap covers 6.0% of EBITDA against 41.8% of capacity in the two markets</td><td>Cross-source</td><td>Critical</td><td>Medium</td><td>Closing risk; $110.0m reverse fee</td><td>Antitrust counsel analysis before signing; reset the divestiture cap, reverse fee and outside date; confirm Trelliswood's class action status</td></tr>
+<tr><td>X-01 [FIN-03]</td><td>Normalized LTM is $217.5m to $222.5m. Test met: more than 10% of value, $302.5m to $357.5m (11.0% to 13.0%) (projection)</td><td>Cross-source</td><td>Critical</td><td>Medium</td><td>Valuation</td><td>Price</td></tr>
+<tr><td>X-02 [FIN-02, SEC-05, NEWS-01, FIN-10, FIN-12, FIN-13, NEWS-02, NEWS-03, FIN-30, FIN-11, SEC-08]</td><td>Operating trend falling. Test met: more than 10% of value, annualized fall $462.0m (16.8%); on guidance, $297.0m to $385.0m (projection). Draws on separate parents X-03, X-04, X-12 and SEC-06</td><td>Cross-source</td><td>Critical</td><td>Medium</td><td>Valuation</td><td>Price; Q3 2026 results and monthly data before signing</td></tr>
+<tr><td>X-05 [SEC-11, NEWS-21]</td><td>Sandhaven earnings of $31.0m end Sep 30, 2028. Test met: more than 10% of value, $341.0m (12.4%)</td><td>Cross-source</td><td>Critical</td><td>High</td><td>Valuation; capex of $180m to $220m to replace</td><td>Price, or a contingent value structure tied to an extension; District correspondence</td></tr>
+<tr><td>X-09 [SEC-13, FIN-25]</td><td>Unrecorded restoration of $312.0m. Test met: more than 10% of value on the full amount (11.3%); the plan triggers $118.0m</td><td>Cross-source</td><td>Critical</td><td>High</td><td>Valuation; post-closing cash; restatement risk</td><td>Price; Holbrook report and lease documents; revisit the surrender plan</td></tr>
+<tr><td>X-08 [LIT-01, NEWS-15, SEC-25]</td><td>Antitrust class action. Test met: more than 10% of value, as the remedy sought ($1,800.0m upper bound, 65.5%); no accrual; 10-Q omits the co-defendant settlement</td><td>Cross-source</td><td>Critical</td><td>Medium</td><td>Valuation; exposure after closing</td><td>Price; litigation analysis before signing; consent rights over settlement; MAE treatment</td></tr>
+<tr><td>X-03 [SEC-15, NEWS-11, FIN-17]</td><td>Power repricing from Jan 1, 2027: $17.7m a year, $195.0m (7.1%) (projection)</td><td>Cross-source</td><td>High</td><td>Medium</td><td>Valuation</td><td>Price; 2027 contracts and pass-through terms</td></tr>
+<tr><td>X-04 [SEC-04, FIN-04, NEWS-04]</td><td>Insurance accrual cut to 4.8% while accidents rose; $7.3m a year (projection)</td><td>Cross-source</td><td>High</td><td>Medium</td><td>Valuation; reserve adequacy</td><td>Actuarial review before signing; reserve true-up in price</td></tr>
+<tr><td>X-14 [LIT-02, NEWS-16, SEC-29]</td><td>I-5 suit: $150.0m demand, $95.0m above cover; disclosure gaps</td><td>Cross-source</td><td>High</td><td>Medium</td><td>Valuation; exposure after closing</td><td>Confirm the insurance tower; price adjustment; consent rights over settlement</td></tr>
+<tr><td>X-12 [SEC-19, FIN-16, NEWS-08]</td><td>Harvest Peak pricing triggered MFN reviews; upper bound $15.2m a year (projection)</td><td>Cross-source</td><td>High</td><td>Medium</td><td>Valuation</td><td>Interim covenant on pricing concessions and MFN settlements; price adjustment for claims already made</td></tr>
+<tr><td>X-11 [SEC-37, SEC-39, SEC-40, FIN-35, FIN-38]</td><td>Known deal costs $172.6m (6.3%) under the rule; $62.6m if the deal closes</td><td>Cross-source</td><td>High</td><td>High</td><td>Price</td><td>Put award cash-out and severance in the price; interim covenant on new grants</td></tr>
+<tr><td>X-10 [SEC-14]</td><td>Effective-controls conclusions against three questioned practices; restatement risk (inference)</td><td>Cross-source</td><td>High</td><td>Medium</td><td>Representations; restatement risk</td><td>Accounting diligence before signing; price or structure response</td></tr>
+<tr><td>SEC-27 [NEWS-20]</td><td>ICE inspections at six sites; about 410 documentation discrepancies</td><td>SEC filings</td><td>High</td><td>High</td><td>Operations; labor cost</td><td>Specific covenant; remediation plan before signing</td></tr>
+<tr><td>X-06 [SEC-12, NEWS-22]</td><td>Sandhaven disclosure gap: 10-K expected an extension that the District says it had ruled out</td><td>Cross-source</td><td>Medium</td><td>Medium</td><td>Disclosure; credibility</td><td>Management interview; District correspondence</td></tr>
+<tr><td>X-13 [LIT-04, SEC-31, LIT-11, FIN-28]</td><td>FreshArc liquidated; likely $6.0m to $11.0m loss not accrued</td><td>Cross-source</td><td>Medium</td><td>High</td><td>Valuation (minor); accrual</td><td>Accrual review; price item</td></tr>
+<tr><td>X-15 [SEC-07, FIN-20, NEWS-10]</td><td>ColdTrack: no impairment of $47.0m at Jun 30, 2026</td><td>Cross-source</td><td>Medium</td><td>Medium</td><td>Purchase accounting (non-cash)</td><td>Impairment memo; remaining commitments</td></tr>
+<tr><td>X-16 [SEC-17, FIN-18, LIT-12]</td><td>Deferred maintenance; $96.0m of priority replacements in 2027 to 2029</td><td>Cross-source</td><td>Medium</td><td>High</td><td>Capex</td><td>Engineering diligence; catch-up capex in price</td></tr>
+<tr><td>SEC-16</td><td>Change of control raises property tax by about $4.7m a year</td><td>SEC filings</td><td>Medium</td><td>High</td><td>Valuation</td><td>Tax adviser estimate; price</td></tr>
+<tr><td>SEC-38 [FIN-37]</td><td>Severance missing from sources and uses and the integration budget</td><td>SEC filings</td><td>Medium</td><td>High</td><td>Presentation; funding</td><td>Add to sources and uses</td></tr>
+<tr><td>SEC-42</td><td>CFO and CAO expected to leave while accounting judgments are open</td><td>SEC filings</td><td>Medium</td><td>High</td><td>Oversight after closing</td><td>Retention through the first audit and purchase accounting</td></tr>
+<tr><td>FIN-22 [SEC-24]</td><td>Leverage rose to 4.47x; covenant levels not disclosed</td><td>Financial analysis</td><td>Medium</td><td>High</td><td>Closing risk if earnings keep falling</td><td>Credit agreement and covenant headroom; bring-down</td></tr>
+<tr><td>LIT-03 [NEWS-18, SEC-32]</td><td>Calder Valley night-operations injunction sought; hearing Jan 15, 2027</td><td>Litigation</td><td>Medium</td><td>Medium</td><td>Operations at one site (about 4% of revenue)</td><td>Interim covenant on settlement; site EBITDA</td></tr>
+<tr><td>LIT-05 [SEC-30]</td><td>Coastline: $41.2m claimed against an about $1.24m cap</td><td>Litigation</td><td>Medium</td><td>Medium</td><td>Valuation (minor)</td><td>Get the Dec 11, 2026 ruling before signing</td></tr>
+<tr><td>LIT-10</td><td>Fleet safety allegations from the I-5 suit; Brindlewick admits the ELD edit</td><td>Litigation</td><td>Medium</td><td>Low</td><td>Integration; insurance</td><td>Compliance diligence; FMCSA rating</td></tr>
+<tr><td>FIN-14 [NEWS-17]</td><td>Accidents per million miles up to 0.84</td><td>Financial analysis</td><td>Medium</td><td>High</td><td>Integration; insurance cost</td><td>Safety diligence before combining fleets</td></tr>
+<tr><td>NEWS-09</td><td>Harvest Peak volume sits at two of the four sites to be surrendered</td><td>News and media</td><td>Medium</td><td>Medium</td><td>Synergies; integration</td><td>Contract relocation terms</td></tr>
+<tr><td>SEC-18</td><td>Ironbridge sale-leaseback sale treatment rests on a judgment</td><td>SEC filings</td><td>Medium</td><td>Medium</td><td>Debt-like item; restatement risk</td><td>Auditor consultation memo</td></tr>
+<tr><td>SEC-21</td><td>Change-of-control and assignment terms not disclosed</td><td>SEC filings</td><td>Medium</td><td>High</td><td>Consents; integration cost</td><td>Lease and contract review</td></tr>
+<tr><td>FIN-19</td><td>$48.0m of H1 2026 growth capex with no capacity added</td><td>Financial analysis</td><td>Medium</td><td>Low</td><td>Capex quality</td><td>Project list</td></tr>
+<tr><td>FIN-26</td><td>Claims reserves and other liabilities of $69.6m outside net debt</td><td>Financial analysis</td><td>Medium</td><td>Medium</td><td>Net debt definition</td><td>Composition of other liabilities</td></tr>
+<tr><td>FIN-32</td><td>Free cash flow thin after capex and finance leases</td><td>Financial analysis</td><td>Medium</td><td>High</td><td>Valuation; financing</td><td>Cash flow forecast</td></tr>
+<tr><td>SEC-02 [FIN-05, FIN-06]</td><td>"Non-recurring" severance recurs; $1.4m of H1 2026 transaction costs predate the review</td><td>SEC filings</td><td>Low</td><td>High</td><td>Valuation (minor)</td><td>Ask what the costs cover</td></tr>
+<tr><td>SEC-06</td><td>ColdTrack credits of $4.6m in H1 2026; lost volume not confirmed</td><td>SEC filings</td><td>Low</td><td>High</td><td>Valuation (possible add-back)</td><td>Customer data</td></tr>
+<tr><td>SEC-28</td><td>10-K I-9 risk factor written as hypothetical during a self-audit</td><td>SEC filings</td><td>Low</td><td>Low</td><td>Disclosure</td><td>Self-audit timeline</td></tr>
+<tr><td>SEC-35</td><td>10-K excerpts omit three events before filing</td><td>SEC filings</td><td>Low</td><td>Medium</td><td>Disclosure</td><td>Full 10-K text</td></tr>
+<tr><td>FIN-39</td><td>Goodwill and intangibles of $349.0m; impairment test date not disclosed</td><td>Financial analysis</td><td>Low</td><td>Medium</td><td>Accounting</td><td>Test date and headroom</td></tr>
+</tbody>
+</table>
+<p><strong>Verified positive or neutralized findings (no risk row; see the executive summary):</strong> SEC-01 and FIN-01 (LTM ties), SEC-03 [FIN-09, NEWS-06] (gain correctly excluded), SEC-20 and FIN-27 (low concentration), SEC-22 (no pension or union), SEC-23 (debt maturities), SEC-33 and LIT-06 (indemnified claim), SEC-34 and LIT-07 (dismissed claim), SEC-36 (controls and auditor), SEC-45 [NEWS-05, FIN-15] (value-added services growth), FIN-21 (net debt ties), FIN-24 (lease treatment), FIN-31 (cash conversion), FIN-34 (DSO), FIN-36 (deal arithmetic ties).</p>
+<h2 id="4-workstream-detail">4. Workstream detail</h2>
+<h3 id="sec-filings">SEC filings</h3>
+<p>The analyst reviewed the FY2025 10-K (filed February 26, 2026), the 2026 proxy, the Q2 2026 10-Q (filed August 6, 2026) and the 8-Ks of March 20 and September 22, 2026.</p>
+<ul>
+<li><strong>Earnings quality.</strong>
+<ul>
+<li>The LTM reconciliation ties (SEC-01).</li>
+<li>The insurance accrual rate was cut from 6.5% to 4.8% from January 1, 2026, worth $3.7m in H1 2026 (SEC-04).</li>
+<li>H1 2026 weakened across revenue, margins, occupancy, price and throughput (SEC-05).</li>
+<li>Revenue is net of $4.6m of ColdTrack credits (SEC-06).</li>
+</ul>
+</li>
+<li><strong>Liabilities.</strong>
+<ul>
+<li>Eleven leases carry $312.0m of unrecorded restoration (SEC-13). The company says settlement dates are "indeterminate", which a facility-by-facility estimate puts in doubt (SEC-14).</li>
+<li>Sale treatment of the Ironbridge sale-leaseback is a contestable judgment (SEC-18).</li>
+</ul>
+</li>
+<li><strong>Facilities and contracts.</strong>
+<ul>
+<li>The Sandhaven concession ends September 30, 2028 (SEC-11), and the filings' wording changed after the District's vote (SEC-12).</li>
+<li>Fixed-price power ends December 31, 2026 (SEC-15).</li>
+<li>The change of control raises property tax by $4.7m a year (SEC-16).</li>
+<li>Most-favored-customer clauses cover about $169.0m of revenue (SEC-19).</li>
+<li>Change-of-control terms are not disclosed (SEC-21).</li>
+</ul>
+</li>
+<li><strong>Capex:</strong> maintenance capex was deferred, with $96m of priority work in 2027 to 2029 (SEC-17).</li>
+<li><strong>Debt:</strong> no maturities before 2030, prepayable at par (SEC-23). Leverage is rising, and covenant terms are not disclosed (SEC-24).</li>
+<li><strong>Litigation and compliance.</strong>
+<ul>
+<li>Class action (SEC-25), I-5 suit (SEC-29), Coastline (SEC-30), FreshArc (SEC-31), Calder Valley (SEC-32), Polar Ridge (SEC-33) and Greenfield (SEC-34).</li>
+<li>ICE inspections (SEC-27). The 10-K's I-9 risk factor was written as hypothetical (SEC-28). The 10-K excerpts omit three early-2026 events (SEC-35).</li>
+</ul>
+</li>
+<li><strong>Governance and pay.</strong>
+<ul>
+<li>Controls were effective and the auditor has served since 2009 (SEC-36).</li>
+<li>Known deal costs (SEC-37). The sources and uses leave out the severance (SEC-38). PSUs vest at target (SEC-39). The severance plan was adopted the day before the review (SEC-40).</li>
+<li>The CFO and CAO are expected to leave (SEC-42).</li>
+</ul>
+</li>
+<li><strong>Positives:</strong> low concentration (SEC-20), no pension or union (SEC-22), value-added services growth (SEC-45).</li>
+</ul>
+<h3 id="news-and-media">News and media</h3>
+<p>Fourteen articles were reviewed and each source's reliability was rated. Company results and on-record quotes are rated High. Anonymous claims are rated Low.</p>
+<ul>
+<li><strong>Results and guidance.</strong>
+<ul>
+<li>On August 6, 2026 guidance was cut to $236m to $244m (NEWS-01).</li>
+<li>Occupancy is falling and new Central Valley capacity is arriving (NEWS-02).</li>
+<li>The transportation operating ratio worsened (NEWS-03).</li>
+<li>Analysts challenged the insurance accrual cut on the call (NEWS-04).</li>
+</ul>
+</li>
+<li><strong>Contracts and costs.</strong>
+<ul>
+<li>Harvest Peak was priced about 9% below the rate card (NEWS-08), at two of the sites the plan would surrender (NEWS-09).</li>
+<li>ColdTrack failures and credits (NEWS-10).</li>
+<li>Power forwards and fixed-price offers for 2027 to 2029 (NEWS-11).</li>
+</ul>
+</li>
+<li><strong>Antitrust.</strong>
+<ul>
+<li>Trelliswood's own capacity shares (NEWS-12) and its investor-day statements (NEWS-13).</li>
+<li>The Coldmetric ruling as a signal for the merger review (NEWS-14).</li>
+<li>The class action ruling (NEWS-15).</li>
+</ul>
+</li>
+<li><strong>Litigation and compliance.</strong>
+<ul>
+<li>The I-5 suit (NEWS-16) and rising crash rate (NEWS-17).</li>
+<li>The Calder Valley suit (NEWS-18).</li>
+<li>ICE inspections, with staffing losses unconfirmed (NEWS-20).</li>
+</ul>
+</li>
+<li><strong>Sandhaven.</strong> The District rules out an extension and puts a replacement at $180m to $220m (NEWS-21). The CEO's February statement conflicts with the District's account (NEWS-22).</li>
+<li><strong>Low-relevance items:</strong>
+<ul>
+<li>market reaction (NEWS-07);</li>
+<li>the anonymous Fresno forum claim, which the company denies (NEWS-19);</li>
+<li>a food bank donation (NEWS-23).</li>
+</ul>
+</li>
+<li><strong>No embedded instructions:</strong> no article tried to instruct the agents.</li>
+</ul>
+<h3 id="litigation">Litigation</h3>
+<p>Eight matters were reviewed. The case files are summaries, not full dockets.</p>
+<ul>
+<li><strong>Antitrust class action (LIT-01).</strong> The upper bound is $1,800.0m. Brindlewick subscribed to Coldmetric for the whole period the alleged exchange operated. LIT-09 covers its link to the merger review.</li>
+<li><strong>Okafor wrongful death (LIT-02).</strong> A $150.0m demand, and defense counsel's verdict range of $40m to $180m. The safety allegations, including the ELD edit Brindlewick admits, are in LIT-10.</li>
+<li><strong>Calder Valley nuisance (LIT-03).</strong> An injunction is sought that would cut outbound capacity at the site by about 35%. Mitigation is estimated at $6.5m.</li>
+<li><strong>FreshArc (LIT-04, LIT-11).</strong> A preference claim of $14.6m. Counsel's likely range is $6.0m to $11.0m, with no accrual. The tenth-largest customer was lost.</li>
+<li><strong>Coastline (LIT-05, LIT-12).</strong> A $41.2m claim against a $0.50 per pound cap. A compressor and its standby unit both failed.</li>
+<li><strong>Closed or covered:</strong>
+<ul>
+<li>Westmark / Polar Ridge, indemnified (LIT-06);</li>
+<li>Greenfield, closed (LIT-07);</li>
+<li>a Canadian trademark opposition, with no money at stake (LIT-08).</li>
+</ul>
+</li>
+</ul>
+<p>Open non-antitrust claims, excluding the indemnified LIT-06, add to $205.8m (7.5% of EV) as stated amounts, not as an estimate.</p>
+<h3 id="financial-analysis">Financial analysis</h3>
+<p>All financial files foot and the balance sheet balances (FIN-01, FIN-21, FIN-36).</p>
+<p><strong>Earnings and trend:</strong></p>
+<ul>
+<li>H1 2026 Adjusted EBITDA fell 15.1% (FIN-02).</li>
+<li>The analyst's own normalization covered the insurance accrual and severance only (FIN-03).</li>
+<li>The insurance accrual cut came while accidents rose (FIN-04).</li>
+<li>Add-backs: severance recurs (FIN-05), transaction costs predate the review (FIN-06), and the sale-leaseback gain is correctly excluded (FIN-09).</li>
+<li>Quarterly revenue growth turned negative (FIN-10), and 2025 additions mask organic decline (FIN-11).</li>
+<li>Occupancy and price both fell (FIN-12), and transportation is near breakeven (FIN-13).</li>
+<li>Accidents per million miles rose (FIN-14).</li>
+<li>Value-added services are still growing (FIN-15).</li>
+</ul>
+<p><strong>Contracts, capex and leases:</strong></p>
+<ul>
+<li>Most-favored-customer clauses cover 23% of warehousing revenue (FIN-16).</li>
+<li>Power is 70% fixed at $61/MWh until December 31, 2026 (FIN-17).</li>
+<li>Maintenance capex fell to 2.3% of revenue (FIN-18), and growth capex added no capacity in H1 2026 (FIN-19).</li>
+<li>ColdTrack software of $47.0m would be stranded (FIN-20).</li>
+<li>Lease liabilities of $668.0m are outside net debt, consistently with the EBITDA definition (FIN-24). The integration budget has no lease exit cost (FIN-25).</li>
+</ul>
+<p><strong>Debt and cash:</strong></p>
+<ul>
+<li>Leverage rose to 4.47x (FIN-22).</li>
+<li>Other possible debt-like items total $69.6m (FIN-26).</li>
+<li>Cash conversion is steady (FIN-31), free cash flow is thin (FIN-32), and DSO is stable at about 48 days (FIN-34).</li>
+</ul>
+<p><strong>Customers:</strong></p>
+<ul>
+<li>Concentration is low (FIN-27).</li>
+<li>FreshArc has liquidated (FIN-28).</li>
+<li>Active customers fell (FIN-30).</li>
+</ul>
+<p><strong>Deal arithmetic:</strong></p>
+<ul>
+<li>The equity award cash-out recomputes to $46.2m (FIN-35).</li>
+<li>The sources and uses omit closing items (FIN-37).</li>
+<li>The termination fees tie (FIN-38).</li>
+<li>Goodwill and intangibles total $349.0m, and the impairment test date is not disclosed (FIN-39).</li>
+</ul>
+<p><strong>Key metrics</strong></p>
+<table>
+<thead><tr><th>Metric</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>H1 2025</th><th>H1 2026</th><th>LTM Jun-26</th></tr></thead>
+<tbody>
+<tr><td>Revenue</td><td>1,265.0</td><td>1,342.0</td><td>1,398.0</td><td>694.0</td><td>680.8</td><td>1,384.8</td></tr>
+<tr><td>Adjusted EBITDA</td><td>233.0</td><td>252.0</td><td>271.0</td><td>139.0</td><td>118.0</td><td>250.0</td></tr>
+<tr><td>Adjusted EBITDA margin</td><td>18.4%</td><td>18.8%</td><td>19.4%</td><td>20.0%</td><td>17.3%</td><td>18.1%</td></tr>
+<tr><td>Net income</td><td>42.3</td><td>81.9</td><td>57.1</td><td>30.6</td><td>11.6</td><td>38.1</td></tr>
+<tr><td>Operating cash flow</td><td>163.5</td><td>169.2</td><td>185.1</td><td>77.5</td><td>79.5</td><td>187.1</td></tr>
+<tr><td>Maintenance capex (% of revenue)</td><td>4.1%</td><td>3.3%</td><td>2.5%</td><td>2.6%</td><td>2.3%</td><td>2.3%</td></tr>
+<tr><td>Warehouse economic occupancy</td><td>87.4%</td><td>87.0%</td><td>85.6%</td><td>86.1%</td><td>81.4%</td><td>n/a</td></tr>
+<tr><td>Revenue per occupied pallet (US$, annualized)</td><td>776</td><td>823</td><td>815</td><td>819</td><td>784</td><td>n/a</td></tr>
+<tr><td>Transportation operating ratio</td><td>92.9%</td><td>93.2%</td><td>94.0%</td><td>93.8%</td><td>96.4%</td><td>n/a</td></tr>
+<tr><td>DOT accidents per million miles</td><td>0.66</td><td>0.68</td><td>0.72</td><td>0.71</td><td>0.84</td><td>n/a</td></tr>
+<tr><td>Insurance and claims accrual rate</td><td>6.4%</td><td>6.5%</td><td>6.5%</td><td>n/a</td><td>4.8%</td><td>n/a</td></tr>
+<tr><td>Net debt / Adjusted EBITDA</td><td>4.48x</td><td>3.84x</td><td>4.06x</td><td>n/a</td><td>n/a</td><td>4.47x</td></tr>
+<tr><td>Top customer / top 10 share</td><td>n/a</td><td>5.5% / 33.7%</td><td>5.7% / 34.3%</td><td>n/a</td><td>n/a</td><td>n/a</td></tr>
+</tbody>
+</table>
+<p>Quarterly revenue growth year over year: Q1 2025 +6.8%, Q2 2025 +6.4%, Q3 2025 +2.7%, Q4 2025 +1.0%, Q1 2026 -1.5%, Q2 2026 -2.3%. Balance sheet at June 30, 2026: equity $641.9m, goodwill $251.0m, intangibles $98.0m, operating lease liabilities $668.0m, accrued claims reserves $44.1m, capitalized software $47.0m.</p>
+<h2 id="5-cross-source-insights">5. Cross-source insights</h2>
+<p>These points appear only when sources are combined.</p>
+<ol>
+<li><strong>Power repricing can be sized (X-03).</strong>
+<ul>
+<li>The 10-K says the fixed-price agreements were signed in 2021 and expire December 31, 2026, but gives no future price.</li>
+<li>A September 2026 power-market article, which does not name Brindlewick, quotes 2027 to 2029 offers at about $104/MWh, and says "Anyone rolling off a contract signed in 2021 is looking at a step-up of 60% or more."</li>
+<li>Together they give $17.7m a year.</li>
+</ul>
+</li>
+<li><strong>The combined market share (X-07).</strong>
+<ul>
+<li>Brindlewick's 10-K gives its own shares (19% and 18%). Trelliswood's investor day gives its shares (24% and 21%).</li>
+<li>Neither source shows the combined 43% and 39%.</li>
+<li>The deal brief's integration plan matches the investor-day statements about closing acquired leased capacity.</li>
+</ul>
+</li>
+<li><strong>Harvest Peak is the 10-Q's unnamed customer (X-12).</strong>
+<ul>
+<li>The 10-Q reports an unnamed seven-year Central Valley agreement and two most-favored-customer review requests.</li>
+<li>The trade press names Harvest Peak and reports a discount of about 9%.</li>
+<li>The two together size the repricing risk. Two of the Harvest Peak sites are leases the plan would surrender (NEWS-09).</li>
+</ul>
+</li>
+<li><strong>Sandhaven was not a surprise to the company (X-06).</strong> The 10-K "expect[ed] to negotiate" an extension. The District says it had been "clear with Brindlewick for more than a year" that there would be none.</li>
+<li><strong>The I-5 demand is above the insurance tower and is not in the filings (X-14).</strong>
+<ul>
+<li>The case file gives the $150.0m demand. The 10-K gives the $55.0m tower.</li>
+<li>The 10-K described the crash without its three deaths. The 10-Q, filed after the demand was served, does not mention it.</li>
+</ul>
+</li>
+<li><strong>The class action disclosure lags events (X-08).</strong> The 10-Q, filed August 6, 2026:
+<ul>
+<li>drops the 10-K's "without merit" statement;</li>
+<li>omits the July 2026 Northern Frost settlement, which included cooperation with plaintiffs. The motion to dismiss was denied eight days later.</li>
+</ul>
+</li>
+<li><strong>The integration plan triggers an unrecorded liability (X-09).</strong> The 10-K's facility table gives restoration costs by lease. The deal brief's plan surrenders four of those leases, triggering $118.0m that is not in its $45.0m budget. The two sites that drove FY2025 growth carry another $61.5m.</li>
+<li><strong>The insurance accrual judgment is contradicted by later data (X-04).</strong> The rate cut rests on the camera program. After it was made:
+<ul>
+<li>the company's own KPI data show accidents rising;</li>
+<li>the I-5 complaint alleges 11 unreviewed camera alerts.</li>
+</ul>
+</li>
+<li><strong>FreshArc is a lost customer with an unaccrued loss (X-13).</strong> The customer file ranks FreshArc tenth ($31.8m). The case file shows it liquidated, and counsel calls a $6.0m to $11.0m loss likely. The 10-Q accrues nothing.</li>
+<li><strong>The ColdTrack impairment judgment is dated (X-15).</strong> No impairment was taken at June 30, 2026, although deployments had already been paused on June 2. The 10-Q filed in August reports a 60.5% overrun, and the buyer plans to halt the program.</li>
+<li><strong>The deferred maintenance pattern (X-16).</strong> Maintenance capex fell from 4.1% to 2.3% of revenue while an engineering study found $96.0m of priority work. In the same period a compressor and its standby unit failed at Sandhaven 2 (inference about the link; a power disturbance was also involved).</li>
+<li><strong>Named parties.</strong> Every customer, supplier and litigant named in the sources was looked up in the customer file:
+<ul>
+<li>FreshArc is the tenth-largest customer ($31.8m), and Alder BioPharma the ninth ($33.6m).</li>
+<li>Harvest Peak, Coastline, Westmark, Greenfield, Arcturus, Polar Ridge, Northern Frost, Coldmetric and Trelliswood are not listed top-ten customers.</li>
+</ul>
+</li>
+</ol>
+<h2 id="6-recommended-deal-protections-and-price-considerations">6. Recommended deal protections and price considerations</h2>
+<p>This is a one-step cash merger of a public company. After closing there is no seller to indemnify the buyer. Protection therefore comes mainly through price, work before signing, interim covenants, closing conditions and the merger agreement's risk allocation (inference).</p>
+<p><strong>Price</strong></p>
+<ol>
+<li>Re-base the price on normalized earnings, not $250.0m (X-01, X-02). At 11.0x the project-rule base implies $26.55 to $27.70 per share before Sandhaven (projection).</li>
+<li>Value Sandhaven as a finite stream ending September 30, 2028, or deduct the replacement cost of $180m to $220m (X-05).</li>
+<li>Deduct the $118.0m of restoration that the plan triggers, and reassess the surrender plan against $21.0m a year of network synergies (X-09).</li>
+<li>Add the deferred capex of $96.0m (X-16) and the property tax step-up of $4.7m a year (SEC-16).</li>
+<li>Treat the award cash-out ($46.2m) and severance ($16.4m) as part of the price. Show the all-in multiple of 11.25x (X-11, SEC-38).</li>
+</ol>
+<p><strong>Structure and terms</strong></p>
+<ol start="6">
+<li><strong>Antitrust:</strong>
+<ul>
+<li>get antitrust counsel's market analysis before the binding proposal;</li>
+<li>reset the $15.0m divestiture cap, the reverse fee and the outside date to match it;</li>
+<li>confirm whether Trelliswood is a class action defendant or a Coldmetric subscriber (X-07, X-08).</li>
+</ul>
+</li>
+<li><strong>Sandhaven:</strong> consider a contingent value right or price adjustment tied to an extension or a replacement site (X-05) (inference).</li>
+<li><strong>Interim covenants requiring Trelliswood's consent for:</strong>
+<ul>
+<li>pricing concessions and most-favored-customer settlements (X-12);</li>
+<li>settlement of the class action, I-5 and Calder Valley matters (X-08, X-14, LIT-03);</li>
+<li>new equity grants (X-11);</li>
+<li>new power contracts for 2027 (X-03).</li>
+</ul>
+</li>
+<li><strong>MAE definition and bring-down:</strong> address the class action, the ICE inspections and the Sandhaven talks explicitly (X-08, SEC-27, X-05).</li>
+</ol>
+<p><strong>Further diligence before signing</strong></p>
+<ol start="10">
+<li><strong>Accounting:</strong>
+<ul>
+<li>the restoration accounting (X-09, X-10);</li>
+<li>an actuarial review of the insurance accrual (X-04);</li>
+<li>the FreshArc accrual (X-13);</li>
+<li>the ColdTrack impairment memo (X-15);</li>
+<li>the Ironbridge sale treatment (SEC-18).</li>
+</ul>
+</li>
+<li><strong>Insurance:</strong> the I-5 tower and the excess insurers' coverage position (X-14).</li>
+<li><strong>Contracts:</strong>
+<ul>
+<li>lease documents for the four surrendered sites;</li>
+<li>change-of-control and assignment clauses (SEC-21);</li>
+<li>the Harvest Peak contract (NEWS-09).</li>
+</ul>
+</li>
+<li><strong>Results:</strong> Q3 2026 results and monthly 2026 EBITDA (X-02).</li>
+<li><strong>Oversight after closing:</strong> retain the CFO and CAO through the first audit and purchase accounting (SEC-42).</li>
+</ol>
+<h2 id="7-open-questions-and-management-request-list">7. Open questions and management request list</h2>
+<p><strong>Conflicts between sources</strong></p>
+<ul>
+<li><strong>Sandhaven:</strong> the 10-K expected an extension; the District says it was ruled out (X-06).</li>
+<li><strong>Class action merits:</strong> the 10-K said "without merit"; counsel now calls the theory "viable" (X-08).</li>
+<li><strong>Insurance accrual:</strong> the CFO credits the camera program; the accident data and allegations point the other way (X-04).</li>
+<li><strong>FreshArc:</strong> the 10-Q relies on defenses; counsel's estimate puts them in doubt (X-13).</li>
+<li><strong>Harvest Peak:</strong> management says "not comparable"; there is a reported 9% discount and two review requests (X-12).</li>
+<li><strong>I-9 compliance:</strong> the company says it complies; the 10-Q reports 410 unresolved discrepancies (SEC-27).</li>
+</ul>
+<p><strong>Priority requests (Critical and High findings)</strong></p>
+<ol>
+<li><strong>For Trelliswood's own legal team:</strong> is Trelliswood a class action defendant or a former Coldmetric subscriber? Is Brindlewick one of the two defendants named in the "holding the Coldmetric line" emails (X-07, X-08)?</li>
+<li><strong>Antitrust (X-07):</strong>
+<ul>
+<li>facility-level revenue and EBITDA in Puget Sound and the Northern Central Valley;</li>
+<li>counsel's market definition and remedy estimate.</li>
+</ul>
+</li>
+<li><strong>Sandhaven (X-05, X-06):</strong> District correspondence since 2024, alternative site status, carrying value of the improvements, and the customer list.</li>
+<li><strong>Restoration (X-09, X-10):</strong> the Holbrook report, lease documents for the four sites, the accounting memo on "indeterminate" settlement, and the auditor's view.</li>
+<li><strong>Power (X-03):</strong> 2027 contracts and prices, the cost of the 30% bought at tariff or index rates, and any customer pass-through.</li>
+<li><strong>Insurance (X-04):</strong> the actuarial report behind the 4.8% rate, reserves by accident year, and prior-year development.</li>
+<li><strong>I-5 (X-14):</strong> the excess insurers' position, the insurance tower, punitive damages, claims from other vehicles, and why the demand is not in the 10-Q.</li>
+<li><strong>Class action (X-08):</strong> counsel's loss estimate, any judgment-sharing agreement, settlement talks, any DOJ or FTC inquiry, and why the 10-Q omits the Northern Frost settlement.</li>
+<li><strong>Pricing (X-12):</strong> the Harvest Peak contract, the two customers asking for reviews, and the Central Valley share of revenue under most-favored-customer clauses.</li>
+<li><strong>Deal costs (X-11):</strong> the severance plan's definition of good reason, the four other officers' previous terms, and the option strike schedule.</li>
+<li><strong>ICE (SEC-27):</strong> the self-audit timeline, remediation, departures, and temporary labor cost.</li>
+<li><strong>Results (X-02):</strong> Q3 2026 results and monthly 2026 Adjusted EBITDA.</li>
+</ol>
+<p><strong>Other requests</strong></p>
+<ol start="13">
+<li><strong>FreshArc (X-13):</strong> the date of counsel's estimate, and FreshArc's LTM revenue and EBITDA.</li>
+<li><strong>ColdTrack (X-15):</strong> the impairment memo, remaining commitments, and the customers who moved volume.</li>
+<li><strong>Capex (X-16, FIN-19):</strong> the Holbrook priority list by site, and what the H1 2026 growth capex funded.</li>
+<li><strong>Credit agreement (FIN-22):</strong> covenant levels and headroom.</li>
+<li><strong>Contracts (SEC-21):</strong> change-of-control clauses across leases, the concession, and the customer and power contracts.</li>
+<li><strong>Ironbridge (SEC-18):</strong> the auditor consultation memo.</li>
+<li><strong>Calder Valley (LIT-03):</strong> capacity under the settlement window, site EBITDA, and the dock bank cost.</li>
+<li><strong>Bayfront (FIN-11):</strong> acquired revenue and organic growth.</li>
+<li><strong>Fleet safety (LIT-10, FIN-14):</strong> the ELD edit investigation and the FMCSA rating.</li>
+<li><strong>Other liabilities (FIN-26):</strong> the composition of the $25.5m.</li>
+<li><strong>Goodwill (FIN-39):</strong> the impairment test date and headroom.</li>
+<li><strong>Fresno (NEWS-19, unconfirmed):</strong> customer audit reports and the logger audit trail.</li>
+</ol>
+<h2 id="8-appendix">8. Appendix</h2>
+<h3 id="methodology">Methodology</h3>
+<p><strong>Architecture.</strong> A lead agent coordinated four specialist subagents, each with read-only access to one part of the data room:</p>
+<ul>
+<li>SEC filings;</li>
+<li>news and media;</li>
+<li>litigation;</li>
+<li>financial analysis.</li>
+</ul>
+<p>A separate citation verifier checked their findings against the sources. Working memory (<code>memory/</code>) held the plan, the findings register, open questions, key metrics, every analyst and verifier report saved verbatim, and a timestamped run log. No internet access was used. All sources are in <code>targets/avocet/data/</code>.</p>
+<p><strong>Iterations.</strong></p>
+<ul>
+<li><strong>Iteration 1:</strong> all four analysts ran in parallel and produced 120 findings. The lead's cross-source analysis added 16 <code>X-</code> findings.</li>
+<li><strong>No iteration 2:</strong> a second iteration was considered and not run. Targeted searches showed that the open Critical and High questions need documents that are not in the data room.</li>
+</ul>
+<p><strong>Checkpoint log</strong></p>
+<table>
+<thead><tr><th>Checkpoint</th><th>What was shown in chat</th><th>Decision</th></tr></thead>
+<tbody>
+<tr><td>1. Plan</td><td>Six IC questions with analysts, four hypotheses, analyst tasks</td><td>"approve"</td></tr>
+<tr><td>2. Red flags</td><td>13 Critical and High parent findings with severity tests, main conflicts, proposed next step</td><td>"proceed"</td></tr>
+<tr><td>3. Sign-off</td><td>Verification results and draft recommendation</td><td>"approve report"</td></tr>
+</tbody>
+</table>
+<p><strong>Verification statistics</strong></p>
+<table>
+<thead><tr><th>Batch</th><th>Checked</th><th>Verified</th><th>Partially verified</th><th>Not supported</th></tr></thead>
+<tbody>
+<tr><td>A: SEC filings</td><td>40</td><td>33</td><td>7</td><td>0</td></tr>
+<tr><td>B: News and litigation</td><td>31</td><td>26</td><td>5</td><td>0</td></tr>
+<tr><td>C: Financial</td><td>34</td><td>26</td><td>8</td><td>0</td></tr>
+<tr><td>D: Cross-source</td><td>16</td><td>8</td><td>8</td><td>0</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>121</strong></td><td><strong>93</strong></td><td><strong>28</strong></td><td><strong>0</strong></td></tr>
+</tbody>
+</table>
+<p>Of 136 register findings, 121 were verified and 15 Low findings were not sent for verification. Every Partially verified row was rewritten with the verifier's corrected wording and severity.</p>
+<p>Severity changes after verification:</p>
+<ul>
+<li>X-01: High to Critical;</li>
+<li>SEC-25: High to Critical;</li>
+<li>SEC-12: Low to Medium;</li>
+<li>FIN-17 and FIN-25: Medium to High;</li>
+<li>FIN-28: Low to Medium.</li>
+</ul>
+<h3 id="index-of-verified-findings">Index of verified findings</h3>
+<p>121 findings: Verified or Partially verified. For Partially verified findings the wording is the verifier's corrected wording.</p>
+<table>
+<thead><tr><th>ID</th><th>Finding</th><th>Workstream</th><th>Severity</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>X-01</td><td>Normalized LTM earnings base is $217.5m to $222.5m, not $250.0m (project rule: the unaccrued FreshArc loss of $6.0m to $11.0m deducted from the base; change-of-control property tax included); at 11.0x, value is $302.5m to $357.5m (11.0% to 13.0% of EV) below EV, before the run-rate fall and Sandhaven (projection)</td><td>Cross-source</td><td>Critical</td><td>Partially verified</td></tr>
+<tr><td>X-02</td><td>Operating trend: revenue, occupancy, price, throughput, transport margin and guidance weakened; annualized H1 2026 fall of $42.0m is $462.0m (16.8% of EV) at 11.0x (projection)</td><td>Cross-source</td><td>Critical</td><td>Verified</td></tr>
+<tr><td>X-03</td><td>2021 fixed-price power contracts (70% of use at $61/MWh) end Dec 31, 2026; at 2027 to 2029 offers of about $104/MWh, cost rises $17.7m a year, $195.0m (7.1% of EV) at 11.0x (projection)</td><td>Cross-source</td><td>High</td><td>Verified</td></tr>
+<tr><td>X-04</td><td>Insurance accrual rate cut from 6.5% to 4.8% (dated Jan 1, 2026) is put in doubt by later accident data and the I-5 suit; it adds $3.7m to the LTM and $7.3m a year (projection)</td><td>Cross-source</td><td>High</td><td>Partially verified</td></tr>
+<tr><td>X-05</td><td>Sandhaven 1 and 2 earn $31.0m (12.4%) of LTM Adjusted EBITDA on a concession ending Sep 30, 2028 with no renewal option; the District's executive director says there will be no extension past 2028; $341.0m (12.4% of EV) at 11.0x; the deal brief does not address it</td><td>Cross-source</td><td>Critical</td><td>Partially verified</td></tr>
+<tr><td>X-06</td><td>Sandhaven disclosure gap: the 10-K said Brindlewick expected to negotiate an extension while the Harbor District says it had told Brindlewick for more than a year there would be none</td><td>Cross-source</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>X-07</td><td>Merger review: combined capacity shares of about 43% (Puget Sound) and 39% (Northern Central Valley), the buyer's stated plan to close acquired capacity, and a $15.0m divestiture cap could block closing</td><td>Cross-source</td><td>Critical</td><td>Partially verified</td></tr>
+<tr><td>X-08</td><td>Antitrust class action: treble damages with joint and several liability give a $1,800.0m upper bound (65.5% of EV); no accrual; the 10-Q omits the July 2026 co-defendant settlement</td><td>Cross-source</td><td>Critical</td><td>Verified</td></tr>
+<tr><td>X-09</td><td>Unrecorded lease-end restoration of $312.0m (11.3% of EV, 48.6% of equity); the buyer's plan to surrender four leases triggers $118.0m, which is not in the $45.0m integration budget</td><td>Cross-source</td><td>Critical</td><td>Verified</td></tr>
+<tr><td>X-10</td><td>Effective-controls conclusions for FY2025 (ICFR, unqualified opinion) and H1 2026 (disclosure controls) sit against unrecorded restoration (FY2025, H1 2026), the insurance accrual cut (H1 2026) and the unaccrued FreshArc loss (H1 2026); restatement risk for those periods (inference)</td><td>Cross-source</td><td>High</td><td>Partially verified</td></tr>
+<tr><td>X-11</td><td>Known deal costs: award cash-out $46.2m plus CIC severance $16.4m plus the $110.0m reverse termination fee total $172.6m (6.3% of EV); closing-case cost is $62.6m (2.3%)</td><td>Cross-source</td><td>High</td><td>Verified</td></tr>
+<tr><td>X-12</td><td>Harvest Peak seven-year contract at about 9% below rate card has triggered most-favored-customer reviews; upper bound $15.2m a year on $169.0m of MFN revenue, $167.3m (6.1% of EV) (projection)</td><td>Cross-source</td><td>High</td><td>Verified</td></tr>
+<tr><td>X-13</td><td>FreshArc (10th-largest customer, $31.8m) ceased operations; the preference loss Brindlewick's counsel calls likely ($6.0m to $11.0m, if the case is not settled) is not accrued</td><td>Cross-source</td><td>Medium</td><td>Partially verified</td></tr>
+<tr><td>X-14</td><td>I-5 fatal crash suit: $150.0m demand against $55.0m of combined retention and excess cover leaves $95.0m uninsured; the 10-K omitted the deaths and the 10-Q omits the demand</td><td>Cross-source</td><td>High</td><td>Verified</td></tr>
+<tr><td>X-15</td><td>ColdTrack: no impairment of $47.0m capitalized software at Jun 30, 2026, although deployments were paused before that date and the August 6 10-Q reports a 60.5% cost overrun; the buyer's plan halts it (inference: write-off)</td><td>Cross-source</td><td>Medium</td><td>Partially verified</td></tr>
+<tr><td>X-16</td><td>Deferred maintenance: capex fell from 4.1% to 2.3% of revenue, $96.0m of priority replacements fall in 2027 to 2029, and a compressor and its standby failed at Sandhaven 2</td><td>Cross-source</td><td>Medium</td><td>Partially verified</td></tr>
+<tr><td>SEC-01</td><td>Adjusted EBITDA definition and the LTM build check out</td><td>SEC filings</td><td>Low</td><td>Verified</td></tr>
+<tr><td>SEC-02</td><td>Add-backs labeled non-recurring come back every period</td><td>SEC filings</td><td>Low</td><td>Verified</td></tr>
+<tr><td>SEC-03</td><td>The 2024 sale-leaseback gain is correctly kept out of Adjusted EBITDA</td><td>SEC filings</td><td>Low</td><td>Verified</td></tr>
+<tr><td>SEC-04</td><td>A cut in the insurance accrual rate lifts LTM earnings by $3.7m while accidents rose</td><td>SEC filings</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>SEC-05</td><td>First-half 2026 results weakened in almost every segment and metric</td><td>SEC filings</td><td>High</td><td>Verified</td></tr>
+<tr><td>SEC-06</td><td>ColdTrack service credits of $4.6m reduced H1 2026 revenue; two customers moved part of their volume to other providers (10-Q does not say whether it returned); one anonymous customer says it moved about a third and has not moved it back (single anonymous source)</td><td>SEC filings</td><td>Low</td><td>Partially verified</td></tr>
+<tr><td>SEC-07</td><td>ColdTrack is over budget and paused, with $47.0m capitalized and no impairment; the buyer will halt it</td><td>SEC filings</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>SEC-08</td><td>FY2025 growth includes acquired and new capacity</td><td>SEC filings</td><td>Low</td><td>Verified</td></tr>
+<tr><td>SEC-11</td><td>The Sandhaven concession ends Sep 30, 2028, and the Harbor District plans other use from 2029</td><td>SEC filings</td><td>Critical</td><td>Verified</td></tr>
+<tr><td>SEC-12</td><td>The 10-K said management expected to negotiate a Sandhaven extension; the District says it had told Brindlewick for more than a year that there would be no extension (news, single named source); alternative sites first appear in the 8-K; not timing alone</td><td>SEC filings</td><td>Medium</td><td>Partially verified</td></tr>
+<tr><td>SEC-13</td><td>$312.0m of lease-end restoration is unrecorded, and the buyer's plan triggers $118.0m of it</td><td>SEC filings</td><td>Critical</td><td>Verified</td></tr>
+<tr><td>SEC-14</td><td>The effective-controls conclusion sits alongside the unrecorded restoration obligations</td><td>SEC filings</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>SEC-15</td><td>Fixed-price power ends Dec 31, 2026, before closing, and 2027 forward prices are "substantially above"</td><td>SEC filings</td><td>High</td><td>Verified</td></tr>
+<tr><td>SEC-16</td><td>The change of control itself raises California property tax by about $4.7m a year</td><td>SEC filings</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>SEC-17</td><td>Maintenance capex was deferred (2.5% of revenue in 2025, 2.3% in H1 2026, against 4.1% in 2023), and $96m of priority replacements fall due in 2027 to 2029, most of it after a Q2 to Q3 2027 closing</td><td>SEC filings</td><td>Medium</td><td>Partially verified</td></tr>
+<tr><td>SEC-18</td><td>The Ironbridge sale-leaseback depends on a contestable "sale" judgment</td><td>SEC filings</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>SEC-19</td><td>Most-favored-customer clauses cover about $169.0m of revenue, and two customers have asked for repricing</td><td>SEC filings</td><td>High</td><td>Verified</td></tr>
+<tr><td>SEC-20</td><td>Customer concentration is low</td><td>SEC filings</td><td>Low</td><td>Verified</td></tr>
+<tr><td>SEC-21</td><td>Change-of-control and assignment terms of leases and contracts are not disclosed</td><td>SEC filings</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>SEC-22</td><td>No pension or multiemployer plan disclosed, and the workforce is non-union</td><td>SEC filings</td><td>Low</td><td>Verified</td></tr>
+<tr><td>SEC-23</td><td>No debt matures before 2030, and all debt can be repaid at par</td><td>SEC filings</td><td>Low</td><td>Verified</td></tr>
+<tr><td>SEC-24</td><td>Covenant terms and change-of-control default are not disclosed, and leverage is rising</td><td>SEC filings</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>SEC-25</td><td>Antitrust class action survived the motion to dismiss (Aug 14, 2026) and seeks treble damages on at least $600m of alleged class-wide overcharges, with joint and several liability ($1,800.0m upper bound, 65.5% of EV); nothing is accrued</td><td>SEC filings</td><td>Critical</td><td>Partially verified</td></tr>
+<tr><td>SEC-26</td><td>The merger overlaps in two markets where Brindlewick holds about 19% and 18%</td><td>SEC filings</td><td>High</td><td>Verified</td></tr>
+<tr><td>SEC-27</td><td>ICE is inspecting six warehouses; a self-audit found unresolved eligibility documentation discrepancies for about 410 employees (6.2% of all staff); no penalty or workforce estimate</td><td>SEC filings</td><td>High</td><td>Partially verified</td></tr>
+<tr><td>SEC-28</td><td>The 10-K's I-9 risk factor was written as hypothetical while a self-audit was under way</td><td>SEC filings</td><td>Low</td><td>Verified</td></tr>
+<tr><td>SEC-29</td><td>Fatal I-5 accident suit is reserved only to the $5.0m retention</td><td>SEC filings</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>SEC-30</td><td>Coastline seeks $41.2m for spoiled product; $1.2m is accrued under a contractual cap</td><td>SEC filings</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>SEC-31</td><td>FreshArc (No. 10 customer, $31.8m FY2025 revenue) has liquidated; its trustee seeks $14.6m of preferences; counsel expects a recovery of $6m to $11m, none accrued (H1 2026 interim statements, and Q3 2026 if unaccrued: restatement risk, inference)</td><td>SEC filings</td><td>Medium</td><td>Partially verified</td></tr>
+<tr><td>SEC-32</td><td>Calder Valley suit seeks a ban on night truck traffic, with a hearing on Jan 15, 2027</td><td>SEC filings</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>SEC-33</td><td>Polar Ridge suit is indemnified, and the defense tender was accepted</td><td>SEC filings</td><td>Low</td><td>Verified</td></tr>
+<tr><td>SEC-34</td><td>Greenfield Produce case dismissed with prejudice, no appeal</td><td>SEC filings</td><td>Low</td><td>Verified</td></tr>
+<tr><td>SEC-35</td><td>The 10-K does not mention several events from early 2026</td><td>SEC filings</td><td>Low</td><td>Verified</td></tr>
+<tr><td>SEC-36</td><td>Controls effective, clean audit opinions, long-tenured auditor</td><td>SEC filings</td><td>Low</td><td>Verified</td></tr>
+<tr><td>SEC-37</td><td>Known deal costs total $62.6m (2.3% of EV)</td><td>SEC filings</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>SEC-38</td><td>Neither the sources and uses nor the $45.0m integration budget includes the $16.4m change-in-control severance, an unbudgeted cash cost after closing; fully diluted EV is $2,796.2m (11.18x), all-in cost with severance $2,812.6m (11.25x); all value tests stay on $2,750.0m</td><td>SEC filings</td><td>Medium</td><td>Partially verified</td></tr>
+<tr><td>SEC-39</td><td>PSUs vest at target under the plan, and the $46.2m cash-out recomputes</td><td>SEC filings</td><td>Low</td><td>Verified</td></tr>
+<tr><td>SEC-40</td><td>The severance plan was adopted the day before the sale review and raised multiples</td><td>SEC filings</td><td>Low</td><td>Verified</td></tr>
+<tr><td>SEC-42</td><td>No management departures disclosed, but the buyer's plan removes the CFO and CAO while judgments are open</td><td>SEC filings</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>SEC-45</td><td>Value-added services is still growing</td><td>SEC filings</td><td>Low</td><td>Verified</td></tr>
+<tr><td>NEWS-01</td><td>2026 guidance cut; H1 2026 Adjusted EBITDA down 15.1%</td><td>News and media</td><td>High</td><td>Verified</td></tr>
+<tr><td>NEWS-02</td><td>Occupancy decline, rate cuts and new Central Valley capacity</td><td>News and media</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>NEWS-03</td><td>Transportation operating ratio worsened to 96.4%</td><td>News and media</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>NEWS-04</td><td>Lower insurance and claims accrual rate added about $3.7m to H1 2026</td><td>News and media</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>NEWS-05</td><td>Value-added services still growing (positive)</td><td>News and media</td><td>Low</td><td>Verified</td></tr>
+<tr><td>NEWS-06</td><td>2024 sale-leaseback gain of $46.0m (one-off, outside the LTM)</td><td>News and media</td><td>Low</td><td>Verified</td></tr>
+<tr><td>NEWS-08</td><td>Harvest Peak seven-year contract priced about 9% below rate card</td><td>News and media</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>NEWS-09</td><td>Harvest Peak volume sits at two of the four sites Trelliswood plans to close</td><td>News and media</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>NEWS-10</td><td>ColdTrack rollout failures, customer credits and deployment pause</td><td>News and media</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>NEWS-11</td><td>2027 to 2029 power forward prices near record</td><td>News and media</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>NEWS-12</td><td>Antitrust: Trelliswood's stated shares in both overlap markets</td><td>News and media</td><td>High</td><td>Verified</td></tr>
+<tr><td>NEWS-13</td><td>Trelliswood investor-day statements a reviewer could use</td><td>News and media</td><td>High</td><td>Verified</td></tr>
+<tr><td>NEWS-14</td><td>Coldmetric information-exchange ruling as a merger-review signal</td><td>News and media</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>NEWS-15</td><td>Cold storage price-sharing class action against Brindlewick: damages are trebled and defendants can be held jointly liable for the whole amount, so $1,800.0m is the upper bound; only Northern Frost agreed to cooperate with plaintiffs (Coldmetric cooperates with the court)</td><td>News and media</td><td>Critical</td><td>Partially verified</td></tr>
+<tr><td>NEWS-16</td><td>I-5 fatal crash wrongful death suit, $150m demand</td><td>News and media</td><td>High</td><td>Verified</td></tr>
+<tr><td>NEWS-17</td><td>Rising fleet crash rate</td><td>News and media</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>NEWS-18</td><td>Calder Valley noise suit seeks overnight truck ban</td><td>News and media</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>NEWS-20</td><td>ICE I-9 inspections at six sites and about 410 unresolved eligibility discrepancies (company disclosure); reported night-shift staffing losses and temporary labor at about 35% above payroll (unconfirmed: unnamed workers and agency)</td><td>News and media</td><td>Medium</td><td>Partially verified</td></tr>
+<tr><td>NEWS-21</td><td>Sandhaven concession ends September 30, 2028, with no extension</td><td>News and media</td><td>High</td><td>Verified</td></tr>
+<tr><td>NEWS-22</td><td>CEO's extension expectation contradicted by the Harbor District</td><td>News and media</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>LIT-01</td><td>Antitrust class action: $1,800.0m upper bound under trebled, joint and several damages, no accrual; Brindlewick subscribed to Coldmetric for the whole period the alleged exchange operated (2019 until reports were suspended in March 2025); the class covers purchases from 2019 to present</td><td>Litigation</td><td>Critical</td><td>Partially verified</td></tr>
+<tr><td>LIT-02</td><td>Okafor wrongful death: $150.0m demand, defense counsel's adverse view on liability, insurance unconfirmed</td><td>Litigation</td><td>High</td><td>Verified</td></tr>
+<tr><td>LIT-03</td><td>Calder Valley nuisance: risk of an injunction on night operations</td><td>Litigation</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>LIT-04</td><td>FreshArc preference claim: $14.6m claimed, counsel's "likely" $6.0m to $11.0m if not settled, no accrual; the Q2 2026 10-Q relies on defenses that counsel's estimate puts in doubt, and the Q1 and Q2 2026 interim statements may lack an accrual of at least $6.0m (inference)</td><td>Litigation</td><td>Medium</td><td>Partially verified</td></tr>
+<tr><td>LIT-05</td><td>Coastline Seafood spoilage: $41.2m claimed against an about $1.24m contractual limit; summary judgment hearing December 11, 2026</td><td>Litigation</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>LIT-06</td><td>Westmark / Polar Ridge alter ego claim: neutralized by an uncapped, accepted indemnity (mitigant)</td><td>Litigation</td><td>Low</td><td>Verified</td></tr>
+<tr><td>LIT-07</td><td>Greenfield Produce breach of contract: dismissed with prejudice, closed (mitigant)</td><td>Litigation</td><td>Low</td><td>Verified</td></tr>
+<tr><td>LIT-09</td><td>Antitrust class action: effect on the merger review, injunction, and Trelliswood's own status</td><td>Litigation</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>LIT-10</td><td>Okafor fleet safety allegations: 15.5 hours on duty against a 14-hour limit, 11 unreviewed camera fatigue events and a post-crash ELD edit; Brindlewick admits the edit but says it corrected a duty-status error, and says the alerts were reviewed; the alleged yearly rise in accident frequency since 2023 matches Brindlewick's KPI data</td><td>Litigation</td><td>Medium</td><td>Partially verified</td></tr>
+<tr><td>LIT-11</td><td>FreshArc: loss of the tenth-largest customer and $3.9m of unpaid services</td><td>Litigation</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>LIT-12</td><td>Sandhaven 2 freezer failure: both the main and the standby compressor failed</td><td>Litigation</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>FIN-01</td><td>The $250.0m LTM Adjusted EBITDA rebuilds exactly from the source</td><td>Financial analysis</td><td>Low</td><td>Verified</td></tr>
+<tr><td>FIN-02</td><td>H1 2026 Adjusted EBITDA is down 15.1%; the annualized fall of $42.0m is worth $462.0m at 11.0x</td><td>Financial analysis</td><td>Critical</td><td>Verified</td></tr>
+<tr><td>FIN-03</td><td>Adjusting only for the insurance accrual change (FIN-04) and recurring severance (FIN-05), normalized LTM and run-rate earnings imply $51.7m to $310.2m less value at 11.0x (projection); the bridge excludes items in the SEC filings and news (power, property tax, ColdTrack credits, FreshArc), which X-01 adds</td><td>Financial analysis</td><td>High</td><td>Partially verified</td></tr>
+<tr><td>FIN-04</td><td>The insurance and claims accrual rate was cut from 6.5% to 4.8% while the accident rate rose 16.7%</td><td>Financial analysis</td><td>High</td><td>Verified</td></tr>
+<tr><td>FIN-05</td><td>Severance and restructuring "non-recurring" costs recur every year</td><td>Financial analysis</td><td>Low</td><td>Verified</td></tr>
+<tr><td>FIN-06</td><td>Transaction-related costs of $1.4m in H1 2026 predate the announced strategic review</td><td>Financial analysis</td><td>Low</td><td>Verified</td></tr>
+<tr><td>FIN-09</td><td>The November 2024 sale-leaseback gain is correctly excluded from Adjusted EBITDA</td><td>Financial analysis</td><td>Low</td><td>Verified</td></tr>
+<tr><td>FIN-10</td><td>Revenue growth turned negative, and Q3 2025 breaks the trend</td><td>Financial analysis</td><td>High</td><td>Verified</td></tr>
+<tr><td>FIN-11</td><td>Two 2025 additions flatter H1 2026 against H1 2025: Bayfront Cold Storage, acquired March 2025 for $88.0m (42k positions), and Calder Valley, opened June 2025 (64k positions); like-for-like decline is worse than the reported -1.9% (inference); revenue from the two sites is not disclosed</td><td>Financial analysis</td><td>Medium</td><td>Partially verified</td></tr>
+<tr><td>FIN-12</td><td>Warehousing occupancy fell 4.2 points and revenue per occupied pallet fell 3.8%</td><td>Financial analysis</td><td>High</td><td>Verified</td></tr>
+<tr><td>FIN-13</td><td>Transportation volume is falling and its operating ratio is near breakeven</td><td>Financial analysis</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>FIN-14</td><td>DOT recordable accidents per million miles are up 16.7% in six months</td><td>Financial analysis</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>FIN-15</td><td>Value-added services are still growing</td><td>Financial analysis</td><td>Low</td><td>Verified</td></tr>
+<tr><td>FIN-16</td><td>Most-favored-customer pricing covers a rising share of warehousing revenue while rates fall</td><td>Financial analysis</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>FIN-17</td><td>About 70% of electricity is bought at $61.0/MWh under 2021 fixed-price agreements that expire Dec 31, 2026; at the about $104/MWh 2027 to 2029 offers, the fixed volume costs about $17.7m more a year, $195.0m at 11.0x (7.1% of EV); range $14.8m to $20.6m a year (5.9% to 8.2%) (projection)</td><td>Financial analysis</td><td>High</td><td>Partially verified</td></tr>
+<tr><td>FIN-18</td><td>Maintenance capex fell to 2.3% of revenue while refrigeration systems aged</td><td>Financial analysis</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>FIN-19</td><td>No pallet positions or warehouses were added in H1 2026 despite $48.0m of growth capex; no source says what it funded (construction in progress or new services, inference); if some of it is sustaining spend, FIN-18 understates the maintenance gap (inference)</td><td>Financial analysis</td><td>Medium</td><td>Partially verified</td></tr>
+<tr><td>FIN-20</td><td>Capitalized software of $47.0m at Jun 30, 2026, principally ColdTrack, would have little use to the buyer once the plan halts ColdTrack (inference, non-cash); the 10-Q concluded no impairment was required although deployments were paused and the program estimate rose from $38.0m to $61.0m</td><td>Financial analysis</td><td>Low</td><td>Partially verified</td></tr>
+<tr><td>FIN-21</td><td>The deal brief's net debt of $1,118.0m ties to the June 30, 2026 balance sheet</td><td>Financial analysis</td><td>Low</td><td>Verified</td></tr>
+<tr><td>FIN-22</td><td>Leverage rose to 4.47x in six months, and interest cover is falling</td><td>Financial analysis</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>FIN-24</td><td>Operating lease liabilities of $668.0m sit outside net debt, consistent with the EBITDA definition</td><td>Financial analysis</td><td>Low</td><td>Verified</td></tr>
+<tr><td>FIN-25</td><td>The $45.0m integration budget has no cost for surrendering the four leased warehouses; the 10-K puts their lease-end restoration at $118.0m (undiscounted, 2025 prices), which an exit decision brings onto the balance sheet; remaining rent is not disclosed (current terms end 2029 to 2033); X-09 holds the $312.0m liability</td><td>Financial analysis</td><td>High</td><td>Partially verified</td></tr>
+<tr><td>FIN-26</td><td>Possible debt-like items outside the $1,118.0m: accrued claims reserves of $44.1m and other non-current liabilities of $25.5m (composition unknown), together $69.6m (2.5% of EV); deferred refrigeration projects (FIN-18) and restoration (X-09) are separate issues; CIC severance of about $16.4m is not accrued; no source supports a multiemployer exposure (no union employees)</td><td>Financial analysis</td><td>Medium</td><td>Partially verified</td></tr>
+<tr><td>FIN-27</td><td>Customer concentration is low and stable</td><td>Financial analysis</td><td>Low</td><td>Verified</td></tr>
+<tr><td>FIN-28</td><td>FreshArc Distributors (rank 10 in FY2025, $31.8m, 2.3% of revenue) was the only listed top-10 customer whose revenue fell ($34.1m to $31.8m, -6.7%); it filed Chapter 11 on Jan 12, 2026 and ceased operations in March 2026, so its revenue will not recur; part of it sits in the LTM base (inference)</td><td>Financial analysis</td><td>Medium</td><td>Partially verified</td></tr>
+<tr><td>FIN-30</td><td>Active customers fell in H1 2026, and there is no retention data</td><td>Financial analysis</td><td>Low</td><td>Verified</td></tr>
+<tr><td>FIN-31</td><td>Cash conversion has held steady</td><td>Financial analysis</td><td>Low</td><td>Verified</td></tr>
+<tr><td>FIN-32</td><td>Free cash flow is thin once all capex and finance leases are paid</td><td>Financial analysis</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>FIN-34</td><td>DSO is stable at about 48 days</td><td>Financial analysis</td><td>Low</td><td>Verified</td></tr>
+<tr><td>FIN-35</td><td>The equity award cash-out recomputes to $46.2m</td><td>Financial analysis</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>FIN-36</td><td>Enterprise value and sources and uses arithmetic tie</td><td>Financial analysis</td><td>Low</td><td>Verified</td></tr>
+<tr><td>FIN-37</td><td>Sources and uses omit some closing items</td><td>Financial analysis</td><td>Medium</td><td>Verified</td></tr>
+<tr><td>FIN-38</td><td>Termination fee arithmetic ties</td><td>Financial analysis</td><td>Low</td><td>Verified</td></tr>
+<tr><td>FIN-39</td><td>Goodwill and intangibles total $349.0m; the impairment test date is not in my files</td><td>Financial analysis</td><td>Low</td><td>Verified</td></tr>
+</tbody>
+</table>
+<h3 id="findings-not-verified-low-only">Findings not verified (Low only)</h3>
+<p>These 15 Low findings were not sent to the verifier. Their register status stays Open. Each is listed here as "not verified".</p>
+<table>
+<thead><tr><th>ID</th><th>Finding</th><th>Workstream</th><th>Severity</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>SEC-09</td><td>No FY2026 guidance in the SEC filings</td><td>SEC filings</td><td>Low</td><td>not verified</td></tr>
+<tr><td>SEC-10</td><td>Share buybacks in Q1 2026, then suspended in April</td><td>SEC filings</td><td>Low</td><td>not verified</td></tr>
+<tr><td>SEC-41</td><td>Basic and fully diluted share counts</td><td>SEC filings</td><td>Low</td><td>not verified</td></tr>
+<tr><td>SEC-43</td><td>No related person transactions, and Section 16 reports were on time</td><td>SEC filings</td><td>Low</td><td>not verified</td></tr>
+<tr><td>SEC-44</td><td>2025 bonuses paid at 104% on an Adjusted EBITDA target</td><td>SEC filings</td><td>Low</td><td>not verified</td></tr>
+<tr><td>NEWS-07</td><td>Market reaction and takeover speculation</td><td>News and media</td><td>Low</td><td>not verified</td></tr>
+<tr><td>NEWS-19</td><td>Fresno temperature-log rumor, denied by the company</td><td>News and media</td><td>Low</td><td>not verified</td></tr>
+<tr><td>NEWS-23</td><td>Food bank donation</td><td>News and media</td><td>Low</td><td>not verified</td></tr>
+<tr><td>LIT-08</td><td>Canadian trademark opposition by Brindlewick Papeterie</td><td>Litigation</td><td>Low</td><td>not verified</td></tr>
+<tr><td>FIN-07</td><td>The acquisition integration add-back is declining and tied to the 2025 acquisition</td><td>Financial analysis</td><td>Low</td><td>not verified</td></tr>
+<tr><td>FIN-08</td><td>Share-based compensation add-back</td><td>Financial analysis</td><td>Low</td><td>not verified</td></tr>
+<tr><td>FIN-23</td><td>Share buybacks continued while the revolver funded the shortfall</td><td>Financial analysis</td><td>Low</td><td>not verified</td></tr>
+<tr><td>FIN-29</td><td>Alder BioPharma Distribution grew 18.3%</td><td>Financial analysis</td><td>Low</td><td>not verified</td></tr>
+<tr><td>FIN-33</td><td>A working capital inflow held H1 2026 operating cash flow flat</td><td>Financial analysis</td><td>Low</td><td>not verified</td></tr>
+<tr><td>FIN-40</td><td>Headcount is down 1.1%</td><td>Financial analysis</td><td>Low</td><td>not verified</td></tr>
+</tbody>
+</table>
+<h3 id="source-index">Source index</h3>
+<table>
+<thead><tr><th>Folder</th><th>Files</th></tr></thead>
+<tbody>
+<tr><td><code>targets/avocet/data/</code></td><td><code>deal-brief.md</code>, <code>README.md</code></td></tr>
+<tr><td><code>sec-filings/</code></td><td><code>BWCC_10-K_FY2025_excerpts.md</code>, <code>BWCC_DEF14A_2026_excerpts.md</code>, <code>BWCC_8-K_2026-03-20_harbor-district-update.md</code>, <code>BWCC_10-Q_Q2-2026_excerpts.md</code>, <code>BWCC_8-K_2026-09-22_strategic-review.md</code></td></tr>
+<tr><td><code>news/</code></td><td>14 articles dated December 9, 2025 to October 14, 2026 (Central Valley Business Journal, Capital Markets Wire, Sandhaven Harbor Ledger, Freight Safety Monitor, ColdChainTalk forum, Supply Chain Insider, Courtroom Wire, Grid &amp; Power Report)</td></tr>
+<tr><td><code>litigation/</code></td><td><code>docket_index.csv</code>; case files for LIT-01 to LIT-06 (LIT-07 and LIT-08 appear in the docket index only)</td></tr>
+<tr><td><code>financials/</code></td><td><code>README.md</code>, <code>income_statement.csv</code>, <code>balance_sheet.csv</code>, <code>cash_flow.csv</code>, <code>adjusted_ebitda_reconciliation.csv</code>, <code>kpis.csv</code>, <code>revenue_by_customer.csv</code>, <code>revenue_quarterly.csv</code></td></tr>
+</tbody>
+</table>
+<h3 id="limitations">Limitations</h3>
+<ul>
+<li><strong>Fictional data.</strong> This is a fictional case study. Every company, person and figure is invented.</li>
+<li><strong>Excerpts only.</strong> The SEC files are excerpts, and the litigation files are summaries, not full dockets. Where a fact is "not found", it may sit in parts of the documents that were not provided.</li>
+<li><strong>Labeled conclusions.</strong> Projections, normalizations and inferences are labeled. They depend on the stated assumptions, in particular the 2027 power price, whether the ColdTrack credits recur, and the size of the FreshArc loss.</li>
+<li><strong>Market shares.</strong> They come from two different data sets, so the combined shares are approximate.</li>
+<li><strong>Missing data.</strong> No facility-level EBITDA, lease documents, insurance contracts, actuarial reports or antitrust analysis was available.</li>
+<li><strong>Not advice.</strong> The report is a draft for human decision-makers and is not investment, legal or accounting advice.</li>
+</ul>
+</body>
+</html>

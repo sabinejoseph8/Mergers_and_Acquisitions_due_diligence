@@ -61,7 +61,7 @@
   </header>
 
   <div class="kpis">
-    <div class="kpi"><b>11</b><span>blind graded runs on 5 fictional targets</span></div>
+    <div class="kpi"><b>12</b><span>blind graded runs on 6 fictional targets</span></div>
     <div class="kpi"><b>97.4%</b><span>Critical and High recall, runs 1 to 3 average</span></div>
     <div class="kpi"><b>18 of 18</b><span>issues found on each of two held-out targets</span></div>
     <div class="kpi"><b>38 &rarr; 13</b><span>report pages, runs 4 to 6</span></div>
@@ -82,7 +82,7 @@
           <li><strong>Independent citation verifier:</strong> re-opens every cited source and recomputes the numbers behind each Critical and High finding.</li>
           <li><strong>Working memory as plain files:</strong> plan, findings register, conflicts, run log and every unedited agent report. Fully auditable.</li>
           <li><strong>Three human checkpoints:</strong> approve the plan, review the red flags, sign off.</li>
-          <li><strong>Testable guardrails:</strong> no web access, protected sources, a prompt-injection rule, approval to open the answer key, 59 automated checks.</li>
+          <li><strong>Testable guardrails:</strong> no web access, protected sources, a prompt-injection rule, approval to open the answer key, 69 automated checks.</li>
         </ul>
       </section>
       <section>
@@ -119,13 +119,13 @@
         <ul class="learn">
           <li>The verifier earned its place: 17 of 61 findings needed corrected wording before the report (one claimed 18 months of negative free cash flow; it was 12).</li>
           <li>Three runs, not one: the same misses repeated, so they were design gaps, not luck. I fixed them, and run 4 found all 18.</li>
-          <li>Then quality and generalization: reports fell from 38 to 13 pages. On three held-out targets it found every Critical and High issue and invented nothing; exact severity was 77.8%, 88.9%, then 72.2% on Wren.</li>
+          <li>Then quality and generalization: reports fell from 38 to 13 pages. On four held-out targets it found 96% to 100% of Critical and High issues and invented nothing; exact severity was 77.8%, 88.9%, 72.2% on Wren and 72.2% on Avocet, where three of the four test items for Wren's rules passed.</li>
         </ul>
       </section>
     </div>
   </div>
 
-  <div class="note"><strong>How blind was the test?</strong> Each graded run started in a fresh session that never saw the answer key or an earlier run. Heron's and Wren's builders never saw the instructions; Plover's could. A different session graded Wren.</div>
+  <div class="note"><strong>How blind was the test?</strong> Each graded run started in a fresh session that never saw the answer key or an earlier run. Heron's, Wren's and Avocet's builders never saw the instructions; Plover's could. A different session graded Wren and Avocet.</div>
 
   <section class="cost">
     <h2>Cost and time: agents versus two analysts</h2>
