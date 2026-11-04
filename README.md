@@ -1,10 +1,16 @@
-# Mergers and Acquisitions due diligence
+# Project Falcon: multi-agent M&A due diligence
 
-**Project Falcon:** a multi-agent M&A due diligence system, built in Claude Code.
+A multi-agent M&A due diligence system, built in Claude Code without application code.
 
 > **Portfolio case study.** An AI "diligence team" that researches an acquisition target across SEC filings, news, litigation records and financial data, then writes an Investment Committee report.
 >
 > All companies, people, court cases, articles and numbers are **fictional**.
+
+**Built by Sabine Joseph, with Claude Code.** I set the direction, the specs, the agents' rules, the three checkpoints and the evaluation, and signed off on every change. Claude Code drafted the files and ran the agents under those rules, which is why it appears as a contributor.
+
+**Headline result:** 96% to 100% recall on the Critical and High planted issues in every one of 12 blind graded runs on 6 fictional targets, with no unsupported finding in any report.
+
+**Start here:** [two-page case study (PDF)](docs/case-study.pdf) · [Project Memory site](https://sabinejoseph8.github.io/Mergers_and_Acquisitions_due_diligence/project-memory/) (specs and plan) · [sample report (PDF)](examples/sample-run/output/Project-Falcon-Due-Diligence-Report.pdf) · [how to run it](docs/how-to-run.md)
 
 ## Watch the demo (under 2 minutes)
 
@@ -21,7 +27,19 @@ A blind run on Plover, a company the system had never seen: the plan, four analy
 - **The controls:** three mandatory human checkpoints, read-only specialists, an independent citation verifier, an iteration cap and blocked web access.
 - **The proof:** the fictional data contains 18 planted red flags. A built-in answer key and an `/evaluate` command grade how many the system finds.
 - **Built like a product:** a product spec, design spec, tech spec and phased plan, each agreed before building, with automated checks for every phase.
-- **Results:** across three fully blind graded runs, each in a fresh session that never saw the answer key, the system averaged 97.4% recall on the 13 Critical and High planted issues (range 96.2% to 100%) and 93.5% on all 18, with no unsupported finding in any report and no distractor rated too high. A fourth blind run, after fixing the gaps those three exposed, found all 18 (100%). A fifth, after quality fixes, kept 100% on Critical and High issues while cutting the report from 38 pages to 17 and the risk matrix from 90 rows to 14. A sixth found all 18 again, in a 13-page report. An earlier, partly blind test run is kept as a [sample](examples/sample-run/evaluation/scorecard.md). On three new fictional targets it still found every planted issue's facts and put nothing unsupported in a report. On Heron, built blind, it found all 18, and exact severity judgment (77.8%) was the gap. On Plover, a fourth target built blind to test the calibration rules added after that, it found all 18 again, matched 16 of 18 severities exactly (88.9%) and rated no distractor too high. On Wren, a fifth target built outside the project so its builder never saw the instructions, and graded by a separate session, it found 13 of 13 Critical and High issues (97.2% overall); of the three rules Plover's grade led to, one fully worked and two partly, and exact severity fell to 72.2%. On Avocet, a sixth target built the same way to measure the three rules Wren's grade led to, two of those rules worked and one partly, with 96.2% recall on Critical and High issues (91.7% overall) and no unsupported findings (see [Does it generalize?](#does-it-generalize-five-new-targets)).
+- **Results:** every blind graded run, each in a fresh session that never saw the answer key, found 96% to 100% of the 13 Critical and High planted issues and put nothing unsupported in its report. Fixes measured on the first three runs took recall to 100% and cut the report from 38 pages to 13. The table below has every target; the sections after it have the detail.
+
+| Run | Critical and High recall | All 18 issues | Unsupported findings | Distractors rated too high |
+|---|---|---|---|---|
+| Falcon, runs 1 to 3 (average, setup frozen) | 97.4% | 93.5% | 0 | 0 of 4 |
+| Falcon, run 6 (after the fixes) | 100% | 100% | 0 | 0 of 4 |
+| Kestrel (near transfer) | 100% | 97.2% | 0 | 2 of 4 |
+| Heron (held out) | 100% | 100% | 0 | 1 of 4 |
+| Plover (held out) | 100% | 100% | 0 | 0 of 4 |
+| Wren (held out) | 100% | 97.2% | 0 | 1 of 4 |
+| Avocet (held out) | 96.2% | 91.7% | 0 | 1 of 4 |
+
+**Contents:** [The problem](#the-problem) · [Architecture](#how-the-architecture-maps-to-claude-code) · [How a run works](#how-a-run-works) · [Design choices](#design-choices) · [Planning and testing](#how-it-was-planned-and-tested) · [Sample run](#sample-run) · [Does it generalize?](#does-it-generalize-five-new-targets) · [Two backtests on real filings](#real-companies-two-backtests) · [Run it yourself](#run-it-yourself) · [Limitations](#limitations) · [Skills demonstrated](#skills-demonstrated)
 
 ## The problem
 
@@ -64,7 +82,7 @@ During M&A due diligence, teams must research target companies across multiple d
 
 ## How it was planned and tested
 
-- **Project Memory:** the [product spec](Project%20Memory/product-spec.md) (34 requirements), [design spec](Project%20Memory/design.md), [tech spec](Project%20Memory/tech-spec.md) (architecture, data model and 11 critical risks) and the phased [plan](Project%20Memory/progress.md), each agreed before building. They are also published as a [website](https://claude.ai/artifact/CmFqn6PUnPvRse4GxpLrDW) with live plan ticks.
+- **Project Memory:** the [product spec](Project%20Memory/product-spec.md) (34 requirements), [design spec](Project%20Memory/design.md), [tech spec](Project%20Memory/tech-spec.md) (architecture, data model and 11 critical risks) and the phased [plan](Project%20Memory/progress.md), each agreed before building. They are also published as a [website](https://sabinejoseph8.github.io/Mergers_and_Acquisitions_due_diligence/project-memory/) built from the four files.
 - **Automated checks:** 69 checks using only Python's standard library, for every phase: read-only agents and guardrails, data that ties out and has not changed (for every target), complete runs and reports, graded scorecards, the committee dashboard, the real-filings download tool and house style. Type `/run-tests`, or run `python3 tests/run_all.py`. Add `--run examples/sample-run` to check the saved run.
 - **Two-page case study:** [docs/case-study.pdf](docs/case-study.pdf).
 
@@ -108,7 +126,10 @@ A complete test run from October 18, 2026 is saved in [`examples/sample-run/`](e
 
 The same gaps showed up more than once: goodwill impairment risk was only partly found in all three runs, the planted positives were thin in every report, and a lawsuit by the #4 customer was not linked to that customer's revenue in two of the three. Those became the next instruction fixes. Run 2's own scorecard reports 96.4% because it counted 14 Critical and High issues; the table recomputes every run on the answer key's 13. Scorecards: [run 1](runs/2026-10-18_0921/evaluation/scorecard.md), [run 2](runs/2026-10-18_1336/evaluation/scorecard.md), [run 3](runs/2026-10-18_1741/evaluation/scorecard.md).
 
-**Run 4: measuring the fixes.** I then applied the fixes the three runs pointed to and gave `/evaluate` a fixed grading rule:
+<details>
+<summary><b>Run 4: measuring the fixes</b> (all three repeated gaps closed; recall 100%)</summary>
+
+I then applied the fixes the three runs pointed to and gave `/evaluate` a fixed grading rule:
 
 - size every named customer, supplier or litigant against the customer data;
 - verify every Medium finding the report relies on;
@@ -141,7 +162,12 @@ All three repeated gaps closed:
 
 Scorecard: [run 4](runs/2026-10-18_1909/evaluation/scorecard.md).
 
-**Run 5: measuring the quality fixes.** I made three changes for quality, not recall: a Critical rating must name the test it meets and show the number; the lead agent self-checks each cross-source finding before verification; and duplicate findings are folded into one parent finding, so the risk matrix shows each fact once. Then I ran a fifth blind run in a fresh session.
+</details>
+
+<details>
+<summary><b>Run 5: measuring the quality fixes</b> (3 Critical labels instead of 11; 14 risk rows instead of 90; 17 pages instead of 38)</summary>
+
+I made three changes for quality, not recall: a Critical rating must name the test it meets and show the number; the lead agent self-checks each cross-source finding before verification; and duplicate findings are folded into one parent finding, so the risk matrix shows each fact once. Then I ran a fifth blind run in a fresh session.
 
 | Metric | Run 4 | Run 5 (quality fixes) |
 |---|---|---|
@@ -159,7 +185,12 @@ Every quality target was met, and Critical and High recall held. The cost was ha
 
 Scorecard: [run 5](runs/2026-10-18_2316/evaluation/scorecard.md).
 
-**Run 6: closing the last gap.** Run 5 lost half a point on goodwill because a Medium finding that no answer cited was never verified. Two general changes followed: verify every Medium finding the report shows, and compare each dated accounting judgment (an impairment test, a reserve) with what happened afterwards. They were written by a builder session that had never opened the answer key. Then I ran a sixth blind run.
+</details>
+
+<details>
+<summary><b>Run 6: closing the last gap</b> (all 18 found again, in a 13-page report)</summary>
+
+Run 5 lost half a point on goodwill because a Medium finding that no answer cited was never verified. Two general changes followed: verify every Medium finding the report shows, and compare each dated accounting judgment (an impairment test, a reserve) with what happened afterwards. They were written by a builder session that had never opened the answer key. Then I ran a sixth blind run.
 
 | Metric | Run 5 | Run 6 |
 |---|---|---|
@@ -175,6 +206,8 @@ Scorecard: [run 5](runs/2026-10-18_2316/evaluation/scorecard.md).
 Goodwill risk was tied to events after the test date and verified, so all 18 issues are found again. The run 5 process fixes held: every checkpoint was shown in chat, and the report used the committed converter. Two small things slipped: the verifier corrected more cross-source findings, and six unverified Low findings got a non-standard status, which one automated check flags.
 
 Scorecard: [run 6](runs/2026-10-19_0903/evaluation/scorecard.md).
+
+</details>
 
 Inside the run: the [findings register](examples/sample-run/memory/findings.md), the [run log](examples/sample-run/memory/run-log.md) with all three checkpoints, every analyst's [unedited report](examples/sample-run/memory/analyst-reports/), the [verifier reports](examples/sample-run/memory/verification/) and the [scorecard](examples/sample-run/evaluation/scorecard.md).
 
@@ -198,6 +231,9 @@ Six runs on one dataset can overstate how good a system is, because its instruct
 | Unsupported findings in the report | 0 | 0 | 0 | 0 | 0 | 0 |
 | Distractors rated Medium or above | 0 of 4 | 2 of 4 | 1 of 4 | 0 of 4 | 1 of 4 | 1 of 4 |
 
+<details>
+<summary><b>How to read each target's score</b> (Heron, Plover, Wren and Avocet, and what changed after each grade)</summary>
+
 **How to read Heron's score.** The system found the facts of every planted issue on a target it had never seen, and put nothing unsupported in the report. Scores use the grading rule the owner chose: an issue counts as found when its main point is verified with a severity within one level of what the answer key accepts, and exact severity matches are reported separately. On that rule Heron is 100% recall, with 14 of 18 severities (77.8%) an exact match; four were one level off (for example a product-safety issue rated High instead of Critical). Heron's original grader used a stricter reading that counted those four as partly found (88.5% on Critical and High issues); the rule was made exact afterwards so every run is graded the same way. What did not carry over cleanly is judgment: exact severity on unfamiliar issue types, and one distractor (pre-planned share sales by the CFO) rated as a red flag.
 
 **What happened after each grade.** After Kestrel run 1 and after Heron, new rules were added from their scorecards (commits `af02fce` and `78827d5`). A Kestrel rerun with those rules scored 100% with 0 distractors too high, but that is an in-sample result, measured on the target the rules came from, so it does not count as generalization. The honest test of the new rules is a fourth target built blind: Plover.
@@ -207,6 +243,8 @@ Six runs on one dataset can overstate how good a system is, because its instruct
 **How to read Wren's score.** Wren measured the three rules Plover's grade led to, each planted as a test item and graded first. One worked: effective controls and a long-serving auditor were listed as a qualified positive that names the finding putting them in doubt. Two worked in part. Known deal costs were put in the price with the three amounts right, but the run added an advisor's fee, measured the 5% test against equity value instead of enterprise value, and so rated the total High instead of Medium. A trend kept its separate accounting judgment as its own row, as the rule asks, but was rated High instead of Critical because the run never valued the earnings decline at the deal multiple. Exact severity fell to 72.2% (13 of 18), all five misses one level off, and an anonymous, denied rumor was rated Medium with its own risk row. Caveats first: it is one run; the target was built to contain the three test items, so it is a targeted test of those rules, not a natural sample; and, unlike Plover, it was graded by a session that did not run the diligence, so part of the lower exact-severity score may come from a stricter grader rather than a weaker run. Its scorecard suggests three generic rule changes, to be written by a session that has not seen the answer key and measured on a later run.
 
 **How to read Avocet's score.** Avocet measured the three rules Wren's grade led to, with four test items. Three worked. A fall in the earnings the deal is priced on was valued at the deal's multiple (US$462.0 million, 16.8% of value) and rated Critical, with the separate accounting judgment inside it kept as its own row and cited where a reader sees it. An unrecorded liability was rated Critical on its full US$312.0 million, with the US$118.0 million the buyer's own plan would trigger shown as the near-term cash cost. An anonymous claim the company denies was kept Low, in the open questions only. One worked in part: every test used enterprise value and the advisory fees were kept apart, but the run counted the buyer's reverse termination fee instead of the target's own fee, so the deal costs passed 5% of value and were rated High instead of Medium. Recall on Critical and High issues was 96.2% (one issue only partly found), exact severity stayed at 72.2%, and one distractor, a claim capped by contract that the run sized correctly, was still rated Medium with its own row. Caveats first: it is one run; the target was built to contain the test items; and the session that brought the target into the project saw part of its answer key, so it neither ran nor graded the run. Its scorecard suggests three more generic rule changes, to be written by a session that has not seen the answer key.
+
+</details>
 
 Scorecards: [Kestrel run 1](runs/2026-10-19_1449/evaluation/scorecard.md), [Kestrel rerun, in-sample](runs/2026-10-19_1614/evaluation/scorecard.md), [Heron](runs/2026-10-19_1711/evaluation/scorecard.md), [Plover](runs/2026-10-31_0946/evaluation/scorecard.md) (and its [report](runs/2026-10-31_0946/output/Project-Plover-Due-Diligence-Report.pdf)), [Wren](runs/2026-11-02_2237/evaluation/scorecard.md) (and its [report](runs/2026-11-02_2237/output/Project-Wren-Due-Diligence-Report.pdf)), [Avocet](runs/2026-11-03_0122/evaluation/scorecard.md) (and its [report](runs/2026-11-03_0122/output/Project-Avocet-Due-Diligence-Report.pdf)).
 

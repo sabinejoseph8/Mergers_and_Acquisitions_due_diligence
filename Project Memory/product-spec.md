@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.22 (November 3, 2026: the demo video is remade at under 2 minutes, with the committee dashboard and every held-out target; earlier, November 2, 2026: R34 added, a read-only committee dashboard made from a finished run; an Excel data pack was built too, compared with it, and dropped by the owner; earlier, the out-of-scope list now separates live connections, still out of scope, from real SEC data downloaded before a run, which Phase 8 added and ran on two real companies; earlier, R30 to R33 built in Phase 8's Step 1; earlier the same day, Phase 8 planned and its four open questions decided; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.23 (November 4, 2026: R35 added after a review of the public files as a recruiter sees them, so the Project Memory website and the case study can be read without any sign-in and name the author; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -98,6 +98,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 - **R26.** The project includes a README with the problem, a demo video under 2 minutes long, the architecture diagram, how a run works, sample results and how to run it. The video is recreated from a saved blind run's output, says so on screen, and shows aggregate scores only, never the answer key.
 - **R27.** The project includes a complete sample run: working memory, report PDF and scorecard.
 - **R28.** The project keeps `interview-notes.md` in first person, updated after significant features, major bug fixes and meaningful design changes.
+- **R35.** Everything a recruiter is sent to can be read without a sign-in: the Project Memory website is served as a public static page (GitHub Pages) linked from the README, the case study names the author and the repository, and the README leads with the author, one results table and a line on what the author did and what Claude Code did.
 
 **Real data (Phase 8, built and run on two real companies, November 2, 2026)**
 - **R30.** The system can run on a real public company's SEC filings and financial data as of a cutoff date. A download tool, run by the owner before the run, saves them into a target folder; the agents stay offline and read-only.
@@ -190,6 +191,7 @@ Time and tokens are recorded with no target, because this is the first run on fu
 | 2026-11-02 | Later the same day, the owner accepted the recommended default for open question 4: news and litigation stay empty for the backtest and are listed as gaps. Real court records are a candidate next roadmap item; a news search API waits for a current company. All four Phase 8 questions are now decided. |
 | 2026-11-02 | Committee view (R34): a read-only dashboard and an Excel data pack were both built from a finished run's memory files and compared on Wren and Plover, with the same counts in each. The owner kept the dashboard only, so the committee gets one view instead of two that could drift apart. The Excel draft stays outside the repository in `../extras/dashboard-draft/`. |
 | 2026-11-03 | The demo video is remade, still from the blind Plover run, with a committee dashboard scene and the graded results for Wren and Avocet, so it no longer ends on the best score. It grows from 89 to 105 seconds, so R26 now says under 2 minutes. The owner re-recorded all nine lines so tone and volume match. |
+| 2026-11-04 | Recruiter review of the public files, signed out. Fixes: the README leads with the author, one headline result, a links row and a results table, with the run-by-run history folded into collapsible blocks; the case study's tiles lead with the held-out recall range and the per-deal saving, and its footer names the author and the repository; the public link to the Project Memory website moves to GitHub Pages, because the claude.ai page showed a blank screen and then a sign-in banner to anyone signed out (R35); the GitHub About box gets a description, topics and a homepage. The repository name is kept, the author is named without a link, and no license file is added, by the owner's choice. The status lines of all four planning files are trimmed to one note each; this table already holds the earlier notes (the video remade; R34 and the Excel data pack dropped; the out-of-scope list split between live connections and downloaded real data; R30 to R33 built; Phase 8 planned). |
 
 ## Open questions (with recommended defaults)
 
