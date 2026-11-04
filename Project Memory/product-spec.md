@@ -1,12 +1,12 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.23 (November 4, 2026: R35 added after a review of the public files as a recruiter sees them, so the Project Memory website and the case study can be read without any sign-in and name the author; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.25 (November 4, 2026: the case study is linked from the README as a web page on GitHub Pages instead of a PDF, on the Clarivi pattern; R35 updated).
 
 ## Overview
 
 Project Falcon is an AI "due diligence team" for M&A deals. A person gives it a deal brief and a set of sources about a target company. A lead agent plans the work, four specialist agents research the sources in parallel, the lead agent connects what they find, an independent checker verifies every important claim, and the person approves the work at three checkpoints. The output is an Investment Committee-ready report.
 
-It is also a portfolio piece. It shows that someone who does not write code can design, control and measure an agentic workflow for high-stakes work. The target company, Talonfield Systems, and all data are fictional.
+It is also a portfolio piece. It shows that someone who does not write code can design, control and measure an agentic workflow for high-stakes work. The six targets in the repository, Talonfield Systems among them, are fictional. The two backtests used a real company's public filings, which stay out of the repository.
 
 ## Goals
 
@@ -98,7 +98,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 - **R26.** The project includes a README with the problem, a demo video under 2 minutes long, the architecture diagram, how a run works, sample results and how to run it. The video is recreated from a saved blind run's output, says so on screen, and shows aggregate scores only, never the answer key.
 - **R27.** The project includes a complete sample run: working memory, report PDF and scorecard.
 - **R28.** The project keeps `interview-notes.md` in first person, updated after significant features, major bug fixes and meaningful design changes.
-- **R35.** Everything a recruiter is sent to can be read without a sign-in: the Project Memory website is served as a public static page (GitHub Pages) linked from the README, the case study names the author and the repository, and the README leads with the author, one results table and a line on what the author did and what Claude Code did.
+- **R35.** Everything a recruiter is sent to can be read without a sign-in: the Project Memory website is served as a public static page (GitHub Pages) linked from the README, the case study is read as a web page on the same host (the PDF stays, as one of the page's own links), names the author and the repository, and the README leads with the author, one results table and a line on what the author did and what Claude Code did.
 
 **Real data (Phase 8, built and run on two real companies, November 2, 2026)**
 - **R30.** The system can run on a real public company's SEC filings and financial data as of a cutoff date. A download tool, run by the owner before the run, saves them into a target folder; the agents stay offline and read-only.
@@ -192,6 +192,8 @@ Time and tokens are recorded with no target, because this is the first run on fu
 | 2026-11-02 | Committee view (R34): a read-only dashboard and an Excel data pack were both built from a finished run's memory files and compared on Wren and Plover, with the same counts in each. The owner kept the dashboard only, so the committee gets one view instead of two that could drift apart. The Excel draft stays outside the repository in `../extras/dashboard-draft/`. |
 | 2026-11-03 | The demo video is remade, still from the blind Plover run, with a committee dashboard scene and the graded results for Wren and Avocet, so it no longer ends on the best score. It grows from 89 to 105 seconds, so R26 now says under 2 minutes. The owner re-recorded all nine lines so tone and volume match. |
 | 2026-11-04 | Recruiter review of the public files, signed out. Fixes: the README leads with the author, one headline result, a links row and a results table, with the run-by-run history folded into collapsible blocks; the case study's tiles lead with the held-out recall range and the per-deal saving, and its footer names the author and the repository; the public link to the Project Memory website moves to GitHub Pages, because the claude.ai page showed a blank screen and then a sign-in banner to anyone signed out (R35); the GitHub About box gets a description, topics and a homepage. The repository name is kept, the author is named without a link, and no license file is added, by the owner's choice. The status lines of all four planning files are trimmed to one note each; this table already holds the earlier notes (the video remade; R34 and the Excel data pack dropped; the out-of-scope list split between live connections and downloaded real data; R30 to R33 built; Phase 8 planned). |
+| 2026-11-04 | Wording fixes after the owner re-read the public files: "fictional" now covers only the six targets in the repository, with the two real-filing backtests named as the exception (README, diagram footer, this overview); the README intro, the case study subtitle and the diagram subtitle drop "without application code"; the problem statement says 2 associates, not 5 to 10, in the README and the diagram; the demo video paragraph drops "with my own voice-over". |
+| 2026-11-04 | The README links the case study as a web page (`docs/case-study/index.html` on GitHub Pages, built from the same `docs/case-study.html` as the PDF), not as a PDF, on the pattern of the Clarivi case study: a page opens in place on a phone and reads at any width, while a PDF link downloads or opens a viewer. The PDF stays, offered in the page's own links row. R35 updated. |
 
 ## Open questions (with recommended defaults)
 

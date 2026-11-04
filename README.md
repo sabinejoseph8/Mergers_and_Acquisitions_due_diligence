@@ -4,19 +4,23 @@ A multi-agent M&A due diligence system, built in Claude Code.
 
 > **Portfolio case study.** An AI "diligence team" that researches an acquisition target across SEC filings, news, litigation records and financial data, then writes an Investment Committee report.
 >
-> All companies, people, court cases, articles and numbers are **fictional**.
+> The six targets in this repository are **fictional**: their companies, people, court cases, articles and numbers were invented. The two backtests ran on a real company's public SEC filings, which are not in the repository, and the company is not named.
 
 **Built by Sabine Joseph, with Claude Code.** I set the direction, the specs, the agents' rules, the three checkpoints and the evaluation, and signed off on every change. Claude Code drafted the files and ran the agents under those rules, which is why it appears as a contributor.
 
 **Headline result:** 96% to 100% recall on the Critical and High planted issues in every one of 12 blind graded runs on 6 fictional targets, with no unsupported finding in any report.
 
-**Start here:** [two-page case study (PDF)](docs/case-study.pdf) · [Project Memory site](https://sabinejoseph8.github.io/Mergers_and_Acquisitions_due_diligence/project-memory/) (specs and plan) · [sample report (PDF)](examples/sample-run/output/Project-Falcon-Due-Diligence-Report.pdf) · [how to run it](docs/how-to-run.md)
+**Start here:** [case study (web page)](https://sabinejoseph8.github.io/Mergers_and_Acquisitions_due_diligence/case-study/) · [Project Memory site](https://sabinejoseph8.github.io/Mergers_and_Acquisitions_due_diligence/project-memory/) (specs and plan) · [sample report (PDF)](examples/sample-run/output/Project-Falcon-Due-Diligence-Report.pdf) · [how to run it](docs/how-to-run.md)
+
+## The problem
+
+During M&A due diligence, teams must research target companies across multiple databases, public filings, news, litigation history and financial records. This open-ended investigation can take 2 associates several weeks. Autonomous agents can help, but they are the hardest AI pattern to control, so high-stakes work needs human checkpoints.
 
 ## Watch the demo (under 2 minutes)
 
 https://github.com/user-attachments/assets/9076a7b9-27f9-4d66-a5eb-5c1890a7f80e
 
-A blind run on Plover, a company the system had never seen: the plan, four analysts, the red flags, the verifier, the report and the committee dashboard, then the graded results for every held-out target, Wren and Avocet included. The scenes are recreated from that run's saved output in [`runs/2026-10-31_0946/`](runs/2026-10-31_0946/), with my own voice-over.
+A blind run on Plover, a company the system had never seen: the plan, four analysts, the red flags, the verifier, the report and the committee dashboard, then the graded results for every held-out target, Wren and Avocet included. The scenes are recreated from that run's saved output in [`runs/2026-10-31_0946/`](runs/2026-10-31_0946/).
 
 ![Architecture](docs/architecture.png)
 
@@ -39,11 +43,15 @@ A blind run on Plover, a company the system had never seen: the plan, four analy
 | Wren (held out) | 100% | 97.2% | 0 | 1 of 4 |
 | Avocet (held out) | 96.2% | 91.7% | 0 | 1 of 4 |
 
-**Contents:** [The problem](#the-problem) · [Architecture](#how-the-architecture-maps-to-claude-code) · [How a run works](#how-a-run-works) · [Design choices](#design-choices) · [Planning and testing](#how-it-was-planned-and-tested) · [Sample run](#sample-run) · [Does it generalize?](#does-it-generalize-five-new-targets) · [Two backtests on real filings](#real-companies-two-backtests) · [Run it yourself](#run-it-yourself) · [Limitations](#limitations) · [Skills demonstrated](#skills-demonstrated)
+**Contents:** [How a run works](#how-a-run-works) · [Architecture](#how-the-architecture-maps-to-claude-code) · [Design choices](#design-choices) · [Planning and testing](#how-it-was-planned-and-tested) · [Sample run](#sample-run) · [Does it generalize?](#does-it-generalize-five-new-targets) · [Two backtests on real filings](#real-companies-two-backtests) · [Run it yourself](#run-it-yourself) · [Limitations](#limitations) · [Skills demonstrated](#skills-demonstrated)
 
-## The problem
+## How a run works
 
-During M&A due diligence, teams must research target companies across multiple databases, public filings, news, litigation history and financial records. This open-ended investigation can take weeks for teams of 5 to 10 associates. Autonomous agents can help, but they are the hardest AI pattern to control, so high-stakes work needs human checkpoints.
+1. **Plan.** The lead agent reads the deal brief, maps the Investment Committee's six questions to the analysts, writes hypotheses and a task list to `memory/plan.md`. **Checkpoint 1: a human approves the plan.**
+2. **Act.** Four specialists work in parallel, each on its own source, and return findings in a standard format: ID, evidence, source, severity, confidence and what to cross-check.
+3. **Observe.** The lead agent records every finding in the findings register, then compares sources. Most of the serious issues only appear here: a court ruling the company's filing leaves out, a one-off revenue amount from a footnote that changes the growth story, a deal model built on guidance that was later cut. It loops again only if a Critical or High question is still open (maximum 3 loops). **Checkpoint 2: a human reviews the red flags and decides whether to dig deeper.**
+4. **Verify.** An independent citation verifier re-opens every cited source and re-checks every Critical and High finding. **Checkpoint 3: a human signs off.**
+5. **Report.** The lead agent writes the report: a recommendation, the top red flags, answers to the six IC questions, a risk matrix, cross-source insights, deal protections and a management request list.
 
 ## How the architecture maps to Claude Code
 
@@ -63,14 +71,6 @@ During M&A due diligence, teams must research target companies across multiple d
 | Added: committee dashboard | A read-only page made after a run: findings by severity and status, top red flags, key metrics, open questions | `tools/make_dashboard.py` |
 | Added: one-word commands | Slash commands | `.claude/commands/` |
 
-## How a run works
-
-1. **Plan.** The lead agent reads the deal brief, maps the Investment Committee's six questions to the analysts, writes hypotheses and a task list to `memory/plan.md`. **Checkpoint 1: a human approves the plan.**
-2. **Act.** Four specialists work in parallel, each on its own source, and return findings in a standard format: ID, evidence, source, severity, confidence and what to cross-check.
-3. **Observe.** The lead agent records every finding in the findings register, then compares sources. Most of the serious issues only appear here: a court ruling the company's filing leaves out, a one-off revenue amount from a footnote that changes the growth story, a deal model built on guidance that was later cut. It loops again only if a Critical or High question is still open (maximum 3 loops). **Checkpoint 2: a human reviews the red flags and decides whether to dig deeper.**
-4. **Verify.** An independent citation verifier re-opens every cited source and re-checks every Critical and High finding. **Checkpoint 3: a human signs off.**
-5. **Report.** The lead agent writes the report: a recommendation, the top red flags, answers to the six IC questions, a risk matrix, cross-source insights, deal protections and a management request list.
-
 ## Design choices
 
 - **Specialists by source, not by topic.** This mirrors the architecture's tools and forces the important work, connecting sources, into the lead agent's Observe step.
@@ -84,7 +84,7 @@ During M&A due diligence, teams must research target companies across multiple d
 
 - **Project Memory:** the [product spec](Project%20Memory/product-spec.md) (34 requirements), [design spec](Project%20Memory/design.md), [tech spec](Project%20Memory/tech-spec.md) (architecture, data model and 11 critical risks) and the phased [plan](Project%20Memory/progress.md), each agreed before building. They are also published as a [website](https://sabinejoseph8.github.io/Mergers_and_Acquisitions_due_diligence/project-memory/) built from the four files.
 - **Automated checks:** 69 checks using only Python's standard library, for every phase: read-only agents and guardrails, data that ties out and has not changed (for every target), complete runs and reports, graded scorecards, the committee dashboard, the real-filings download tool and house style. Type `/run-tests`, or run `python3 tests/run_all.py`. Add `--run examples/sample-run` to check the saved run.
-- **Two-page case study:** [docs/case-study.pdf](docs/case-study.pdf).
+- **Case study:** [read it as a web page](https://sabinejoseph8.github.io/Mergers_and_Acquisitions_due_diligence/case-study/).
 
 ## Sample run
 

@@ -12,12 +12,12 @@
   <!-- Header -->
   <rect x="0" y="0" width="1400" height="96" fill="#0B1F5C"/>
   <text x="40" y="50" font-size="30" font-weight="700" fill="#FFFFFF">Project Falcon: Multi-Agent M&amp;A Due Diligence in Claude Code</text>
-  <text x="40" y="80" font-size="16" fill="#C9D3F0">No application code. Built with subagents, slash commands, a working-memory folder and permission rules.</text>
+  <text x="40" y="80" font-size="16" fill="#C9D3F0">Built with subagents, slash commands, a working-memory folder and permission rules.</text>
 
   <!-- Problem strip -->
   <rect x="40" y="112" width="1320" height="62" rx="6" fill="#EEF0F3"/>
   <text x="60" y="140" font-size="15" font-weight="700" fill="#0B1F5C">THE PROBLEM</text>
-  <text x="60" y="162" font-size="14" fill="#2B2F3A">Diligence teams research a target across SEC filings, news, litigation and financial records. Open-ended work that can take 5 to 10 associates several weeks.</text>
+  <text x="60" y="162" font-size="14" fill="#2B2F3A">Diligence teams research a target across SEC filings, news, litigation and financial records. Open-ended work that can take 2 associates several weeks.</text>
 
   <!-- Agent Core -->
   <rect x="40" y="200" width="420" height="250" rx="8" fill="#0B1F5C"/>
@@ -124,5 +124,5 @@
     <text x="1052" y="772">&#8226; Rumors and allegations labeled</text>
     <text x="1052" y="800">&#8226; Graded against an answer key</text>
   </g>
-  <text x="40" y="868" font-size="13" fill="#6B7280">All companies, people and data are fictional. Portfolio case study built with Claude Code.</text>
+  <text x="40" y="868" font-size="13" fill="#6B7280">The targets in this repository are fictional. Portfolio case study built with Claude Code.</text>
 </svg>

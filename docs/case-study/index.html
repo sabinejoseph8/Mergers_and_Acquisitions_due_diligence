@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Project Falcon Case Study</title>
+<meta name="description" content="An AI diligence team that researches an acquisition target across SEC filings, news, court records and financials, connects what no single source shows, and drafts an Investment Committee report, with people approving each stage.">
+<style>
+  /* Layout: one reading column on a phone, the PDF's two columns from 860px. Colours are the case study's own. */
+  :root {
+    --bg: #FFFFFF; --ink: #1F2430; --muted: #5B6170; --line: #D9DDE5; --mist: #F3F5F8;
+    --navy: #0B1F5C; --teal: #00B3C8; --ember: #B5491F; --gold: #E5B53C; --cream: #FFF8E6;
+    --verdict: #0B1F5C; --track: #FFFFFF; --s-hi: #9BDDE6; --m-hi: #E4B19C;
+    --sans: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #10151D; --ink: #E6E9EF; --muted: #A3ACBA; --line: #2B3442; --mist: #18202B;
+      --navy: #A9BCE8; --teal: #33C9DB; --ember: #F29467; --gold: #C79A2E; --cream: #2A2314;
+      --verdict: #162A6B; --track: #222C3A; --s-hi: #2E6E78; --m-hi: #7A4A3A; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #10151D; --ink: #E6E9EF; --muted: #A3ACBA; --line: #2B3442; --mist: #18202B;
+    --navy: #A9BCE8; --teal: #33C9DB; --ember: #F29467; --gold: #C79A2E; --cream: #2A2314;
+    --verdict: #162A6B; --track: #222C3A; --s-hi: #2E6E78; --m-hi: #7A4A3A; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.55;
+         padding-block: 28px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .page { max-width: 980px; margin: 0 auto; }
+  h1, h2, h3 { color: var(--navy); margin: 0; line-height: 1.2; text-wrap: balance; }
+  .head { border-left: 6px solid var(--navy); padding: 2px 0 2px 16px; margin-bottom: 22px; }
+  .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ember); margin-bottom: 8px; }
+  h1 { font-size: clamp(34px, 7vw, 48px); }
+  .sub { font-size: clamp(18px, 3.4vw, 22px); font-weight: 600; color: var(--navy); margin: 6px 0 12px; }
+  .lede { margin: 0; max-width: 68ch; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 0 0 30px; }
+  .kpi { background: var(--mist); border-top: 3px solid var(--teal); border-radius: 4px; padding: 12px 14px; min-width: 0; }
+  .kpi b { display: block; font-size: 26px; color: var(--navy); line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .kpi span { display: block; font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+  .cols { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); gap: 36px; }
+  .cols > div { min-width: 0; }
+  h2 { font-size: 19px; padding-bottom: 5px; border-bottom: 2px solid var(--navy); margin: 0 0 10px; }
+  section { margin-bottom: 26px; }
+  p { margin: 0 0 10px; }
+  ul, ol { margin: 0; padding-left: 20px; }
+  li { margin: 0 0 7px; }
+  strong { color: var(--navy); }
+  code { font-family: Menlo, Consolas, monospace; font-size: 0.9em; background: var(--mist); padding: 0 3px; border-radius: 3px; }
+  .figure { border: 1px solid var(--line); border-radius: 6px; padding: 10px; margin: 0 0 30px; min-width: 0; }
+  .figure .hint { display: none; font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .diagram { overflow-x: auto; border-radius: 4px; background: #FFFFFF; }
+  .diagram svg { display: block; width: 100%; min-width: 820px; height: auto; }
+  .figure .cap { font-size: 13px; color: var(--muted); margin-top: 8px; }
+  .verdict { background: var(--verdict); color: #FFFFFF; border-radius: 4px; padding: 12px 14px; margin-bottom: 10px; }
+  .verdict strong { color: #FFFFFF; }
+  .learn li::marker { color: var(--teal); }
+  .note { background: var(--cream); border-left: 4px solid var(--gold); padding: 12px 14px; font-size: 15px; margin: 4px 0 30px; }
+  .cost { border-top: 2px solid var(--navy); padding-top: 22px; }
+  .cost h2 { font-size: 22px; border-bottom: 0; padding-bottom: 0; margin-bottom: 4px; }
+  .dsub { color: var(--muted); margin: 0 0 16px; }
+  .dk { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 0 0 22px; }
+  .dk .kpi b { font-size: 20px; }
+  .dk .kpi.sys { border-top-color: var(--teal); }
+  .dk .kpi.man { border-top-color: var(--ember); }
+  .dk .kpi:not(.sys):not(.man) { border-top-color: var(--navy); }
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 32px; background: var(--mist); border-radius: 6px; padding: 14px 18px; margin-bottom: 22px; }
+  .chart .ct { font-weight: 700; color: var(--navy); font-size: 15px; margin-bottom: 8px; }
+  .rrow { display: grid; grid-template-columns: 92px 1fr; align-items: center; margin: 6px 0; font-size: 14px; }
+  .track { height: 18px; background: var(--track); border-radius: 3px; display: flex; }
+  .track span, .mb span { display: block; height: 100%; }
+  .s.lo { background: var(--teal); } .s.hi { background: var(--s-hi); }
+  .m.lo { background: var(--ember); } .m.hi { background: var(--m-hi); }
+  .track span:last-child, .mb span:last-child { border-radius: 0 3px 3px 0; }
+  .axis { margin-left: 92px; display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 3px; }
+  .legend { grid-column: 1 / -1; font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 20px; }
+  .legend i { display: inline-block; width: 14px; height: 11px; margin-right: 5px; vertical-align: -1px; border-radius: 2px; }
+  .legend i.g { background: linear-gradient(90deg, var(--s-hi) 50%, var(--m-hi) 50%); }
+  .dcols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px 32px; margin-bottom: 14px; }
+  .dcols > div { min-width: 0; }
+  .dash h3 { font-size: 16px; margin: 0 0 6px; }
+  .scroll { overflow-x: auto; margin-bottom: 12px; }
+  .items { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .items th, .items td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .items th { background: var(--mist); color: var(--navy); font-size: 13px; }
+  .items td .d { display: block; color: var(--muted); font-size: 12px; line-height: 1.35; }
+  .items .r { text-align: right; white-space: nowrap; }
+  .items td:nth-child(3) { width: 30%; min-width: 120px; vertical-align: middle; }
+  .items tr.tot td { border-top: 2px solid var(--navy); font-weight: 700; color: var(--navy); }
+  .items.time td:nth-child(3) { width: auto; min-width: 0; vertical-align: top; }
+  .mb { height: 10px; background: var(--mist); border-radius: 2px; display: flex; }
+  .foot { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 16px; font-size: 14px; color: var(--muted); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; }
+  .foot strong { color: var(--ink); }
+  .foot a { color: inherit; overflow-wrap: anywhere; }
+  .more { margin-top: 18px; font-size: 15px; display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  .more a { color: var(--navy); font-weight: 600; text-underline-offset: 3px; }
+  a:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+  @media (max-width: 859px) {
+    .cols, .dcols { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .dcols { gap: 10px; }
+  }
+  @media (max-width: 700px) {
+    .figure .hint { display: block; }
+    .charts { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .foot { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .kpis .kpi:nth-child(5), .dk .kpi:nth-child(5) { grid-column: 1 / -1; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+<header class="head">
+    <div class="eyebrow">AI product management case study &middot; Fictional targets and real-filing backtests &middot; November 2026</div>
+    <h1>Project Falcon</h1>
+    <div class="sub">Multi-agent M&amp;A due diligence, built in Claude Code</div>
+    <p class="lede">An AI diligence team that researches an acquisition target across SEC filings, news, court records and financials, connects what no single source shows, and drafts an Investment Committee report, with people approving each stage.</p>
+  </header>
+<div class="kpis">
+    <div class="kpi"><b>12</b><span>blind graded runs on 6 fictional targets</span></div>
+    <div class="kpi"><b>96% to 100%</b><span>Critical and High recall, four held-out targets</span></div>
+    <div class="kpi"><b>0</b><span>unsupported findings in any report</span></div>
+    <div class="kpi"><b>38 &rarr; 13</b><span>report pages, runs 4 to 6</span></div>
+    <div class="kpi"><b>75% to 78%</b><span>lower cost per deal than two analysts (details below)</span></div>
+  </div>
+<div class="figure">
+        <div class="diagram"><svg role="img" aria-label="Architecture: the Agent Core loop coordinating four specialist tools, working memory, a citation verifier and three human checkpoints, ending in the due diligence report" xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0B1F5C"/>
+    </marker>
+    <marker id="arrw" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#FFFFFF"/>
+    </marker>
+  </defs>
+  <rect width="1400" height="900" fill="#FFFFFF"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="1400" height="96" fill="#0B1F5C"/>
+  <text x="40" y="50" font-size="30" font-weight="700" fill="#FFFFFF">Project Falcon: Multi-Agent M&amp;A Due Diligence in Claude Code</text>
+  <text x="40" y="80" font-size="16" fill="#C9D3F0">Built with subagents, slash commands, a working-memory folder and permission rules.</text>
+
+  <!-- Problem strip -->
+  <rect x="40" y="112" width="1320" height="62" rx="6" fill="#EEF0F3"/>
+  <text x="60" y="140" font-size="15" font-weight="700" fill="#0B1F5C">THE PROBLEM</text>
+  <text x="60" y="162" font-size="14" fill="#2B2F3A">Diligence teams research a target across SEC filings, news, litigation and financial records. Open-ended work that can take 2 associates several weeks.</text>
+
+  <!-- Agent Core -->
+  <rect x="40" y="200" width="420" height="250" rx="8" fill="#0B1F5C"/>
+  <text x="250" y="236" font-size="24" font-weight="700" fill="#FFFFFF" text-anchor="middle">Agent Core</text>
+  <text x="250" y="258" font-size="14" fill="#C9D3F0" text-anchor="middle">Lead agent, defined in CLAUDE.md</text>
+  <circle cx="120" cy="320" r="44" fill="#00B3C8"/>
+  <circle cx="250" cy="320" r="44" fill="#00B3C8"/>
+  <circle cx="380" cy="320" r="44" fill="#00B3C8"/>
+  <text x="120" y="325" font-size="15" font-weight="700" fill="#0B1F5C" text-anchor="middle">PLAN</text>
+  <text x="250" y="325" font-size="15" font-weight="700" fill="#0B1F5C" text-anchor="middle">ACT</text>
+  <text x="380" y="325" font-size="15" font-weight="700" fill="#0B1F5C" text-anchor="middle">OBSERVE</text>
+  <line x1="166" y1="320" x2="202" y2="320" stroke="#FFFFFF" stroke-width="2.5" marker-end="url(#arrw)"/>
+  <line x1="296" y1="320" x2="332" y2="320" stroke="#FFFFFF" stroke-width="2.5" marker-end="url(#arrw)"/>
+  <path d="M380,366 C380,398 250,398 252,368" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrw)"/>
+  <text x="316" y="410" font-size="12.5" fill="#C9D3F0" text-anchor="middle">loop again if needed (max 3 iterations)</text>
+  <text x="250" y="436" font-size="13" fill="#FFFFFF" text-anchor="middle">Compares sources, finds conflicts and disclosure gaps</text>
+
+  <!-- Working memory -->
+  <rect x="40" y="480" width="420" height="200" rx="8" fill="#00B3C8"/>
+  <text x="250" y="514" font-size="22" font-weight="700" fill="#0B1F5C" text-anchor="middle">Working Memory</text>
+  <text x="250" y="535" font-size="14" fill="#0B1F5C" text-anchor="middle">memory/ folder (findings, datasets)</text>
+  <text x="62" y="568" font-size="13.5" fill="#0B1F5C"><tspan font-weight="700">findings.md</tspan>: register of every finding with ID,</text>
+  <text x="62" y="587" font-size="13.5" fill="#0B1F5C">severity, confidence, source and status</text>
+  <text x="62" y="612" font-size="13.5" fill="#0B1F5C"><tspan font-weight="700">datasets/</tspan>: key metrics and calculations</text>
+  <text x="62" y="637" font-size="13.5" fill="#0B1F5C"><tspan font-weight="700">plan.md, open-questions.md, run-log.md</tspan></text>
+  <text x="62" y="660" font-size="12.5" fill="#0B1F5C">(the audit trail of every step and checkpoint)</text>
+  <line x1="215" y1="452" x2="215" y2="478" stroke="#0B1F5C" stroke-width="2.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
+  <text x="226" y="470" font-size="12" fill="#0B1F5C">reads / writes</text>
+
+  <!-- Specialists -->
+  <text x="530" y="218" font-size="15" font-weight="700" fill="#0B1F5C">Specialist subagents (run in parallel, read-only)</text>
+  <g>
+    <rect x="530" y="230" width="250" height="120" rx="8" fill="#FFFFFF" stroke="#0B1F5C" stroke-width="2"/>
+    <text x="548" y="262" font-size="18" font-weight="700" fill="#0B1F5C">SEC Filing Search</text>
+    <text x="548" y="288" font-size="14" fill="#B5491F" font-family="Menlo, Consolas, monospace">sec-filings-analyst</text>
+    <text x="548" y="314" font-size="13" fill="#4A5060">10-K, 10-Q, 8-K, proxy</text>
+    <text x="548" y="334" font-size="13" fill="#4A5060">controls, covenants, governance</text>
+  </g>
+  <g>
+    <rect x="800" y="230" width="250" height="120" rx="8" fill="#FFFFFF" stroke="#0B1F5C" stroke-width="2"/>
+    <text x="818" y="262" font-size="18" font-weight="700" fill="#0B1F5C">News &amp; Media API</text>
+    <text x="818" y="288" font-size="14" fill="#B5491F" font-family="Menlo, Consolas, monospace">news-media-analyst</text>
+    <text x="818" y="314" font-size="13" fill="#4A5060">articles, short-seller report</text>
+    <text x="818" y="334" font-size="13" fill="#4A5060">fact vs allegation vs rumor</text>
+  </g>
+  <g>
+    <rect x="530" y="370" width="250" height="120" rx="8" fill="#FFFFFF" stroke="#0B1F5C" stroke-width="2"/>
+    <text x="548" y="402" font-size="18" font-weight="700" fill="#0B1F5C">Litigation Database</text>
+    <text x="548" y="428" font-size="14" fill="#B5491F" font-family="Menlo, Consolas, monospace">litigation-analyst</text>
+    <text x="548" y="454" font-size="13" fill="#4A5060">dockets, rulings, exposure</text>
+    <text x="548" y="474" font-size="13" fill="#4A5060">injunction and closing risk</text>
+  </g>
+  <g>
+    <rect x="800" y="370" width="250" height="120" rx="8" fill="#FFFFFF" stroke="#0B1F5C" stroke-width="2"/>
+    <text x="818" y="402" font-size="18" font-weight="700" fill="#0B1F5C">Financial Analysis</text>
+    <text x="818" y="428" font-size="14" fill="#B5491F" font-family="Menlo, Consolas, monospace">financial-analyst</text>
+    <text x="818" y="454" font-size="13" fill="#4A5060">statements, add-backs, KPIs</text>
+    <text x="818" y="474" font-size="13" fill="#4A5060">leverage and valuation checks</text>
+  </g>
+  <line x1="460" y1="300" x2="526" y2="300" stroke="#0B1F5C" stroke-width="2.5" marker-end="url(#arr)"/>
+  <text x="493" y="290" font-size="12" font-weight="700" fill="#0B1F5C" text-anchor="middle">ACT</text>
+  <line x1="528" y1="440" x2="464" y2="560" stroke="#0B1F5C" stroke-width="2.5" marker-end="url(#arr)"/>
+  <text x="503" y="520" font-size="12" font-weight="700" fill="#0B1F5C" text-anchor="middle" transform="rotate(-62 503 520)">OBSERVE</text>
+
+  <!-- Verifier and report -->
+  <rect x="1110" y="230" width="250" height="120" rx="8" fill="#EEF0F3" stroke="#0B1F5C" stroke-width="2"/>
+  <text x="1128" y="262" font-size="18" font-weight="700" fill="#0B1F5C">Citation Verifier</text>
+  <text x="1128" y="288" font-size="14" fill="#B5491F" font-family="Menlo, Consolas, monospace">citation-verifier</text>
+  <text x="1128" y="314" font-size="13" fill="#4A5060">independent quality control:</text>
+  <text x="1128" y="334" font-size="13" fill="#4A5060">re-checks every key finding</text>
+  <line x1="1050" y1="290" x2="1106" y2="290" stroke="#0B1F5C" stroke-width="2.5" marker-end="url(#arr)"/>
+  <text x="1078" y="280" font-size="11" font-weight="700" fill="#0B1F5C" text-anchor="middle">VERIFY</text>
+
+  <rect x="1110" y="380" width="250" height="130" rx="8" fill="#E07B4F"/>
+  <text x="1235" y="414" font-size="17.5" font-weight="700" fill="#0B1F5C" text-anchor="middle">Comprehensive Due</text>
+  <text x="1235" y="436" font-size="17.5" font-weight="700" fill="#0B1F5C" text-anchor="middle">Diligence Report</text>
+  <text x="1235" y="462" font-size="12.5" fill="#0B1F5C" text-anchor="middle">risk matrix, answers to IC questions,</text>
+  <text x="1235" y="481" font-size="12.5" fill="#0B1F5C" text-anchor="middle">deal protections (md, html, pdf)</text>
+  <line x1="1235" y1="350" x2="1235" y2="376" stroke="#0B1F5C" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- Human checkpoints -->
+  <rect x="530" y="530" width="830" height="150" rx="8" fill="#FFF8E6" stroke="#E5B53C" stroke-width="2"/>
+  <text x="552" y="562" font-size="16" font-weight="700" fill="#0B1F5C">Human-in-the-loop checkpoints (the system stops and waits for a person)</text>
+  <rect x="552" y="580" width="250" height="78" rx="39" fill="#F6C344"/>
+  <text x="677" y="612" font-size="16" font-weight="700" fill="#0B1F5C" text-anchor="middle">1. Approve the plan</text>
+  <text x="677" y="636" font-size="12.5" fill="#0B1F5C" text-anchor="middle">after PLAN, before any analysis</text>
+  <rect x="822" y="580" width="250" height="78" rx="39" fill="#F6C344"/>
+  <text x="947" y="612" font-size="16" font-weight="700" fill="#0B1F5C" text-anchor="middle">2. Review red flags</text>
+  <text x="947" y="636" font-size="12.5" fill="#0B1F5C" text-anchor="middle">dig deeper, or proceed to verify</text>
+  <rect x="1092" y="580" width="250" height="78" rx="39" fill="#F6C344"/>
+  <text x="1217" y="612" font-size="16" font-weight="700" fill="#0B1F5C" text-anchor="middle">3. Sign off</text>
+  <text x="1217" y="636" font-size="12.5" fill="#0B1F5C" text-anchor="middle">after verification, before report</text>
+
+  <!-- Controls -->
+  <rect x="40" y="710" width="1320" height="118" rx="8" fill="#0B1F5C"/>
+  <text x="62" y="742" font-size="16" font-weight="700" fill="#FFFFFF">CONTROLS: autonomous agents are powerful but hard to control, so every step is bounded</text>
+  <g font-size="14" fill="#FFFFFF">
+    <text x="62" y="772">&#8226; Mandatory human checkpoints</text>
+    <text x="62" y="800">&#8226; Max 3 Plan, Act, Observe loops</text>
+    <text x="392" y="772">&#8226; Specialists are read-only</text>
+    <text x="392" y="800">&#8226; Source data cannot be edited</text>
+    <text x="722" y="772">&#8226; Web access blocked (settings.json)</text>
+    <text x="722" y="800">&#8226; Every finding cites file and section</text>
+    <text x="1052" y="772">&#8226; Rumors and allegations labeled</text>
+    <text x="1052" y="800">&#8226; Graded against an answer key</text>
+  </g>
+  <text x="40" y="868" font-size="13" fill="#6B7280">The targets in this repository are fictional. Portfolio case study built with Claude Code.</text>
+</svg></div>
+        <div class="hint">Swipe sideways to see the whole drawing.</div><div class="cap">Architecture: Agent Core, four specialists, working memory, verifier and human checkpoints.</div>
+      </div>
+<div class="cols">
+    <div>
+      <section>
+        <h2>The problem</h2>
+        <p>Diligence takes teams of associates weeks of reading filings, news, dockets and data-room financials, and the worst issues hide between sources. Autonomous agents could help, but they are the hardest AI pattern to control, so high-stakes work needs human checkpoints.</p>
+      </section>
+      <section>
+        <h2>What I built</h2>
+        <ul>
+          <li><strong>Agent Core:</strong> a lead agent (<code>CLAUDE.md</code>) running a bounded Plan, Act, Observe loop (at most three iterations).</li>
+          <li><strong>Four specialists in parallel:</strong> SEC filings, news, litigation and financials. One source each, read-only.</li>
+          <li><strong>Independent citation verifier:</strong> re-opens every cited source and recomputes the numbers behind each Critical and High finding.</li>
+          <li><strong>Working memory as plain files:</strong> plan, findings register, conflicts, run log and every unedited agent report. Fully auditable.</li>
+          <li><strong>Three human checkpoints:</strong> approve the plan, review the red flags, sign off.</li>
+          <li><strong>Testable guardrails:</strong> no web access, protected sources, a prompt-injection rule, approval to open the answer key, 69 automated checks.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Key decisions</h2>
+        <ul>
+          <li><strong>Specialists by source, not topic,</strong> so connecting sources is the lead agent's job. The Critical issues only appear there.</li>
+          <li><strong>Separation of duties:</strong> analysts cannot change anything; a separate verifier checks them, like a deal-team reviewer.</li>
+          <li><strong>Measured, not assumed:</strong> 18 planted issues, 4 distractors and an answer key the analysts and verifiers never see.</li>
+          <li><strong>Planned like a product:</strong> specs and a phased plan with tests for each phase, agreed before building.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Real filings: two backtests</h2>
+        <p>Two backtests ran on a real company's SEC filings as of a cutoff date (2018 and 2014), with a hypothetical deal and a key of warning signs the later public record showed mattered. <strong>Limits first:</strong> one company each, picked by a session that knew the outcome; no distractors, so false alarms are untested; the companies and reports stay private. Found: 10 of 10 signs, then 5 of 8 plus 3 in part (81.3% scored, 62.5% on full finds alone). Both: 0 unsupported findings, 0 hindsight leaks.</p>
+      </section>
+    </div>
+
+    <div>
+      
+      <section>
+        <h2>What the system concluded</h2>
+        <div class="verdict"><strong>All six Falcon runs: do not proceed at $24.00 per share.</strong> The committee decides.</div>
+        <ol>
+          <li>The valuation used guidance the target had already replaced: about 18.3x on current guidance, not the 11.5x in the deal model.</li>
+          <li>A patent case turned against the target in July, with an injunction sought on robots behind about 42% of revenue. The next quarterly filing left the ruling out.</li>
+          <li>A customer worth 31% of revenue can leave after a change of control, and is building its own robots.</li>
+        </ol>
+      </section>
+      <section>
+        <h2>What I learned</h2>
+        <ul class="learn">
+          <li>The verifier earned its place: 17 of 61 findings needed corrected wording before the report (one claimed 18 months of negative free cash flow; it was 12).</li>
+          <li>Three runs, not one: the same misses repeated, so they were design gaps, not luck. I fixed them, and run 4 found all 18.</li>
+          <li>Then quality: Critical must name its test, duplicates fold into one parent, cross-source findings are self-checked. Reports fell from 38 to 13 pages; recall held at 100%.</li>
+          <li>Then generalization: four held-out targets, 96% to 100% of Critical and High issues found, nothing invented. Exact severity is the open gap: 77.8%, 88.9%, 72.2%, 72.2%.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+<div class="note"><strong>How blind was the test?</strong> Each graded run started in a fresh session that never saw the answer key or an earlier run. Heron's, Wren's and Avocet's builders never saw the instructions; Plover's could. A different session graded Wren and Avocet.</div>
+<section class="cost dash">
+    <h2>Cost and time per deal: this system versus a manual first pass by two analysts</h2>
+    <p class="dsub">Professional setup, for a team doing <strong>20 deals a year</strong>, with the one-time setup spread over <strong>3 years</strong>. Every figure is a range from low to high.</p>
+    <div class="dk">
+      <div class="kpi sys"><b>US$4,117 to US$14,680</b><span>this system, per deal, all in</span></div>
+      <div class="kpi man"><b>US$18,900 to US$58,180</b><span>manual first pass, per deal, all in</span></div>
+      <div class="kpi"><b>75% to 78%</b><span>lower cost per deal</span></div>
+      <div class="kpi"><b>155 to 164</b><span>person-hours saved per deal</span></div>
+      <div class="kpi"><b>1 to 2 days</b><span>to a reviewed report, instead of about 2 weeks</span></div>
+    </div>
+    <div class="charts">
+      <div class="chart"><div class="ct">Cost per deal (US$ thousands)</div>
+        <div class="rrow"><div class="rl">This system</div><div class="track"><span class="s lo" style="width:6.86%"></span><span class="s hi" style="width:17.61%"></span></div></div><div class="rrow"><div class="rl">Manual</div><div class="track"><span class="m lo" style="width:31.50%"></span><span class="m hi" style="width:65.47%"></span></div></div>
+        <div class="axis"><span>0</span><span>15</span><span>30</span><span>45</span><span>60</span></div></div>
+      <div class="chart"><div class="ct">Person-hours per deal</div>
+        <div class="rrow"><div class="rl">This system</div><div class="track"><span class="s lo" style="width:2.28%"></span><span class="s hi" style="width:2.78%"></span></div></div><div class="rrow"><div class="rl">Manual</div><div class="track"><span class="m lo" style="width:91.11%"></span><span class="m hi" style="width:2.22%"></span></div></div>
+        <div class="axis"><span>0</span><span>45</span><span>90</span><span>135</span><span>180</span></div></div>
+      <div class="legend"><span><i class="s lo"></i>this system</span><span><i class="m lo"></i>manual</span><span><i class="g"></i>lighter part: from the low to the high estimate</span></div>
+    </div>
+    <div class="dcols">
+      <div><h3>This system</h3><div class="scroll"><table class="items"><tr><th>Line item</th><th class="r">US$ per deal</th><th>Bar, on a US$0 to US$15,000 scale</th></tr><tr><td><strong>Data subscriptions</strong><span class="d">LexisNexis news, litigation research, Capital IQ or PitchBook, data room access</span></td><td class="r">2,500 to 7,750</td><td><div class="mb"><span class="s lo" style="width:16.67%"></span><span class="s hi" style="width:35.01%"></span></div></td></tr><tr><td><strong>Claude Enterprise plan</strong><span class="d">zero data retention, needed for client data</span></td><td class="r">250 to 1,000</td><td><div class="mb"><span class="s lo" style="width:1.66%"></span><span class="s hi" style="width:4.99%"></span></div></td></tr><tr><td><strong>Connector maintenance</strong><span class="d">APIs and formats change</span></td><td class="r">250 to 750</td><td><div class="mb"><span class="s lo" style="width:1.66%"></span><span class="s hi" style="width:3.33%"></span></div></td></tr><tr><td><strong>One-time setup</strong><span class="d">four connectors, security and license review, pilot; spread over 3 years</span></td><td class="r">417 to 1,250</td><td><div class="mb"><span class="s lo" style="width:2.78%"></span><span class="s hi" style="width:5.57%"></span></div></td></tr><tr><td><strong>Agent runs</strong><span class="d">2 to 3 runs per deal</span></td><td class="r">300 to 1,500</td><td><div class="mb"><span class="s lo" style="width:1.98%"></span><span class="s hi" style="width:8.00%"></span></div></td></tr><tr><td><strong>PACER court records</strong><span class="d">US$0.10 a page, US$3 cap a document</span></td><td class="r">0 to 30</td><td><div class="mb"><span class="s lo" style="width:0.00%"></span><span class="s hi" style="width:0.19%"></span></div></td></tr><tr><td><strong>Senior review</strong><span class="d">4 to 8 hours at US$100 to US$300</span></td><td class="r">400 to 2,400</td><td><div class="mb"><span class="s lo" style="width:2.66%"></span><span class="s hi" style="width:13.34%"></span></div></td></tr><tr class="tot"><td><strong>Total per deal</strong></td><td class="r">4,117 to 14,680</td><td></td></tr></table></div></div>
+      <div><h3>Manual first pass: two analysts, 160 hours</h3><div class="scroll"><table class="items"><tr><th>Line item</th><th class="r">US$ per deal</th><th>Bar, on a US$0 to US$15,000 scale</th></tr><tr><td><strong>Reading SEC filings</strong><span class="d">50 hours</span></td><td class="r">5,000 to 15,000</td><td><div class="mb"><span class="m lo" style="width:33.34%"></span><span class="m hi" style="width:66.66%"></span></div></td></tr><tr><td><strong>Financial analysis</strong><span class="d">40 hours</span></td><td class="r">4,000 to 12,000</td><td><div class="mb"><span class="m lo" style="width:26.66%"></span><span class="m hi" style="width:53.34%"></span></div></td></tr><tr><td><strong>News review</strong><span class="d">15 hours</span></td><td class="r">1,500 to 4,500</td><td><div class="mb"><span class="m lo" style="width:9.98%"></span><span class="m hi" style="width:20.00%"></span></div></td></tr><tr><td><strong>Litigation review</strong><span class="d">15 hours</span></td><td class="r">1,500 to 4,500</td><td><div class="mb"><span class="m lo" style="width:9.98%"></span><span class="m hi" style="width:20.00%"></span></div></td></tr><tr><td><strong>Cross-checking sources</strong><span class="d">20 hours</span></td><td class="r">2,000 to 6,000</td><td><div class="mb"><span class="m lo" style="width:13.34%"></span><span class="m hi" style="width:26.66%"></span></div></td></tr><tr><td><strong>Writing the report</strong><span class="d">20 hours</span></td><td class="r">2,000 to 6,000</td><td><div class="mb"><span class="m lo" style="width:13.34%"></span><span class="m hi" style="width:26.66%"></span></div></td></tr><tr><td><strong>Data subscriptions</strong><span class="d">the same licenses</span></td><td class="r">2,500 to 7,750</td><td><div class="mb"><span class="m lo" style="width:16.67%"></span><span class="m hi" style="width:35.01%"></span></div></td></tr><tr><td><strong>PACER court records</strong><span class="d">the same pages</span></td><td class="r">0 to 30</td><td><div class="mb"><span class="m lo" style="width:0.00%"></span><span class="m hi" style="width:0.19%"></span></div></td></tr><tr><td><strong>Senior review</strong><span class="d">the same 4 to 8 hours</span></td><td class="r">400 to 2,400</td><td><div class="mb"><span class="m lo" style="width:2.66%"></span><span class="m hi" style="width:13.34%"></span></div></td></tr><tr class="tot"><td><strong>Total per deal</strong></td><td class="r">18,900 to 58,180</td><td></td></tr></table></div></div>
+    </div>
+    <div class="dcols">
+      <div><h3>Time per deal</h3>
+        <div class="scroll"><table class="items time"><tr><th></th><th>This system</th><th>Manual</th></tr>
+        <tr><td><strong>Elapsed time</strong></td><td>2 to 5 hours of agent runs, then the review: 1 to 2 working days</td><td>about 2 weeks (10 working days), then the review</td></tr>
+        <tr><td><strong>Person-hours</strong></td><td>4.1 to 9.1: 0.1 to 1.1 at the checkpoints, 4 to 8 of review</td><td>164 to 168: 160 of analyst work, 4 to 8 of review</td></tr>
+        <tr class="tot"><td><strong>Saved</strong></td><td colspan="2">155 to 164 person-hours a deal, about 95% to 98% fewer</td></tr></table></div></div>
+      <div><h3>Per year, 20 deals</h3>
+        <div class="scroll"><table class="items time"><tr><th></th><th class="r">US$ a year</th></tr>
+        <tr><td><strong>This system</strong></td><td class="r">82,340 to 293,600</td></tr>
+        <tr><td><strong>Manual first pass</strong></td><td class="r">378,000 to 1,163,600</td></tr>
+        <tr class="tot"><td><strong>Saved</strong></td><td class="r">about 296,000 to 870,000</td></tr>
+        <tr><td><strong>Hours saved</strong></td><td class="r">3,100 to 3,280 person-hours</td></tr></table></div></div>
+    </div>
+    <div class="note"><strong>What is measured and what is assumed.</strong> Measured on the two real-company backtests: US$68 to US$70 and 1.1 to 1.4 hours per filings-only run, at Claude Opus 5.5 API list rates, and 4 to 22 minutes of a person at the checkpoints. Everything else is my assumption from published list prices, which need vendor quotes: runs with all four sources cost more and take longer, so a deal is set at 2 to 3 runs costing US$300 to US$1,500 in all; the 160 analyst hours and their split by task are illustrative. Both sides pay for the same data licenses, PACER pages and senior review, so the difference is the first-pass work itself. The project ran on a Claude subscription; these are the prices of the same work for a deal team.</div>
+  </section>
+<footer class="foot">
+    <div><strong>Built by Sabine Joseph.</strong> Repository: <a href="https://github.com/sabinejoseph8/Mergers_and_Acquisitions_due_diligence" style="color:inherit">github.com/sabinejoseph8/Mergers_and_Acquisitions_due_diligence</a>, with the README (demo video under 2 minutes, both backtests), <code>runs/</code> (graded runs with scorecards), <code>examples/sample-run/</code> and <code>Project Memory/</code> (specs and plan).</div>
+    <div><strong>Skills:</strong> AI product management (specs, phased plan, success metrics, evaluation, iteration from data), agentic workflow design and M&amp;A domain depth. The fictional targets' companies, people and figures are invented; the backtests' real companies stay unnamed. Not investment advice.</div>
+  </footer>
+<nav class="more" aria-label="More"><a href="https://github.com/sabinejoseph8/Mergers_and_Acquisitions_due_diligence">The repository</a><a href="https://github.com/sabinejoseph8/Mergers_and_Acquisitions_due_diligence#watch-the-demo-under-2-minutes">Demo video (under 2 minutes)</a><a href="https://github.com/sabinejoseph8/Mergers_and_Acquisitions_due_diligence/blob/main/examples/sample-run/output/Project-Falcon-Due-Diligence-Report.pdf">Sample report (PDF)</a><a href="https://sabinejoseph8.github.io/Mergers_and_Acquisitions_due_diligence/project-memory/">Project Memory (specs and plan)</a><a href="https://github.com/sabinejoseph8/Mergers_and_Acquisitions_due_diligence/blob/main/docs/how-to-run.md">How to run it</a><a href="https://sabinejoseph8.github.io/Mergers_and_Acquisitions_due_diligence/case-study.pdf">PDF version of this page</a></nav>
+</div>
+</body>
+</html>

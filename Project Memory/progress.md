@@ -1,6 +1,6 @@
 # Progress: Project Falcon
 
-**Status:** Agreed, version 2.28 (November 4, 2026: recruiter review fixes across the README, the case study and the Project Memory website, which is now also served without sign-in on GitHub Pages; the status lines of all four planning files are trimmed to one note each, with the earlier notes kept in Status history at the end of this file).
+**Status:** Agreed, version 2.29 (November 4, 2026: the case study is also served as a web page on GitHub Pages, and the Project Memory website's file tabs follow the Clarivi pattern).
 
 ## Summary
 
@@ -318,8 +318,10 @@ Two process fixes from this review, not from the scorecard: keep the status set 
 - [x] Project Memory website with live plan ticks
 - [x] Make the repository public and share the Project Memory website
 - [x] README, case study and interview notes aimed at AI product manager roles
-- [x] Demo video at the top of the README (October 31, 2026; remade November 3, 2026 at 105 seconds, adding a committee dashboard scene and Wren and Avocet to the results, with a new voice-over): scenes recreated from the blind Plover run's saved output (aggregate scores only, never the answer key), with my own voice-over; the source files and the build script stay private, outside the repository
+- [x] Demo video at the top of the README (October 31, 2026; remade November 3, 2026 at 105 seconds, adding a committee dashboard scene and Wren and Avocet to the results, with a new voice-over): scenes recreated from the blind Plover run's saved output (aggregate scores only, never the answer key); the source files and the build script stay private, outside the repository
 - [x] Recruiter's-eye review of the public files, signed out (November 4, 2026): the README opens with the author, one headline result, a links row and a results table, with the run-by-run history in collapsible blocks; the case study's tiles and footer updated; the Project Memory website served on GitHub Pages from `docs/project-memory/` so it opens without a sign-in; the GitHub About box filled in
+- [x] Case study as a web page (November 4, 2026): `tools/case_study_page.py` builds `docs/case-study/index.html` from the PDF's source, served on GitHub Pages at `/case-study/`; the README's two case study links point at the page, and the page's links row offers the PDF.
+- [x] Project Memory website tabs on the Clarivi pattern (November 4, 2026): a "Four files. Choose one to read it:" line, a document icon on each tab from tablet width up, a raised pill for the open file, teal labels for the others and a translucent sticky bar, in light and dark; checked at phone and desktop widths.
 
 **Automated tests** (`python3 tests/run_all.py --phase style`):
 1. No em dashes in any project file.
