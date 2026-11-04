@@ -1,8 +1,8 @@
 # Design: Project Falcon
 
-**Status:** Agreed, version 1.15 (November 4, 2026: the case study becomes a web page, the README's problem statement moves above the demo video, and the website's file tabs follow the Clarivi pattern).
+**Status:** Agreed, version 1.16 (November 4, 2026: the public files describe the project, not its audience).
 
-Project Falcon has no custom app screen. People experience it in three places: **the Claude Code conversation** (commands, progress messages and checkpoints), **the documents it produces** (report, findings register, scorecard), and **the portfolio materials** (README, demo video, architecture diagram, case study, Project Memory website). This file sets one design language for all three.
+Project Falcon has no custom app screen. People experience it in three places: **the Claude Code conversation** (commands, progress messages and checkpoints), **the documents it produces** (report, findings register, scorecard), and **the project materials** (README, demo video, architecture diagram, case study, Project Memory website). This file sets one design language for all three.
 
 ## Design principles
 
@@ -112,5 +112,6 @@ Project Falcon has no custom app screen. People experience it in three places: *
 
 Earlier status notes, moved here on November 4, 2026 so the status line stays short. Nothing was removed.
 
-- **Version 1.14 (November 4, 2026):** after a recruiter's-eye review, the case study's page 1 tiles lead with the held-out recall range and the per-deal saving, its footer names the author and the repository, the README opens with the author, one headline result and a links row, and the Project Memory website is also served as a static page on GitHub Pages; earlier notes are in Change history at the end of this file.
+- **Version 1.15 (November 4, 2026):** the case study becomes a web page, the README's problem statement moves above the demo video, and the website's file tabs follow the Clarivi pattern.
+- **Version 1.14 (November 4, 2026):** after a review of the public files as a first-time reader sees them, the case study's page 1 tiles lead with the held-out recall range and the per-deal saving, its footer names the author and the repository, the README opens with the author, one headline result and a links row, and the Project Memory website is also served as a static page on GitHub Pages; earlier notes are in Change history at the end of this file.
 - **Version 1.13 (November 3, 2026):** page 2 of the case study becomes a one-page cost and time dashboard per deal, professional setup against two analysts; earlier the same day, the demo video is remade with a committee dashboard scene and every held-out target in its results, in a new voice-over; earlier the same day, the case study grows to two pages; page 2 compares the measured cost and time of a real-company backtest with an illustrative two-analyst first pass; earlier, November 2, 2026: the one-page case study gains a short section on the two real-company backtests, limits first, and still fits one page; earlier the same day, the report cover for a real company is built, in `templates/real-target-rules.md`.

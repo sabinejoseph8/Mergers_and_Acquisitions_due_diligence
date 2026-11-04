@@ -2,9 +2,9 @@
 
 A multi-agent M&A due diligence system, built in Claude Code.
 
-> **Portfolio case study.** An AI "diligence team" that researches an acquisition target across SEC filings, news, litigation records and financial data, then writes an Investment Committee report.
+> An AI "diligence team" that researches an acquisition target across SEC filings, news, litigation records and financial data, then writes an Investment Committee report.
 >
-> The six targets in this repository are **fictional**: their companies, people, court cases, articles and numbers were invented. The two backtests ran on a real company's public SEC filings, which are not in the repository, and the company is not named.
+> The six targets in this repository are fictional: their companies, people, court cases, articles and numbers were invented. The two backtests ran on a real company's public SEC filings, which are not in the repository, and the company is not named.
 
 **Built by Sabine Joseph, with Claude Code.** I set the direction, the specs, the agents' rules, the three checkpoints and the evaluation, and signed off on every change. Claude Code drafted the files and ran the agents under those rules, which is why it appears as a contributor.
 

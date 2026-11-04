@@ -81,7 +81,7 @@ A real target uses a real public company's SEC filings as of a cutoff date, with
 4. Record the baseline: `python3 tests/run_all.py --write-manifest --target <name>`.
 5. In a fresh session, run `/diligence <name>`, and approve each checkpoint without steering.
 
-## Tips for your portfolio
+## Tips for sharing a run
 
-- Record your screen during a run (especially the three checkpoints). A two-minute video of the agents working is very persuasive.
+- Record your screen during a run (especially the three checkpoints). A two-minute video of the agents working shows the loop better than any description.
 - Keep your own scorecard from `/evaluate`, and note what you changed in the agent instructions to improve it.

@@ -189,7 +189,7 @@ Plain English and short sentences. US$ millions with one decimal place. Never us
 
 Maintain a file called interview-notes.md.
 
-Keep it written in first person as if I am telling a PM interview story. Include:
+Keep it written in first person, as the story of the project in my own words. Include:
 
 - Who the app is for and why
 - Key decisions and tradeoffs

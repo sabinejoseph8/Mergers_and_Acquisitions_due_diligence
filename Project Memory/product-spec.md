@@ -1,12 +1,12 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.25 (November 4, 2026: the case study is linked from the README as a web page on GitHub Pages instead of a PDF, on the Clarivi pattern; R35 updated).
+**Status:** Agreed, version 1.26 (November 4, 2026: the overview describes what the project demonstrates, not who built it; a goal, a user, three user stories and a success criterion are removed, and the public files no longer say who reviews the project).
 
 ## Overview
 
 Project Falcon is an AI "due diligence team" for M&A deals. A person gives it a deal brief and a set of sources about a target company. A lead agent plans the work, four specialist agents research the sources in parallel, the lead agent connects what they find, an independent checker verifies every important claim, and the person approves the work at three checkpoints. The output is an Investment Committee-ready report.
 
-It is also a portfolio piece. It shows that someone who does not write code can design, control and measure an agentic workflow for high-stakes work. The six targets in the repository, Talonfield Systems among them, are fictional. The two backtests used a real company's public filings, which stay out of the repository.
+It is also a portfolio piece demonstrating design, control and measurement of an agentic workflow for high-stakes work. The six targets in the repository, Talonfield Systems among them, are fictional. The two backtests used a real company's public filings, which stay out of the repository.
 
 ## Goals
 
@@ -14,15 +14,13 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 2. Catch the red flags that only appear when sources are combined, such as an event a company left out of its filings.
 3. Keep a human in control of every important step, with a clear audit trail.
 4. Prove quality with a score, not a claim, by testing against planted red flags.
-5. Give hiring managers for AI product manager roles a project they can understand in two minutes and inspect in depth.
 
 ## Users
 
 | User | What they do | Sign-in |
 |---|---|---|
-| **Operator** (deal team analyst or associate; you, for the portfolio) | Starts a run, answers the three checkpoints, reads the report, grades the run | Uses their own Claude Code account. No other sign-in. |
+| **Operator** (deal team analyst or associate) | Starts a run, answers the three checkpoints, reads the report, grades the run | Uses their own Claude Code account. No other sign-in. |
 | **Decision maker** (Investment Committee member, deal lead) | Reads the report and decides | None. Receives the PDF. |
-| **Portfolio reviewer** (recruiter, hiring manager or interviewer for AI product manager roles) | Reads the README, diagram, sample report and case study | None. Views the public project or the PDF. |
 
 ## User stories
 
@@ -54,11 +52,6 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 **Grading and re-running**
 - As an operator, I can grade a run against the answer key and see what was missed.
 - As an operator, I can archive a run and start a clean one.
-
-**Portfolio**
-- As a portfolio reviewer, I can understand the problem, the architecture and the results from the README in two minutes.
-- As a portfolio reviewer, I can watch a short video (under 2 minutes) of a real run at the top of the README, with captions so it works muted.
-- As the builder, I keep first-person interview notes that tell the story of the project.
 
 ## Functional requirements
 
@@ -94,11 +87,11 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 - **R25.** All outputs use plain English, US$ millions with one decimal place, and no em dashes.
 - **R29.** The agents cannot open anything in `evaluation/` (the answer key and the latest scorecard) or an earlier run (`examples/`, `runs/`) unless the operator approves, so a new run stays blind.
 
-**Portfolio**
+**Project materials**
 - **R26.** The project includes a README with the problem, a demo video under 2 minutes long, the architecture diagram, how a run works, sample results and how to run it. The video is recreated from a saved blind run's output, says so on screen, and shows aggregate scores only, never the answer key.
 - **R27.** The project includes a complete sample run: working memory, report PDF and scorecard.
 - **R28.** The project keeps `interview-notes.md` in first person, updated after significant features, major bug fixes and meaningful design changes.
-- **R35.** Everything a recruiter is sent to can be read without a sign-in: the Project Memory website is served as a public static page (GitHub Pages) linked from the README, the case study is read as a web page on the same host (the PDF stays, as one of the page's own links), names the author and the repository, and the README leads with the author, one results table and a line on what the author did and what Claude Code did.
+- **R35.** Every public page the README links to can be read without a sign-in: the Project Memory website is served as a public static page (GitHub Pages) linked from the README, the case study is read as a web page on the same host (the PDF stays, as one of the page's own links), names the author and the repository, and the README leads with the author, one results table and a line on what the author did and what Claude Code did.
 
 **Real data (Phase 8, built and run on two real companies, November 2, 2026)**
 - **R30.** The system can run on a real public company's SEC filings and financial data as of a cutoff date. A download tool, run by the owner before the run, saves them into a target folder; the agents stay offline and read-only.
@@ -143,7 +136,6 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 3. The report contains all nine parts, and every finding in it names a source.
 4. Grading the sample run shows: at least 80% recall on Critical and High issues, zero unsupported findings in the report, and zero distractors rated Medium or above. (Default targets.)
 5. No source file changes during a run.
-6. A reviewer can explain the project after two minutes with the README.
 
 **Phase 8 targets for the real-company backtest (set November 2, 2026, before any result, and confirmed by the owner the same day):**
 1. At least 2 in 3 of the answer key's warning signs are found (main point verified and correctly cited, by the same rule `/evaluate` uses).
@@ -166,12 +158,12 @@ Time and tokens are recorded with no target, because this is the first run on fu
 | 2026-10-18 | Add an independent citation checker and an answer key with a grading command. |
 | 2026-10-18 | Keep first-person interview notes for the project story. |
 | 2026-10-18 | `interview-notes.md` stays private. A `.gitignore` rule keeps it out of GitHub. |
-| 2026-10-18 | The portfolio lives in the GitHub repository `sabinejoseph8/Falcon_M-A_Due_Diligence` (renamed `sabinejoseph8/Mergers_and_Acquisitions_due_diligence` on October 19, 2026), plus the one-page case study PDF for applications. |
+| 2026-10-18 | The project lives in the GitHub repository `sabinejoseph8/Falcon_M-A_Due_Diligence` (renamed `sabinejoseph8/Mergers_and_Acquisitions_due_diligence` on October 19, 2026), plus the one-page case study PDF for applications. |
 | 2026-10-18 | Show results with their limits up front: the scorecard and README say how blind the first test run was. |
 | 2026-10-18 | After the first grading: the report appendix lists findings that were not verified, trend findings are combined, and verifier corrections are applied before Checkpoint 3 (R9, R12, R15). |
 | 2026-10-18 | Earlier runs are protected like the answer key, so a new run stays blind (R29). |
 | 2026-10-18 | Time target for a full run raised from 45 to 90 minutes (success criterion 1): the first test run took 69 minutes from the approved plan to sign-off, plus about 10 minutes for the report. Faster runs are a later improvement. |
-| 2026-10-18 | The portfolio is aimed at AI product manager roles. The README, case study and interview story lead with product skills: framing the problem, specs and a phased plan, evaluation, safety and iteration. The M&A depth is the proof of domain judgment. |
+| 2026-10-18 | The README and case study lead with product skills: framing the problem, specs and a phased plan, evaluation, safety and iteration. The M&A depth is the proof of domain judgment. |
 | 2026-10-18 | Each run's scorecard is archived with the run, and everything in `evaluation/` needs approval to open, so one run's grade cannot leak into the next run or be overwritten by the next grading (R19, R29). |
 | 2026-10-18 | Fully blind run graded. It meets success criteria 2 to 5: all three checkpoints held (an early "approve" was logged but not treated as sign-off), all nine report parts, 96.2% recall on Critical and High issues, 0 unsupported findings, 0 distractors too high, no source file changed. Criterion 1 (under 90 minutes) was not measured fairly: elapsed time was about 7 hours, mostly gaps between operator replies and one stalled turn, so timing needs a cleaner measurement next run. |
 | 2026-10-18 | Three blind graded runs with a frozen setup meet success criterion 4 every time: Critical and High recall 96.2%, 96.2% and 100% (average 97.4%), 0 unsupported findings and 0 distractors too high in each. |
@@ -191,9 +183,10 @@ Time and tokens are recorded with no target, because this is the first run on fu
 | 2026-11-02 | Later the same day, the owner accepted the recommended default for open question 4: news and litigation stay empty for the backtest and are listed as gaps. Real court records are a candidate next roadmap item; a news search API waits for a current company. All four Phase 8 questions are now decided. |
 | 2026-11-02 | Committee view (R34): a read-only dashboard and an Excel data pack were both built from a finished run's memory files and compared on Wren and Plover, with the same counts in each. The owner kept the dashboard only, so the committee gets one view instead of two that could drift apart. The Excel draft stays outside the repository in `../extras/dashboard-draft/`. |
 | 2026-11-03 | The demo video is remade, still from the blind Plover run, with a committee dashboard scene and the graded results for Wren and Avocet, so it no longer ends on the best score. It grows from 89 to 105 seconds, so R26 now says under 2 minutes. The owner re-recorded all nine lines so tone and volume match. |
-| 2026-11-04 | Recruiter review of the public files, signed out. Fixes: the README leads with the author, one headline result, a links row and a results table, with the run-by-run history folded into collapsible blocks; the case study's tiles lead with the held-out recall range and the per-deal saving, and its footer names the author and the repository; the public link to the Project Memory website moves to GitHub Pages, because the claude.ai page showed a blank screen and then a sign-in banner to anyone signed out (R35); the GitHub About box gets a description, topics and a homepage. The repository name is kept, the author is named without a link, and no license file is added, by the owner's choice. The status lines of all four planning files are trimmed to one note each; this table already holds the earlier notes (the video remade; R34 and the Excel data pack dropped; the out-of-scope list split between live connections and downloaded real data; R30 to R33 built; Phase 8 planned). |
+| 2026-11-04 | Review of the public files, signed out, as a first-time reader sees them. Fixes: the README leads with the author, one headline result, a links row and a results table, with the run-by-run history folded into collapsible blocks; the case study's tiles lead with the held-out recall range and the per-deal saving, and its footer names the author and the repository; the public link to the Project Memory website moves to GitHub Pages, because the claude.ai page showed a blank screen and then a sign-in banner to anyone signed out (R35); the GitHub About box gets a description, topics and a homepage. The repository name is kept, the author is named without a link, and no license file is added, by the owner's choice. The status lines of all four planning files are trimmed to one note each; this table already holds the earlier notes (the video remade; R34 and the Excel data pack dropped; the out-of-scope list split between live connections and downloaded real data; R30 to R33 built; Phase 8 planned). |
 | 2026-11-04 | Wording fixes after the owner re-read the public files: "fictional" now covers only the six targets in the repository, with the two real-filing backtests named as the exception (README, diagram footer, this overview); the README intro, the case study subtitle and the diagram subtitle drop "without application code"; the problem statement says 2 associates, not 5 to 10, in the README and the diagram; the demo video paragraph drops "with my own voice-over". |
 | 2026-11-04 | The README links the case study as a web page (`docs/case-study/index.html` on GitHub Pages, built from the same `docs/case-study.html` as the PDF), not as a PDF, on the pattern of the Clarivi case study: a page opens in place on a phone and reads at any width, while a PDF link downloads or opens a viewer. The PDF stays, offered in the page's own links row. R35 updated. |
+| 2026-11-04 | The overview now says what the project demonstrates (design, control and measurement of an agentic workflow for high-stakes work) instead of who built it; goal 5, one of the three users, three user stories and success criterion 6 are removed, so the goals, users, stories and success criteria describe the product only. Requirements R26 to R28 and R35 stay, now grouped as Project materials. The four Project Memory files also stop naming who reviews the project: R35 now covers every public page the README links to, and past entries describe the review as a first-time reader's. The README, the run guide's tips and the diagram footer likewise describe the project, not its audience. The owner's wording and decision. |
 
 ## Open questions (with recommended defaults)
 
