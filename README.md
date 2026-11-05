@@ -16,13 +16,11 @@ A multi-agent M&A due diligence system, built in Claude Code.
 
 During M&A due diligence, teams must research target companies across multiple databases, public filings, news, litigation history and financial records. This open-ended investigation can take 2 associates several weeks. Autonomous agents can help, but they are the hardest AI pattern to control, so high-stakes work needs human checkpoints.
 
-## Watch the demo (under 2 minutes)
+## M&A due diligence video demo, 1 minute 44 seconds with sound
 
 https://github.com/user-attachments/assets/9076a7b9-27f9-4d66-a5eb-5c1890a7f80e
 
 A blind run on Plover, a company the system had never seen: the plan, four analysts, the red flags, the verifier, the report and the committee dashboard, then the graded results for every held-out target, Wren and Avocet included. The scenes are recreated from that run's saved output in [`runs/2026-10-31_0946/`](runs/2026-10-31_0946/).
-
-![Architecture](docs/architecture.png)
 
 ## At a glance
 
@@ -44,6 +42,8 @@ A blind run on Plover, a company the system had never seen: the plan, four analy
 | Avocet (held out) | 96.2% | 91.7% | 0 | 1 of 4 |
 
 **Contents:** [How a run works](#how-a-run-works) · [Architecture](#how-the-architecture-maps-to-claude-code) · [Design choices](#design-choices) · [Planning and testing](#how-it-was-planned-and-tested) · [Sample run](#sample-run) · [Does it generalize?](#does-it-generalize-five-new-targets) · [Two backtests on real filings](#real-companies-two-backtests) · [Run it yourself](#run-it-yourself) · [Limitations](#limitations) · [Skills demonstrated](#skills-demonstrated)
+
+![Architecture](docs/architecture.png)
 
 ## How a run works
 

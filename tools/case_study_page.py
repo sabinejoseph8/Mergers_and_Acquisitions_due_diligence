@@ -126,7 +126,7 @@ CSS = """
 
 LINKS = [
     ("The repository", REPO),
-    ("Demo video (under 2 minutes)", REPO + "#watch-the-demo-under-2-minutes"),
+    ("Demo video (under 2 minutes)", REPO + "#ma-due-diligence-video-demo-1-minute-44-seconds-with-sound"),
     ("Sample report (PDF)", REPO + "/blob/main/examples/sample-run/output/Project-Falcon-Due-Diligence-Report.pdf"),
     ("Project Memory (specs and plan)", SITE + "/project-memory/"),
     ("How to run it", REPO + "/blob/main/docs/how-to-run.md"),
